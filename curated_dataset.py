@@ -683,3 +683,9 @@ def build_items() -> list[dict]:
     )
 
     return items
+
+
+def build_curated_dataset() -> list[dict]:
+    """Stable convenience alias for external audits and quick dataset inspection."""
+
+    return build_items()

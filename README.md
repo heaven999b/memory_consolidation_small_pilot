@@ -29,6 +29,8 @@
 
 - `VERSION`: 当前发布版本号
 - `CHANGELOG.md`: 这版 release 的高层变化
+- `MODIFICATION_LOG_SUMMARY.md`: 适合快速回看的简版修改记录
+- `REPO_REVIEW_AND_TABLE_ANALYSIS.md`: 当前剩余问题、主表格读法和 reviewer-facing 风险说明
 - `state/release_snapshot.json`: 当前 baseline gate、artifact 状态和发布边界
 
 Git 跟踪的 benchmark surface 以 frozen slices 和 reviewer-facing artifacts 为主，而不是全量原始 benchmark 镜像。
@@ -51,6 +53,8 @@ Git 跟踪的 benchmark surface 以 frozen slices 和 reviewer-facing artifacts 
 ## 当前数据集
 
 当前默认使用 [`curated_dataset.py`](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/curated_dataset.py) 中定义的高质量 synthetic items。
+
+对外做快速审计时，可以直接调用 `build_curated_dataset()`；它是 `build_items()` 的稳定便利别名。
 
 - 当前规模：`58` 条
 - 覆盖四个 family
