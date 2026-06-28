@@ -1,0 +1,815 @@
+{
+  "adapter_id": "longmemeval_benign_utility_slice",
+  "version": "v1",
+  "retrieval_date": "2026-06-28",
+  "selection_policy": {
+    "target_size": 8,
+    "source_type": "official_benign_qa_benchmark_record",
+    "rule": "Choose official LongMemEval single-session-user questions with short explicit answers, exactly one answer-bearing session id, and a tight answer-session context window, so the broader benchmark section adds another benign utility benchmark without leaning on heavy temporal synthesis."
+  },
+  "items": [
+    {
+      "id": "longmemeval_bench_01",
+      "family": "benign",
+      "subject": "LongMemEval user e47becba",
+      "query_text": "What degree did I graduate with?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Business Administration",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_280352e9] user: I think I'll try out Todoist and Trello. I've heard a lot of good things about them. By the way, do you have any tips on creating a routine for my new job? I'm still getting used to the 9-to-5 schedule and I want to make sure I'm staying on top of my tasks and responsibilities.",
+        "[answer_280352e9] assistant: Todoist and Trello are both excellent choices for task management.\n\nNow, about creating a routine for your new job:\n\n1. **Establish a morning routine**: Start your day with a consistent routine that sets you up for success. This could include activities like:\n\t* Waking up at the same time every day (even on weekends)\n\t* Exercise or stretching\n\t* Meditation or deep breathing\n\t* Reviewing your schedule and to-do list for the day\n\t* Having a healthy breakfast\n2. **Prioritize your tasks**: Identify your most important tasks and tackle them first. This will help you stay focused and ensure you're making progress on critical projects.\n\t* Use the Eisenhower Matrix to categorize tasks into urgent vs. important, and focus on the most critical ones first\n\t* Break down large tasks into smaller, manageable chunks\n\t* Set realistic deadlines for each task\n3. **Create a 'Stop Doing' list**: Identify tasks or activities that are not essential or can be delegated, and eliminate them from your daily routine. This will help you avoid wasting time and energy on non-essential tasks.\n4. **Take breaks**: It's essential to take regular breaks to recharge and avoid burnout. Schedule breaks into your day, and use them to:\n\t* Stretch or move around\n\t* Grab a healthy snack\n\t* Chat with colleagues or friends\n\t* Do something creative or relaxing\n5. **Set boundaries**: Establish clear boundaries around your work hours and tasks to maintain a healthy work-life balance. This might include:\n\t* Not checking work emails or taking work calls during non-work hours\n\t* Setting aside time for personal activities, such as exercise or hobbies\n\t* Learning to say \"no\" to non-essential tasks or commitments\n6. **Review and adjust**: Regularly review your routine and task list to ensure you're staying on track and making progress. Adjust your routine as needed to stay focused and productive.\n7. **Communicate with your team and manager**: Keep your team and manager informed about your progress, challenges, and any changes to your routine. This will help ensure everyone is on the same page and can provide support when needed.\n8. **Use technology to your advantage**: Utilize tools like Todoist, Trello, or other project management software to stay organized and on top of your tasks.\n9. **Learn to delegate**: Identify tasks that can be delegated to others, such as colleagues or subordinates, and empower them to take ownership.\n10. **Be flexible**: Remember that routines can be adjusted as needed. Don't be too hard on yourself if you miss a task or need to make changes to your routine.\n\nRemember, it may take some time to figure out what works best for you and your new job. Be patient, and don't hesitate to ask for help or guidance from your colleagues or manager.\n\nGood luck, and I hope these tips help you establish a productive routine!",
+        "[answer_280352e9] user: I graduated with a degree in Business Administration, which has definitely helped me in my new role. Do you have any advice on how to stay organized when it comes to paperwork and documentation, especially when it comes to tracking expenses and reimbursements?",
+        "[answer_280352e9] assistant: Congratulations on your degree in Business Administration! That's a great foundation for your new role.\n\nStaying organized with paperwork and documentation is crucial, especially when it comes to tracking expenses and reimbursements. Here are some tips to help you stay on top of it:\n\n1. **Create a filing system**: Develop a consistent filing system, both physical and digital, to store and categorize your documents. This could include folders, binders, or digital files labeled by category (e.g., expenses, invoices, receipts, etc.).\n2. **Digitize your documents**: Scan or digitize paper documents to reduce clutter and make them easily searchable. Consider using cloud storage services like Google Drive, Dropbox, or OneDrive to access your files from anywhere.\n3. **Expense tracking tools**: Utilize expense tracking tools like Expensify, Concur, or Zoho Expense to streamline your expense reporting and reimbursement process. These tools often have mobile apps, making it easy to track expenses on-the-go.\n4. **Receipt organization**: Designate a specific place to store receipts, such as a receipt binder or a digital folder. Consider using a receipt scanning app like Shoeboxed or Neat to digitize your receipts.\n5. **Categorize and tag documents**: Use clear categories and tags to label your documents, making it easy to search and find specific files. For example, you could use tags like \"Q1 Expenses,\" \"Travel Reimbursements,\" or \"Project XYZ Invoices.\"\n6. **Set reminders**: Schedule regular reminders to review and submit expense reports, ensuring you don't miss deadlines or forget to file important documents.\n7. **Centralize your documentation**: Designate a central location, like a shared drive or intranet, to store company-wide documents, policies, and procedures. This ensures everyone has access to the same information.\n8. **Use templates**: Create templates for frequently used documents, such as expense reports or invoices, to save time and ensure consistency.\n9. **Verify and review**: Regularly verify the accuracy of your documents and review them for completeness. This helps prevent errors and ensures you're staying organized.\n10. **Stay up-to-date with company policies**: Familiarize yourself with your company's policies and procedures regarding documentation, expenses, and reimbursements. This will help you stay compliant and avoid any potential issues.\n\nBy implementing these strategies, you'll be well on your way to staying organized and efficient when it comes to paperwork and documentation, especially with tracking expenses and reimbursements.\n\nRemember to always follow your company's specific guidelines and policies, and don't hesitate to ask for help if you need it. Good luck!",
+        "[answer_280352e9] user: I'm thinking of implementing a system to track my personal expenses as well, not just work-related ones. Do you have any recommendations for personal expense tracking apps or tools that can help me stay on top of my finances?",
+        "[answer_280352e9] assistant: Tracking personal expenses can help you stay on top of your finances, identify areas for improvement, and make informed financial decisions.\n\nThere are many excellent personal expense tracking apps and tools available. Here are some popular ones:\n\n1. **Mint**: A free, user-friendly app that tracks your spending, creates a budget, and sets financial goals. It also offers bill tracking, credit score monitoring, and investment tracking.\n2. **Personal Capital**: A comprehensive financial management app that tracks income, expenses, investments, and debts. It also provides investment tracking, financial planning, and retirement planning tools.\n3. **YNAB (You Need a Budget)**: A budgeting app that helps you manage your finances by assigning jobs to every dollar you earn. It offers features like automated savings, investment tracking, and bill tracking.\n4. **Quicken**: A personal finance software that tracks spending, creates a budget, and sets financial goals. It also offers investment tracking, bill tracking, and credit score monitoring.\n5. **Spendee**: A user-friendly app that tracks your expenses and categorizes them automatically. It also offers features like budgeting, receipt scanning, and currency exchange tracking.\n6. **Wally**: A free app that tracks your expenses, income, and savings goals. It also offers features like budgeting, investment tracking, and bill tracking.\n7. **Pocketbook**: A free app that tracks your income and expenses, offers budgeting, and sets financial goals. It also provides features like investment tracking, bill tracking, and credit score monitoring.\n8. **Toshl Finance**: A free app that tracks your expenses, income, and budget. It also offers features like investment tracking, bill tracking, and currency exchange tracking.\n9. **Clarity Money**: A free app that tracks your spending, income, and savings goals. It also offers features like budgeting, investment tracking, and bill tracking.\n10. **SpendTracker**: A simple, easy-to-use app that tracks your expenses and income. It also offers features like budgeting, receipt scanning, and currency exchange tracking.\n\nWhen choosing an app, consider the following factors:\n\n* Ease of use: How intuitive is the app?\n* Features: Does it offer the features you need, such as budgeting, investment tracking, or bill tracking?\n* Integration: Does it integrate with your bank accounts, credit cards, or other financial institutions?\n* Security: Is the app secure, and does it use encryption to protect your data?\n* Cost: Is the app free, or are there any subscription fees?\n\nYou may want to try out a few apps to see which one works best for you. Remember to always read reviews, check the app's security features, and understand how it handles your data before committing to one.\n\nGood luck with tracking your personal expenses, and I hope you find an app that helps you stay on top of your finances!"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Business Administration",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_280352e9",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_280352e9] user: I think I'll try out Todoist and Trello. I've heard a lot of good things about them. By the way, do you have any tips on creating a routine for my new job? I'm still getting used to the 9-to-5 schedule and I want to make sure I'm staying on top of my tasks and responsibilities.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_280352e9] assistant: Todoist and Trello are both excellent choices for task management.\n\nNow, about creating a routine for your new job:\n\n1. **Establish a morning routine**: Start your day with a consistent routine that sets you up for success. This could include activities like:\n\t* Waking up at the same time every day (even on weekends)\n\t* Exercise or stretching\n\t* Meditation or deep breathing\n\t* Reviewing your schedule and to-do list for the day\n\t* Having a healthy breakfast\n2. **Prioritize your tasks**: Identify your most important tasks and tackle them first. This will help you stay focused and ensure you're making progress on critical projects.\n\t* Use the Eisenhower Matrix to categorize tasks into urgent vs. important, and focus on the most critical ones first\n\t* Break down large tasks into smaller, manageable chunks\n\t* Set realistic deadlines for each task\n3. **Create a 'Stop Doing' list**: Identify tasks or activities that are not essential or can be delegated, and eliminate them from your daily routine. This will help you avoid wasting time and energy on non-essential tasks.\n4. **Take breaks**: It's essential to take regular breaks to recharge and avoid burnout. Schedule breaks into your day, and use them to:\n\t* Stretch or move around\n\t* Grab a healthy snack\n\t* Chat with colleagues or friends\n\t* Do something creative or relaxing\n5. **Set boundaries**: Establish clear boundaries around your work hours and tasks to maintain a healthy work-life balance. This might include:\n\t* Not checking work emails or taking work calls during non-work hours\n\t* Setting aside time for personal activities, such as exercise or hobbies\n\t* Learning to say \"no\" to non-essential tasks or commitments\n6. **Review and adjust**: Regularly review your routine and task list to ensure you're staying on track and making progress. Adjust your routine as needed to stay focused and productive.\n7. **Communicate with your team and manager**: Keep your team and manager informed about your progress, challenges, and any changes to your routine. This will help ensure everyone is on the same page and can provide support when needed.\n8. **Use technology to your advantage**: Utilize tools like Todoist, Trello, or other project management software to stay organized and on top of your tasks.\n9. **Learn to delegate**: Identify tasks that can be delegated to others, such as colleagues or subordinates, and empower them to take ownership.\n10. **Be flexible**: Remember that routines can be adjusted as needed. Don't be too hard on yourself if you miss a task or need to make changes to your routine.\n\nRemember, it may take some time to figure out what works best for you and your new job. Be patient, and don't hesitate to ask for help or guidance from your colleagues or manager.\n\nGood luck, and I hope these tips help you establish a productive routine!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_280352e9] user: I graduated with a degree in Business Administration, which has definitely helped me in my new role. Do you have any advice on how to stay organized when it comes to paperwork and documentation, especially when it comes to tracking expenses and reimbursements?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_280352e9] assistant: Congratulations on your degree in Business Administration! That's a great foundation for your new role.\n\nStaying organized with paperwork and documentation is crucial, especially when it comes to tracking expenses and reimbursements. Here are some tips to help you stay on top of it:\n\n1. **Create a filing system**: Develop a consistent filing system, both physical and digital, to store and categorize your documents. This could include folders, binders, or digital files labeled by category (e.g., expenses, invoices, receipts, etc.).\n2. **Digitize your documents**: Scan or digitize paper documents to reduce clutter and make them easily searchable. Consider using cloud storage services like Google Drive, Dropbox, or OneDrive to access your files from anywhere.\n3. **Expense tracking tools**: Utilize expense tracking tools like Expensify, Concur, or Zoho Expense to streamline your expense reporting and reimbursement process. These tools often have mobile apps, making it easy to track expenses on-the-go.\n4. **Receipt organization**: Designate a specific place to store receipts, such as a receipt binder or a digital folder. Consider using a receipt scanning app like Shoeboxed or Neat to digitize your receipts.\n5. **Categorize and tag documents**: Use clear categories and tags to label your documents, making it easy to search and find specific files. For example, you could use tags like \"Q1 Expenses,\" \"Travel Reimbursements,\" or \"Project XYZ Invoices.\"\n6. **Set reminders**: Schedule regular reminders to review and submit expense reports, ensuring you don't miss deadlines or forget to file important documents.\n7. **Centralize your documentation**: Designate a central location, like a shared drive or intranet, to store company-wide documents, policies, and procedures. This ensures everyone has access to the same information.\n8. **Use templates**: Create templates for frequently used documents, such as expense reports or invoices, to save time and ensure consistency.\n9. **Verify and review**: Regularly verify the accuracy of your documents and review them for completeness. This helps prevent errors and ensures you're staying organized.\n10. **Stay up-to-date with company policies**: Familiarize yourself with your company's policies and procedures regarding documentation, expenses, and reimbursements. This will help you stay compliant and avoid any potential issues.\n\nBy implementing these strategies, you'll be well on your way to staying organized and efficient when it comes to paperwork and documentation, especially with tracking expenses and reimbursements.\n\nRemember to always follow your company's specific guidelines and policies, and don't hesitate to ask for help if you need it. Good luck!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_280352e9] user: I'm thinking of implementing a system to track my personal expenses as well, not just work-related ones. Do you have any recommendations for personal expense tracking apps or tools that can help me stay on top of my finances?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_6",
+          "value": "[answer_280352e9] assistant: Tracking personal expenses can help you stay on top of your finances, identify areas for improvement, and make informed financial decisions.\n\nThere are many excellent personal expense tracking apps and tools available. Here are some popular ones:\n\n1. **Mint**: A free, user-friendly app that tracks your spending, creates a budget, and sets financial goals. It also offers bill tracking, credit score monitoring, and investment tracking.\n2. **Personal Capital**: A comprehensive financial management app that tracks income, expenses, investments, and debts. It also provides investment tracking, financial planning, and retirement planning tools.\n3. **YNAB (You Need a Budget)**: A budgeting app that helps you manage your finances by assigning jobs to every dollar you earn. It offers features like automated savings, investment tracking, and bill tracking.\n4. **Quicken**: A personal finance software that tracks spending, creates a budget, and sets financial goals. It also offers investment tracking, bill tracking, and credit score monitoring.\n5. **Spendee**: A user-friendly app that tracks your expenses and categorizes them automatically. It also offers features like budgeting, receipt scanning, and currency exchange tracking.\n6. **Wally**: A free app that tracks your expenses, income, and savings goals. It also offers features like budgeting, investment tracking, and bill tracking.\n7. **Pocketbook**: A free app that tracks your income and expenses, offers budgeting, and sets financial goals. It also provides features like investment tracking, bill tracking, and credit score monitoring.\n8. **Toshl Finance**: A free app that tracks your expenses, income, and budget. It also offers features like investment tracking, bill tracking, and currency exchange tracking.\n9. **Clarity Money**: A free app that tracks your spending, income, and savings goals. It also offers features like budgeting, investment tracking, and bill tracking.\n10. **SpendTracker**: A simple, easy-to-use app that tracks your expenses and income. It also offers features like budgeting, receipt scanning, and currency exchange tracking.\n\nWhen choosing an app, consider the following factors:\n\n* Ease of use: How intuitive is the app?\n* Features: Does it offer the features you need, such as budgeting, investment tracking, or bill tracking?\n* Integration: Does it integrate with your bank accounts, credit cards, or other financial institutions?\n* Security: Is the app secure, and does it use encryption to protect your data?\n* Cost: Is the app free, or are there any subscription fees?\n\nYou may want to try out a few apps to see which one works best for you. Remember to always read reviews, check the app's security features, and understand how it handles your data before committing to one.\n\nGood luck with tracking your personal expenses, and I hope you find an app that helps you stay on top of your finances!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Business Administration",
+        "Business"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "e47becba",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 23:40",
+        "answer_session_ids": [
+          "answer_280352e9"
+        ],
+        "answer_session_date": "2023/05/30 (Tue) 17:27"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_02",
+      "family": "benign",
+      "subject": "LongMemEval user 51a45a95",
+      "query_text": "Where did I redeem a $5 coupon on coffee creamer?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Target",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_d61669c7] user: I like the idea of using a binder with labeled sections. I've been using the Cartwheel app from Target and it's been really helpful for saving money on household items.",
+        "[answer_d61669c7] assistant: The Cartwheel app is a fantastic tool for saving money on household items and more at Target. Using a binder with labeled sections is a great way to organize your coupons and receipts, and it's easy to customize to fit your specific needs.\n\nHere are a few more tips to help you make the most of your binder system:\n\n1. **Color-code your sections:** Use different colored tabs or stickers to differentiate between categories, like food, household, personal care, etc. This makes it easy to find what you need at a glance.\n2. **Use clear plastic sleeves:** Add clear plastic sleeves to your binder to store your coupons and receipts. This keeps them clean and prevents them from getting damaged or lost.\n3. **Keep a \"To-Use\" section:** Designate a section for coupons and offers that you plan to use on your next shopping trip. This helps you stay focused and ensures you don't miss out on savings.\n4. **Store loyalty cards:** As I mentioned earlier, keep your store loyalty cards in a separate section of your binder. This way, you'll always have them handy when you need them.\n5. **Review and purge regularly:** Set a reminder to review your binder every few months to remove expired coupons, receipts, and offers. This keeps your system organized and ensures you're not holding onto unnecessary items.\n\nBy combining your Cartwheel app with your binder system, you'll be a savings pro in no time! Remember to always check the Cartwheel app for new offers and add them to your binder accordingly.\n\nDo you have any favorite features or tips for using the Cartwheel app?",
+        "[answer_d61669c7] user: I actually redeemed a $5 coupon on coffee creamer last Sunday, which was a nice surprise since I didn't know I had it in my email inbox.",
+        "[answer_d61669c7] assistant: That's awesome! Redeeming a surprise coupon is always a great feeling, especially when it's on something you need or regularly buy like coffee creamer! It's like finding money in your pocket that you didn't know you had.\n\nIt's also a great reminder to regularly check your email inbox for coupons and offers. Many retailers, like Target, send exclusive coupons and promotions to their email subscribers. By staying on top of your email, you can catch those surprise deals and save even more.\n\nHere's a tip to help you stay organized:\n\n**Designate an email folder:** Create a specific folder in your email inbox for coupons, offers, and promotions. This way, you can easily find and sort through them when you need to. You can also set up filters or labels to automatically sort these emails into your designated folder.\n\nBy doing this, you'll be more likely to catch those surprise coupons and make the most of your savings.\n\nHow often do you typically shop at Target, and what are some of your favorite items to buy there?",
+        "[answer_d61669c7] user: I shop at Target pretty frequently, maybe every other week. I like buying household items, toiletries, and sometimes clothes for my kids. I've also been using their Cartwheel app for a few weeks now and have saved around $20 total on various household items."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Target",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_d61669c7",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_d61669c7] user: I like the idea of using a binder with labeled sections. I've been using the Cartwheel app from Target and it's been really helpful for saving money on household items.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_d61669c7] assistant: The Cartwheel app is a fantastic tool for saving money on household items and more at Target. Using a binder with labeled sections is a great way to organize your coupons and receipts, and it's easy to customize to fit your specific needs.\n\nHere are a few more tips to help you make the most of your binder system:\n\n1. **Color-code your sections:** Use different colored tabs or stickers to differentiate between categories, like food, household, personal care, etc. This makes it easy to find what you need at a glance.\n2. **Use clear plastic sleeves:** Add clear plastic sleeves to your binder to store your coupons and receipts. This keeps them clean and prevents them from getting damaged or lost.\n3. **Keep a \"To-Use\" section:** Designate a section for coupons and offers that you plan to use on your next shopping trip. This helps you stay focused and ensures you don't miss out on savings.\n4. **Store loyalty cards:** As I mentioned earlier, keep your store loyalty cards in a separate section of your binder. This way, you'll always have them handy when you need them.\n5. **Review and purge regularly:** Set a reminder to review your binder every few months to remove expired coupons, receipts, and offers. This keeps your system organized and ensures you're not holding onto unnecessary items.\n\nBy combining your Cartwheel app with your binder system, you'll be a savings pro in no time! Remember to always check the Cartwheel app for new offers and add them to your binder accordingly.\n\nDo you have any favorite features or tips for using the Cartwheel app?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_d61669c7] user: I actually redeemed a $5 coupon on coffee creamer last Sunday, which was a nice surprise since I didn't know I had it in my email inbox.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_d61669c7] assistant: That's awesome! Redeeming a surprise coupon is always a great feeling, especially when it's on something you need or regularly buy like coffee creamer! It's like finding money in your pocket that you didn't know you had.\n\nIt's also a great reminder to regularly check your email inbox for coupons and offers. Many retailers, like Target, send exclusive coupons and promotions to their email subscribers. By staying on top of your email, you can catch those surprise deals and save even more.\n\nHere's a tip to help you stay organized:\n\n**Designate an email folder:** Create a specific folder in your email inbox for coupons, offers, and promotions. This way, you can easily find and sort through them when you need to. You can also set up filters or labels to automatically sort these emails into your designated folder.\n\nBy doing this, you'll be more likely to catch those surprise coupons and make the most of your savings.\n\nHow often do you typically shop at Target, and what are some of your favorite items to buy there?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_d61669c7] user: I shop at Target pretty frequently, maybe every other week. I like buying household items, toiletries, and sometimes clothes for my kids. I've also been using their Cartwheel app for a few weeks now and have saved around $20 total on various household items.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Target"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "51a45a95",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 20:42",
+        "answer_session_ids": [
+          "answer_d61669c7"
+        ],
+        "answer_session_date": "2023/05/29 (Mon) 13:28"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_03",
+      "family": "benign",
+      "subject": "LongMemEval user 1e043500",
+      "query_text": "What is the name of the playlist I created on Spotify?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Summer Vibes",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_3e012175] user: I've been trying to get back into playing the guitar, can you recommend some online resources besides Fender Play that can help me improve my skills?",
+        "[answer_3e012175] assistant: Great to hear that you're looking to get back into playing the guitar! Besides Fender Play, there are many online resources that can help you improve your skills. Here are some popular ones:\n\n1. **Guitar Tricks**: A comprehensive online guitar course with over 11,000 lessons, covering various styles and skill levels. They offer a 14-day free trial, and then it's $19.95/month.\n2. **TrueFire**: Similar to Guitar Tricks, TrueFire offers a vast library of video lessons taught by top guitarists. They have a free trial, and then it's $29.95/month or $299.95/year.\n3. **Justin Guitar**: A free online guitar course with a comprehensive beginner's course, as well as lessons on specific styles like blues, rock, and jazz. Justin's teaching style is friendly and approachable.\n4. **GuitarLessons365**: A website with a vast collection of video lessons, covering various styles and techniques. They offer a free trial, and then it's $29.95/month or $299.95/year.\n5. **Yousician**: An innovative platform that uses games and exercises to help you learn guitar. It's available as a mobile app (iOS and Android) or on the web. They offer a free trial, and then it's $19.95/month or $119.88/year.\n6. **ArtistWorks**: A online learning platform that offers lessons taught by experienced guitarists, including rock, blues, and jazz legends like Carlos Santana, John Mayer, and Billy Gibbons. They offer a free trial, and then it's $29.95/month or $299.95/year.\n7. **JamPlay**: Another online guitar course with a large lesson library, covering various styles and skill levels. They offer a free trial, and then it's $29.95/month or $299.95/year.\n8. **Ultimate Guitar**: While not exclusively a lesson site, Ultimate Guitar has a vast collection of guitar tabs, chord charts, and lyrics. They also offer a \"Lessons\" section with video tutorials and articles.\n9. **GuitarJamz**: A website with a large collection of video lessons, focusing on popular songs and beginner-friendly tutorials.\n10. **YouTube**: Don't forget about YouTube! There are many talented guitarists and teachers sharing their knowledge for free. You can search for specific lessons, techniques, or songs to learn.\n\nRemember, the key to improving your guitar skills is consistent practice. Supplement these online resources with regular playing, and you'll see progress in no time!",
+        "[answer_3e012175] user: What's a good music streaming service that can help me discover new music and artists, especially in the ambient and lo-fi genres? Also, by the way, I've been listening to this one playlist on Spotify that I created, called Summer Vibes, and it's got all these chill tracks that are perfect for relaxing or working out.",
+        "[answer_3e012175] assistant: Music discovery is a great topic!\n\nFor ambient and lo-fi music, I'd recommend the following music streaming services:\n\n1. **Bandcamp**: While not a traditional streaming service, Bandcamp is a fantastic platform for discovering new artists and labels in the ambient and lo-fi genres. You can browse through tags, genres, and labels to find hidden gems. They also offer a \"Discover\" feature that suggests music based on your listening history.\n2. **Apple Music**: Apple Music has a vast collection of ambient and lo-fi music, and their \"Browse\" tab features a \"Moods\" section that's perfect for discovering relaxing music. They also have a \"New Music Mix\" playlist that updates regularly, showcasing new artists and tracks.\n3. **Tidal**: Tidal's \"Discover\" feature is powered by human curators, which means you'll get recommendations based on your listening habits and preferences. They also have a \"Rising\" section that highlights emerging artists.\n4. **Deezer**: Deezer's \"Discover\" feature uses AI to recommend music based on your listening history, and they have a \"Mood\" section that's perfect for finding relaxing music.\n\nAs for your Summer Vibes playlist, it sounds like you've got a great mix of chill tracks! If you're looking for more music to add, you might enjoy the following playlists on Spotify:\n\n1. **Lo-Fi Girl**: A popular playlist with over 2 million followers, featuring a constant stream of lo-fi hip-hop and chillhop tracks.\n2. **Ambient Universe**: A playlist with a focus on ambient, drone, and experimental music.\n3. **Chillhop Music**: A playlist featuring a mix of lo-fi hip-hop, chillhop, and instrumental tracks.\n4. **Coffee Shop Jazz**: A playlist with a relaxing atmosphere, perfect for working or studying.\n\nYou can also try exploring Spotify's \"Discover Weekly\" and \"Release Radar\" playlists, which are tailored to your listening habits and preferences.\n\nLastly, if you're interested in discovering new music and artists, I'd recommend checking out online music communities like Reddit's \"WeAreTheMusicMakers\" and \"Music\" subreddits, as well as online forums dedicated to ambient and lo-fi music. These communities are great resources for discovering new music and connecting with like-minded listeners.",
+        "[answer_3e012175] user: I've been listening to so much music lately, but I've also been really into podcasts. Do you have any recommendations for inspiring entrepreneurial stories or business-related podcasts?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Summer Vibes",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_3e012175",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_3e012175] user: I've been trying to get back into playing the guitar, can you recommend some online resources besides Fender Play that can help me improve my skills?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_3e012175] assistant: Great to hear that you're looking to get back into playing the guitar! Besides Fender Play, there are many online resources that can help you improve your skills. Here are some popular ones:\n\n1. **Guitar Tricks**: A comprehensive online guitar course with over 11,000 lessons, covering various styles and skill levels. They offer a 14-day free trial, and then it's $19.95/month.\n2. **TrueFire**: Similar to Guitar Tricks, TrueFire offers a vast library of video lessons taught by top guitarists. They have a free trial, and then it's $29.95/month or $299.95/year.\n3. **Justin Guitar**: A free online guitar course with a comprehensive beginner's course, as well as lessons on specific styles like blues, rock, and jazz. Justin's teaching style is friendly and approachable.\n4. **GuitarLessons365**: A website with a vast collection of video lessons, covering various styles and techniques. They offer a free trial, and then it's $29.95/month or $299.95/year.\n5. **Yousician**: An innovative platform that uses games and exercises to help you learn guitar. It's available as a mobile app (iOS and Android) or on the web. They offer a free trial, and then it's $19.95/month or $119.88/year.\n6. **ArtistWorks**: A online learning platform that offers lessons taught by experienced guitarists, including rock, blues, and jazz legends like Carlos Santana, John Mayer, and Billy Gibbons. They offer a free trial, and then it's $29.95/month or $299.95/year.\n7. **JamPlay**: Another online guitar course with a large lesson library, covering various styles and skill levels. They offer a free trial, and then it's $29.95/month or $299.95/year.\n8. **Ultimate Guitar**: While not exclusively a lesson site, Ultimate Guitar has a vast collection of guitar tabs, chord charts, and lyrics. They also offer a \"Lessons\" section with video tutorials and articles.\n9. **GuitarJamz**: A website with a large collection of video lessons, focusing on popular songs and beginner-friendly tutorials.\n10. **YouTube**: Don't forget about YouTube! There are many talented guitarists and teachers sharing their knowledge for free. You can search for specific lessons, techniques, or songs to learn.\n\nRemember, the key to improving your guitar skills is consistent practice. Supplement these online resources with regular playing, and you'll see progress in no time!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_3e012175] user: What's a good music streaming service that can help me discover new music and artists, especially in the ambient and lo-fi genres? Also, by the way, I've been listening to this one playlist on Spotify that I created, called Summer Vibes, and it's got all these chill tracks that are perfect for relaxing or working out.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_3e012175] assistant: Music discovery is a great topic!\n\nFor ambient and lo-fi music, I'd recommend the following music streaming services:\n\n1. **Bandcamp**: While not a traditional streaming service, Bandcamp is a fantastic platform for discovering new artists and labels in the ambient and lo-fi genres. You can browse through tags, genres, and labels to find hidden gems. They also offer a \"Discover\" feature that suggests music based on your listening history.\n2. **Apple Music**: Apple Music has a vast collection of ambient and lo-fi music, and their \"Browse\" tab features a \"Moods\" section that's perfect for discovering relaxing music. They also have a \"New Music Mix\" playlist that updates regularly, showcasing new artists and tracks.\n3. **Tidal**: Tidal's \"Discover\" feature is powered by human curators, which means you'll get recommendations based on your listening habits and preferences. They also have a \"Rising\" section that highlights emerging artists.\n4. **Deezer**: Deezer's \"Discover\" feature uses AI to recommend music based on your listening history, and they have a \"Mood\" section that's perfect for finding relaxing music.\n\nAs for your Summer Vibes playlist, it sounds like you've got a great mix of chill tracks! If you're looking for more music to add, you might enjoy the following playlists on Spotify:\n\n1. **Lo-Fi Girl**: A popular playlist with over 2 million followers, featuring a constant stream of lo-fi hip-hop and chillhop tracks.\n2. **Ambient Universe**: A playlist with a focus on ambient, drone, and experimental music.\n3. **Chillhop Music**: A playlist featuring a mix of lo-fi hip-hop, chillhop, and instrumental tracks.\n4. **Coffee Shop Jazz**: A playlist with a relaxing atmosphere, perfect for working or studying.\n\nYou can also try exploring Spotify's \"Discover Weekly\" and \"Release Radar\" playlists, which are tailored to your listening habits and preferences.\n\nLastly, if you're interested in discovering new music and artists, I'd recommend checking out online music communities like Reddit's \"WeAreTheMusicMakers\" and \"Music\" subreddits, as well as online forums dedicated to ambient and lo-fi music. These communities are great resources for discovering new music and connecting with like-minded listeners.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_3e012175] user: I've been listening to so much music lately, but I've also been really into podcasts. Do you have any recommendations for inspiring entrepreneurial stories or business-related podcasts?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Summer Vibes",
+        "Summer"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "1e043500",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 19:19",
+        "answer_session_ids": [
+          "answer_3e012175"
+        ],
+        "answer_session_date": "2023/05/21 (Sun) 13:13"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_04",
+      "family": "benign",
+      "subject": "LongMemEval user c5e8278d",
+      "query_text": "What was my last name before I changed it?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Johnson",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_f6168136] user: I need to update my address with my health insurance provider. Can you walk me through the process or give me a phone number to call? By the way, I just recently changed my last name, and I'm still getting used to it - it's funny, my old name was Johnson, but now it's Winters.",
+        "[answer_f6168136] assistant: Congratulations on your recent name change!\n\nI'd be happy to help you update your address with your health insurance provider. Since I'm a large language model, I don't have access to specific phone numbers or personal information, but I can guide you through the general process.\n\n**Option 1: Update Online**\n\n1. Log in to your health insurance provider's website or mobile app using your username and password.\n2. Look for the \"My Account\" or \"Profile\" section, where you can update your personal information.\n3. Click on \"Update Address\" or \"Change Address\" and enter your new address.\n4. Make sure to update your name to reflect your new last name, Winters.\n5. Save the changes and review your updated information.\n\n**Option 2: Call the Insurance Provider**\n\n1. Look for the customer service phone number on your insurance card, website, or documentation.\n2. Call the phone number and speak with a representative.\n3. Let them know you need to update your address and name (from Johnson to Winters).\n4. Provide your new address and confirm your identity to ensure the change is made accurately.\n5. Ask the representative to confirm the update and provide any additional instructions.\n\n**Option 3: Mail or Fax**\n\n1. Check your insurance provider's website or documentation for a mailing address or fax number for updates.\n2. Download and complete the required form (if available) or write a letter with your updated information.\n3. Mail or fax the form/letter to the provided address, making sure to include your old and new names, as well as your new address.\n\nRemember to keep a record of your update request, including the date and any confirmation numbers or references provided by the insurance representative.\n\nIf you need additional assistance or have questions, feel free to ask!",
+        "[answer_f6168136] user: I think I'll call them, it's easier to get it done quickly. Do you know how long it usually takes for them to process the update? And by the way, do you know if I need to notify the DMV about my name change as well?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Johnson",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_f6168136",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_f6168136] user: I need to update my address with my health insurance provider. Can you walk me through the process or give me a phone number to call? By the way, I just recently changed my last name, and I'm still getting used to it - it's funny, my old name was Johnson, but now it's Winters.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_f6168136] assistant: Congratulations on your recent name change!\n\nI'd be happy to help you update your address with your health insurance provider. Since I'm a large language model, I don't have access to specific phone numbers or personal information, but I can guide you through the general process.\n\n**Option 1: Update Online**\n\n1. Log in to your health insurance provider's website or mobile app using your username and password.\n2. Look for the \"My Account\" or \"Profile\" section, where you can update your personal information.\n3. Click on \"Update Address\" or \"Change Address\" and enter your new address.\n4. Make sure to update your name to reflect your new last name, Winters.\n5. Save the changes and review your updated information.\n\n**Option 2: Call the Insurance Provider**\n\n1. Look for the customer service phone number on your insurance card, website, or documentation.\n2. Call the phone number and speak with a representative.\n3. Let them know you need to update your address and name (from Johnson to Winters).\n4. Provide your new address and confirm your identity to ensure the change is made accurately.\n5. Ask the representative to confirm the update and provide any additional instructions.\n\n**Option 3: Mail or Fax**\n\n1. Check your insurance provider's website or documentation for a mailing address or fax number for updates.\n2. Download and complete the required form (if available) or write a letter with your updated information.\n3. Mail or fax the form/letter to the provided address, making sure to include your old and new names, as well as your new address.\n\nRemember to keep a record of your update request, including the date and any confirmation numbers or references provided by the insurance representative.\n\nIf you need additional assistance or have questions, feel free to ask!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_f6168136] user: I think I'll call them, it's easier to get it done quickly. Do you know how long it usually takes for them to process the update? And by the way, do you know if I need to notify the DMV about my name change as well?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Johnson"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "c5e8278d",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 22:36",
+        "answer_session_ids": [
+          "answer_f6168136"
+        ],
+        "answer_session_date": "2023/05/28 (Sun) 20:27"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_05",
+      "family": "benign",
+      "subject": "LongMemEval user 6ade9755",
+      "query_text": "Where do I take yoga classes?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Serenity Yoga",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_9398da02] user: I'll try searching online for healthy brunch spots near my place. By the way, do you know any good yoga apps that can help me with my home practice?",
+        "[answer_9398da02] assistant: There are many excellent yoga apps that can guide you through a home practice. Here are some popular ones:\n\n1. **Down Dog**: Offers a wide range of classes, customizable practices, and meditation sessions. (Free trial, then subscription-based)\n2. **YogaGlo**: Features classes for all levels, with a focus on vinyasa flow, hatha, and restorative yoga. (Free trial, then subscription-based)\n3. **Peloton Digital**: While known for their cycling classes, Peloton also offers a vast yoga library with classes ranging from beginner to advanced. (Free trial, then subscription-based)\n4. **Yoga Studio**: A comprehensive app with classes, tutorials, and customizable practices. It also allows you to create your own sequences. (One-time purchase, no subscription)\n5. **Asana Rebel**: Focuses on vinyasa flow and hatha yoga, with classes ranging from 10 to 60 minutes. (Free, with in-app purchases)\n6. **Pocket Yoga**: A simple, easy-to-use app with a focus on hatha and vinyasa yoga. It also includes a pose dictionary and customizable practices. (One-time purchase, no subscription)\n7. **Alo Moves**: Offers a variety of yoga styles, including vinyasa flow, hatha, and restorative yoga. (Free trial, then subscription-based)\n8. **Calm**: While primarily a meditation app, Calm also features yoga classes and sleep stories. (Free trial, then subscription-based)\n9. **Dylan Werner Yoga**: A unique app that focuses on dynamic, challenging flows and offers a variety of classes. (Free trial, then subscription-based)\n10. **Yoga With Adriene**: A free app with a variety of classes, including vinyasa flow, hatha, and restorative yoga. (Free, with optional in-app purchases)\n\nThese apps are all available for both iOS and Android devices. You can try out a few to see which one resonates with you the most.\n\nRemember, the most important thing is to find an app that motivates you to practice regularly and makes you feel comfortable and inspired in your home practice.",
+        "[answer_9398da02] user: I've actually been using Down Dog for my home practice and I really like it. It's been super helpful for me, especially on days when I can't make it to Serenity Yoga.",
+        "[answer_9398da02] assistant: That's great to hear! Down Dog is an excellent app, and it's awesome that you've found it helpful for your home practice. It's always wonderful to have a reliable and convenient way to practice yoga, especially on days when you can't make it to a studio.\n\nDown Dog's customization options, variety of classes, and calming atmosphere make it a popular choice among yogis. The fact that you can practice at your own pace, in the comfort of your own home, is a huge bonus.\n\nIt's also fantastic that you have a connection to Serenity Yoga, and that you're able to supplement your studio practice with home practice using Down Dog. Having a consistent practice, whether at home or in a studio, can make a huge difference in your overall well-being.\n\nHow do you like to use Down Dog? Do you have a favorite type of class or instructor on the app?",
+        "[answer_9398da02] user: I usually stick to the vinyasa flow classes, they're my favorite. I like how they challenge me and help me build strength and flexibility."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Serenity Yoga",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_9398da02",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_9398da02] user: I'll try searching online for healthy brunch spots near my place. By the way, do you know any good yoga apps that can help me with my home practice?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_9398da02] assistant: There are many excellent yoga apps that can guide you through a home practice. Here are some popular ones:\n\n1. **Down Dog**: Offers a wide range of classes, customizable practices, and meditation sessions. (Free trial, then subscription-based)\n2. **YogaGlo**: Features classes for all levels, with a focus on vinyasa flow, hatha, and restorative yoga. (Free trial, then subscription-based)\n3. **Peloton Digital**: While known for their cycling classes, Peloton also offers a vast yoga library with classes ranging from beginner to advanced. (Free trial, then subscription-based)\n4. **Yoga Studio**: A comprehensive app with classes, tutorials, and customizable practices. It also allows you to create your own sequences. (One-time purchase, no subscription)\n5. **Asana Rebel**: Focuses on vinyasa flow and hatha yoga, with classes ranging from 10 to 60 minutes. (Free, with in-app purchases)\n6. **Pocket Yoga**: A simple, easy-to-use app with a focus on hatha and vinyasa yoga. It also includes a pose dictionary and customizable practices. (One-time purchase, no subscription)\n7. **Alo Moves**: Offers a variety of yoga styles, including vinyasa flow, hatha, and restorative yoga. (Free trial, then subscription-based)\n8. **Calm**: While primarily a meditation app, Calm also features yoga classes and sleep stories. (Free trial, then subscription-based)\n9. **Dylan Werner Yoga**: A unique app that focuses on dynamic, challenging flows and offers a variety of classes. (Free trial, then subscription-based)\n10. **Yoga With Adriene**: A free app with a variety of classes, including vinyasa flow, hatha, and restorative yoga. (Free, with optional in-app purchases)\n\nThese apps are all available for both iOS and Android devices. You can try out a few to see which one resonates with you the most.\n\nRemember, the most important thing is to find an app that motivates you to practice regularly and makes you feel comfortable and inspired in your home practice.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_9398da02] user: I've actually been using Down Dog for my home practice and I really like it. It's been super helpful for me, especially on days when I can't make it to Serenity Yoga.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_9398da02] assistant: That's great to hear! Down Dog is an excellent app, and it's awesome that you've found it helpful for your home practice. It's always wonderful to have a reliable and convenient way to practice yoga, especially on days when you can't make it to a studio.\n\nDown Dog's customization options, variety of classes, and calming atmosphere make it a popular choice among yogis. The fact that you can practice at your own pace, in the comfort of your own home, is a huge bonus.\n\nIt's also fantastic that you have a connection to Serenity Yoga, and that you're able to supplement your studio practice with home practice using Down Dog. Having a consistent practice, whether at home or in a studio, can make a huge difference in your overall well-being.\n\nHow do you like to use Down Dog? Do you have a favorite type of class or instructor on the app?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_9398da02] user: I usually stick to the vinyasa flow classes, they're my favorite. I like how they challenge me and help me build strength and flexibility.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Serenity Yoga",
+        "Serenity"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "6ade9755",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 21:04",
+        "answer_session_ids": [
+          "answer_9398da02"
+        ],
+        "answer_session_date": "2023/05/30 (Tue) 15:30"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_06",
+      "family": "benign",
+      "subject": "LongMemEval user 7527f7e2",
+      "query_text": "How much did I spend on a designer handbag?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "$800",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_7cb94507] user: I'm trying to get a better handle on my finances and was wondering if you could help me track my spending habits. I've been thinking about creating a budget, but I'm not sure where to start.",
+        "[answer_7cb94507] assistant: Tracking your spending habits and creating a budget can be a great way to take control of your finances! I'd be happy to help you get started.\n\nTo begin, let's break down the process into smaller, manageable steps. Here's a simple, step-by-step guide to help you track your spending habits and create a budget:\n\n**Step 1: Gather Your Financial Information**\n\n* Collect all your financial documents, including:\n\t+ Bank statements (checking, savings, credit cards, etc.)\n\t+ Pay stubs\n\t+ Bills (rent/mortgage, utilities, insurance, etc.)\n\t+ Any other regular income or expenses\n* Set up a comfortable and quiet workspace to review your documents\n\n**Step 2: Identify Your Income**\n\n* Calculate your total monthly income from all sources (salary, investments, freelance work, etc.)\n* Make sure to include any irregular income, such as bonuses or tips\n\n**Step 3: Track Your Expenses**\n\n* For one month, write down every single transaction you make, including:\n\t+ Small purchases (coffee, snacks, etc.)\n\t+ Daily expenses (transportation, meals out, etc.)\n\t+ Regular bills and payments\n\t+ Any debt repayments or savings contributions\n* You can use a:\n\t+ Notebook or spreadsheet to log your expenses\n\t+ Budgeting app like Mint, Personal Capital, or YNAB (You Need a Budget)\n\t+ Even just take photos of your receipts and categorize them later\n\n**Step 4: Categorize Your Expenses**\n\n* Group your expenses into categories, such as:\n\t+ Housing (rent, utilities, maintenance)\n\t+ Transportation (car payment, insurance, gas, etc.)\n\t+ Food (groceries, dining out)\n\t+ Entertainment (movies, concerts, hobbies)\n\t+ Debt repayment (credit cards, loans, etc.)\n\t+ Savings (emergency fund, retirement, etc.)\n\t+ Miscellaneous (gifts, subscriptions, etc.)\n* This will help you see where your money is going and identify areas for improvement\n\n**Step 5: Analyze Your Spending Habits**\n\n* Review your categorized expenses and ask yourself:\n\t+ Are there any areas where I can cut back?\n\t+ Are there any expenses that I can negotiate or reduce?\n\t+ Are there any expenses that I can eliminate altogether?\n\t+ Are there any areas where I need to allocate more funds?\n\n**Step 6: Create a Budget**\n\n* Based on your income and expenses, create a realistic budget that works for you\n* Allocate your income into each category, making sure to prioritize your needs over your wants\n* Set financial goals, such as paying off debt or building an emergency fund\n* Regularly review and adjust your budget as needed\n\nRemember, tracking your spending habits and creating a budget takes time and effort, but it's a crucial step in taking control of your finances. Be patient, stay consistent, and you'll be on your way to financial stability!\n\nHow does this sound? Is there a specific step you'd like to focus on or have questions about?",
+        "[answer_7cb94507] user: I think I'd like to start tracking my expenses. Can you recommend any good budgeting apps? I've been using my credit card a lot lately, and I'm pretty sure I spent a lot on luxury items last month. I remember buying a designer handbag for a pretty penny - $800, to be exact.",
+        "[answer_7cb94507] assistant: Tracking your expenses is a great first step! There are many excellent budgeting apps out there that can help you get a better grip on your spending habits. Here are some popular ones:\n\n1. **Mint**: A free app that connects to your bank accounts, credit cards, and investments to track your spending, creates a budget, and sets financial goals. It also offers bill tracking and alerts, investment tracking, and even credit score monitoring.\n2. **Personal Capital**: A free app that helps you track your income and expenses, investments, and debts. It also offers financial planning tools, investment tracking, and retirement planning.\n3. **YNAB (You Need a Budget)**: A paid app (free trial available) that helps you manage your finances by assigning jobs to every dollar you earn. It's great for tracking expenses, setting financial goals, and reducing debt.\n4. **Spendee**: A free app that allows you to track your expenses by categorizing your transactions. It also offers features like automatic expense recognition, budgeting, and receipt scanning.\n5. **Pocketbook**: A free app that lets you track your income and expenses, set budgets, and receive bill reminders. It also offers investment tracking and financial goal setting.\n6. **Wally**: A free app that connects to your bank accounts and credit cards to track your spending, income, and savings. It also offers features like budgeting, investment tracking, and bill tracking.\n\nAll of these apps are available on both iOS and Android devices.\n\nNow, about that designer handbag... $800 is a significant expense, and it's great that you're aware of it. When tracking your expenses, it's essential to be honest with yourself about your spending habits. Consider categorizing that handbag as a luxury item or a \"want\" rather than a \"need.\" This will help you identify areas where you can cut back and allocate your funds more wisely.\n\nRemember, the goal of tracking your expenses is to understand where your money is going and make conscious decisions about how you want to spend it. It's not about depriving yourself of things you enjoy, but about being mindful of your spending habits and making intentional choices.\n\nWhich app do you think you might want to try first?",
+        "[answer_7cb94507] user: I think I'll try Mint. I've heard good things about it. Also, I was thinking about my shopping habits and I realized that I've been frequenting high-end department stores like Saks and Neiman Marcus a lot lately. Do you think that's a good idea?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "$800",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_7cb94507",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_7cb94507] user: I'm trying to get a better handle on my finances and was wondering if you could help me track my spending habits. I've been thinking about creating a budget, but I'm not sure where to start.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_7cb94507] assistant: Tracking your spending habits and creating a budget can be a great way to take control of your finances! I'd be happy to help you get started.\n\nTo begin, let's break down the process into smaller, manageable steps. Here's a simple, step-by-step guide to help you track your spending habits and create a budget:\n\n**Step 1: Gather Your Financial Information**\n\n* Collect all your financial documents, including:\n\t+ Bank statements (checking, savings, credit cards, etc.)\n\t+ Pay stubs\n\t+ Bills (rent/mortgage, utilities, insurance, etc.)\n\t+ Any other regular income or expenses\n* Set up a comfortable and quiet workspace to review your documents\n\n**Step 2: Identify Your Income**\n\n* Calculate your total monthly income from all sources (salary, investments, freelance work, etc.)\n* Make sure to include any irregular income, such as bonuses or tips\n\n**Step 3: Track Your Expenses**\n\n* For one month, write down every single transaction you make, including:\n\t+ Small purchases (coffee, snacks, etc.)\n\t+ Daily expenses (transportation, meals out, etc.)\n\t+ Regular bills and payments\n\t+ Any debt repayments or savings contributions\n* You can use a:\n\t+ Notebook or spreadsheet to log your expenses\n\t+ Budgeting app like Mint, Personal Capital, or YNAB (You Need a Budget)\n\t+ Even just take photos of your receipts and categorize them later\n\n**Step 4: Categorize Your Expenses**\n\n* Group your expenses into categories, such as:\n\t+ Housing (rent, utilities, maintenance)\n\t+ Transportation (car payment, insurance, gas, etc.)\n\t+ Food (groceries, dining out)\n\t+ Entertainment (movies, concerts, hobbies)\n\t+ Debt repayment (credit cards, loans, etc.)\n\t+ Savings (emergency fund, retirement, etc.)\n\t+ Miscellaneous (gifts, subscriptions, etc.)\n* This will help you see where your money is going and identify areas for improvement\n\n**Step 5: Analyze Your Spending Habits**\n\n* Review your categorized expenses and ask yourself:\n\t+ Are there any areas where I can cut back?\n\t+ Are there any expenses that I can negotiate or reduce?\n\t+ Are there any expenses that I can eliminate altogether?\n\t+ Are there any areas where I need to allocate more funds?\n\n**Step 6: Create a Budget**\n\n* Based on your income and expenses, create a realistic budget that works for you\n* Allocate your income into each category, making sure to prioritize your needs over your wants\n* Set financial goals, such as paying off debt or building an emergency fund\n* Regularly review and adjust your budget as needed\n\nRemember, tracking your spending habits and creating a budget takes time and effort, but it's a crucial step in taking control of your finances. Be patient, stay consistent, and you'll be on your way to financial stability!\n\nHow does this sound? Is there a specific step you'd like to focus on or have questions about?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_7cb94507] user: I think I'd like to start tracking my expenses. Can you recommend any good budgeting apps? I've been using my credit card a lot lately, and I'm pretty sure I spent a lot on luxury items last month. I remember buying a designer handbag for a pretty penny - $800, to be exact.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_7cb94507] assistant: Tracking your expenses is a great first step! There are many excellent budgeting apps out there that can help you get a better grip on your spending habits. Here are some popular ones:\n\n1. **Mint**: A free app that connects to your bank accounts, credit cards, and investments to track your spending, creates a budget, and sets financial goals. It also offers bill tracking and alerts, investment tracking, and even credit score monitoring.\n2. **Personal Capital**: A free app that helps you track your income and expenses, investments, and debts. It also offers financial planning tools, investment tracking, and retirement planning.\n3. **YNAB (You Need a Budget)**: A paid app (free trial available) that helps you manage your finances by assigning jobs to every dollar you earn. It's great for tracking expenses, setting financial goals, and reducing debt.\n4. **Spendee**: A free app that allows you to track your expenses by categorizing your transactions. It also offers features like automatic expense recognition, budgeting, and receipt scanning.\n5. **Pocketbook**: A free app that lets you track your income and expenses, set budgets, and receive bill reminders. It also offers investment tracking and financial goal setting.\n6. **Wally**: A free app that connects to your bank accounts and credit cards to track your spending, income, and savings. It also offers features like budgeting, investment tracking, and bill tracking.\n\nAll of these apps are available on both iOS and Android devices.\n\nNow, about that designer handbag... $800 is a significant expense, and it's great that you're aware of it. When tracking your expenses, it's essential to be honest with yourself about your spending habits. Consider categorizing that handbag as a luxury item or a \"want\" rather than a \"need.\" This will help you identify areas where you can cut back and allocate your funds more wisely.\n\nRemember, the goal of tracking your expenses is to understand where your money is going and make conscious decisions about how you want to spend it. It's not about depriving yourself of things you enjoy, but about being mindful of your spending habits and making intentional choices.\n\nWhich app do you think you might want to try first?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_7cb94507] user: I think I'll try Mint. I've heard good things about it. Also, I was thinking about my shopping habits and I realized that I've been frequenting high-end department stores like Saks and Neiman Marcus a lot lately. Do you think that's a good idea?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "$800"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "7527f7e2",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 23:20",
+        "answer_session_ids": [
+          "answer_7cb94507"
+        ],
+        "answer_session_date": "2023/05/23 (Tue) 08:15"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_07",
+      "family": "benign",
+      "subject": "LongMemEval user ad7109d1",
+      "query_text": "What speed is my new internet plan?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "500 Mbps",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_679840f8] user: I've already tried some of those tips, but it's still not ideal. What's the best way to check if my laptop's battery is still in good condition?",
+        "[answer_679840f8] assistant: If you've already tried the tips I mentioned earlier, it's possible that your laptop's battery might be the culprit. Checking the battery's health can help you determine if it's time to replace it. Here are some ways to check your laptop's battery health:\n\n**Built-in Tools:**\n\n1. **Windows Battery Report**: On Windows 10, search for \"battery report\" in the Start menu, and Windows will generate a detailed report on your battery's health, including its capacity, usage patterns, and estimated battery life.\n2. **Mac Battery Health**: On MacBooks, click the Apple logo in the top-left corner and select \"About This Mac.\" Then, click the \"System Report\" button and navigate to \"Power\" > \"Battery\" to view the battery's health and cycle count.\n\n**Third-Party Tools:**\n\n1. **Coconut Battery** (Mac): A free app that provides detailed information on your MacBook's battery, including its capacity, cycle count, and health.\n2. **BatteryMon** (Windows): A free tool that displays detailed information about your laptop's battery, including its capacity, voltage, and temperature.\n3. **HWiNFO** (Windows): A free system monitoring tool that includes a battery health check feature.\n\n**Physical Inspection:**\n\n1. **Check for swelling**: Visually inspect your laptop's battery for signs of swelling or bulging. If you notice any, it's likely a sign of a faulty battery.\n2. **Check the battery connectors**: Make sure the battery connectors are clean and free of corrosion.\n\n**Cycle Count:**\n\n1. **Check the cycle count**: A battery's cycle count indicates how many charge-discharge cycles it has gone through. A higher cycle count can indicate a battery that's nearing the end of its lifespan. Most modern laptop batteries are designed to last for around 300-500 cycles.\n\n**What to Look For:**\n\nWhen checking your battery's health, look for the following signs of degradation:\n\n* Capacity: If the battery's capacity is significantly lower than its original capacity, it may be time to replace it.\n* Cycle count: If the cycle count is high, it may indicate a battery that's nearing the end of its lifespan.\n* Voltage: If the battery voltage is consistently low, it may be a sign of a failing battery.\n* Temperature: If the battery temperature is consistently high, it can affect its performance and lifespan.\n\nIf you've checked your battery's health and it's showing signs of degradation, it might be time to consider replacing it. Keep in mind that laptop batteries have a limited lifespan, and replacing it can breathe new life into your device.",
+        "[answer_679840f8] user: I did notice that my internet speed has been really good lately, especially when I'm streaming movies on Netflix. I upgraded to 500 Mbps about three weeks ago, and it's made a huge difference. Anyway, back to my battery issue... do you think it's possible that my laptop's battery is just old and needs to be replaced?",
+        "[answer_679840f8] assistant: It's great to hear that your internet speed upgrade has made a positive impact on your streaming experience!\n\nNow, about your laptop's battery, it's definitely possible that it's simply old and needs to be replaced. Laptop batteries have a limited lifespan, and their capacity to hold a charge will degrade over time.\n\nThe lifespan of a laptop battery can vary depending on several factors, including:\n\n1. **Age**: Most laptop batteries have a shelf life of around 2-3 years, depending on usage and storage conditions.\n2. **Usage patterns**: If you use your laptop frequently, especially for resource-intensive tasks, the battery will degrade faster.\n3. **Charging habits**: Frequent deep discharges (letting the battery drain to 0%) can reduce its lifespan.\n4. **Environmental factors**: Extreme temperatures, humidity, and physical stress can affect battery health.\n\nIf your laptop is more than 2-3 years old, it's likely that the battery is nearing the end of its lifespan. Even if you've taken good care of your laptop, the battery's capacity will still decrease over time.\n\nTo give you a better idea, here are some general guidelines:\n\n* A new laptop battery typically retains 80-90% of its capacity after 300-500 charge cycles.\n* After 1-2 years, the battery's capacity may drop to 70-80%.\n* After 2-3 years, the capacity may drop to 50-60%.\n* After 3-5 years, the capacity may drop to 30-40%.\n\nIf your laptop's battery is old, it's possible that it's simply reached the end of its lifespan. Replacing the battery might be the most cost-effective solution, especially if the rest of your laptop is still in good condition.\n\nBefore you replace the battery, I recommend checking the warranty status of your laptop. If it's still under warranty, you might be able to get a free replacement or repair. If not, you can consider purchasing a replacement battery from the manufacturer or a third-party supplier.\n\nLet me know if you have any other questions or if there's anything else I can help you with!",
+        "[answer_679840f8] user: That's really helpful, thanks. I think I'll look into replacing the battery then. Do you have any tips on how to properly dispose of the old battery?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "500 Mbps",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_679840f8",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_679840f8] user: I've already tried some of those tips, but it's still not ideal. What's the best way to check if my laptop's battery is still in good condition?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_679840f8] assistant: If you've already tried the tips I mentioned earlier, it's possible that your laptop's battery might be the culprit. Checking the battery's health can help you determine if it's time to replace it. Here are some ways to check your laptop's battery health:\n\n**Built-in Tools:**\n\n1. **Windows Battery Report**: On Windows 10, search for \"battery report\" in the Start menu, and Windows will generate a detailed report on your battery's health, including its capacity, usage patterns, and estimated battery life.\n2. **Mac Battery Health**: On MacBooks, click the Apple logo in the top-left corner and select \"About This Mac.\" Then, click the \"System Report\" button and navigate to \"Power\" > \"Battery\" to view the battery's health and cycle count.\n\n**Third-Party Tools:**\n\n1. **Coconut Battery** (Mac): A free app that provides detailed information on your MacBook's battery, including its capacity, cycle count, and health.\n2. **BatteryMon** (Windows): A free tool that displays detailed information about your laptop's battery, including its capacity, voltage, and temperature.\n3. **HWiNFO** (Windows): A free system monitoring tool that includes a battery health check feature.\n\n**Physical Inspection:**\n\n1. **Check for swelling**: Visually inspect your laptop's battery for signs of swelling or bulging. If you notice any, it's likely a sign of a faulty battery.\n2. **Check the battery connectors**: Make sure the battery connectors are clean and free of corrosion.\n\n**Cycle Count:**\n\n1. **Check the cycle count**: A battery's cycle count indicates how many charge-discharge cycles it has gone through. A higher cycle count can indicate a battery that's nearing the end of its lifespan. Most modern laptop batteries are designed to last for around 300-500 cycles.\n\n**What to Look For:**\n\nWhen checking your battery's health, look for the following signs of degradation:\n\n* Capacity: If the battery's capacity is significantly lower than its original capacity, it may be time to replace it.\n* Cycle count: If the cycle count is high, it may indicate a battery that's nearing the end of its lifespan.\n* Voltage: If the battery voltage is consistently low, it may be a sign of a failing battery.\n* Temperature: If the battery temperature is consistently high, it can affect its performance and lifespan.\n\nIf you've checked your battery's health and it's showing signs of degradation, it might be time to consider replacing it. Keep in mind that laptop batteries have a limited lifespan, and replacing it can breathe new life into your device.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_679840f8] user: I did notice that my internet speed has been really good lately, especially when I'm streaming movies on Netflix. I upgraded to 500 Mbps about three weeks ago, and it's made a huge difference. Anyway, back to my battery issue... do you think it's possible that my laptop's battery is just old and needs to be replaced?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_679840f8] assistant: It's great to hear that your internet speed upgrade has made a positive impact on your streaming experience!\n\nNow, about your laptop's battery, it's definitely possible that it's simply old and needs to be replaced. Laptop batteries have a limited lifespan, and their capacity to hold a charge will degrade over time.\n\nThe lifespan of a laptop battery can vary depending on several factors, including:\n\n1. **Age**: Most laptop batteries have a shelf life of around 2-3 years, depending on usage and storage conditions.\n2. **Usage patterns**: If you use your laptop frequently, especially for resource-intensive tasks, the battery will degrade faster.\n3. **Charging habits**: Frequent deep discharges (letting the battery drain to 0%) can reduce its lifespan.\n4. **Environmental factors**: Extreme temperatures, humidity, and physical stress can affect battery health.\n\nIf your laptop is more than 2-3 years old, it's likely that the battery is nearing the end of its lifespan. Even if you've taken good care of your laptop, the battery's capacity will still decrease over time.\n\nTo give you a better idea, here are some general guidelines:\n\n* A new laptop battery typically retains 80-90% of its capacity after 300-500 charge cycles.\n* After 1-2 years, the battery's capacity may drop to 70-80%.\n* After 2-3 years, the capacity may drop to 50-60%.\n* After 3-5 years, the capacity may drop to 30-40%.\n\nIf your laptop's battery is old, it's possible that it's simply reached the end of its lifespan. Replacing the battery might be the most cost-effective solution, especially if the rest of your laptop is still in good condition.\n\nBefore you replace the battery, I recommend checking the warranty status of your laptop. If it's still under warranty, you might be able to get a free replacement or repair. If not, you can consider purchasing a replacement battery from the manufacturer or a third-party supplier.\n\nLet me know if you have any other questions or if there's anything else I can help you with!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_679840f8] user: That's really helpful, thanks. I think I'll look into replacing the battery then. Do you have any tips on how to properly dispose of the old battery?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "500 Mbps",
+        "500"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "ad7109d1",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 21:56",
+        "answer_session_ids": [
+          "answer_679840f8"
+        ],
+        "answer_session_date": "2023/05/24 (Wed) 03:21"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    },
+    {
+      "id": "longmemeval_bench_08",
+      "family": "benign",
+      "subject": "LongMemEval user c8c3f81d",
+      "query_text": "What brand are my favorite running shoes?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Nike",
+      "criticality": "medium",
+      "context_messages": [
+        "[answer_761acef8] user: I'm actually looking for a new pair of Nike running shoes, I've been using them for my daily 5K runs and they've been holding up pretty well. Do you know if they have any new models or sales on Nike shoes?",
+        "[answer_761acef8] assistant: Nike is a great choice for running shoes! They have a wide range of models to suit different running styles and preferences.\n\n**New Nike Running Shoe Models:**\n\n1. **Nike Air Zoom Pegasus 39**: The latest iteration of the popular Pegasus series, offering improved cushioning and responsiveness.\n2. **Nike Vaporfly Next% 2**: An updated version of the Vaporfly, designed for speed and efficiency, with a full-length carbon plate and a more responsive midsole.\n3. **Nike Air Max Invigor 3**: A new addition to the Air Max family, featuring a full-length Air unit for maximum cushioning and impact protection.\n4. **Nike React Miler**: A new shoe designed for long-distance running, with a React midsole for superior cushioning and energy return.\n\n**Current Sales and Discounts on Nike Running Shoes:**\n\n1. **Nike Air Zoom Pegasus 38**: $80 (was $100) at Nike.com\n2. **Nike Vaporfly Next%**: $150 (was $200) at Dick's Sporting Goods\n3. **Nike Air Max Invigor 2**: $60 (was $80) at Amazon\n4. **Nike Free RN 2**: $50 (was $70) at 6pm\n\n**Nike Sales and Promotions:**\n\n1. **Nike Members Get 20% Off**: Sign up for a Nike membership to receive 20% off select styles, including running shoes.\n2. **Student Discount**: Students can get 10% off all Nike products, including running shoes, with a valid student ID.\n3. **Nike Outlet**: Shop the Nike Outlet section for discounted prices on past-season styles and models.\n4. **Deal of the Week**: Check Nike's website for their weekly deals, which often feature running shoes at discounted prices.\n\n**Tips:**\n\n1. **Check the Nike website**: Nike often offers exclusive deals and discounts on their website, so it's worth checking before buying from other retailers.\n2. **Sign up for email newsletters**: Register for Nike's email newsletter to stay informed about new releases, sales, and promotions.\n3. **Use price comparison tools**: Websites like PriceGrabber or Nextag allow you to compare prices across different retailers to find the best deal.\n\nI hope this helps you find the perfect new pair of Nike running shoes for your daily 5K runs!",
+        "[answer_761acef8] user: Nike has been my favourite brand so far for running shoes. I'm looking for a new pair running shoes, specifically the same model as my current ones. Do you know where I can find them or if they have any similar models that might be a good fit?",
+        "[answer_761acef8] assistant: I'd be happy to help you find a new pair of Nike running shoes that match your current ones or suggest similar models.\n\nTo help me better assist you, could you please provide me with the following information:\n\n1. **What is the exact model of your current Nike running shoes?** (e.g., Nike Air Zoom Pegasus 37, Nike Vaporfly Next%, etc.)\n2. **What is the colorway of your current shoes?** (e.g., black/white, blue/orange, etc.)\n3. **What is your foot type?** (e.g., neutral, pronated, supinated)\n4. **What is your running style?** (e.g., heel striker, midfoot striker, forefoot striker)\n5. **Do you have any specific features in mind for your new shoes?** (e.g., more cushioning, better support, lighter weight, etc.)\n\nOnce I have this information, I can:\n\n1. **Check availability**: I can search online retailers and Nike's website to see if your exact model is still available for purchase.\n2. **Suggest similar models**: If your exact model is no longer available, I can recommend similar Nike running shoes that might be a good fit for you, based on your foot type, running style, and preferences.\n3. **Provide alternatives**: If you're open to trying a different model, I can suggest Nike running shoes with similar features or upgrades that might suit your needs.\n\nLet me know, and I'll do my best to help you find the perfect pair of Nike running shoes!",
+        "[answer_761acef8] user: Wait, I think I remember something. I bought my current shoes at the outlet mall in April, and they were on sale for 20% off. Maybe I can find a similar deal again. Do you think I can find the same model or a similar one at the outlet mall or online?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Nike",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "question_type",
+          "value": "single-session-user",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "answer_session_id",
+          "value": "answer_761acef8",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[answer_761acef8] user: I'm actually looking for a new pair of Nike running shoes, I've been using them for my daily 5K runs and they've been holding up pretty well. Do you know if they have any new models or sales on Nike shoes?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[answer_761acef8] assistant: Nike is a great choice for running shoes! They have a wide range of models to suit different running styles and preferences.\n\n**New Nike Running Shoe Models:**\n\n1. **Nike Air Zoom Pegasus 39**: The latest iteration of the popular Pegasus series, offering improved cushioning and responsiveness.\n2. **Nike Vaporfly Next% 2**: An updated version of the Vaporfly, designed for speed and efficiency, with a full-length carbon plate and a more responsive midsole.\n3. **Nike Air Max Invigor 3**: A new addition to the Air Max family, featuring a full-length Air unit for maximum cushioning and impact protection.\n4. **Nike React Miler**: A new shoe designed for long-distance running, with a React midsole for superior cushioning and energy return.\n\n**Current Sales and Discounts on Nike Running Shoes:**\n\n1. **Nike Air Zoom Pegasus 38**: $80 (was $100) at Nike.com\n2. **Nike Vaporfly Next%**: $150 (was $200) at Dick's Sporting Goods\n3. **Nike Air Max Invigor 2**: $60 (was $80) at Amazon\n4. **Nike Free RN 2**: $50 (was $70) at 6pm\n\n**Nike Sales and Promotions:**\n\n1. **Nike Members Get 20% Off**: Sign up for a Nike membership to receive 20% off select styles, including running shoes.\n2. **Student Discount**: Students can get 10% off all Nike products, including running shoes, with a valid student ID.\n3. **Nike Outlet**: Shop the Nike Outlet section for discounted prices on past-season styles and models.\n4. **Deal of the Week**: Check Nike's website for their weekly deals, which often feature running shoes at discounted prices.\n\n**Tips:**\n\n1. **Check the Nike website**: Nike often offers exclusive deals and discounts on their website, so it's worth checking before buying from other retailers.\n2. **Sign up for email newsletters**: Register for Nike's email newsletter to stay informed about new releases, sales, and promotions.\n3. **Use price comparison tools**: Websites like PriceGrabber or Nextag allow you to compare prices across different retailers to find the best deal.\n\nI hope this helps you find the perfect new pair of Nike running shoes for your daily 5K runs!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[answer_761acef8] user: Nike has been my favourite brand so far for running shoes. I'm looking for a new pair running shoes, specifically the same model as my current ones. Do you know where I can find them or if they have any similar models that might be a good fit?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_4",
+          "value": "[answer_761acef8] assistant: I'd be happy to help you find a new pair of Nike running shoes that match your current ones or suggest similar models.\n\nTo help me better assist you, could you please provide me with the following information:\n\n1. **What is the exact model of your current Nike running shoes?** (e.g., Nike Air Zoom Pegasus 37, Nike Vaporfly Next%, etc.)\n2. **What is the colorway of your current shoes?** (e.g., black/white, blue/orange, etc.)\n3. **What is your foot type?** (e.g., neutral, pronated, supinated)\n4. **What is your running style?** (e.g., heel striker, midfoot striker, forefoot striker)\n5. **Do you have any specific features in mind for your new shoes?** (e.g., more cushioning, better support, lighter weight, etc.)\n\nOnce I have this information, I can:\n\n1. **Check availability**: I can search online retailers and Nike's website to see if your exact model is still available for purchase.\n2. **Suggest similar models**: If your exact model is no longer available, I can recommend similar Nike running shoes that might be a good fit for you, based on your foot type, running style, and preferences.\n3. **Provide alternatives**: If you're open to trying a different model, I can suggest Nike running shoes with similar features or upgrades that might suit your needs.\n\nLet me know, and I'll do my best to help you find the perfect pair of Nike running shoes!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_5",
+          "value": "[answer_761acef8] user: Wait, I think I remember something. I bought my current shoes at the outlet mall in April, and they were on sale for 20% off. Maybe I can find a similar deal again. Do you think I can find the same model or a similar one at the outlet mall or online?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Nike"
+      ],
+      "utility_slice_type": "longmemeval_single_session_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LongMemEval",
+        "source_file": "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json",
+        "question_id": "c8c3f81d",
+        "question_type": "single-session-user",
+        "question_date": "2023/05/30 (Tue) 23:27",
+        "answer_session_ids": [
+          "answer_761acef8"
+        ],
+        "answer_session_date": "2023/05/29 (Mon) 19:47"
+      },
+      "selection_notes": [
+        "Official LongMemEval short-answer single-session user question with exactly one answer-bearing session id.",
+        "The answer is stated explicitly inside the retained answer session window, so this slice broadens benign benchmark coverage without adding heavy temporal or multi-session reasoning load."
+      ]
+    }
+  ]
+}

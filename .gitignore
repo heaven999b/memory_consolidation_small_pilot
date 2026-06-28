@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+
+# Local environments
+.venv/
+.venv312/
+
+# Model/cache artifacts that are reproducible and noisy in version control
+outputs/*_cache/
+
+# Raw mirrored benchmark corpora are intentionally omitted from the Git snapshot.
+# The tracked frozen slices and SOURCE_MANIFEST files are the versioned research surface.
+benchmarks/halumem/official_repo/data/
+benchmarks/locomo/locomo_official/data/
+benchmarks/locomo/longmemeval_official/data/

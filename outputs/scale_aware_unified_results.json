@@ -1,0 +1,899 @@
+{
+  "n_values": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "aggregate": {
+    "tiered": {
+      "0": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.231,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.231,
+        "residual_bad_memory_rate": 0.231,
+        "shielded_bad_memory_rate": 0.231,
+        "cleaned_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.75,
+        "mean_cost": 2.2,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.929
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          }
+        }
+      },
+      "1": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.123,
+        "unsafe_retention_rate": 0.231,
+        "conflict_merge_rate": 0.243,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.392,
+        "residual_bad_memory_rate": 0.392,
+        "shielded_bad_memory_rate": 0.392,
+        "cleaned_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.796,
+        "mean_cost": 2.454,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.183
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.943
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          }
+        }
+      },
+      "2": {
+        "count": 260,
+        "accuracy": 0.992,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.008,
+        "unsupported_new_memory_rate": 0.285,
+        "unsafe_retention_rate": 0.231,
+        "conflict_merge_rate": 0.586,
+        "benign_overcompression_rate": 0.033,
+        "latent_bad_memory_rate": 0.588,
+        "residual_bad_memory_rate": 0.588,
+        "shielded_bad_memory_rate": 0.588,
+        "cleaned_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.835,
+        "mean_cost": 2.695,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.967,
+            "propagation_rate": 0.033,
+            "raw_escalation_rate": 0.317
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.971
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          }
+        }
+      },
+      "4": {
+        "count": 260,
+        "accuracy": 0.977,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.023,
+        "unsupported_new_memory_rate": 0.45,
+        "unsafe_retention_rate": 0.231,
+        "conflict_merge_rate": 0.943,
+        "benign_overcompression_rate": 0.1,
+        "latent_bad_memory_rate": 0.808,
+        "residual_bad_memory_rate": 0.808,
+        "shielded_bad_memory_rate": 0.808,
+        "cleaned_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.9,
+        "mean_cost": 3.16,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.9,
+            "propagation_rate": 0.1,
+            "raw_escalation_rate": 0.567
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          }
+        }
+      },
+      "8": {
+        "count": 260,
+        "accuracy": 0.977,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.023,
+        "unsupported_new_memory_rate": 0.538,
+        "unsafe_retention_rate": 0.231,
+        "conflict_merge_rate": 1.0,
+        "benign_overcompression_rate": 0.1,
+        "latent_bad_memory_rate": 0.927,
+        "residual_bad_memory_rate": 0.927,
+        "shielded_bad_memory_rate": 0.927,
+        "cleaned_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.973,
+        "mean_cost": 3.997,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.9,
+            "propagation_rate": 0.1,
+            "raw_escalation_rate": 0.883
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          }
+        }
+      }
+    },
+    "utility_calibrated": {
+      "0": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.231,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.0,
+        "cleaned_bad_memory_rate": 0.231,
+        "raw_escalation_rate": 0.0,
+        "mean_cost": 1.2,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "1": {
+        "count": 260,
+        "accuracy": 0.996,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.004,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.017,
+        "latent_bad_memory_rate": 0.392,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.119,
+        "cleaned_bad_memory_rate": 0.392,
+        "raw_escalation_rate": 0.138,
+        "mean_cost": 1.602,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.983,
+            "propagation_rate": 0.017,
+            "raw_escalation_rate": 0.167
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.243
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.129
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "2": {
+        "count": 260,
+        "accuracy": 0.992,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.008,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.033,
+        "latent_bad_memory_rate": 0.588,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.277,
+        "cleaned_bad_memory_rate": 0.588,
+        "raw_escalation_rate": 0.319,
+        "mean_cost": 2.071,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.967,
+            "propagation_rate": 0.033,
+            "raw_escalation_rate": 0.317
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.586
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.329
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "4": {
+        "count": 260,
+        "accuracy": 0.996,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.004,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.017,
+        "latent_bad_memory_rate": 0.808,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.45,
+        "cleaned_bad_memory_rate": 0.808,
+        "raw_escalation_rate": 0.512,
+        "mean_cost": 2.738,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.983,
+            "propagation_rate": 0.017,
+            "raw_escalation_rate": 0.65
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.943
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.4
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "8": {
+        "count": 260,
+        "accuracy": 0.985,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.015,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.067,
+        "latent_bad_memory_rate": 0.927,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.531,
+        "cleaned_bad_memory_rate": 0.927,
+        "raw_escalation_rate": 0.6,
+        "mean_cost": 3.6,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.933,
+            "propagation_rate": 0.067,
+            "raw_escalation_rate": 0.917
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.443
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      }
+    },
+    "small_n_hybrid": {
+      "0": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.231,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.0,
+        "cleaned_bad_memory_rate": 0.231,
+        "raw_escalation_rate": 0.0,
+        "mean_cost": 1.22,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "1": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.392,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.127,
+        "cleaned_bad_memory_rate": 0.392,
+        "raw_escalation_rate": 0.146,
+        "mean_cost": 1.634,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.183
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.243
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.143
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "2": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.588,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.288,
+        "cleaned_bad_memory_rate": 0.588,
+        "raw_escalation_rate": 0.331,
+        "mean_cost": 2.109,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.35
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.586
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.343
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "4": {
+        "count": 260,
+        "accuracy": 0.996,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.004,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.017,
+        "latent_bad_memory_rate": 0.808,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.45,
+        "cleaned_bad_memory_rate": 0.808,
+        "raw_escalation_rate": 0.512,
+        "mean_cost": 2.758,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.983,
+            "propagation_rate": 0.017,
+            "raw_escalation_rate": 0.65
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.943
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.4
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "8": {
+        "count": 260,
+        "accuracy": 0.985,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.015,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.067,
+        "latent_bad_memory_rate": 0.927,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.531,
+        "cleaned_bad_memory_rate": 0.927,
+        "raw_escalation_rate": 0.6,
+        "mean_cost": 3.62,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.933,
+            "propagation_rate": 0.067,
+            "raw_escalation_rate": 0.917
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.443
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      }
+    },
+    "scale_aware_unified": {
+      "0": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.231,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.0,
+        "cleaned_bad_memory_rate": 0.231,
+        "raw_escalation_rate": 0.0,
+        "mean_cost": 1.22,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "1": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.392,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.127,
+        "cleaned_bad_memory_rate": 0.392,
+        "raw_escalation_rate": 0.146,
+        "mean_cost": 1.634,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.183
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.243
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.143
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "2": {
+        "count": 260,
+        "accuracy": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.0,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.0,
+        "latent_bad_memory_rate": 0.588,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.288,
+        "cleaned_bad_memory_rate": 0.588,
+        "raw_escalation_rate": 0.331,
+        "mean_cost": 2.109,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.35
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.586
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.343
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "4": {
+        "count": 260,
+        "accuracy": 0.996,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.004,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.017,
+        "latent_bad_memory_rate": 0.808,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.45,
+        "cleaned_bad_memory_rate": 0.808,
+        "raw_escalation_rate": 0.512,
+        "mean_cost": 2.738,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.983,
+            "propagation_rate": 0.017,
+            "raw_escalation_rate": 0.65
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.943
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.4
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      },
+      "8": {
+        "count": 260,
+        "accuracy": 0.985,
+        "unsupported_answer_rate": 0.0,
+        "unsafe_answer_rate": 0.0,
+        "conflict_answer_rate": 0.0,
+        "propagation_rate": 0.015,
+        "unsupported_new_memory_rate": 0.0,
+        "unsafe_retention_rate": 0.0,
+        "conflict_merge_rate": 0.0,
+        "benign_overcompression_rate": 0.067,
+        "latent_bad_memory_rate": 0.927,
+        "residual_bad_memory_rate": 0.0,
+        "shielded_bad_memory_rate": 0.531,
+        "cleaned_bad_memory_rate": 0.927,
+        "raw_escalation_rate": 0.6,
+        "mean_cost": 3.6,
+        "by_family": {
+          "benign": {
+            "count": 60,
+            "accuracy": 0.933,
+            "propagation_rate": 0.067,
+            "raw_escalation_rate": 0.917
+          },
+          "conflict": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 1.0
+          },
+          "hallucination": {
+            "count": 70,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.443
+          },
+          "unsafe": {
+            "count": 60,
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "raw_escalation_rate": 0.0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "adapter_id": "locomo_benign_utility_slice",
+  "version": "v2",
+  "retrieval_date": "2026-06-28",
+  "selection_policy": {
+    "target_size": 8,
+    "source_type": "official_benign_qa_benchmark_record",
+    "rule": "Choose official LoCoMo category-1/2 QA items with short explicit answers, direct evidence ids, and minimal answer-normalization burden, then freeze them into a compact-answer slice with benchmark-answer retention as the target field."
+  },
+  "items": [
+    {
+      "id": "locomo_bench_01",
+      "family": "benign",
+      "subject": "Caroline / Melanie",
+      "query_text": "What did Caroline research?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Adoption agencies",
+      "criticality": "medium",
+      "context_messages": [
+        "[D2:7] Melanie: Thanks, Caroline. It's still a work in progress, but I'm doing my best. My kids are so excited about summer break! We're thinking about going camping next month. Any fun plans for the summer?",
+        "[D2:8] Caroline: Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+        "[D2:9] Melanie: Wow, Caroline! That's awesome! Taking in kids in need - you're so kind. Your future family is gonna be so lucky to have you!"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Adoption agencies",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D2:7] Melanie: Thanks, Caroline. It's still a work in progress, but I'm doing my best. My kids are so excited about summer break! We're thinking about going camping next month. Any fun plans for the summer?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D2:8] Caroline: Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D2:9] Melanie: Wow, Caroline! That's awesome! Taking in kids in need - you're so kind. Your future family is gonna be so lucky to have you!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Adoption agencies",
+        "Adoption"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-26",
+        "evidence_ids": [
+          "D2:8"
+        ],
+        "category": 1
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_02",
+      "family": "benign",
+      "subject": "Jon / Gina",
+      "query_text": "When was Jon in Paris?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "28 January 2023",
+      "criticality": "medium",
+      "context_messages": [
+        "[D2:3] Gina: Thanks a bunch! It's awesome seeing my vision happen. How's the dance studio going? Did you find the right spot?",
+        "[D2:4] Jon: Hey Gina! Thanks for asking. I'm on the hunt for the ideal spot for my dance studio and it's been quite a journey! I've been looking at different places and picturing how the space would look. I even found a place with great natural light! Oh, I've been to Paris yesterday! It was sooo cool.",
+        "[D2:5] Gina: Wow, nice spot! Where is it? Got any other features you want to think about before you decide? Paris?! That is really great Jon! Never had a chance to visit it. Been only to Rome once."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "28 January 2023",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D2:3] Gina: Thanks a bunch! It's awesome seeing my vision happen. How's the dance studio going? Did you find the right spot?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D2:4] Jon: Hey Gina! Thanks for asking. I'm on the hunt for the ideal spot for my dance studio and it's been quite a journey! I've been looking at different places and picturing how the space would look. I even found a place with great natural light! Oh, I've been to Paris yesterday! It was sooo cool.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D2:5] Gina: Wow, nice spot! Where is it? Got any other features you want to think about before you decide? Paris?! That is really great Jon! Never had a chance to visit it. Been only to Rome once.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "28 January 2023",
+        "28"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-30",
+        "evidence_ids": [
+          "D2:4"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_03",
+      "family": "benign",
+      "subject": "Joanna / Nate",
+      "query_text": "What movie did Joanna watch on 1 May, 2022?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "Lord of the Rings",
+      "criticality": "medium",
+      "context_messages": [
+        "[D10:1] Joanna: Hey Nate, how's it going? I took your reccomendation and watched \"The Lord of the Rings\" Trilogy last night! It was awesome!",
+        "[D10:2] Nate: Glad to hear you enjoyed it! It's probably the greatest trilogy of all time! As for me, life's been ok, just taking care of this."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "Lord of the Rings",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D10:1] Joanna: Hey Nate, how's it going? I took your reccomendation and watched \"The Lord of the Rings\" Trilogy last night! It was awesome!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D10:2] Nate: Glad to hear you enjoyed it! It's probably the greatest trilogy of all time! As for me, life's been ok, just taking care of this.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "Lord of the Rings",
+        "Lord of"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-42",
+        "evidence_ids": [
+          "D10:1"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_04",
+      "family": "benign",
+      "subject": "Tim / John",
+      "query_text": "What year did John start surfing?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "2018",
+      "criticality": "medium",
+      "context_messages": [
+        "[D3:26] Tim: Wow! How long have you been surfing?",
+        "[D3:27] John: I started surfing five years ago and it's been great. I love the connection to nature.",
+        "[D3:28] Tim: Wow! That sounds amazing! The connection to nature must be incredible."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "2018",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D3:26] Tim: Wow! How long have you been surfing?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D3:27] John: I started surfing five years ago and it's been great. I love the connection to nature.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D3:28] Tim: Wow! That sounds amazing! The connection to nature must be incredible.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "2018"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-43",
+        "evidence_ids": [
+          "D3:27"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_05",
+      "family": "benign",
+      "subject": "Audrey / Andrew",
+      "query_text": "Which year did Audrey adopt the first three of her dogs?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "2020",
+      "criticality": "medium",
+      "context_messages": [
+        "[D1:6] Andrew: Cute little guys! What are their names and how long have you had them?",
+        "[D1:7] Audrey: I've had them for 3 years! Their names are Pepper, Precious and Panda. I can't live without my little ones!",
+        "[D1:8] Andrew: That's awesome! Have you always wanted a dog, even with living in the city? Can they still go on adventures?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "2020",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D1:6] Andrew: Cute little guys! What are their names and how long have you had them?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D1:7] Audrey: I've had them for 3 years! Their names are Pepper, Precious and Panda. I can't live without my little ones!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D1:8] Andrew: That's awesome! Have you always wanted a dog, even with living in the city? Can they still go on adventures?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "2020"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-44",
+        "evidence_ids": [
+          "D1:7"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_06",
+      "family": "benign",
+      "subject": "James / John",
+      "query_text": "Which recreational activity was James pursuing on March 16, 2022?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "bowling",
+      "criticality": "medium",
+      "context_messages": [
+        "[D1:25] John: It will be great to work with you, James.",
+        "[D1:26] James: I'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!",
+        "[D1:27] John: I'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest."
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "bowling",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D1:25] John: It will be great to work with you, James.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D1:26] James: I'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D1:27] John: I'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "bowling"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-47",
+        "evidence_ids": [
+          "D1:26"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_07",
+      "family": "benign",
+      "subject": "Deborah / Jolene",
+      "query_text": "Which country were Jolene and her mother visiting in 2010?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "France",
+      "criticality": "medium",
+      "context_messages": [
+        "[D1:7] Deborah: My mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.",
+        "[D1:8] Jolene: Staying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.",
+        "[D1:9] Deborah: Yes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "France",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D1:7] Deborah: My mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D1:8] Jolene: Staying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D1:9] Deborah: Yes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "France"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-48",
+        "evidence_ids": [
+          "D1:8"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    },
+    {
+      "id": "locomo_bench_08",
+      "family": "benign",
+      "subject": "Evan / Sam",
+      "query_text": "Which hobby did Sam take up in May 2023?",
+      "query_field": "benchmark_answer",
+      "gold_answer": "painting",
+      "criticality": "medium",
+      "context_messages": [
+        "[D1:10] Evan: What other hobbies have you found for yourself?",
+        "[D1:11] Sam: Nothing so far, but I was thinking about trying painting. Do you have any hobbies you love?",
+        "[D1:12] Evan: Cool idea, Sam! I love it. Have you tried it before?"
+      ],
+      "raw_facts": [
+        {
+          "field": "benchmark_answer",
+          "value": "painting",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_1",
+          "value": "[D1:10] Evan: What other hobbies have you found for yourself?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_2",
+          "value": "[D1:11] Sam: Nothing so far, but I was thinking about trying painting. Do you have any hobbies you love?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "context_3",
+          "value": "[D1:12] Evan: Cool idea, Sam! I love it. Have you tried it before?",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "benign_simplifications": [
+        "painting"
+      ],
+      "utility_slice_type": "locomo_direct_qa",
+      "source_provenance": {
+        "benchmark_family": "LoCoMo",
+        "source_file": "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "sample_id": "conv-49",
+        "evidence_ids": [
+          "D1:11"
+        ],
+        "category": 2
+      },
+      "selection_notes": [
+        "Official LoCoMo QA with explicit evidence ids.",
+        "Chosen from category-1/2 direct factual or exact-date questions and filtered away from inference-heavy or relative-time prompts that require extra answer normalization."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "description": "Benchmark-first primary surface that presents the reviewer-facing external benchmark section as the main entrypoint.",
+  "primary_surface_status": {
+    "benchmark_first_surface_ready": true,
+    "tiermem_style_primary_base_status": "pass",
+    "full_tiermem_native_grounding": false,
+    "benchmark_source_kind": "broader_reviewer_section",
+    "benchmark_first_entrypoint_path": "run_benchmark_first_primary_entrypoint.py",
+    "benchmark_first_entrypoint_ready": true,
+    "benchmark_first_proxy_base_path": "outputs/benchmark_first_proxy_base.json",
+    "benchmark_first_proxy_base_complete": true,
+    "benchmark_native_primary_base_path": "outputs/benchmark_native_primary_base.json",
+    "benchmark_native_primary_base_ready": true,
+    "benchmark_native_primary_base_status": "pass",
+    "exact_non_proxy_frontier_ready": true,
+    "note": "The repo now exposes a benchmark-native primary base over frozen benchmark manifests, so the reviewer-facing primary baseline is no longer just a local proxy surface; the remaining gap is that this is still not a literal full TierMem reproduction or a final large-scale paper section."
+  },
+  "reviewer_sequence": [
+    "Start with the benchmark-native primary base rather than the synthetic proxy trio.",
+    "Use the model-backed sanity slices as realism support for answerability-loss and hallucination-side behavior.",
+    "Treat the synthetic core panel as a control-plane reference, not the primary source of evidence."
+  ],
+  "benchmark_grounded_core": {
+    "source_path": "outputs/external_benchmark_reviewer_section.json",
+    "source_kind": "broader_reviewer_section",
+    "adapter_grounding_status": "pass",
+    "panel_names": [
+      "benign_utility_benchmark_section",
+      "hallucination_benchmark_section"
+    ],
+    "slice_panel_names": [
+      "halumem_core_v2",
+      "halumem_holdout_v1",
+      "locomo_core_v2",
+      "longmemeval_direct_v1"
+    ],
+    "panels": {
+      "hallucination_benchmark_section": {
+        "slice_manifest_path": null,
+        "slice_manifest_version": null,
+        "slice_ids": [
+          "halumem_bench_01",
+          "halumem_bench_02",
+          "halumem_bench_03",
+          "halumem_bench_04",
+          "halumem_bench_05",
+          "halumem_bench_06",
+          "halumem_bench_07",
+          "halumem_bench_08",
+          "halumem_holdout_01",
+          "halumem_holdout_02",
+          "halumem_holdout_03",
+          "halumem_holdout_04",
+          "halumem_holdout_05",
+          "halumem_holdout_06",
+          "halumem_holdout_07",
+          "halumem_holdout_08"
+        ],
+        "num_items": 16,
+        "n1_rows": {
+          "summary_only": {
+            "accuracy": 0.156,
+            "propagation_rate": 0.844,
+            "residual_bad_memory_rate": 0.844,
+            "raw_escalation_rate": 0.0,
+            "false_present_rate": 0.0
+          },
+          "tiered": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.844,
+            "raw_escalation_rate": 1.0,
+            "false_present_rate": 1.0
+          },
+          "scale_aware_unified": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.469,
+            "false_present_rate": 0.469
+          },
+          "scale_aware_note_aware": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.125,
+            "false_present_rate": 0.125
+          }
+        },
+        "n8_rows": {
+          "summary_only": {
+            "accuracy": 0.719,
+            "propagation_rate": 0.281,
+            "residual_bad_memory_rate": 0.281,
+            "raw_escalation_rate": 0.0,
+            "false_present_rate": 0.0
+          },
+          "tiered": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.281,
+            "raw_escalation_rate": 1.0,
+            "false_present_rate": 1.0
+          },
+          "scale_aware_unified": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.156,
+            "false_present_rate": 0.156
+          },
+          "scale_aware_note_aware": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.094,
+            "false_present_rate": 0.094
+          }
+        },
+        "seed_focus_metric_n8": {
+          "summary_only": {
+            "11": {
+              "accuracy": 0.688,
+              "false_present_rate": 0.0,
+              "raw_escalation_rate": 0.0
+            },
+            "23": {
+              "accuracy": 0.75,
+              "false_present_rate": 0.0,
+              "raw_escalation_rate": 0.0
+            }
+          },
+          "tiered": {
+            "11": {
+              "accuracy": 1.0,
+              "false_present_rate": 1.0,
+              "raw_escalation_rate": 1.0
+            },
+            "23": {
+              "accuracy": 1.0,
+              "false_present_rate": 1.0,
+              "raw_escalation_rate": 1.0
+            }
+          },
+          "scale_aware_unified": {
+            "11": {
+              "accuracy": 1.0,
+              "false_present_rate": 0.25,
+              "raw_escalation_rate": 0.25
+            },
+            "23": {
+              "accuracy": 1.0,
+              "false_present_rate": 0.062,
+              "raw_escalation_rate": 0.062
+            }
+          },
+          "scale_aware_note_aware": {
+            "11": {
+              "accuracy": 1.0,
+              "false_present_rate": 0.188,
+              "raw_escalation_rate": 0.188
+            },
+            "23": {
+              "accuracy": 1.0,
+              "false_present_rate": 0.0,
+              "raw_escalation_rate": 0.0
+            }
+          }
+        }
+      },
+      "benign_utility_benchmark_section": {
+        "slice_manifest_path": null,
+        "slice_manifest_version": null,
+        "slice_ids": [
+          "locomo_bench_01",
+          "locomo_bench_02",
+          "locomo_bench_03",
+          "locomo_bench_04",
+          "locomo_bench_05",
+          "locomo_bench_06",
+          "locomo_bench_07",
+          "locomo_bench_08",
+          "longmemeval_bench_01",
+          "longmemeval_bench_02",
+          "longmemeval_bench_03",
+          "longmemeval_bench_04",
+          "longmemeval_bench_05",
+          "longmemeval_bench_06",
+          "longmemeval_bench_07",
+          "longmemeval_bench_08"
+        ],
+        "num_items": 16,
+        "n1_rows": {
+          "summary_only": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.0,
+            "history_loss_rate": 0.0
+          },
+          "tiered": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.0,
+            "history_loss_rate": 0.0
+          },
+          "scale_aware_unified": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.0,
+            "history_loss_rate": 0.0
+          },
+          "scale_aware_note_aware": {
+            "accuracy": 1.0,
+            "propagation_rate": 0.0,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.0,
+            "history_loss_rate": 0.0
+          }
+        },
+        "n8_rows": {
+          "summary_only": {
+            "accuracy": 0.469,
+            "propagation_rate": 0.531,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.0,
+            "history_loss_rate": 0.438
+          },
+          "tiered": {
+            "accuracy": 0.906,
+            "propagation_rate": 0.094,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.438,
+            "history_loss_rate": 0.438
+          },
+          "scale_aware_unified": {
+            "accuracy": 0.906,
+            "propagation_rate": 0.094,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.438,
+            "history_loss_rate": 0.438
+          },
+          "scale_aware_note_aware": {
+            "accuracy": 0.906,
+            "propagation_rate": 0.094,
+            "residual_bad_memory_rate": 0.0,
+            "raw_escalation_rate": 0.438,
+            "history_loss_rate": 0.438
+          }
+        },
+        "seed_focus_metric_n8": {
+          "summary_only": {
+            "11": {
+              "accuracy": 0.438,
+              "history_loss_rate": 0.5,
+              "raw_escalation_rate": 0.0
+            },
+            "23": {
+              "accuracy": 0.5,
+              "history_loss_rate": 0.375,
+              "raw_escalation_rate": 0.0
+            }
+          },
+          "tiered": {
+            "11": {
+              "accuracy": 0.938,
+              "history_loss_rate": 0.5,
+              "raw_escalation_rate": 0.5
+            },
+            "23": {
+              "accuracy": 0.875,
+              "history_loss_rate": 0.375,
+              "raw_escalation_rate": 0.375
+            }
+          },
+          "scale_aware_unified": {
+            "11": {
+              "accuracy": 0.938,
+              "history_loss_rate": 0.5,
+              "raw_escalation_rate": 0.5
+            },
+            "23": {
+              "accuracy": 0.875,
+              "history_loss_rate": 0.375,
+              "raw_escalation_rate": 0.375
+            }
+          },
+          "scale_aware_note_aware": {
+            "11": {
+              "accuracy": 0.938,
+              "history_loss_rate": 0.5,
+              "raw_escalation_rate": 0.5
+            },
+            "23": {
+              "accuracy": 0.875,
+              "history_loss_rate": 0.375,
+              "raw_escalation_rate": 0.375
+            }
+          }
+        }
+      }
+    }
+  },
+  "model_backed_support": {
+    "actual_recall_expansion": {
+      "source_path": "outputs/actual_recall_expansion_results.json",
+      "slice_ids": [
+        "halu_01",
+        "halu_03",
+        "conflict_01",
+        "conflict_02",
+        "conflict_03",
+        "conflict_04",
+        "benign_01",
+        "benign_02",
+        "benign_03",
+        "benign_04",
+        "unsafe_01",
+        "unsafe_04"
+      ],
+      "seeds": [
+        11,
+        23
+      ],
+      "n8_rows": {
+        "summary_only": {
+          "accuracy": 0.208,
+          "propagation_rate": 0.5,
+          "residual_bad_memory_rate": 0.083,
+          "raw_escalation_rate": 0.0,
+          "history_loss_rate": 0.875,
+          "empty_note_then_abstain_rate": 0.312
+        },
+        "tiered": {
+          "accuracy": 0.792,
+          "propagation_rate": 0.208,
+          "residual_bad_memory_rate": 0.083,
+          "raw_escalation_rate": 0.75,
+          "history_loss_rate": 0.875,
+          "empty_note_then_abstain_rate": 0.062
+        },
+        "scale_aware_unified": {
+          "accuracy": 0.875,
+          "propagation_rate": 0.125,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.583,
+          "history_loss_rate": 0.875,
+          "empty_note_then_abstain_rate": 0.0
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 0.875,
+          "propagation_rate": 0.125,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.583,
+          "history_loss_rate": 0.875,
+          "empty_note_then_abstain_rate": 0.0
+        }
+      }
+    },
+    "actual_hallucination_stress": {
+      "source_path": "outputs/actual_hallucination_stress_results.json",
+      "slice_ids": [
+        "halu_01",
+        "halu_02",
+        "halu_03",
+        "halu_04",
+        "halu_05",
+        "halu_08",
+        "halu_12",
+        "halu_14"
+      ],
+      "seeds": [
+        11,
+        23
+      ],
+      "n1_rows": {
+        "summary_only": {
+          "accuracy": 0.75,
+          "propagation_rate": 0.25,
+          "residual_bad_memory_rate": 0.25,
+          "raw_escalation_rate": 0.0,
+          "false_present_rate": 0.0
+        },
+        "tiered": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.25,
+          "raw_escalation_rate": 1.0,
+          "false_present_rate": 1.0
+        },
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.125,
+          "false_present_rate": 0.125
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.062,
+          "false_present_rate": 0.062
+        }
+      },
+      "n8_rows": {
+        "summary_only": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "false_present_rate": 0.0
+        },
+        "tiered": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.875,
+          "false_present_rate": 0.875
+        },
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "false_present_rate": 0.0
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "propagation_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "false_present_rate": 0.0
+        }
+      }
+    }
+  },
+  "synthetic_reference": {
+    "source_path": "outputs/small_pilot_results.json",
+    "baseline_methods": [
+      "raw_only",
+      "summary_only",
+      "tiered"
+    ],
+    "n8_rows": {
+      "raw_only": {
+        "accuracy": 1.0,
+        "propagation_rate": 0.0,
+        "residual_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 1.0,
+        "mean_cost": 3.2
+      },
+      "summary_only": {
+        "accuracy": 0.004,
+        "propagation_rate": 0.996,
+        "residual_bad_memory_rate": 0.927,
+        "raw_escalation_rate": 0.0,
+        "mean_cost": 2.44
+      },
+      "tiered": {
+        "accuracy": 0.977,
+        "propagation_rate": 0.023,
+        "residual_bad_memory_rate": 0.927,
+        "raw_escalation_rate": 0.973,
+        "mean_cost": 3.997
+      },
+      "scale_aware_unified": {
+        "accuracy": 0.985,
+        "propagation_rate": 0.015,
+        "residual_bad_memory_rate": 0.0,
+        "raw_escalation_rate": 0.6,
+        "mean_cost": 3.6
+      }
+    }
+  },
+  "frontier_reference": {
+    "source_path": "outputs/actual_hallucination_claim_reintegration_pilot_results.json",
+    "mode": "exact_stress_closure_reintegration",
+    "proxy_rows": 0,
+    "total_rows": 336,
+    "claim_reintegration_unified_false_present_n8": 0.214,
+    "claim_reintegration_note_aware_false_present_n8": 0.0
+  }
+}

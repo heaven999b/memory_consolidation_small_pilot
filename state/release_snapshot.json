@@ -1,0 +1,47 @@
+{
+  "release_version": "v0.2.0-idea-baseline-private",
+  "release_date": "2026-06-28",
+  "baseline_status": {
+    "minimal_closed_loop_baseline_ready": true,
+    "paper_level_baseline_ready": false,
+    "primary_external_benchmark_grounding": "pass",
+    "tiermem_style_primary_base": "pass",
+    "benchmark_first_proxy_base_complete": "pass",
+    "exact_non_proxy_frontier_closure": "pass",
+    "broader_benchmark_section_scale": "partial",
+    "synthetic_reference_demotion": "pass"
+  },
+  "primary_surface": {
+    "tiermem_style_primary_base_status": "pass",
+    "benchmark_native_primary_base_ready": true,
+    "benchmark_first_proxy_base_complete": true,
+    "full_tiermem_native_grounding": false
+  },
+  "benchmark_native_primary_base": {
+    "panel_count": 4,
+    "item_count": 32,
+    "benchmark_families": [
+      "HaluMem",
+      "LoCoMo",
+      "LongMemEval"
+    ],
+    "task_families": [
+      "benign",
+      "hallucination"
+    ]
+  },
+  "publish_layout": {
+    "tracked_artifact_dirs": [
+      "benchmarks/*/frozen_slices",
+      "outputs",
+      "reviews",
+      "state"
+    ],
+    "ignored_large_paths": [
+      "benchmarks/halumem/official_repo/data/",
+      "benchmarks/locomo/locomo_official/data/",
+      "benchmarks/locomo/longmemeval_official/data/",
+      "outputs/*_cache/"
+    ]
+  }
+}

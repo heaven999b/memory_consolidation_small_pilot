@@ -1,0 +1,94 @@
+[
+  {
+    "iteration": 1,
+    "direction": "Minimal pre-pilot with synthetic hallucination/conflict/unsafe families and three architectures to validate framing and metrics."
+  },
+  {
+    "iteration": 2,
+    "direction": "Expand the pilot with benign utility cases, adaptive routing baselines, exemplar traces, and framework-style review artifacts."
+  },
+  {
+    "iteration": 3,
+    "direction": "Replace the lightweight sample with a curated 52-item dataset, run a strict audit pass, and re-evaluate whether the core consolidation signal survives stronger item quality control."
+  },
+  {
+    "iteration": 4,
+    "direction": "Introduce scrub-based cleanup policies and contamination metrics to test whether memory cleaning can outperform answer-time shielding under the same synthetic stress sweep."
+  },
+  {
+    "iteration": 5,
+    "direction": "Replace the backing-store-derived side signal with a noisy retrieval probe so the cleanup-policy advantage is tested under a more realistic detector regime."
+  },
+  {
+    "iteration": 6,
+    "direction": "Calibrate the noisy probe itself instead of adding more policy families; target the low-score conflict/benign recall misses and require a separate verification artifact."
+  },
+  {
+    "iteration": 7,
+    "direction": "Run a focused small-N hybrid guardband experiment that borrows tiered-style shielding only in the narrow miss band where the calibrated cleanup policy still abstains away answerable cases."
+  },
+  {
+    "iteration": 8,
+    "direction": "Unify the split policy structurally by combining small_n_hybrid for N<=2 with utility_calibrated for N>=4, then verify that the unified policy preserves both local optima instead of introducing a new compromise."
+  },
+  {
+    "iteration": 9,
+    "direction": "Hold scale_aware_unified fixed and push on environment realism instead of policy invention: run a 16-item textual-proxy summarizer slice to test whether the unified policy survives a more free-text-like compaction regime."
+  },
+  {
+    "iteration": 10,
+    "direction": "Add a note-aware detector that uses inference/missingness markers in note text to reduce hallucination-side false-present recover on the textual slice without changing the unified routing skeleton."
+  },
+  {
+    "iteration": 11,
+    "direction": "Run a cached DeepSeek-backed actual summarizer slice on a small audited sub-slice, then compare tiered, scale_aware_unified, and scale_aware_note_aware under a real iterative compaction chain."
+  },
+  {
+    "iteration": 12,
+    "direction": "Expand the real model-backed slice toward benign/conflict coverage to see whether the actual high-N bottleneck is answerability loss from empty/over-compressed notes rather than contamination."
+  },
+  {
+    "iteration": 13,
+    "direction": "Construct a harder actual hallucination stress slice with tentative-clue retention so detector transfer can be tested under a real model-backed summarizer instead of only on the textual proxy."
+  },
+  {
+    "iteration": 14,
+    "direction": "Keep the real recall slice fixed and compare note-persistence interventions at N=4/8, specifically a target-field anchor versus a tiny fixed scaffold, to test whether the actual high-N bottleneck can be reduced without reintroducing contamination."
+  },
+  {
+    "iteration": 15,
+    "direction": "Refine the winning tiny scaffold narrowly: preserve its persistence gains while forcing unsafe query answers to compact to REFUSE_AND_ESCALATE instead of a clean-looking action string."
+  },
+  {
+    "iteration": 16,
+    "direction": "Keep the refined tiny scaffold prompt fixed and harden parser-level normalization so placeholder values like MISSING cannot survive as compact query answers on hallucination items."
+  },
+  {
+    "iteration": 17,
+    "direction": "Keep the refined scaffold and placeholder hardening fixed, then add a narrow carry-forward fallback so null or missing-only unsafe passes preserve the last valid refusal scaffold instead of collapsing to ABSTAIN."
+  },
+  {
+    "iteration": 18,
+    "direction": "Move laterally from the stabilized recall slice back to actual hallucination stress: apply the stronger scaffold, parser hardening, and executor contract so tentative clues survive repeated compaction and note-aware detector transfer can be tested beyond the local N=1 win."
+  },
+  {
+    "iteration": 19,
+    "direction": "Convert the new actual hallucination persistence win into a robustness test by comparing a strong clue-preservation contract against a softer anchor policy across multiple seeds on the same real-model stress slice."
+  },
+  {
+    "iteration": 20,
+    "direction": "Insert a field-sensitive selective anchor between the strong and soft stress contracts on the actual slice, and test whether a more natural middle regime can still preserve enough clue signal for note-aware detector gain."
+  },
+  {
+    "iteration": 21,
+    "direction": "Typed-select the midpoint stress contract: demote policy-window and schedule-like anchors to weak_context while preserving person-like, code-like, and preference-style surrogate clues, then rerun the same two-seed actual slice."
+  },
+  {
+    "iteration": 22,
+    "direction": "Decompose the typed midpoint into identity-like and preference-style surrogate families so the remaining high-N detector work can be localized before pushing realism further."
+  },
+  {
+    "iteration": 23,
+    "direction": "Use the newly added literal overlap items in a focused actual-stress pilot, and split identity-like clues into relation-style versus literal-style branches before committing to a full expanded micro-split round."
+  }
+]

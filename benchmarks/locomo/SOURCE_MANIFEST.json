@@ -1,0 +1,40 @@
+{
+  "benchmark_id": "locomo_longmemeval",
+  "retrieval_date": "2026-06-28",
+  "status": "slice_ready",
+  "official_sources": {
+    "locomo_paper": "https://arxiv.org/abs/2402.17753",
+    "locomo_project": "https://snap-research.github.io/locomo/",
+    "locomo_repo": "https://github.com/snap-research/LoCoMo",
+    "longmemeval_paper": "https://arxiv.org/abs/2410.10813",
+    "longmemeval_repo": "https://github.com/xiaowu0162/LongMemEval",
+    "longmemeval_cleaned_dataset": "https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned"
+  },
+  "included_paths": [
+    "locomo_official/README.md",
+    "locomo_official/data/locomo10.json",
+    "locomo_official/data/msc_personas_all.json",
+    "locomo_official/data/multimodal_dialog/example/agent_a.json",
+    "locomo_official/data/multimodal_dialog/example/agent_b.json",
+    "longmemeval_official/README.md",
+    "longmemeval_official/LICENSE",
+    "longmemeval_official/custom_history/sample_haystack_and_timestamp.py",
+    "longmemeval_official/data/cleaned/longmemeval_oracle.json",
+    "longmemeval_official/data/cleaned/longmemeval_s_cleaned.json"
+  ],
+  "quarantined_paths": [
+    {
+      "path": "longmemeval_official/data/cleaned/longmemeval_m_cleaned.json",
+      "status": "present_but_unverified",
+      "reason": "The retrieved local copy appears truncated, so it is not treated as a verified local source for the current grounding step."
+    }
+  ],
+  "derived_slice_manifests": [
+    "frozen_slices/locomo_benign_utility_slice_v1.json"
+  ],
+  "notes": [
+    "LoCoMo raw files and LongMemEval helper assets are mirrored locally under stable paths.",
+    "The verified local grounding subset currently keeps LoCoMo plus LongMemEval oracle/s-cleaned files only.",
+    "A first frozen local adapter slice manifest is now committed under benchmarks/locomo/frozen_slices/ and is intended to feed the minimal external benchmark panel."
+  ]
+}

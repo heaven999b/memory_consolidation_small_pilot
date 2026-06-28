@@ -1,0 +1,138 @@
+{
+  "description": "Frozen adapter layer for connecting reviewer-facing benchmark slices into the paper baseline packet.",
+  "grounding_status": "pass",
+  "adapter_ready_count": 2,
+  "source_manifest_count": 2,
+  "data_ready_count": 2,
+  "slice_ready_count": 2,
+  "reviewer_section_ready": true,
+  "adapters": [
+    {
+      "adapter_id": "halumem_hallucination_slice",
+      "benchmark_family": "HaluMem-style",
+      "task_type": "hallucination_risk",
+      "local_source_globs": [
+        "benchmarks/halumem/official_repo/**/*"
+      ],
+      "source_manifest_path": "benchmarks/halumem/SOURCE_MANIFEST.json",
+      "frozen_slice_manifest_glob": "benchmarks/halumem/frozen_slices/*.json",
+      "canonical_record_schema": {
+        "item_id": "str",
+        "context_messages": "list[str]",
+        "query_text": "str",
+        "query_field": "str",
+        "gold_answer": "str",
+        "hallucination_risk_type": "str"
+      },
+      "required_fields": [
+        "item_id",
+        "context_messages",
+        "query_text",
+        "query_field",
+        "gold_answer",
+        "hallucination_risk_type"
+      ],
+      "frozen_slice_plan": {
+        "target_size": 8,
+        "selection_rule": "prefer unsupported-target or clue-adjacent items that can expose false_present under repeated compaction",
+        "target_metrics": [
+          "false_present_rate",
+          "direct_unsupported_answer_rate",
+          "raw_escalation_rate"
+        ]
+      },
+      "conversion_notes": [
+        "Map benchmark examples into the project's compact-answer schema without introducing local synthetic facts.",
+        "Preserve benchmark provenance fields so exact closure claims can be traced back to original benchmark ids."
+      ],
+      "source_manifest_present": true,
+      "local_match_count": 31,
+      "local_match_examples": [
+        "benchmarks/halumem/official_repo/README.md",
+        "benchmarks/halumem/official_repo/config.json",
+        "benchmarks/halumem/official_repo/data/eli5_messages.jsonl",
+        "benchmarks/halumem/official_repo/data/native_math_messages_sample.jsonl",
+        "benchmarks/halumem/official_repo/data/self_gene_unrelated_qa.jsonl"
+      ],
+      "slice_manifest_count": 3,
+      "slice_manifest_examples": [
+        "benchmarks/halumem/frozen_slices/halumem_hallucination_holdout_slice_v1.json",
+        "benchmarks/halumem/frozen_slices/halumem_hallucination_slice_v1.json",
+        "benchmarks/halumem/frozen_slices/halumem_hallucination_slice_v2.json"
+      ],
+      "raw_data_ready": true,
+      "slice_ready": true,
+      "adapter_state": "slice_ready",
+      "can_run_now": true
+    },
+    {
+      "adapter_id": "locomo_benign_utility_slice",
+      "benchmark_family": "LoCoMo/LongMemEval-style",
+      "task_type": "benign_utility",
+      "local_source_globs": [
+        "benchmarks/locomo/locomo_official/**/*",
+        "benchmarks/locomo/longmemeval_official/README.md",
+        "benchmarks/locomo/longmemeval_official/LICENSE",
+        "benchmarks/locomo/longmemeval_official/custom_history/*.py",
+        "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_oracle.json",
+        "benchmarks/locomo/longmemeval_official/data/cleaned/longmemeval_s_cleaned.json"
+      ],
+      "source_manifest_path": "benchmarks/locomo/SOURCE_MANIFEST.json",
+      "frozen_slice_manifest_glob": "benchmarks/locomo/frozen_slices/*.json",
+      "canonical_record_schema": {
+        "item_id": "str",
+        "context_messages": "list[str]",
+        "query_text": "str",
+        "query_field": "str",
+        "gold_answer": "str",
+        "utility_slice_type": "str"
+      },
+      "required_fields": [
+        "item_id",
+        "context_messages",
+        "query_text",
+        "query_field",
+        "gold_answer",
+        "utility_slice_type"
+      ],
+      "frozen_slice_plan": {
+        "target_size": 8,
+        "selection_rule": "prefer answerable benign/conflict-like items that reveal history_loss and empty_note_then_abstain under deeper compaction",
+        "target_metrics": [
+          "accuracy",
+          "history_loss_rate",
+          "empty_note_then_abstain_rate",
+          "raw_escalation_rate"
+        ]
+      },
+      "conversion_notes": [
+        "Keep raw benchmark wording intact and only normalize into the project's evaluation fields.",
+        "Do not hand-author substitute facts when local benchmark data is absent; mark the adapter data-pending instead."
+      ],
+      "source_manifest_present": true,
+      "local_match_count": 10,
+      "local_match_examples": [
+        "benchmarks/locomo/locomo_official/README.md",
+        "benchmarks/locomo/locomo_official/data/locomo10.json",
+        "benchmarks/locomo/locomo_official/data/msc_personas_all.json",
+        "benchmarks/locomo/locomo_official/data/multimodal_dialog/example/agent_a.json",
+        "benchmarks/locomo/locomo_official/data/multimodal_dialog/example/agent_b.json"
+      ],
+      "slice_manifest_count": 3,
+      "slice_manifest_examples": [
+        "benchmarks/locomo/frozen_slices/locomo_benign_utility_slice_v1.json",
+        "benchmarks/locomo/frozen_slices/locomo_benign_utility_slice_v2.json",
+        "benchmarks/locomo/frozen_slices/longmemeval_benign_utility_slice_v1.json"
+      ],
+      "raw_data_ready": true,
+      "slice_ready": true,
+      "adapter_state": "slice_ready",
+      "can_run_now": true
+    }
+  ],
+  "next_requirements": [
+    "replace the remaining local proxy-stack internals behind the benchmark-first primary surface so TierMem-style grounding can move from partial to pass",
+    "carry the broader reviewer-facing benchmark section into more slice families and larger frozen coverage",
+    "keep reducing how much the reviewer-facing story depends on synthetic reference artifacts rather than benchmark-native sections"
+  ]
+}

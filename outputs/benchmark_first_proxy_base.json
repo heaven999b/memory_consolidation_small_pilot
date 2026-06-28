@@ -1,0 +1,71 @@
+{
+  "description": "Frozen benchmark-first proxy base that turns the current reviewer-facing benchmark stack into one end-to-end proxy baseline artifact.",
+  "verdict": {
+    "benchmark_first_proxy_base_ready": true,
+    "benchmark_first_proxy_base_status": "pass",
+    "full_tiermem_native_grounding": false,
+    "note": "The local benchmark-first proxy base is now complete and remains frozen as a support layer: adapter grounding, minimal external panel, broader reviewer section, benchmark-first primary surface, and exact non-proxy frontier closure are all still explicit, even though the main blocker has now moved up to a benchmark-native primary base."
+  },
+  "component_status": {
+    "external_benchmark_adapter": {
+      "grounding_status": "pass",
+      "adapter_ready_count": 2,
+      "slice_ready_count": 2
+    },
+    "external_benchmark_minimal_panel": {
+      "ready": true,
+      "panel_names": [
+        "halumem_hallucination",
+        "locomo_benign_utility"
+      ],
+      "seeds": [
+        11,
+        23
+      ]
+    },
+    "external_benchmark_reviewer_section": {
+      "ready": true,
+      "family_rollups": [
+        "benign_utility_benchmark_section",
+        "hallucination_benchmark_section"
+      ],
+      "slice_panels": [
+        "halumem_core_v2",
+        "halumem_holdout_v1",
+        "locomo_core_v2",
+        "longmemeval_direct_v1"
+      ],
+      "seeds": [
+        11,
+        23
+      ]
+    },
+    "benchmark_first_entrypoint": {
+      "path": "run_benchmark_first_primary_entrypoint.py",
+      "exists": true,
+      "ready": true
+    },
+    "primary_surface": {
+      "benchmark_first_surface_ready": true,
+      "tiermem_style_primary_base_status": "pass",
+      "benchmark_source_kind": "broader_reviewer_section",
+      "benchmark_first_proxy_base_complete": true,
+      "benchmark_native_primary_base_ready": true
+    },
+    "frontier_closure": {
+      "mode": "exact_stress_closure_reintegration",
+      "proxy_rows": 0,
+      "total_rows": 336,
+      "exact_non_proxy_frontier_ready": true
+    }
+  },
+  "reviewer_sequence": [
+    "Start from the broader reviewer-facing benchmark section rather than the synthetic trio.",
+    "Treat the benchmark-first primary surface as the local proxy presentation layer that now feeds into the native primary base.",
+    "Use the exact non-proxy frontier closure as evidence that the current stress frontier is no longer held together by proxy rows."
+  ],
+  "remaining_gaps": [
+    "Expand the broader benchmark reviewer section into more slice families and larger frozen coverage once the current proxy base stays stable.",
+    "Reduce how much reviewer-facing interpretation still depends on synthetic-reference support artifacts."
+  ]
+}
