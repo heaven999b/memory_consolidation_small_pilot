@@ -6,37 +6,39 @@
 - Release version: `v0.2.0-idea-baseline-private`
 - Baseline gate: `minimal_closed_loop_baseline_ready = true`
 - Paper gate: `paper_level_baseline_ready = false`
-- Current external benchmark surface: `32` frozen items, `4` panels, `3` benchmark families, `2` task families
+- Current external benchmark surface: `32` frozen items, `4` external panels, `3` external benchmark families
+- Current manifest-backed primary-base surface: `38` total manifest-backed items, `6` panels, `4` task families
 
 ## Remaining Problems
 
 ### 1. Paper-facing benchmark scale is still too small
 
-- The broader reviewer-facing benchmark section is still only `32` frozen items.
+- The broader reviewer-facing external benchmark section is still only `32` frozen items.
 - This is enough for reviewer-credible idea reporting, but still thin for a paper-facing baseline section.
-- The repo itself already admits this in `paper_level_baseline_ready = false`.
+- The repo itself still marks this honestly as `paper_level_baseline_ready = false`.
 
-### 2. Benchmark-native grounding still covers only two task families
-
-- The benchmark-native primary base currently covers `benign` and `hallucination`.
-- It does not yet ground `conflict` or `unsafe` behavior on an equally strong benchmark-native surface.
-- That means the main external evidence is strongest for abstention and benign QA, but weaker for update-conflict and safety-style claims.
-
-### 3. Reproducibility environment is not pinned yet
-
-- The repo does not currently ship a `requirements.txt`, `pyproject.toml`, or `environment.yml`.
-- The mirrored benchmark code imports non-stdlib dependencies such as `openai`, `pandas`, `sqlalchemy`, `requests`, `tenacity`, `tqdm`, and `transformers`.
-- The current snapshot is reproducible for local continuation in the existing machine context, but not yet one-command reproducible for another machine.
-
-### 4. Full release regeneration is still fragmented
-
-- There are many `run_*.py` and `verify_*.py` scripts, but no single release entrypoint that rebuilds the full reviewer packet from scratch.
-- This is workable for active research iteration, but it creates handoff friction when someone else wants to re-run the exact release boundary.
-
-### 5. The benign utility bottleneck is still the main empirical weakness
+### 2. The benign utility bottleneck is still the main empirical weakness
 
 - On the broader benchmark benign section at `N=8`, stronger methods improve accuracy a lot, but `history_loss_rate` still stays at `0.438`.
 - This means the repo is no longer mainly blocked by hallucination control alone; the harder remaining problem is preserving useful benign detail under compression without paying too much raw fallback.
+
+## Fixed In This Maintenance Pass
+
+### 1. Task-family coverage is no longer limited to `benign` and `hallucination`
+
+- The repo now freezes manifest-backed `conflict` and `unsafe` extension panels.
+- The benchmark-native primary base now covers all four task families: `benign`, `conflict`, `hallucination`, and `unsafe`.
+- This closes the old coverage gap without pretending the external benchmark scale problem is already solved.
+
+### 2. Reproducibility is now explicitly pinned
+
+- The repo now ships [requirements.txt](./requirements.txt), [environment.yml](./environment.yml), and [REPRODUCIBILITY.md](./REPRODUCIBILITY.md).
+- The release path also documents the non-Python requirement on the local `deepseek` CLI.
+
+### 3. Release regeneration is no longer fragmented
+
+- The repo now ships [run_release_rebuild.py](./run_release_rebuild.py).
+- That entrypoint rebuilds the current reviewer-facing packet in dependency order and preserves the intended multi-seed configuration for the release sanity slices.
 
 ## Simple Reading Of The Main Tables
 
@@ -76,16 +78,28 @@
 - But all of those stronger methods still keep `history_loss_rate = 0.438` and `raw_escalation_rate = 0.438` at `N=8`.
 - So the repo has largely solved hallucination shielding faster than it has solved benign utility preservation.
 
+### Manifest-Backed Conflict Extension: `conflict_manifest_backed_extension`
+
+- This panel closes the old “conflict is only supporting evidence” gap.
+- At `N=8`, `summary_only` drops to `0.125` accuracy with `1.000` conflict error and `0.875` history loss.
+- `tiered`, `scale_aware_unified`, and `scale_aware_note_aware` all hold `1.000` accuracy with `0.000` conflict error.
+- The cost is that conflict retention at high `N` still leans on raw fallback: `1.000` for `tiered` and `0.875` for the unified variants.
+
+### Manifest-Backed Unsafe Extension: `unsafe_manifest_backed_extension`
+
+- This panel closes the old “unsafe only appears in scaffold tuning rounds” gap.
+- At `N=8`, all exposed methods keep `1.000` accuracy with `0.000` unsafe error on the frozen unsafe extension set.
+- The carry-forward winner is now explicit rather than implicit: the panel is directly tied to the `tiny_carry_forward_scaffold` source result.
+
 ## What The Tables Mean Overall
 
 - The current project already supports a coherent reviewer-facing claim: pure summary compression is not stable as memory depth increases, and a scale-aware guarded policy substantially improves the risk-utility tradeoff.
-- The repo also now supports a stronger second claim: this is not only a synthetic story anymore, because the main surface is benchmark-native and the benchmark reviewer section is already frozen and auditable.
-- The most convincing positive result is that hallucination control now transfers onto a grounded benchmark surface without needing the old all-raw `tiered` behavior.
+- The repo now supports a stronger second claim than before: this is not only a synthetic story anymore, because the main surface is benchmark-native, the benchmark reviewer section is frozen, and the missing `conflict` / `unsafe` families are now manifest-backed too.
+- The most convincing positive result is that hallucination control transfers onto a grounded benchmark surface without needing the old all-raw `tiered` behavior.
 - The clearest remaining weakness is not “the idea fails”; it is “benign recall and paper-scale breadth are still not strong enough for a full baseline section.”
 
 ## Next Actions That Matter Most
 
 - Expand the benchmark reviewer section beyond `32` frozen items.
-- Add benchmark-native coverage for `conflict` and `unsafe` style behavior, not just `benign` and `hallucination`.
-- Add a pinned environment file and one-command release rebuild path.
 - Keep optimizing the benign utility path, especially the `history_loss_rate` bottleneck at higher `N`.
+- Preserve the new task-extension, environment, and single-entry rebuild layers as we scale the external benchmark section up.

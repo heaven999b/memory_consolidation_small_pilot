@@ -1,14 +1,15 @@
 {
-  "iteration": 36,
-  "status": "pilot_v36_benchmark_native_primary_base_complete",
+  "iteration": 37,
+  "status": "pilot_v37_task_extensions_env_release_rebuild_complete",
   "stale_count": 0,
-  "last_direction": "Resolve the primary baseline blocker by adding a benchmark-native primary base over frozen benchmark manifests, rebuilding the primary surface, preserving the benchmark-first proxy base as a support layer, and regenerating the paper baseline packet.",
-  "next_direction": "Expand the broader reviewer-facing benchmark section from the current 32 frozen items to a larger paper-facing scale, while continuing to reduce reviewer-facing dependence on synthetic support artifacts.",
+  "last_direction": "Close the remaining task-family and reproducibility gaps by freezing manifest-backed conflict/unsafe task extensions, wiring them into the benchmark-native primary base and paper packet, pinning the release environment, and adding a single-entry release rebuild path.",
+  "next_direction": "Expand the broader reviewer-facing benchmark section from the current 32 frozen items to a larger paper-facing scale, while continuing to improve benign utility retention and keeping the new task-extension and rebuild layers stable.",
   "next_round_targets": [
     "expand_broader_benchmark_reviewer_section_scale",
     "add_more_frozen_benchmark_panels_or_items",
     "preserve_benchmark_native_primary_base_consistency",
-    "further_reduce_synthetic_support_dependency"
+    "improve_benign_utility_history_loss",
+    "preserve_release_rebuild_and_task_extension_consistency"
   ],
   "last_artifacts": [
     "outputs/small_pilot_results.json",
@@ -79,6 +80,9 @@
     "outputs/actual_hallucination_literal_identity_closure_traces.md",
     "outputs/external_benchmark_adapter_layer.json",
     "outputs/external_benchmark_adapter_layer.md",
+    "outputs/task_extension_section.json",
+    "outputs/task_extension_section.md",
+    "outputs/task_extension_section_traces.md",
     "outputs/paper_baseline_packet.json",
     "outputs/paper_baseline_packet.md",
     "outputs/paper_baseline_panel.csv",
@@ -152,9 +156,12 @@
     "reviews/verification_round30.md",
     "reviews/review_round31.md",
     "reviews/verification_round31.md",
+    "reviews/verification_round34.md",
+    "reviews/verification_round36_native_primary_base.md",
+    "reviews/verification_round37_task_extensions.md",
     "state/paper_baseline_spec.md",
     "state/next_round_brief.md"
   ],
-  "current_best_signal": "The repo now has a benchmark-native primary base, a complete benchmark-first proxy base, a broader reviewer-facing benchmark section over 32 frozen items, a multi-seed model-backed sanity layer, and an exact non-proxy stress frontier. In the updated packet, all `must` gates pass and the remaining paper-level gap is scale rather than implementation grounding.",
-  "current_main_weakness": "Paper-level baseline is no longer blocked by primary implementation grounding. The main remaining weakness is that the broader reviewer-facing benchmark section is still only 32 frozen items, which is enough for reviewer-credible idea reporting but still small for a full paper-facing baseline section."
+  "current_best_signal": "The repo now has a benchmark-native primary base over 38 manifest-backed items and 6 panels, a complete benchmark-first proxy base, a broader reviewer-facing benchmark section over 32 external frozen items, explicit manifest-backed conflict/unsafe task extensions, a pinned reproducibility environment, a working single-entry release rebuild, a multi-seed model-backed sanity layer, and an exact non-proxy stress frontier. In the updated packet, all `must` gates pass and the remaining paper-level gap is scale rather than implementation grounding.",
+  "current_main_weakness": "Paper-level baseline is no longer blocked by primary implementation grounding, task-family coverage, or rebuild fragmentation. The main remaining weaknesses are that the broader reviewer-facing benchmark section is still only 32 frozen external items and the benign utility path still shows high `history_loss` at higher N."
 }

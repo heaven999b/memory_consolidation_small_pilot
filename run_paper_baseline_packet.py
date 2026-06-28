@@ -21,6 +21,7 @@ BENCHMARK_SECTION_RESULTS = "outputs/external_benchmark_reviewer_section.json"
 PRIMARY_SURFACE_RESULTS = "outputs/tiermem_style_primary_surface.json"
 PROXY_BASE_RESULTS = "outputs/benchmark_first_proxy_base.json"
 NATIVE_PRIMARY_BASE_RESULTS = "outputs/benchmark_native_primary_base.json"
+TASK_EXTENSION_RESULTS = "outputs/task_extension_section.json"
 
 JSON_PATH = "outputs/paper_baseline_packet.json"
 SUMMARY_PATH = "outputs/paper_baseline_packet.md"
@@ -106,6 +107,7 @@ def build_packet(
     primary_surface: dict[str, Any] | None,
     proxy_base: dict[str, Any] | None,
     native_primary_base: dict[str, Any] | None,
+    task_extension_section: dict[str, Any] | None,
 ) -> dict[str, Any]:
     small_archs = set(small["architectures"])
     n_values = set(small["n_values"])
@@ -135,6 +137,7 @@ def build_packet(
     if primary_surface is not None:
         primary_surface_status = primary_surface.get("primary_surface_status", {}).get("tiermem_style_primary_base_status", "gap")
     native_primary_ready = native_primary_base is not None and native_primary_base.get("verdict", {}).get("benchmark_native_primary_base_ready") is True
+    task_extension_ready = task_extension_section is not None and task_extension_section.get("verdict", {}).get("task_extension_section_ready") is True
     exact_proxy_rows = reintegration.get("proxy_counts", {}).get("mode_equivalent_proxy", 0)
     exact_frontier_ready = reintegration.get("mode") == "exact_stress_closure_reintegration" and exact_proxy_rows == 0
     proxy_base_status = "gap"
@@ -161,21 +164,31 @@ def build_packet(
         if native_primary_base is not None and native_primary_base.get("strengthening_status", {}).get("synthetic_reference_role") == "support_only"
         else "gap"
     )
+    task_extension_requirement_status = (
+        "pass"
+        if task_extension_ready
+        and native_primary_base is not None
+        and {"hallucination", "benign", "conflict", "unsafe"}.issubset(set(native_primary_base["native_contract_summary"]["task_families"]))
+        else "partial"
+        if task_extension_ready
+        else "gap"
+    )
     paper_level_ready = (
         multi_seed_ready
         and exact_frontier_ready
         and benchmark_status == "pass"
         and primary_surface_status == "pass"
+        and task_extension_requirement_status == "pass"
         and broader_benchmark_scale_status == "pass"
     )
 
     if paper_level_ready:
         verdict_reason = (
-            "the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section at usable scale, and a benchmark-native primary base, so the paper-level baseline gate is now satisfied."
+            "the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section at usable scale, manifest-backed conflict/unsafe task extensions, and a benchmark-native primary base, so the paper-level baseline gate is now satisfied."
         )
-    elif multi_seed_ready and exact_frontier_ready and benchmark_status == "pass" and primary_surface_status == "pass" and benchmark_section_ready and proxy_base_ready and native_primary_ready:
+    elif multi_seed_ready and exact_frontier_ready and benchmark_status == "pass" and primary_surface_status == "pass" and benchmark_section_ready and proxy_base_ready and native_primary_ready and task_extension_ready:
         verdict_reason = (
-            "the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section, a complete benchmark-first proxy base, and a benchmark-native primary base, "
+            "the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section, manifest-backed conflict/unsafe task extensions, a complete benchmark-first proxy base, and a benchmark-native primary base, "
             "but it still lacks larger-scale benchmark coverage before the baseline should be presented as paper-ready."
         )
     elif multi_seed_ready and exact_frontier_ready and benchmark_status == "pass" and primary_surface_status in {"partial", "pass"} and benchmark_section_ready and proxy_base_ready:
@@ -286,6 +299,19 @@ def build_packet(
             ),
         ),
         requirement(
+            "manifest_backed_task_extensions",
+            "Manifest-backed task extensions cover conflict and unsafe families",
+            task_extension_requirement_status,
+            (
+                "the repo still leaves conflict/unsafe outside the manifest-backed primary-base chain."
+                if task_extension_section is None
+                else (
+                    f"task extension ready = `{task_extension_ready}`, "
+                    f"native task families = `{None if native_primary_base is None else native_primary_base['native_contract_summary']['task_families']}`."
+                )
+            ),
+        ),
+        requirement(
             "benchmark_first_proxy_base_complete",
             "Benchmark-first proxy base is frozen end-to-end",
             proxy_base_status,
@@ -389,6 +415,7 @@ def build_packet(
         "primary_surface": primary_surface,
         "benchmark_first_proxy_base": proxy_base,
         "benchmark_native_primary_base": native_primary_base,
+        "task_extension_section": task_extension_section,
         "headline_readout": {
             "synthetic_summary_only_n8": {
                 "accuracy": small_summary_n8["accuracy"],
@@ -489,6 +516,7 @@ def write_csv(packet: dict[str, Any], path: Path) -> None:
                 )
     benchmark_panel = packet.get("benchmark_grounded_panel") or {}
     benchmark_section = packet.get("benchmark_reviewer_section") or {}
+    task_extension_section = packet.get("task_extension_section") or {}
     for panel_name, payload in (benchmark_panel.get("benchmark_panels") or {}).items():
         for architecture, n_rows in payload["snapshots"].items():
             for n, row in n_rows.items():
@@ -507,6 +535,23 @@ def write_csv(packet: dict[str, Any], path: Path) -> None:
                     }
                 )
     for panel_name, payload in (benchmark_section.get("family_rollups") or {}).items():
+        for architecture, n_rows in payload["snapshots"].items():
+            for n, row in n_rows.items():
+                rows.append(
+                    {
+                        "panel": panel_name,
+                        "method": architecture,
+                        "n": n,
+                        "accuracy": row["accuracy"],
+                        "propagation_rate": row["propagation_rate"],
+                        "residual_bad_memory_rate": row["residual_bad_memory_rate"],
+                        "raw_escalation_rate": row["raw_escalation_rate"],
+                        "mean_cost_or_llm_cost": row.get("mean_llm_cost_usd", ""),
+                        "history_loss_rate": row.get("history_loss_rate", ""),
+                        "false_present_rate": row.get("false_present_rate", ""),
+                    }
+                )
+    for panel_name, payload in (task_extension_section.get("task_extension_panels") or {}).items():
         for architecture, n_rows in payload["snapshots"].items():
             for n, row in n_rows.items():
                 rows.append(
@@ -624,11 +669,13 @@ def build_summary(packet: dict[str, Any]) -> str:
     benchmark_adapter = packet.get("benchmark_adapter")
     benchmark_panel = packet.get("benchmark_grounded_panel")
     benchmark_section = packet.get("benchmark_reviewer_section")
+    task_extension_section = packet.get("task_extension_section")
     primary_surface = packet.get("primary_surface") or {}
     proxy_base = packet.get("benchmark_first_proxy_base") or {}
     native_primary_base = packet.get("benchmark_native_primary_base") or {}
     benchmark_panels = {} if benchmark_panel is None else benchmark_panel.get("benchmark_panels", {})
     benchmark_family_rollups = {} if benchmark_section is None else benchmark_section.get("family_rollups", {})
+    task_extension_panels = {} if task_extension_section is None else task_extension_section.get("task_extension_panels", {})
     lines.extend(
         [
             "",
@@ -651,6 +698,12 @@ def build_summary(packet: dict[str, Any]) -> str:
             f"- native primary base ready: `{native_primary_base.get('verdict', {}).get('benchmark_native_primary_base_ready')}`",
             f"- native primary base status: `{native_primary_base.get('verdict', {}).get('tiermem_style_primary_base_status')}`",
             f"- native primary base note: `{native_primary_base.get('verdict', {}).get('note')}`",
+            "",
+            "## Manifest-Backed Task Extensions",
+            "",
+            f"- task extension section attached: `{task_extension_section is not None}`",
+            f"- task extension panel names: `{sorted(task_extension_panels.keys())}`",
+            f"- task extension task families: `{None if task_extension_section is None else task_extension_section.get('extension_summary', {}).get('task_families')}`",
             "",
             "## Frontier Status",
             "",
@@ -698,6 +751,11 @@ def build_summary(packet: dict[str, Any]) -> str:
                 else "- 当前 benchmark-first proxy base 还没有被单独冻结成一份总工件，所以 proxy completion 这件事还不够显式。"
             ),
             (
+                "- `conflict` / `unsafe` 的 manifest-backed task extensions 现在已经补上，所以当前剩下的 paper gap 主要不再是 task-family coverage，而是更大的 benchmark scale。"
+                if task_extension_section is not None
+                else "- `conflict` / `unsafe` 仍然还没有进入 manifest-backed task-extension layer，所以 task-family coverage 还不完整。"
+            ),
+            (
                 "- 即使 primary-base blocker 已经补掉，当前更大的任务仍然是把 benchmark section 扩到更接近 paper-facing 的规模。"
                 if native_primary_base
                 else "- 即使 multi-seed sanity、exact frontier closure、以及最小 benchmark panel 已经补上，它们也不能替代完整 TierMem-style primary base。"
@@ -724,12 +782,14 @@ def main() -> None:
     primary_surface_path = base_dir / PRIMARY_SURFACE_RESULTS
     proxy_base_path = base_dir / PROXY_BASE_RESULTS
     native_primary_base_path = base_dir / NATIVE_PRIMARY_BASE_RESULTS
+    task_extension_path = base_dir / TASK_EXTENSION_RESULTS
     benchmark_adapter = load_json(benchmark_adapter_path) if benchmark_adapter_path.exists() else None
     benchmark_minimal = load_json(benchmark_minimal_path) if benchmark_minimal_path.exists() else None
     benchmark_section = load_json(benchmark_section_path) if benchmark_section_path.exists() else None
     primary_surface = load_json(primary_surface_path) if primary_surface_path.exists() else None
     proxy_base = load_json(proxy_base_path) if proxy_base_path.exists() else None
     native_primary_base = load_json(native_primary_base_path) if native_primary_base_path.exists() else None
+    task_extension_section = load_json(task_extension_path) if task_extension_path.exists() else None
 
     packet = build_packet(
         small,
@@ -742,6 +802,7 @@ def main() -> None:
         primary_surface,
         proxy_base,
         native_primary_base,
+        task_extension_section,
     )
     (base_dir / JSON_PATH).write_text(json.dumps(packet, ensure_ascii=False, indent=2), encoding="utf-8")
     (base_dir / SUMMARY_PATH).write_text(build_summary(packet), encoding="utf-8")

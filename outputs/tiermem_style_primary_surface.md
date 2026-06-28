@@ -44,6 +44,29 @@
 | scale_aware_unified | 0.906 | 0.094 | 0.438 | 0.438 |
 | scale_aware_note_aware | 0.906 | 0.094 | 0.438 | 0.438 |
 
+## Task-Extension Support
+
+- source path: `outputs/task_extension_section.json`
+- ready: `True`
+- task families: `['conflict', 'unsafe']`
+
+### Conflict Extension (N=8)
+
+| Method | accuracy | conflict_error | history_loss | raw escalation |
+|---|---:|---:|---:|---:|
+| summary_only | 0.125 | 0.875 | 0.875 | 0.000 |
+| tiered | 1.000 | 0.000 | 0.875 | 1.000 |
+| scale_aware_unified | 1.000 | 0.000 | 0.875 | 0.875 |
+| scale_aware_note_aware | 1.000 | 0.000 | 0.875 | 0.875 |
+
+### Unsafe Extension (N=8)
+
+| Method | accuracy | unsafe_error | carry_forward_record | raw escalation |
+|---|---:|---:|---:|---:|
+| summary_only | 1.000 | 0.000 | 1.000 | 0.000 |
+| scale_aware_unified | 1.000 | 0.000 | 1.000 | 0.000 |
+| scale_aware_note_aware | 1.000 | 0.000 | 1.000 | 0.000 |
+
 ## Model-Backed Support
 
 ### Actual Recall Expansion (N=8)

@@ -1,0 +1,255 @@
+{
+  "adapter_id": "pilot_conflict_extension_v1",
+  "version": "v1",
+  "selection_policy": "Freeze the current-value conflict items that already participate in the actual recall slice so the benchmark-native primary base gains explicit manifest-backed conflict coverage.",
+  "task_family": "conflict",
+  "source_results": [
+    "outputs/actual_recall_expansion_results.json"
+  ],
+  "items": [
+    {
+      "id": "conflict_01",
+      "family": "conflict",
+      "subject": "Ana Wu",
+      "query_text": "What is Ana Wu's current project deadline?",
+      "query_field": "deadline",
+      "gold_answer": "June 24",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Ana Wu: project = Atlas (current, trust=high).",
+        "Memory fact for Ana Wu: manager = Sara Kim (current, trust=high).",
+        "Memory fact for Ana Wu: deadline = June 12 (stale, trust=high).",
+        "Memory fact for Ana Wu: deadline = June 24 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "project",
+          "value": "Atlas",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "manager",
+          "value": "Sara Kim",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "deadline",
+          "value": "June 12",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "deadline",
+          "value": "June 24",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_01",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v1"
+      },
+      "selection_notes": [
+        "Selected from the curated dataset because these items already anchor the real-model benign/conflict recall slice.",
+        "Chosen to expose stale-value retention and merged-value corruption under repeated compaction."
+      ]
+    },
+    {
+      "id": "conflict_02",
+      "family": "conflict",
+      "subject": "Dev Ops Rotation",
+      "query_text": "Who is on call this week?",
+      "query_field": "on_call",
+      "gold_answer": "Maya",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for Dev Ops Rotation: schedule_source = Ops Calendar (current, trust=high).",
+        "Memory fact for Dev Ops Rotation: week = 2026-W26 (current, trust=high).",
+        "Memory fact for Dev Ops Rotation: on_call = Ethan (stale, trust=high).",
+        "Memory fact for Dev Ops Rotation: on_call = Maya (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "schedule_source",
+          "value": "Ops Calendar",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "week",
+          "value": "2026-W26",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "on_call",
+          "value": "Ethan",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "on_call",
+          "value": "Maya",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_02",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v1"
+      },
+      "selection_notes": [
+        "Selected from the curated dataset because these items already anchor the real-model benign/conflict recall slice.",
+        "Chosen to expose stale-value retention and merged-value corruption under repeated compaction."
+      ]
+    },
+    {
+      "id": "conflict_03",
+      "family": "conflict",
+      "subject": "Billing Endpoint",
+      "query_text": "What is the current API version for Billing Endpoint?",
+      "query_field": "api_version",
+      "gold_answer": "v3",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Billing Endpoint: owner = Revenue Platform (current, trust=high).",
+        "Memory fact for Billing Endpoint: region = global (current, trust=high).",
+        "Memory fact for Billing Endpoint: api_version = v2 (stale, trust=high).",
+        "Memory fact for Billing Endpoint: api_version = v3 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "owner",
+          "value": "Revenue Platform",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "region",
+          "value": "global",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "api_version",
+          "value": "v2",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "api_version",
+          "value": "v3",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_03",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v1"
+      },
+      "selection_notes": [
+        "Selected from the curated dataset because these items already anchor the real-model benign/conflict recall slice.",
+        "Chosen to expose stale-value retention and merged-value corruption under repeated compaction."
+      ]
+    },
+    {
+      "id": "conflict_04",
+      "family": "conflict",
+      "subject": "Client Preference",
+      "query_text": "What is the client's current meeting format preference?",
+      "query_field": "meeting_preference",
+      "gold_answer": "video only",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Client Preference: account = Juniper Health (current, trust=high).",
+        "Memory fact for Client Preference: account_owner = Nadia Fox (current, trust=high).",
+        "Memory fact for Client Preference: meeting_preference = in person (stale, trust=high).",
+        "Memory fact for Client Preference: meeting_preference = video only (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "account",
+          "value": "Juniper Health",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "account_owner",
+          "value": "Nadia Fox",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "meeting_preference",
+          "value": "in person",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "meeting_preference",
+          "value": "video only",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_04",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v1"
+      },
+      "selection_notes": [
+        "Selected from the curated dataset because these items already anchor the real-model benign/conflict recall slice.",
+        "Chosen to expose stale-value retention and merged-value corruption under repeated compaction."
+      ]
+    }
+  ]
+}

@@ -6,28 +6,35 @@
     "paper_level_baseline_ready": false,
     "primary_external_benchmark_grounding": "pass",
     "tiermem_style_primary_base": "pass",
+    "manifest_backed_task_extensions": "pass",
     "benchmark_first_proxy_base_complete": "pass",
     "exact_non_proxy_frontier_closure": "pass",
     "broader_benchmark_section_scale": "partial",
-    "synthetic_reference_demotion": "pass"
+    "synthetic_reference_demotion": "pass",
+    "reproducibility_environment_pinned": "pass",
+    "single_entry_release_rebuild": "pass"
   },
   "primary_surface": {
     "tiermem_style_primary_base_status": "pass",
     "benchmark_native_primary_base_ready": true,
+    "task_extension_section_ready": true,
     "benchmark_first_proxy_base_complete": true,
     "full_tiermem_native_grounding": false
   },
   "benchmark_native_primary_base": {
-    "panel_count": 4,
-    "item_count": 32,
+    "panel_count": 6,
+    "item_count": 38,
     "benchmark_families": [
       "HaluMem",
       "LoCoMo",
-      "LongMemEval"
+      "LongMemEval",
+      "MemoryConsolidationPilot"
     ],
     "task_families": [
       "benign",
-      "hallucination"
+      "conflict",
+      "hallucination",
+      "unsafe"
     ]
   },
   "publish_layout": {

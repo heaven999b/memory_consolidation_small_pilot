@@ -10,6 +10,7 @@ Policy:
 Current state:
 - `halumem/` contains the mirrored official HaluMem repo data and evaluation helpers.
 - `locomo/` contains mirrored LoCoMo raw data plus LongMemEval helper files and verified cleaned subsets.
+- `task_extensions/` contains frozen local manifest-backed conflict/unsafe extension slices used to complete four-family primary-base coverage.
 
 Git publication note:
 - The private Git snapshot tracks `SOURCE_MANIFEST.json` files and the frozen `frozen_slices/` artifacts.

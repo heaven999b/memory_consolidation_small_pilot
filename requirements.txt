@@ -1,0 +1,11 @@
+# Core release rebuild scripts use only the Python standard library plus the external `deepseek` CLI.
+# The packages below pin the optional Python-side benchmark helpers mirrored inside this repository.
+
+openai>=1.35,<2.0
+pandas>=2.2,<3.0
+python-dotenv>=1.0,<2.0
+requests>=2.31,<3.0
+SQLAlchemy>=2.0,<3.0
+tenacity>=8.2,<10.0
+tqdm>=4.66,<5.0
+transformers>=4.41,<5.0

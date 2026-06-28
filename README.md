@@ -21,6 +21,7 @@
 
 - 一个完整的 **benchmark-first proxy base**；
 - 一个新的 **benchmark-native primary base**，也就是主 baseline 明确以 frozen benchmark manifests、query contract、evidence contract 作为第一公民；
+- 一个新的 **manifest-backed task-extension layer**，把 `conflict` / `unsafe` 也接进同一条 primary-base 链；
 - 但它仍然还不是 literal full `TierMem` reproduction，也还没有扩到最终 paper-facing 的更大 benchmark scale。
 
 ## Repository Snapshot
@@ -31,6 +32,7 @@
 - `CHANGELOG.md`: 这版 release 的高层变化
 - `MODIFICATION_LOG_SUMMARY.md`: 适合快速回看的简版修改记录
 - `REPO_REVIEW_AND_TABLE_ANALYSIS.md`: 当前剩余问题、主表格读法和 reviewer-facing 风险说明
+- `REPRODUCIBILITY.md`: 固定环境和单入口 release rebuild 说明
 - `state/release_snapshot.json`: 当前 baseline gate、artifact 状态和发布边界
 
 Git 跟踪的 benchmark surface 以 frozen slices 和 reviewer-facing artifacts 为主，而不是全量原始 benchmark 镜像。
@@ -47,6 +49,7 @@ Git 跟踪的 benchmark surface 以 frozen slices 和 reviewer-facing artifacts 
 不过当前版本已经不再只是 proxy surface：
 
 - reviewer-facing baseline 已经升到 **benchmark-native primary base**
+- `conflict` / `unsafe` 已经通过 manifest-backed task extensions 接入主链
 - `paper_level_baseline_ready` 仍然是 `False`
 - 当前主要缺口是更大的 benchmark coverage scale，而不是新的主实现 blocker
 
@@ -96,6 +99,11 @@ python3 audit_dataset.py
 ## Sweep 变量
 
 - `N in {0, 1, 2, 4, 8}`
+
+## Rebuild
+
+- 固定环境见 [environment.yml](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/environment.yml) 和 [requirements.txt](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/requirements.txt)
+- 单入口 release rebuild: `python3 run_release_rebuild.py`
 
 ## 产出
 
@@ -175,6 +183,9 @@ python3 audit_dataset.py
 - `outputs/external_benchmark_reviewer_section.json`
 - `outputs/external_benchmark_reviewer_section.md`
 - `outputs/external_benchmark_reviewer_section_traces.md`
+- `outputs/task_extension_section.json`
+- `outputs/task_extension_section.md`
+- `outputs/task_extension_section_traces.md`
 - `outputs/benchmark_native_primary_base.json`
 - `outputs/benchmark_native_primary_base.md`
 - `outputs/benchmark_native_primary_base_traces.md`

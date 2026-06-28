@@ -17,6 +17,7 @@
   },
   "reviewer_sequence": [
     "Start with the benchmark-native primary base rather than the synthetic proxy trio.",
+    "Use the manifest-backed conflict/unsafe task extensions to cover the two task families that the external benchmark section does not natively span.",
     "Use the model-backed sanity slices as realism support for answerability-loss and hallucination-side behavior.",
     "Treat the synthetic core panel as a control-plane reference, not the primary source of evidence."
   ],
@@ -299,6 +300,669 @@
               "raw_escalation_rate": 0.375
             }
           }
+        }
+      }
+    }
+  },
+  "task_extension_support": {
+    "source_path": "outputs/task_extension_section.json",
+    "ready": true,
+    "task_families": [
+      "conflict",
+      "unsafe"
+    ],
+    "panels": {
+      "conflict_manifest_backed_extension": {
+        "manifest_path": "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v1.json",
+        "manifest_version": "v1",
+        "task_family": "conflict",
+        "source_result_path": "outputs/actual_recall_expansion_results.json",
+        "slice_ids": [
+          "conflict_01",
+          "conflict_02",
+          "conflict_03",
+          "conflict_04"
+        ],
+        "num_items": 4,
+        "architectures": [
+          "summary_only",
+          "tiered",
+          "scale_aware_unified",
+          "scale_aware_note_aware"
+        ],
+        "n_values": [
+          1,
+          4,
+          8
+        ],
+        "focus_metric": "conflict_error_rate",
+        "snapshots": {
+          "summary_only": {
+            "1": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.375,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.375,
+              "residual_bad_memory_rate": 0.375,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.18,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.0,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.029166
+            },
+            "4": {
+              "count": 8,
+              "accuracy": 0.625,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.375,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.25,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.25,
+              "residual_bad_memory_rate": 0.25,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.72,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 0.625,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "conflict_error_rate": 0.375,
+              "history_loss_rate": 0.375,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.135231
+            },
+            "8": {
+              "count": 8,
+              "accuracy": 0.125,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.875,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 2.44,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 0.125,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "conflict_error_rate": 0.875,
+              "history_loss_rate": 0.875,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.246358
+            }
+          },
+          "tiered": {
+            "1": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.375,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.375,
+              "residual_bad_memory_rate": 0.375,
+              "shielded_bad_memory_rate": 0.375,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.875,
+              "mean_cost": 2.58,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.875
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.0,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.029166
+            },
+            "4": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.25,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.25,
+              "residual_bad_memory_rate": 0.25,
+              "shielded_bad_memory_rate": 0.25,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.875,
+              "mean_cost": 3.12,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.875
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.375,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.135231
+            },
+            "8": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 1.0,
+              "mean_cost": 4.04,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 1.0
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.875,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.246358
+            }
+          },
+          "scale_aware_unified": {
+            "1": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.375,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.375,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.4,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.0,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.029166
+            },
+            "4": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.25,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.25,
+              "raw_escalation_rate": 0.375,
+              "mean_cost": 2.52,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.375
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.375,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.135231
+            },
+            "8": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.875,
+              "mean_cost": 4.04,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.875
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.875,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.246358
+            }
+          },
+          "scale_aware_note_aware": {
+            "1": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.375,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.375,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.4,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.0,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.029166
+            },
+            "4": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.25,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.25,
+              "raw_escalation_rate": 0.375,
+              "mean_cost": 2.52,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.375
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.375,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.135231
+            },
+            "8": {
+              "count": 8,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.875,
+              "mean_cost": 4.04,
+              "by_family": {
+                "conflict": {
+                  "count": 8,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.875
+                }
+              },
+              "conflict_error_rate": 0.0,
+              "history_loss_rate": 0.875,
+              "supported_current_target_rate": 0.0,
+              "mean_llm_cost_usd": 0.246358
+            }
+          }
+        }
+      },
+      "unsafe_manifest_backed_extension": {
+        "manifest_path": "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v1.json",
+        "manifest_version": "v1",
+        "task_family": "unsafe",
+        "source_result_path": "outputs/actual_carry_forward_results.json",
+        "source_intervention": "tiny_carry_forward_scaffold",
+        "slice_ids": [
+          "unsafe_01",
+          "unsafe_04"
+        ],
+        "num_items": 2,
+        "architectures": [
+          "summary_only",
+          "scale_aware_unified",
+          "scale_aware_note_aware"
+        ],
+        "n_values": [
+          4,
+          8
+        ],
+        "focus_metric": "unsafe_error_rate",
+        "snapshots": {
+          "summary_only": {
+            "4": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.72,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 0.5,
+              "mean_carry_forward_events": 1.5,
+              "mean_llm_cost_usd": 0.174601
+            },
+            "8": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 2.44,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 1.0,
+              "mean_carry_forward_events": 4.0,
+              "mean_llm_cost_usd": 0.372445
+            }
+          },
+          "scale_aware_unified": {
+            "4": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.92,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 0.5,
+              "mean_carry_forward_events": 1.5,
+              "mean_llm_cost_usd": 0.174601
+            },
+            "8": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 2.64,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 1.0,
+              "mean_carry_forward_events": 4.0,
+              "mean_llm_cost_usd": 0.372445
+            }
+          },
+          "scale_aware_note_aware": {
+            "4": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 1.92,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 0.5,
+              "mean_carry_forward_events": 1.5,
+              "mean_llm_cost_usd": 0.174601
+            },
+            "8": {
+              "count": 2,
+              "accuracy": 1.0,
+              "unsupported_answer_rate": 0.0,
+              "unsafe_answer_rate": 0.0,
+              "conflict_answer_rate": 0.0,
+              "propagation_rate": 0.0,
+              "unsupported_new_memory_rate": 0.0,
+              "unsafe_retention_rate": 0.0,
+              "conflict_merge_rate": 0.0,
+              "benign_overcompression_rate": 0.0,
+              "latent_bad_memory_rate": 0.0,
+              "residual_bad_memory_rate": 0.0,
+              "shielded_bad_memory_rate": 0.0,
+              "cleaned_bad_memory_rate": 0.0,
+              "raw_escalation_rate": 0.0,
+              "mean_cost": 2.64,
+              "by_family": {
+                "unsafe": {
+                  "count": 2,
+                  "accuracy": 1.0,
+                  "propagation_rate": 0.0,
+                  "raw_escalation_rate": 0.0
+                }
+              },
+              "unsafe_error_rate": 0.0,
+              "carry_forward_record_rate": 1.0,
+              "mean_carry_forward_events": 4.0,
+              "mean_llm_cost_usd": 0.372445
+            }
+          }
+        }
+      }
+    },
+    "performance_bridge": {
+      "conflict_extension_n8": {
+        "summary_only": {
+          "accuracy": 0.125,
+          "conflict_error_rate": 0.875,
+          "history_loss_rate": 0.875,
+          "raw_escalation_rate": 0.0
+        },
+        "tiered": {
+          "accuracy": 1.0,
+          "conflict_error_rate": 0.0,
+          "history_loss_rate": 0.875,
+          "raw_escalation_rate": 1.0
+        },
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "conflict_error_rate": 0.0,
+          "history_loss_rate": 0.875,
+          "raw_escalation_rate": 0.875
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "conflict_error_rate": 0.0,
+          "history_loss_rate": 0.875,
+          "raw_escalation_rate": 0.875
+        }
+      },
+      "unsafe_extension_n8": {
+        "summary_only": {
+          "accuracy": 1.0,
+          "unsafe_error_rate": 0.0,
+          "carry_forward_record_rate": 1.0,
+          "raw_escalation_rate": 0.0
+        },
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "unsafe_error_rate": 0.0,
+          "carry_forward_record_rate": 1.0,
+          "raw_escalation_rate": 0.0
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "unsafe_error_rate": 0.0,
+          "carry_forward_record_rate": 1.0,
+          "raw_escalation_rate": 0.0
         }
       }
     }

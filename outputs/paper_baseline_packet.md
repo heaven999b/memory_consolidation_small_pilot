@@ -6,7 +6,7 @@
 
 - minimal closed-loop baseline ready: `True`
 - paper-level baseline ready: `False`
-- reason: the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section, a complete benchmark-first proxy base, and a benchmark-native primary base, but it still lacks larger-scale benchmark coverage before the baseline should be presented as paper-ready.
+- reason: the project now has a real closed-loop baseline trio, multi-seed model-backed sanity slices, an exact non-proxy stress-frontier closure, a broader reviewer-facing external benchmark section, manifest-backed conflict/unsafe task extensions, a complete benchmark-first proxy base, and a benchmark-native primary base, but it still lacks larger-scale benchmark coverage before the baseline should be presented as paper-ready.
 
 ## Requirement Gate
 
@@ -19,6 +19,7 @@
 - `PASS` Frozen model-backed baseline panel is multi-seed: actual recall seeds = `[11, 23]`, actual stress seeds = `[11, 23]`.
 - `PASS` Primary baseline is grounded on an external benchmark slice: benchmark adapter layer status = `pass`, data-ready adapters = `2/2`, slice-ready adapters = `2/2`, benchmark panel attached = `True`, broader reviewer section attached = `True`.
 - `PASS` Primary implementation is grounded in a TierMem-style base rather than a local proxy stack: primary surface status = `pass`, benchmark-first ready = `True`, native primary base ready = `True`, full TierMem-native grounding = `False`.
+- `PASS` Manifest-backed task extensions cover conflict and unsafe families: task extension ready = `True`, native task families = `['benign', 'conflict', 'hallucination', 'unsafe']`.
 - `PASS` Benchmark-first proxy base is frozen end-to-end: proxy-base status = `pass`, proxy-base ready = `True`, full TierMem-native grounding = `False`.
 - `PARTIAL` Broader benchmark reviewer section has enough scale for paper-facing use: current broader benchmark section size = `32` items across both family rollups.
 - `PASS` Synthetic reference is explicitly demoted to support-only status: native primary base marks synthetic reference role = `support_only`.
@@ -78,6 +79,12 @@
 - native primary base status: `pass`
 - native primary base note: `The repo now has a benchmark-native primary base: the primary baseline surface is driven by frozen benchmark manifests, benchmark-family contracts, and runtime projection audits rather than only by a local proxy presentation layer. This is sufficient for reviewer-facing baseline grounding, even though it is still not a literal full TierMem reproduction.`
 
+## Manifest-Backed Task Extensions
+
+- task extension section attached: `True`
+- task extension panel names: `['conflict_manifest_backed_extension', 'unsafe_manifest_backed_extension']`
+- task extension task families: `['conflict', 'unsafe']`
+
 ## Frontier Status
 
 - current claim reintegration mode: `exact_stress_closure_reintegration`
@@ -103,6 +110,7 @@
 - 当前 external benchmark 已经不再只是 adapter 占位，而且 reviewer-facing benchmark section 也已经从 starter panel 扩成了更宽的 family rollups；但它还不是完整的大规模 benchmark section。
 - 当前 repo 已经有 benchmark-first primary surface，而且 benchmark-native primary base 也已经补上；但 paper-facing benchmark coverage 还不够大。
 - 当前 benchmark-first proxy base 和 benchmark-native primary base 都已经补齐，所以接下来主要是扩 benchmark scale、继续压低 synthetic support 占比。
+- `conflict` / `unsafe` 的 manifest-backed task extensions 现在已经补上，所以当前剩下的 paper gap 主要不再是 task-family coverage，而是更大的 benchmark scale。
 - 即使 primary-base blocker 已经补掉，当前更大的任务仍然是把 benchmark section 扩到更接近 paper-facing 的规模。
 
 ## Next Required Actions

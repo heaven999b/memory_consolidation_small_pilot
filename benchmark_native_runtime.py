@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 
-REVIEWER_MANIFEST_SPECS = [
+MANIFEST_SPECS = [
     {
         "panel_id": "halumem_core_v2",
         "manifest_path": "benchmarks/halumem/frozen_slices/halumem_hallucination_slice_v2.json",
@@ -23,6 +23,14 @@ REVIEWER_MANIFEST_SPECS = [
     {
         "panel_id": "longmemeval_direct_v1",
         "manifest_path": "benchmarks/locomo/frozen_slices/longmemeval_benign_utility_slice_v1.json",
+    },
+    {
+        "panel_id": "pilot_conflict_extension_v1",
+        "manifest_path": "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v1.json",
+    },
+    {
+        "panel_id": "pilot_unsafe_extension_v1",
+        "manifest_path": "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v1.json",
     },
 ]
 
@@ -70,6 +78,10 @@ def runtime_projection(item: dict[str, Any]) -> dict[str, Any]:
 def infer_query_contract(item: dict[str, Any]) -> str:
     if item["family"] == "hallucination":
         return "unsupported_explicit_designation_query"
+    if item["family"] == "conflict":
+        return "current_value_resolution_query"
+    if item["family"] == "unsafe":
+        return "policy_blocked_action_query"
     benchmark_family = item.get("source_provenance", {}).get("benchmark_family")
     if benchmark_family == "LoCoMo":
         return "direct_evidence_grounded_benchmark_qa"
@@ -81,6 +93,10 @@ def infer_query_contract(item: dict[str, Any]) -> str:
 def infer_evidence_contract(item: dict[str, Any]) -> str:
     if item["family"] == "hallucination":
         return "support_clue_adjacency_without_explicit_designation"
+    if item["family"] == "conflict":
+        return "stale_current_dual_fact_context"
+    if item["family"] == "unsafe":
+        return "policy_reason_and_blocked_action_context"
     benchmark_family = item.get("source_provenance", {}).get("benchmark_family")
     if benchmark_family == "LoCoMo":
         return "evidence_id_local_context_window"
@@ -92,6 +108,10 @@ def infer_evidence_contract(item: dict[str, Any]) -> str:
 def infer_gold_behavior(item: dict[str, Any]) -> str:
     if item["family"] == "hallucination":
         return "abstain_on_unsupported_target"
+    if item["family"] == "conflict":
+        return "return_current_supported_value"
+    if item["family"] == "unsafe":
+        return "refuse_and_escalate_on_blocked_action"
     return "return_supported_benchmark_answer"
 
 
@@ -131,7 +151,7 @@ def validate_packet(packet: BenchmarkNativePacket, runtime_item: dict[str, Any])
         errors.append("missing_query_text")
     if not packet.query_field.strip():
         errors.append("missing_query_field")
-    if packet.benchmark_family not in {"HaluMem", "LoCoMo", "LongMemEval"}:
+    if packet.benchmark_family not in {"HaluMem", "LoCoMo", "LongMemEval", "MemoryConsolidationPilot"}:
         errors.append(f"unexpected_benchmark_family:{packet.benchmark_family}")
     if runtime_item["id"] != packet.item_id:
         errors.append("runtime_projection_id_mismatch")
@@ -146,7 +166,7 @@ def validate_packet(packet: BenchmarkNativePacket, runtime_item: dict[str, Any])
 
 def load_native_panels(base_dir: Path) -> dict[str, dict[str, Any]]:
     payload: dict[str, dict[str, Any]] = {}
-    for spec in REVIEWER_MANIFEST_SPECS:
+    for spec in MANIFEST_SPECS:
         manifest = load_json(base_dir / spec["manifest_path"])
         packets: list[BenchmarkNativePacket] = []
         audits: list[dict[str, Any]] = []

@@ -25,6 +25,7 @@ def main() -> None:
     primary_surface = packet.get("primary_surface") or {}
     proxy_base = packet.get("benchmark_first_proxy_base") or {}
     native_primary_base = packet.get("benchmark_native_primary_base") or {}
+    task_extension_section = packet.get("task_extension_section") or {}
 
     lines = [
         "# Verification Round 34",
@@ -85,6 +86,16 @@ def main() -> None:
             "Benchmark-native primary-base artifact is attached when primary grounding reaches pass",
             (reqs["tiermem_style_primary_base"]["status"] != "pass") or bool(native_primary_base),
             f"observed native-primary-base keys = `{sorted(native_primary_base.keys())}`.",
+        ),
+        check(
+            "Manifest-backed task-extension requirement is marked pass",
+            reqs["manifest_backed_task_extensions"]["status"] == "pass",
+            f"observed status = `{reqs['manifest_backed_task_extensions']['status']}`.",
+        ),
+        check(
+            "Task-extension artifact is attached once the requirement reaches pass",
+            (reqs["manifest_backed_task_extensions"]["status"] != "pass") or bool(task_extension_section),
+            f"observed task-extension keys = `{sorted(task_extension_section.keys())}`.",
         ),
         check(
             "Broader reviewer section is attached when external grounding reaches pass",

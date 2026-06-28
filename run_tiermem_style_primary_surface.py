@@ -13,6 +13,7 @@ BENCHMARK_ADAPTER_RESULTS = "outputs/external_benchmark_adapter_layer.json"
 BENCHMARK_MINIMAL_RESULTS = "outputs/external_benchmark_minimal_baseline.json"
 BENCHMARK_SECTION_RESULTS = "outputs/external_benchmark_reviewer_section.json"
 BENCHMARK_NATIVE_PRIMARY_BASE_RESULTS = "outputs/benchmark_native_primary_base.json"
+TASK_EXTENSION_RESULTS = "outputs/task_extension_section.json"
 
 JSON_PATH = "outputs/tiermem_style_primary_surface.json"
 SUMMARY_PATH = "outputs/tiermem_style_primary_surface.md"
@@ -186,6 +187,23 @@ def synthetic_reference(small: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def task_extension_support(task_extension: dict[str, Any] | None) -> dict[str, Any]:
+    if task_extension is None:
+        return {
+            "source_path": TASK_EXTENSION_RESULTS,
+            "ready": False,
+            "task_families": [],
+            "panels": {},
+        }
+    return {
+        "source_path": TASK_EXTENSION_RESULTS,
+        "ready": task_extension.get("verdict", {}).get("task_extension_section_ready") is True,
+        "task_families": task_extension.get("extension_summary", {}).get("task_families", []),
+        "panels": task_extension.get("task_extension_panels", {}),
+        "performance_bridge": task_extension.get("performance_bridge", {}),
+    }
+
+
 def build_payload(
     small: dict[str, Any],
     recall: dict[str, Any],
@@ -195,6 +213,7 @@ def build_payload(
     benchmark_minimal: dict[str, Any] | None,
     benchmark_section: dict[str, Any] | None,
     benchmark_native_primary_base: dict[str, Any] | None,
+    task_extension: dict[str, Any] | None,
 ) -> dict[str, Any]:
     benchmark_grounding_status = "gap" if benchmark_adapter is None else benchmark_adapter.get("grounding_status", "gap")
     section_ready = benchmark_section is not None and benchmark_section.get("verdict", {}).get("benchmark_reviewer_section_ready") is True
@@ -267,10 +286,14 @@ def build_payload(
             "Start with the benchmark-native primary base rather than the synthetic proxy trio."
             if native_primary_ready
             else "Start with the benchmark-grounded reviewer section rather than the synthetic proxy trio.",
+            "Use the manifest-backed conflict/unsafe task extensions to cover the two task families that the external benchmark section does not natively span."
+            if task_extension is not None
+            else "Use the model-backed sanity and task-specific supporting slices for conflict/unsafe behavior.",
             "Use the model-backed sanity slices as realism support for answerability-loss and hallucination-side behavior.",
             "Treat the synthetic core panel as a control-plane reference, not the primary source of evidence.",
         ],
         "benchmark_grounded_core": benchmark_core,
+        "task_extension_support": task_extension_support(task_extension),
         "model_backed_support": {
             "actual_recall_expansion": recall_summary(recall),
             "actual_hallucination_stress": stress_summary(stress),
@@ -290,6 +313,7 @@ def build_payload(
 def build_summary(payload: dict[str, Any]) -> str:
     status = payload["primary_surface_status"]
     benchmark_core = payload["benchmark_grounded_core"]
+    task_extensions = payload["task_extension_support"]
     recall = payload["model_backed_support"]["actual_recall_expansion"]["n8_rows"]
     stress = payload["model_backed_support"]["actual_hallucination_stress"]
     synthetic = payload["synthetic_reference"]["n8_rows"]
@@ -357,6 +381,45 @@ def build_summary(payload: dict[str, Any]) -> str:
             lines.append(
                 f"| {architecture} | {row['accuracy']:.3f} | {row['propagation_rate']:.3f} | {row['raw_escalation_rate']:.3f} | {row['history_loss_rate']:.3f} |"
             )
+        lines.extend(
+            [
+                "",
+                "## Task-Extension Support",
+                "",
+                f"- source path: `{task_extensions['source_path']}`",
+                f"- ready: `{task_extensions['ready']}`",
+                f"- task families: `{task_extensions['task_families']}`",
+                "",
+            ]
+        )
+        if task_extensions["ready"]:
+            conflict_bridge = task_extensions["performance_bridge"]["conflict_extension_n8"]
+            unsafe_bridge = task_extensions["performance_bridge"]["unsafe_extension_n8"]
+            lines.extend(
+                [
+                    "### Conflict Extension (N=8)",
+                    "",
+                    "| Method | accuracy | conflict_error | history_loss | raw escalation |",
+                    "|---|---:|---:|---:|---:|",
+                ]
+            )
+            for architecture, row in conflict_bridge.items():
+                lines.append(
+                    f"| {architecture} | {row['accuracy']:.3f} | {row['conflict_error_rate']:.3f} | {row['history_loss_rate']:.3f} | {row['raw_escalation_rate']:.3f} |"
+                )
+            lines.extend(
+                [
+                    "",
+                    "### Unsafe Extension (N=8)",
+                    "",
+                    "| Method | accuracy | unsafe_error | carry_forward_record | raw escalation |",
+                    "|---|---:|---:|---:|---:|",
+                ]
+            )
+            for architecture, row in unsafe_bridge.items():
+                lines.append(
+                    f"| {architecture} | {row['accuracy']:.3f} | {row['unsafe_error_rate']:.3f} | {row['carry_forward_record_rate']:.3f} | {row['raw_escalation_rate']:.3f} |"
+                )
         lines.extend(
             [
                 "",
@@ -443,6 +506,7 @@ def main() -> None:
     benchmark_minimal = maybe_load_json(base_dir / BENCHMARK_MINIMAL_RESULTS)
     benchmark_section = maybe_load_json(base_dir / BENCHMARK_SECTION_RESULTS)
     benchmark_native_primary_base = maybe_load_json(base_dir / BENCHMARK_NATIVE_PRIMARY_BASE_RESULTS)
+    task_extension = maybe_load_json(base_dir / TASK_EXTENSION_RESULTS)
 
     payload = build_payload(
         small,
@@ -453,6 +517,7 @@ def main() -> None:
         benchmark_minimal,
         benchmark_section,
         benchmark_native_primary_base,
+        task_extension,
     )
     (base_dir / JSON_PATH).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     (base_dir / SUMMARY_PATH).write_text(build_summary(payload), encoding="utf-8")

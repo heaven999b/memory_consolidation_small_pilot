@@ -13,8 +13,11 @@
 - Added a stable helper alias `build_curated_dataset()` in [curated_dataset.py](./curated_dataset.py) so quick audits and external scripts can inspect the 58-item synthetic dataset without guessing the builder name.
 - Added [REPO_REVIEW_AND_TABLE_ANALYSIS.md](./REPO_REVIEW_AND_TABLE_ANALYSIS.md) to summarize remaining issues, reviewer-facing weaknesses, and the meaning of the current tables.
 - Updated [README.md](./README.md) so the release snapshot section also points to the simple modification log and the new review-and-analysis report.
+- Added frozen manifest-backed task extensions for `conflict` and `unsafe`, plus [run_task_extension_section.py](./run_task_extension_section.py), so task-family coverage no longer stops at `benign` / `hallucination`.
+- Added [requirements.txt](./requirements.txt), [environment.yml](./environment.yml), and [REPRODUCIBILITY.md](./REPRODUCIBILITY.md) so the release environment is explicitly pinned.
+- Added [run_release_rebuild.py](./run_release_rebuild.py) so the reviewer-facing packet can be rebuilt from one entrypoint with the intended multi-seed configuration preserved.
 
 ## One-Line Interpretation
 
 - This repo is now cleanly versioned and reviewer-credible for idea reporting.
-- It is not yet paper-ready because benchmark scale and benchmark-task breadth are still narrower than a full baseline section should be.
+- It is not yet paper-ready mainly because benchmark scale is still too small and benign utility retention is still the main empirical bottleneck.

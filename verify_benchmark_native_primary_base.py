@@ -41,23 +41,28 @@ def main() -> None:
             f"observed runtime projection = `{native['runtime_projection_valid_count']}/{native['runtime_projection_total_count']}`.",
         ),
         check(
-            "Native primary base covers four slice panels",
-            native["panel_count"] == 4,
+            "Native primary base covers six manifest-backed panels",
+            native["panel_count"] == 6,
             f"observed panel count = `{native['panel_count']}`.",
         ),
         check(
-            "Native primary base covers at least three benchmark families",
-            sorted(native["benchmark_families"]) == ["HaluMem", "LoCoMo", "LongMemEval"],
+            "Native primary base keeps the three external benchmark families plus the local task-extension family",
+            sorted(native["benchmark_families"]) == ["HaluMem", "LoCoMo", "LongMemEval", "MemoryConsolidationPilot"],
             f"observed benchmark families = `{native['benchmark_families']}`.",
         ),
         check(
-            "Native primary base covers both hallucination and benign task families",
-            sorted(native["task_families"]) == ["benign", "hallucination"],
+            "Native primary base now covers all four task families",
+            sorted(native["task_families"]) == ["benign", "conflict", "hallucination", "unsafe"],
             f"observed task families = `{native['task_families']}`.",
         ),
         check(
             "Broader benchmark coverage strengthening is explicitly marked pass",
             strengthening["broader_benchmark_coverage_status"] == "pass",
+            f"observed strengthening block = `{strengthening}`.",
+        ),
+        check(
+            "Task-extension coverage strengthening is explicitly marked pass",
+            strengthening["task_extension_coverage_status"] == "pass",
             f"observed strengthening block = `{strengthening}`.",
         ),
         check(

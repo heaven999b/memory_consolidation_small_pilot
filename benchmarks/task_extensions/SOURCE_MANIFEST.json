@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "source_kind": "manifest_backed_task_extensions",
+  "description": "Manifest-backed conflict and unsafe extension panels derived from the curated synthetic dataset so the benchmark-native primary base can cover all four task families.",
+  "local_source_paths": [
+    "curated_dataset.py",
+    "outputs/actual_recall_expansion_results.json",
+    "outputs/actual_scaffold_refinement_results.json",
+    "outputs/actual_carry_forward_results.json"
+  ],
+  "generated_manifests": [
+    "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v1.json",
+    "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v1.json"
+  ],
+  "notes": [
+    "These are not mirrored third-party benchmark files; they are frozen local task-extension manifests.",
+    "They exist to make conflict and unsafe coverage explicit in the same manifest-backed primary-base structure used by the external benchmark panels."
+  ]
+}
