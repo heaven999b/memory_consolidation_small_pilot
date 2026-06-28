@@ -2,7 +2,7 @@
 
 基于论文 [Memory in the LLM Era: Modular Architectures and Strategies in a Unified Framework](https://arxiv.org/pdf/2604.01707) 与文中统一复现结果整理，面向个人学习使用。  
 写法参考内部“产品实现逻辑解剖”风格：先看问题定位，再按系统层拆解，最后收束到关键取舍与结论。  
-配套的展开讲义与链接索引见 [study/agent_memory_modular_framework/README.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/study/agent_memory_modular_framework/README.md)。  
+配套的完整学习知识库见 [study/README.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/study/README.md)，其中模块化展开讲义在 [study/agent_memory_modular_framework/README.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/study/agent_memory_modular_framework/README.md)。  
 更新时间：2026-06-29
 
 ---

@@ -1,6 +1,7 @@
 # Agent Memory 模块化框架学习资料包
 
-这套资料包是从 [AGENT_MEMORY_METHOD_SUMMARY.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/AGENT_MEMORY_METHOD_SUMMARY.md) 继续向下展开出来的“深读版”。
+这套资料包是从 [AGENT_MEMORY_METHOD_SUMMARY.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/AGENT_MEMORY_METHOD_SUMMARY.md) 继续向下展开出来的“深读版”。  
+如果你想看当前整个知识库的总入口，而不只看这一组材料，请先看 [study/README.md](/Users/yihaiwen/Documents/New%20project/memory_consolidation_small_pilot/study/README.md)。
 
 它的目标不是再做一遍泛泛综述，而是把原来那份总文档里的 6 个核心点，拆成可以单独学习、单独复习、单独引用的独立材料。你可以把它理解成一个面向个人研究的内部学习目录：
 
