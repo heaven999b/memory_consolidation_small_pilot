@@ -501,11 +501,136 @@ flowchart LR
 
 ---
 
-## 十三、如果自己做，一个更稳的实现路线
+## 十三、真正值得研究的完整仓库：哪些不是小 demo
+
+上面那三类项目蓝图，解决的是“应该怎么设计”。  
+如果你现在更关心的是“我到底该去看哪些完整仓库”，那必须把论文方法和真实开源工程分开看，因为**不是每个方法都有工业级完整仓库**。
+
+下面这份清单是我在 **2026-06-29** 做的一次公开仓库筛选，标准很简单：
+
+1. 代码量和目录结构要足够完整，不是单脚本 demo。
+2. 至少要覆盖库、服务、集成、测试、部署中的多个层次。
+3. 最好已经有持续 release、文档、SDK、server 或 playground。
+
+### 13.1 Tier A：真正值得 clone 下来研究的完整项目
+
+| 项目 | 最接近的方法谱系 | 公开仓库规模 | 为什么它算“完整项目” | 先看哪些目录 |
+| --- | --- | --- | --- | --- |
+| [Letta](https://github.com/letta-ai/letta) | `MemGPT` 路线 | `23.6k` stars, `7,466` commits | 不是论文 toy repo，而是完整 stateful agent 平台，带 agents API、CLI、数据库迁移、sandbox、tests、docker 和 release | `letta/`、`db/`、`alembic/`、`sandbox/`、`tests/` |
+| [Mem0](https://github.com/mem0ai/mem0) | `Mem0` 路线 | `59.6k` stars, `2,407` commits | 包含库、self-hosted server、cloud 对接、CLI、集成、评测、tests、agent plugins，已经是“产品化 memory layer” | `mem0/`、`server/`、`openmemory/`、`integrations/`、`evaluation/`、`tests/` |
+| [Graphiti](https://github.com/getzep/graphiti) | `Zep` / `Mem0g` 路线 | `28.1k` stars, `880` commits | 完整 temporal graph memory engine，带 graph core、server、MCP server、tests、spec、多种图后端支持 | `graphiti_core/`、`server/`、`mcp_server/`、`tests/`、`spec/` |
+| [MemoryOS](https://github.com/BAI-LAB/MemoryOS) | `MemoryOS` 路线 | `1.5k` stars, `270` commits | 虽然没 Letta/Mem0 那么成熟，但已经不是 demo，带 PyPI 包、MCP、playground、eval、Docker、docs | `memoryos-pypi/`、`memoryos-mcp/`、`memoryos-playground/`、`eval/` |
+
+这四个里面，如果你要的是“几千行代码、完整工程、能真正学架构”的仓库，我建议优先顺序是：
+
+1. **`Mem0`**：最像“生产可用 memory layer”。
+2. **`Letta`**：最像“带长期记忆的 agent runtime / platform”。
+3. **`Graphiti`**：最像“真正的图记忆引擎”。
+4. **`MemoryOS`**：最像“论文方法向可用框架演化”的开源实现。
+
+### 13.2 Tier A-：很有价值，但要注意它们不是产品核心仓库
+
+| 项目 | 应该怎么理解 | 规模 | 价值 | 限制 |
+| --- | --- | --- | --- | --- |
+| [Zep](https://github.com/getzep/zep) | 这是 **Zep Cloud 的 examples / integrations 仓库**，不是 Zep 产品核心本体 | `4.7k` stars, `362` commits | 很适合看 benchmark、framework integration、eval harness、ontology 和 MCP 接法 | 它本身不是完整托管服务源码；真正的图内核是 `Graphiti` |
+
+这一点很重要。`Zep` 这个 repo 名字很容易让人误以为“这就是完整产品源码”，但它的 README 明确说了：**这不是 Zep 的产品或服务本体，而是 example/integration/tooling 仓库**。  
+所以如果你想研究：
+
+- **图记忆内核怎么做**：看 `Graphiti`
+- **Zep 怎么接 LangGraph / AutoGen / ADK / benchmark**：看 `Zep`
+
+### 13.3 Tier B：完整研究仓库，但还达不到工业级完整平台
+
+| 项目 | 最接近的方法 | 规模 | 适合学什么 | 不适合学什么 |
+| --- | --- | --- | --- | --- |
+| [A-MEM](https://github.com/agiresearch/A-mem) | `A-MEM` | `1.1k` stars, `31` commits | 学 agentic linking、Zettelkasten 风格 note evolution、A-MEM 核心机制 | 不适合拿来学完整平台工程 |
+| [MemoChat](https://github.com/LuJunru/MemoChat) | `MemoChat` | `29` stars, `37` commits | 学 memo 训练流程、数据和模型 pipeline | 不适合当 production memory infrastructure 样板 |
+
+这两类仓库我会建议你这么看：
+
+- 如果你在研究**方法机制**，它们有价值。
+- 如果你在研究**工业级系统怎么搭**，它们不够。
+
+### 13.4 目前没有看到“成熟完整公开仓库”的方法
+
+按我这次检索结果，下面几类方法目前**没有看到和 Letta / Mem0 / Graphiti 同级别的成熟公开仓库**：
+
+| 方法 | 当前公开状态 | 更接近的替代研究对象 |
+| --- | --- | --- |
+| `MemoryBank` | 论文很经典，但这次没有找到清晰、持续维护的完整公开仓库 | `Mem0`、`MemoryOS` |
+| `MemTree` | 论文清楚，但没找到成熟公开 full repo | `MemoryOS`、`Graphiti`、`Letta` |
+| `MemOS` | 论文有，但这次没有定位到成熟 OSS 仓库 | `MemoryOS`、`Mem0` |
+| `Mem0g` | 没有看到独立、成熟、广泛使用的 standalone 工程 repo | `Graphiti` |
+
+这不是说这些方法没价值，而是说：
+
+- **论文方法 != 一定有可研究的完整工程仓库**
+- **想学工程实现时，应该优先看“方法精神最接近、但工程最完整”的替代仓库**
+
+### 13.5 如果你真要研究“完整工业工程”，推荐这样读仓库
+
+#### 路线 1：想看 Memory 作为独立产品层怎么做
+
+优先看 [Mem0](https://github.com/mem0ai/mem0)：
+
+1. `mem0/`：核心 memory API 和算法入口。
+2. `server/`：self-hosted 服务怎么部署和鉴权。
+3. `openmemory/`：更完整的产品形态。
+4. `integrations/`：怎么接外部框架。
+5. `evaluation/` 和 `tests/`：怎么评估和回归测试。
+
+#### 路线 2：想看 Memory 怎么嵌进 agent runtime
+
+优先看 [Letta](https://github.com/letta-ai/letta)：
+
+1. `letta/`：主运行时。
+2. `db/` + `alembic/`：状态持久化、schema、迁移。
+3. `sandbox/`：工具执行和隔离环境。
+4. `tests/`：系统级回归。
+5. `compose.yaml`：本地完整栈启动方式。
+
+#### 路线 3：想看图记忆和时间知识图怎么做
+
+优先看 [Graphiti](https://github.com/getzep/graphiti)：
+
+1. `graphiti_core/`：图构建和 temporal fact 管理核心。
+2. `server/`：服务接口层。
+3. `mcp_server/`：怎么把图记忆能力暴露给 agent 客户端。
+4. `tests/`：图检索、ingestion、时间有效性测试。
+5. `spec/`：接口和行为约束。
+
+#### 路线 4：想看论文方法怎样逐步变成可用框架
+
+优先看 [MemoryOS](https://github.com/BAI-LAB/MemoryOS)：
+
+1. `memoryos-pypi/`：核心包实现。
+2. `memoryos-mcp/`：如何以 MCP server 暴露能力。
+3. `eval/`：怎么复现实验。
+4. `memoryos-playground/`：面向交互体验的外层。
+
+### 13.6 一个现实判断：你不该指望“一份 repo 学完所有 memory”
+
+工业级 memory 系统通常分成三种不同层面：
+
+1. **memory algorithm layer**：写入、更新、检索怎么做。
+2. **agent runtime layer**：状态、工具、消息、任务流怎么组织。
+3. **product infra layer**：数据库、鉴权、部署、日志、评测、集成怎么落地。
+
+所以真正好的学习路径，不是死盯一个仓库，而是组合着看：
+
+- `Mem0` 学产品化 memory layer
+- `Letta` 学 stateful agent runtime
+- `Graphiti` 学图结构和时间事实
+- `MemoryOS` 学论文方法到框架化演进
+
+---
+
+## 十四、如果自己做，一个更稳的实现路线
 
 不建议一上来就做全量 `MemOS` 或全量图系统。更稳的路线通常是三步走：
 
-### 13.1 Phase 1：先做 `Mem0` 风格的可用 MVP
+### 14.1 Phase 1：先做 `Mem0` 风格的可用 MVP
 
 目标不是“最先进”，而是先把最核心闭环跑通：
 
@@ -520,7 +645,7 @@ flowchart LR
 - 哪些信息真的值得持久化；
 - 摘要错误最常出现在哪类场景。
 
-### 13.2 Phase 2：补成 `MemoryOS` 风格的分层系统
+### 14.2 Phase 2：补成 `MemoryOS` 风格的分层系统
 
 当你发现“所有记忆都在一个池里开始互相污染”时，就该进入第二步：
 
@@ -530,7 +655,7 @@ flowchart LR
 
 这一步最大的收益是：系统会从“能记住”变成“能长期稳定使用”。
 
-### 13.3 Phase 3：再决定要不要加图或树
+### 14.3 Phase 3：再决定要不要加图或树
 
 只有当你真的遇到以下需求，再考虑图/树：
 
@@ -546,7 +671,7 @@ flowchart LR
 
 ---
 
-## 十四、个人学习视角下的结论
+## 十五、个人学习视角下的结论
 
 把这 10 种方法放在一起看，我觉得最值得记住的不是具体实现细节，而是下面四句：
 
@@ -563,11 +688,13 @@ flowchart LR
 
 ---
 
-## 十五、参考
+## 十六、参考
 
 - 统一框架论文：  
   [Memory in the LLM Era: Modular Architectures and Strategies in a Unified Framework](https://arxiv.org/pdf/2604.01707)
 - 本文档只整理论文中复现对比的 10 种代表性方法：  
   `A-MEM`、`MemoryBank`、`MemGPT`、`Mem0`、`Mem0g`、`MemoChat`、`Zep`、`MemTree`、`MemoryOS`、`MemOS`
+- 公开完整仓库参考：  
+  [Letta](https://github.com/letta-ai/letta)、[Mem0](https://github.com/mem0ai/mem0)、[Graphiti](https://github.com/getzep/graphiti)、[Zep](https://github.com/getzep/zep)、[MemoryOS](https://github.com/BAI-LAB/MemoryOS)、[A-MEM](https://github.com/agiresearch/A-mem)、[MemoChat](https://github.com/LuJunru/MemoChat)
 - 说明：  
   为了便于比较，文中的“提取/存储/检索”使用的是主导范式归类；部分方法本身是 hybrid 设计，因此这里做了适度抽象。
