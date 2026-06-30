@@ -82,12 +82,14 @@ The current local state is:
   - real code is cloned and the bridge runtime exists
   - LoCoMo and LongMemEval are now blocked mainly by `OPENAI_API_KEY`, not by missing code
 - `HaluMem usable`: `partial`
-  - local mirror and eval helpers exist
-  - final `HaluMem-Medium.jsonl` expected by the TierMem loader is still missing
-- `AgentPoison usable`: `paper_only`
-  - not yet cloned locally
-- `MPBench / MemEvoBench`: `paper_only`
-  - not yet grounded by local artifacts
+  - local mirror, eval helpers, and canonical `HaluMem-Medium.jsonl` are now present
+  - the remaining blocker for a real run is `OPENAI_API_KEY`
+- `AgentPoison usable`: `partial`
+  - the official repo is now mirrored locally
+  - trigger/query poisoning has not yet been executed in this workspace
+- `MPBench / MemEvoBench`: `partial`
+  - `MemEvoBench` is now mirrored locally but not yet verified by a tiny runnable path
+  - `MPBench` is still unresolved as a runnable local artifact
 
 So the repo has moved from "local proxy-only baseline work" to "TierMem migration in progress," but it has **not** yet completed the full V3 experimental program.
 
@@ -241,6 +243,10 @@ The following items are still pending:
   - Mem0 / Zep / MemoryOS on official harnesses
 - pass the real `E0` sanity gate first
 - restore the full `N` sweep on the real final-path runs
+- execute real attack-suite paths
+  - AgentPoison trigger/query overlay
+  - a tiny MemEvoBench runnable path
+  - resolve MPBench artifact availability
 - expand conflict / unsafe into real family-scale tables
 - add ≥5 seeds with proper statistics
 - add human judge validation with Cohen's `kappa`

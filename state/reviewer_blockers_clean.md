@@ -9,8 +9,9 @@ The omitted item is the separate `>=5 seed` requirement, which is tracked elsewh
 
 - `feasibility_report.md` still shows TierMem and HaluMem as `partial`.
 - TierMem is blocked by `OPENAI_API_KEY`, so there is still no real LoCoMo / LongMemEval end-to-end run.
-- HaluMem is blocked by the missing canonical `HaluMem-Medium.jsonl`.
-- AgentPoison remains `paper_only`, and MPBench / MemEvoBench still have no local verified artifact.
+- HaluMem is no longer blocked by dataset placement: the canonical `HaluMem-Medium.jsonl` is now present locally, and the remaining blocker is also `OPENAI_API_KEY`.
+- AgentPoison and MemEvoBench are now locally grounded at the repository level, but they still do not count as executed attack-suite evidence.
+- MPBench is still unresolved as a runnable local artifact.
 - Working conclusion: there is not yet a real-model, real-benchmark, end-to-end minimum run that can serve as the empirical anchor.
 
 ## 2. `outputs/v3_no_rewrite_statistics.md` should be treated as synthetic dry-run evidence
@@ -19,17 +20,18 @@ The omitted item is the separate `>=5 seed` requirement, which is tracked elsewh
 - That pattern does not look like real LLM output variation; it looks like a by-construction proxy result.
 - Working conclusion: these artifacts must be labeled as synthetic / dry-run and must not be mixed into the same evidence table as real benchmark results.
 
-## 3. The N sweep is still too shallow for the planned statistical story
+## 3. The N sweep is still too shallow on the real-facing path
 
 - The plan called for `N in {0,1,2,4,8,16}`.
-- The currently visible real-facing surface is effectively only using `N=8` and `N=16`.
-- Two points are not enough for a trend claim or a meaningful sweep analysis.
-- Working conclusion: restore at least `{0,1,2,4,8}` before making any N-trend argument.
+- The synthetic local no-rewrite surface now exposes the full sweep, but the real benchmark-facing path still does not.
+- That means a real-path trend claim is still unavailable.
+- Working conclusion: restore at least `{0,1,2,4,8}` on the real benchmark-facing path before making any N-trend argument.
 
-## 4. The safety attack suite is still effectively empty
+## 4. The safety attack suite is still not executed evidence
 
-- AgentPoison is not locally grounded.
-- MPBench and MemEvoBench are not locally verified.
+- AgentPoison is now locally grounded at the repository level, but no trigger/query overlay has been executed yet.
+- MemEvoBench is now locally grounded at the repository level, but no tiny runnable path has been executed yet.
+- MPBench is still not locally verified.
 - Any current `unsafe` family table is therefore best understood as a proxy extension, not a true attack benchmark result.
 - Working conclusion: do not claim executable attack-suite evidence until real trigger cases are grounded and run.
 

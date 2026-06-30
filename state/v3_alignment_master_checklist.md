@@ -17,10 +17,10 @@ This checklist treats `02_revised_plan_v3.md` as the controlling plan.
 - [x] Build a local TierMem bridge runtime.
 - [~] LoCoMo real bridge sanity path is prepared, but still needs `OPENAI_API_KEY` for an actual run.
 - [~] LongMemEval real bridge sanity path is prepared, but still needs `OPENAI_API_KEY` for an actual run.
-- [~] HaluMem local mirror exists, but final `HaluMem-Medium.jsonl` is still missing.
-- [ ] AgentPoison local grounding
+- [~] HaluMem local mirror and canonical `HaluMem-Medium.jsonl` are now present, but the real run still needs `OPENAI_API_KEY`.
+- [~] AgentPoison local grounding: official repo is mirrored locally, but trigger/query execution is still pending
 - [ ] MPBench local artifact verification
-- [ ] MemEvoBench local artifact verification
+- [~] MemEvoBench local artifact verification: official repo is mirrored locally, but runnable tiny-path verification is still pending
 - [~] License audit started, but not all mirrored assets are fully verified.
 
 ## C. Legacy migration
@@ -48,7 +48,7 @@ This checklist treats `02_revised_plan_v3.md` as the controlling plan.
 ## E. Still pending for full V3
 
 - [~] real public baselines: readiness audit exists; live Mem0 / Zep / MemoryOS runs are still pending
-- [~] HaluMem-Medium canonical data placement: expected path and preflight are fixed, but the file is still absent locally
+- [x] HaluMem-Medium canonical data placement: expected path and preflight are fixed, and the file is now present locally
 - [~] official eval runtime: env templates and base requirements are present, but `.venv_official_eval` is not built yet
 - [~] query-blind vs query-aware summary-only fairness pair: local proxy comparison now exists; real TierMem/public-baseline path is still pending
 - [~] full `N in {0,1,2,4,8,16}`: restored on the local synthetic comparison/statistics surface; not yet restored on the real final-path runs
