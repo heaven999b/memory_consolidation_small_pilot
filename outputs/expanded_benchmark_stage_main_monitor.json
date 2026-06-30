@@ -1,0 +1,358 @@
+{
+  "stage": "main",
+  "stage_description": "Full expanded official benchmark pool.",
+  "generated_at_epoch": 1782829587.244,
+  "generated_at": "2026-06-30 22:26:27",
+  "seeds": [
+    11,
+    23
+  ],
+  "max_passes": 8,
+  "n_values": [
+    1,
+    8
+  ],
+  "process": {
+    "alive": false,
+    "pid": 72361,
+    "elapsed": null,
+    "elapsed_seconds": null,
+    "command": null,
+    "error": null
+  },
+  "overall": {
+    "total_items": 636,
+    "completed_items": 636,
+    "started_items": 636,
+    "completed_passes": 5088,
+    "total_passes": 5088,
+    "item_completion_rate": 1.0,
+    "pass_completion_rate": 1.0
+  },
+  "method_summary": {
+    "base": {
+      "total_items": 318,
+      "completed_items": 318,
+      "started_items": 318,
+      "completed_passes": 2544,
+      "total_passes": 2544,
+      "item_completion_rate": 1.0,
+      "pass_completion_rate": 1.0
+    },
+    "psu": {
+      "total_items": 318,
+      "completed_items": 318,
+      "started_items": 318,
+      "completed_passes": 2544,
+      "total_passes": 2544,
+      "item_completion_rate": 1.0,
+      "pass_completion_rate": 1.0
+    }
+  },
+  "panel_rows": [
+    {
+      "panel_id": "halumem_expanded_v1",
+      "total_items": 19,
+      "base": {
+        "11": {
+          "total_items": 19,
+          "completed_items": 19,
+          "started_items": 19,
+          "completed_passes": 152,
+          "total_passes": 152,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 19,
+          "completed_items": 19,
+          "started_items": 19,
+          "completed_passes": 152,
+          "total_passes": 152,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 38,
+          "completed_items": 38,
+          "started_items": 38,
+          "completed_passes": 304,
+          "total_passes": 304,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      },
+      "psu": {
+        "11": {
+          "total_items": 19,
+          "completed_items": 19,
+          "started_items": 19,
+          "completed_passes": 152,
+          "total_passes": 152,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 19,
+          "completed_items": 19,
+          "started_items": 19,
+          "completed_passes": 152,
+          "total_passes": 152,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 38,
+          "completed_items": 38,
+          "started_items": 38,
+          "completed_passes": 304,
+          "total_passes": 304,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      }
+    },
+    {
+      "panel_id": "locomo_expanded_v1",
+      "total_items": 80,
+      "base": {
+        "11": {
+          "total_items": 80,
+          "completed_items": 80,
+          "started_items": 80,
+          "completed_passes": 640,
+          "total_passes": 640,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 80,
+          "completed_items": 80,
+          "started_items": 80,
+          "completed_passes": 640,
+          "total_passes": 640,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 160,
+          "completed_items": 160,
+          "started_items": 160,
+          "completed_passes": 1280,
+          "total_passes": 1280,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      },
+      "psu": {
+        "11": {
+          "total_items": 80,
+          "completed_items": 80,
+          "started_items": 80,
+          "completed_passes": 640,
+          "total_passes": 640,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 80,
+          "completed_items": 80,
+          "started_items": 80,
+          "completed_passes": 640,
+          "total_passes": 640,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 160,
+          "completed_items": 160,
+          "started_items": 160,
+          "completed_passes": 1280,
+          "total_passes": 1280,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      }
+    },
+    {
+      "panel_id": "longmemeval_expanded_v2",
+      "total_items": 60,
+      "base": {
+        "11": {
+          "total_items": 60,
+          "completed_items": 60,
+          "started_items": 60,
+          "completed_passes": 480,
+          "total_passes": 480,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 60,
+          "completed_items": 60,
+          "started_items": 60,
+          "completed_passes": 480,
+          "total_passes": 480,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 120,
+          "completed_items": 120,
+          "started_items": 120,
+          "completed_passes": 960,
+          "total_passes": 960,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      },
+      "psu": {
+        "11": {
+          "total_items": 60,
+          "completed_items": 60,
+          "started_items": 60,
+          "completed_passes": 480,
+          "total_passes": 480,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "23": {
+          "total_items": 60,
+          "completed_items": 60,
+          "started_items": 60,
+          "completed_passes": 480,
+          "total_passes": 480,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0,
+          "latest_partial": null,
+          "next_unstarted": null
+        },
+        "aggregate": {
+          "total_items": 120,
+          "completed_items": 120,
+          "started_items": 120,
+          "completed_passes": 960,
+          "total_passes": 960,
+          "item_completion_rate": 1.0,
+          "pass_completion_rate": 1.0
+        }
+      }
+    }
+  ],
+  "logs": {
+    "halumem": {
+      "path": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/external_benchmark_halumem_cache_summarizer_log.jsonl",
+      "exists": true,
+      "last_event": {
+        "event": "cache_hit",
+        "cache_key": "v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_02_seed11_pass8",
+        "status": "ok",
+        "message": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/external_benchmark_halumem_cache/v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_02_seed11_pass8.json",
+        "timestamp": 1782798885.468
+      },
+      "last_success": {
+        "event": "attempt_success",
+        "cache_key": "v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_19_seed23_pass8",
+        "attempt": 1,
+        "status": "ok",
+        "duration_s": 9.044,
+        "message": "wrote v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_19_seed23_pass8.json",
+        "timestamp": 1782694564.622
+      },
+      "active_attempt": null,
+      "recent_median_duration_s": 14.185,
+      "recent_success_count": 14
+    },
+    "locomo": {
+      "path": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/external_benchmark_locomo_cache_summarizer_log.jsonl",
+      "exists": true,
+      "last_event": {
+        "event": "cache_hit",
+        "cache_key": "v2_scaffold_refinement_tiny_refusal_scaffold_longmemeval_expanded_014_seed11_pass8",
+        "status": "ok",
+        "message": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/external_benchmark_locomo_cache/v2_scaffold_refinement_tiny_refusal_scaffold_longmemeval_expanded_014_seed11_pass8.json",
+        "timestamp": 1782798885.608
+      },
+      "last_success": null,
+      "active_attempt": null,
+      "recent_median_duration_s": null,
+      "recent_success_count": 0
+    }
+  },
+  "log_health": {
+    "halumem": {
+      "status": "stalled",
+      "summary": "no recent cache activity",
+      "active_age_seconds": null,
+      "success_age_seconds": 135023,
+      "last_event_age_seconds": 30702
+    },
+    "locomo": {
+      "status": "stalled",
+      "summary": "no recent cache activity",
+      "active_age_seconds": null,
+      "success_age_seconds": null,
+      "last_event_age_seconds": 30702
+    }
+  },
+  "activity_health": {
+    "status": "stalled",
+    "summary": "no recent cache activity detected",
+    "active_age_seconds": null,
+    "success_age_seconds": 135023,
+    "last_event_age_seconds": 30702,
+    "latest_active": null,
+    "latest_success": {
+      "event": "attempt_success",
+      "cache_key": "v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_19_seed23_pass8",
+      "attempt": 1,
+      "status": "ok",
+      "duration_s": 9.044,
+      "message": "wrote v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_19_seed23_pass8.json",
+      "timestamp": 1782694564.622
+    },
+    "latest_event": {
+      "event": "cache_hit",
+      "cache_key": "v2_scaffold_refinement_tiny_refusal_scaffold_longmemeval_expanded_014_seed11_pass8",
+      "status": "ok",
+      "message": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/external_benchmark_locomo_cache/v2_scaffold_refinement_tiny_refusal_scaffold_longmemeval_expanded_014_seed11_pass8.json",
+      "timestamp": 1782798885.608
+    }
+  },
+  "eta_seconds": null,
+  "eta_human": null,
+  "stage_outputs": {
+    "json": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main.json",
+    "summary": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main.md",
+    "traces": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main_traces.md"
+  },
+  "stage_output_status": {
+    "json": true,
+    "summary": true,
+    "traces": true
+  },
+  "watch_log_path": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main_monitor_watch.log",
+  "monitor_note": "Progress counts the actual expensive cache-building work: one shared base cache plus one shared PSU scaffold cache, not duplicated architecture cells."
+}

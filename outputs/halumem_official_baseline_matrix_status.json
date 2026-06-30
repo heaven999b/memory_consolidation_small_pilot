@@ -1,0 +1,119 @@
+{
+  "description": "Readiness status for official HaluMem memory-system baseline wrappers.",
+  "eval_dir": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/eval",
+  "systems": [
+    {
+      "system": "memzero",
+      "frame": "memzero",
+      "script": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/eval/eval_memzero.py",
+      "script_exists": true,
+      "required_env": [
+        "MEM0_API_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "missing_env": [
+        "MEM0_API_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "required_packages": [
+        "mem0",
+        "openai",
+        "tenacity",
+        "dotenv",
+        "tqdm"
+      ],
+      "missing_packages": [
+        "mem0",
+        "openai"
+      ],
+      "ready": false,
+      "notes": "Single-stage run; then score with evaluation.py --frame memzero."
+    },
+    {
+      "system": "zep",
+      "frame": "zep",
+      "script": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/eval/eval_zep.py",
+      "script_exists": true,
+      "required_env": [
+        "ZEP_API_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "missing_env": [
+        "ZEP_API_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "required_packages": [
+        "zep_cloud",
+        "openai",
+        "tenacity",
+        "dotenv",
+        "tqdm"
+      ],
+      "missing_packages": [
+        "zep_cloud",
+        "openai"
+      ],
+      "ready": false,
+      "notes": "Two-stage run: first add, then search, then score with evaluation.py --frame zep."
+    },
+    {
+      "system": "memos",
+      "frame": "memos",
+      "script": "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/eval/eval_memos.py",
+      "script_exists": true,
+      "required_env": [
+        "MEMOS_URL",
+        "MEMOS_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "missing_env": [
+        "MEMOS_URL",
+        "MEMOS_KEY",
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL",
+        "RETRY_TIMES",
+        "WAIT_TIME_LOWER",
+        "WAIT_TIME_UPPER"
+      ],
+      "required_packages": [
+        "requests",
+        "openai",
+        "tenacity",
+        "dotenv",
+        "tqdm"
+      ],
+      "missing_packages": [
+        "openai"
+      ],
+      "ready": false,
+      "notes": "Single-stage run; then score with evaluation.py --frame memos."
+    }
+  ],
+  "execute_requested": false
+}

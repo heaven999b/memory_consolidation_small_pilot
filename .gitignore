@@ -6,9 +6,23 @@ __pycache__/
 # Local environments
 .venv/
 .venv312/
+.venv*/
+.venv_official_eval/
+
+# Local env files
+.env
+.env.v3
+.env.official_eval
 
 # Model/cache artifacts that are reproducible and noisy in version control
 outputs/*_cache/
+outputs/*_summarizer_log.jsonl
+outputs/actual_carry_forward_progress.json
+outputs/tiermem_local_mem0/
+outputs/tiermem_local_qdrant/
+
+# Oversized generated benchmark dumps stay local; summaries and derived reports remain versioned.
+outputs/expanded_benchmark_stage_main.json
 
 # Raw mirrored benchmark corpora are intentionally omitted from the Git snapshot.
 # The tracked frozen slices and SOURCE_MANIFEST files are the versioned research surface.

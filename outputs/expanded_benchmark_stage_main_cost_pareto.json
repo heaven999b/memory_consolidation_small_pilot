@@ -1,0 +1,171 @@
+{
+  "description": "Cost-oriented Pareto readout for the finished expanded benchmark main run.",
+  "sections": [
+    {
+      "title": "Benign Utility (N=8 accuracy vs cost)",
+      "quality_label": "accuracy",
+      "rows": [
+        {
+          "architecture": "summary_only",
+          "quality": 0.314,
+          "mean_cost": 2.44,
+          "mean_llm_cost_usd": 0.35864,
+          "raw_escalation_rate": 0.0,
+          "label": "accuracy"
+        },
+        {
+          "architecture": "tiered",
+          "quality": 0.946,
+          "mean_cost": 3.48,
+          "mean_llm_cost_usd": 0.35864,
+          "raw_escalation_rate": 0.65,
+          "label": "accuracy"
+        },
+        {
+          "architecture": "scale_aware_unified",
+          "quality": 0.946,
+          "mean_cost": 3.68,
+          "mean_llm_cost_usd": 0.35864,
+          "raw_escalation_rate": 0.65,
+          "label": "accuracy"
+        },
+        {
+          "architecture": "scale_aware_note_aware",
+          "quality": 0.946,
+          "mean_cost": 3.68,
+          "mean_llm_cost_usd": 0.35864,
+          "raw_escalation_rate": 0.65,
+          "label": "accuracy"
+        },
+        {
+          "architecture": "psu",
+          "quality": 0.986,
+          "mean_cost": 2.754,
+          "mean_llm_cost_usd": 0.387664,
+          "raw_escalation_rate": 0.071,
+          "label": "accuracy"
+        }
+      ],
+      "pareto_front_mean_cost": [
+        "psu",
+        "summary_only"
+      ],
+      "pareto_front_mean_llm_cost_usd": [
+        "psu",
+        "scale_aware_note_aware",
+        "scale_aware_unified",
+        "tiered"
+      ],
+      "iso_budget_leaders": [
+        {
+          "budget": 2.44,
+          "leader": "summary_only",
+          "quality": 0.314,
+          "cost": 2.44
+        },
+        {
+          "budget": 2.754,
+          "leader": "psu",
+          "quality": 0.986,
+          "cost": 2.754
+        },
+        {
+          "budget": 3.48,
+          "leader": "psu",
+          "quality": 0.986,
+          "cost": 2.754
+        },
+        {
+          "budget": 3.68,
+          "leader": "psu",
+          "quality": 0.986,
+          "cost": 2.754
+        }
+      ]
+    },
+    {
+      "title": "Hallucination Safety (N=8 1-false_present vs cost)",
+      "quality_label": "1 - false_present_rate",
+      "rows": [
+        {
+          "architecture": "summary_only",
+          "quality": 1.0,
+          "mean_cost": 2.44,
+          "mean_llm_cost_usd": 0.314566,
+          "raw_escalation_rate": 0.0,
+          "label": "1 - false_present_rate"
+        },
+        {
+          "architecture": "tiered",
+          "quality": 0.0,
+          "mean_cost": 4.04,
+          "mean_llm_cost_usd": 0.314566,
+          "raw_escalation_rate": 1.0,
+          "label": "1 - false_present_rate"
+        },
+        {
+          "architecture": "scale_aware_unified",
+          "quality": 0.921,
+          "mean_cost": 2.766,
+          "mean_llm_cost_usd": 0.314566,
+          "raw_escalation_rate": 0.079,
+          "label": "1 - false_present_rate"
+        },
+        {
+          "architecture": "scale_aware_note_aware",
+          "quality": 0.947,
+          "mean_cost": 2.724,
+          "mean_llm_cost_usd": 0.314566,
+          "raw_escalation_rate": 0.053,
+          "label": "1 - false_present_rate"
+        },
+        {
+          "architecture": "psu",
+          "quality": 1.0,
+          "mean_cost": 2.64,
+          "mean_llm_cost_usd": 0.411536,
+          "raw_escalation_rate": 0.0,
+          "label": "1 - false_present_rate"
+        }
+      ],
+      "pareto_front_mean_cost": [
+        "summary_only"
+      ],
+      "pareto_front_mean_llm_cost_usd": [
+        "summary_only"
+      ],
+      "iso_budget_leaders": [
+        {
+          "budget": 2.44,
+          "leader": "summary_only",
+          "quality": 1.0,
+          "cost": 2.44
+        },
+        {
+          "budget": 2.64,
+          "leader": "summary_only",
+          "quality": 1.0,
+          "cost": 2.44
+        },
+        {
+          "budget": 2.724,
+          "leader": "summary_only",
+          "quality": 1.0,
+          "cost": 2.44
+        },
+        {
+          "budget": 2.766,
+          "leader": "summary_only",
+          "quality": 1.0,
+          "cost": 2.44
+        },
+        {
+          "budget": 4.04,
+          "leader": "summary_only",
+          "quality": 1.0,
+          "cost": 2.44
+        }
+      ]
+    }
+  ]
+}

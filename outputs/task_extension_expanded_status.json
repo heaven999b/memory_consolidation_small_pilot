@@ -1,0 +1,75 @@
+{
+  "description": "A3 status surface for scaled manifest-backed conflict/unsafe families.",
+  "verdict": {
+    "expanded_task_extension_ready": false,
+    "note": "Expanded task-family manifests now exist, but at least one family still lacks full model-backed coverage."
+  },
+  "curated_dataset_counts": {
+    "benign": 12,
+    "conflict": 14,
+    "hallucination": 20,
+    "unsafe": 12
+  },
+  "manifests": {
+    "conflict_v1_path": "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v1.json",
+    "unsafe_v1_path": "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v1.json",
+    "conflict_v2_path": "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v2.json",
+    "unsafe_v2_path": "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v2.json"
+  },
+  "family_status": {
+    "conflict": {
+      "family": "conflict",
+      "v1_count": 4,
+      "v2_count": 14,
+      "growth": 10,
+      "coverage_source": "outputs/actual_recall_expansion_results.json",
+      "covered_count": 4,
+      "missing_count": 10,
+      "ready_for_family_table": false,
+      "covered_ids": [
+        "conflict_01",
+        "conflict_02",
+        "conflict_03",
+        "conflict_04"
+      ],
+      "missing_ids": [
+        "conflict_05",
+        "conflict_06",
+        "conflict_07",
+        "conflict_08",
+        "conflict_09",
+        "conflict_10",
+        "conflict_11",
+        "conflict_12",
+        "conflict_13",
+        "conflict_14"
+      ]
+    },
+    "unsafe": {
+      "family": "unsafe",
+      "v1_count": 2,
+      "v2_count": 12,
+      "growth": 10,
+      "coverage_source": "outputs/actual_carry_forward_results.json",
+      "covered_count": 2,
+      "missing_count": 10,
+      "ready_for_family_table": false,
+      "covered_ids": [
+        "unsafe_01",
+        "unsafe_04"
+      ],
+      "missing_ids": [
+        "unsafe_02",
+        "unsafe_03",
+        "unsafe_05",
+        "unsafe_06",
+        "unsafe_07",
+        "unsafe_08",
+        "unsafe_09",
+        "unsafe_10",
+        "unsafe_11",
+        "unsafe_12"
+      ]
+    }
+  }
+}

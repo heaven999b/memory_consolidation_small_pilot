@@ -7,20 +7,48 @@
 - Baseline gate: `minimal_closed_loop_baseline_ready = true`
 - Paper gate: `paper_level_baseline_ready = false`
 - Current external benchmark surface: `32` frozen items, `4` external panels, `3` external benchmark families
+- Current expanded official benchmark pool: `159` frozen items, `3` expanded panels, `3` external benchmark families
 - Current manifest-backed primary-base surface: `38` total manifest-backed items, `6` panels, `4` task families
 
 ## Remaining Problems
 
-### 1. Paper-facing benchmark scale is still too small
+### 1. The full large benchmark baseline is still not run end-to-end
+
+- The repo no longer lacks a larger official benchmark pool: it now freezes `159` official benchmark items in expanded manifests.
+- What is still missing is the full model-backed baseline sweep over that larger pool under the same reproducible reviewer-facing pipeline.
+- So the remaining paper-level gap is no longer “we do not have enough benchmark data at all”; it is “the benchmark-native large-scale evaluation still needs to be executed and curated.”
+
+### 2. Paper-facing benchmark section is still too small
 
 - The broader reviewer-facing external benchmark section is still only `32` frozen items.
 - This is enough for reviewer-credible idea reporting, but still thin for a paper-facing baseline section.
 - The repo itself still marks this honestly as `paper_level_baseline_ready = false`.
 
-### 2. The benign utility bottleneck is still the main empirical weakness
+### 3. Benchmark-scale benign utility retention is still the main empirical weakness
 
 - On the broader benchmark benign section at `N=8`, stronger methods improve accuracy a lot, but `history_loss_rate` still stays at `0.438`.
-- This means the repo is no longer mainly blocked by hallucination control alone; the harder remaining problem is preserving useful benign detail under compression without paying too much raw fallback.
+- This means the repo is no longer mainly blocked by hallucination control alone; the harder remaining problem is preserving useful benign detail under compression on benchmark-grounded slices without paying too much raw fallback.
+- The important nuance is that this is no longer the same as saying the recall-side method is weak everywhere: the current multi-seed PSU recall panel has already pushed the audited local recall slice down to `history_loss=0.062` and `raw_escalation=0.042` at `N=8`.
+
+## What Strengthened
+
+### 1. The best scaffold lineage is now a formal method, not just a chain of local rounds
+
+- The repo now freezes `Provenance-Scaffolded Unified (PSU)` in [outputs/provenance_scaffolded_method_report.md](./outputs/provenance_scaffolded_method_report.md).
+- Concretely, this means the current best compaction-side intervention is no longer described as scattered `tiny_fixed_scaffold` / `tiny_refusal_scaffold` / `tiny_placeholder_hardened_scaffold` / `tiny_carry_forward_scaffold` patches.
+- Instead, the report now treats that lineage plus `scale_aware_note_aware` routing as one formal paper-facing method object with an explicit defense-axis projection.
+
+### 2. The repo now has a paper-strengthening statistics layer
+
+- [outputs/paper_strengthening_stats.md](./outputs/paper_strengthening_stats.md) now reports paired-bootstrap deltas for the main reviewer-facing comparisons.
+- This does not solve the benchmark-scale problem, but it does solve an older presentation weakness: we are no longer relying only on point estimates and narrative interpretation.
+- The current stats layer now makes a sharper split explicit: the old recall-side `history_loss` bottleneck is strongly reduced under multi-seed PSU, while benchmark-grounded benign utility retention is still the harder remaining scaling problem.
+
+### 3. The primary model-backed panels now expose richer artifact contracts
+
+- [outputs/paper_artifact_contract_report.md](./outputs/paper_artifact_contract_report.md) now checks whether the key model-backed panels keep per-pass traces, provenance links, quarantine decisions, and stage attribution.
+- Current coverage is now effectively complete for the audited carry-forward panel and complete or near-complete elsewhere; the remaining main weakness is no longer “missing instrumentation everywhere,” but scaling that instrumentation along with the broader benchmark section.
+- That is a much better reviewer-facing position: the repo now knows exactly how its per-pass audit trail is supposed to look, rather than only knowing that provenance was weak in the abstract.
 
 ## Fixed In This Maintenance Pass
 
@@ -39,6 +67,19 @@
 
 - The repo now ships [run_release_rebuild.py](./run_release_rebuild.py).
 - That entrypoint rebuilds the current reviewer-facing packet in dependency order and preserves the intended multi-seed configuration for the release sanity slices.
+
+### 4. The benchmark data-construction blocker is substantially weaker
+
+- [outputs/expanded_benchmark_dataset_inventory.md](./outputs/expanded_benchmark_dataset_inventory.md) now records a `159`-item official benchmark pool built from mirrored HaluMem, LoCoMo, and LongMemEval sources.
+- The expanded pool passes the same benchmark-native runtime packet validation used elsewhere in the repo: current runtime-projection validity is `159/159`.
+- This means the next baseline stage can focus on execution scale and result quality, not on inventing a benchmark dataset from scratch.
+
+### 5. The staged expanded benchmark is now dual-seed and no longer blocked by benign over-refusal
+
+- [outputs/expanded_benchmark_stage_medium.md](./outputs/expanded_benchmark_stage_medium.md) has now been rerun on `seed11,23` rather than left at a single-seed snapshot.
+- A route-level blocker in [pilot_core.py](./pilot_core.py) was fixed: benign missing-source placeholders produced by the model-backed summarizer no longer force `REFUSE_AND_ESCALATE`.
+- The concrete effect is narrow but important: `scale_aware_unified` / `scale_aware_note_aware` now recover the previously failing `locomo_expanded_001/002` cases at `N=8`, so staged benign answer accuracy is now `1.000` on both seeds for the scale-aware variants.
+- The honest remaining weakness is retention, not answer routing: those same scale-aware variants still show benign `history_loss_rate = 0.536`, so the main next method problem is preserving useful memory earlier in the chain.
 
 ## Simple Reading Of The Main Tables
 
@@ -100,6 +141,9 @@
 
 ## Next Actions That Matter Most
 
-- Expand the benchmark reviewer section beyond `32` frozen items.
+- Push the real model-backed benchmark pipeline onto the new `159`-item expanded official pool, starting with staged smoke / medium / full runs.
+- Use the current dual-seed staged medium result as the decision point for the next branch:
+  promote the full expanded `main` run if the goal is baseline completion, or target upstream benign retention if the goal is method-quality improvement before scale-up.
+- Expand the benchmark reviewer section beyond `32` frozen items by promoting the validated expanded pool into the reviewer-facing evaluation surface.
 - Keep optimizing the benign utility path, especially the `history_loss_rate` bottleneck at higher `N`.
-- Preserve the new task-extension, environment, and single-entry rebuild layers as we scale the external benchmark section up.
+- Preserve the new task-extension, environment, single-entry rebuild, method-report, statistics, and artifact-contract layers as we scale the external benchmark section up.

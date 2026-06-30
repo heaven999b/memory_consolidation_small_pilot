@@ -21,6 +21,7 @@ SUMMARY_PATH = "outputs/external_benchmark_reviewer_section.md"
 TRACE_PATH = "outputs/external_benchmark_reviewer_section_traces.md"
 
 DEFAULT_PASS_PROMPT = actual_base.pass_prompt
+RecordEvaluator = Callable[[dict[str, Any], str, int, int, DeepSeekMemorySummarizer], dict[str, Any]]
 
 
 def panel_specs() -> list[dict[str, Any]]:
@@ -92,9 +93,11 @@ def merge_snapshot(aggregate_row: dict[str, Any], metric_row: dict[str, float]) 
 def merged_snapshots(
     aggregate_table: dict[str, dict[str, dict[str, Any]]],
     metric_table: dict[str, dict[str, dict[str, float]]],
+    architectures: list[str] | None = None,
 ) -> dict[str, dict[str, dict[str, Any]]]:
+    selected_architectures = ARCHITECTURES if architectures is None else architectures
     snapshots: dict[str, dict[str, dict[str, Any]]] = {}
-    for architecture in ARCHITECTURES:
+    for architecture in selected_architectures:
         snapshots[architecture] = {}
         for n_passes in N_VALUES:
             snapshots[architecture][str(n_passes)] = merge_snapshot(
@@ -123,6 +126,8 @@ def evaluate_items(
     cache_dir_name: str,
     metrics_fn: Callable[[list[dict[str, Any]]], dict[str, float]],
     prompt_override: Callable[[dict[str, Any], int, int, str | None, list[actual_base.CompactClaim] | None], str] | None,
+    architectures: list[str] | None = None,
+    record_evaluator: RecordEvaluator | None = None,
 ) -> tuple[
     dict[str, dict[str, dict[str, Any]]],
     dict[str, dict[str, dict[str, dict[str, Any]]]],
@@ -141,6 +146,8 @@ def evaluate_items(
     actual_base.pass_prompt = DEFAULT_PASS_PROMPT if prompt_override is None else prompt_override
 
     seeds = select_seeds()
+    selected_architectures = ARCHITECTURES if architectures is None else architectures
+    evaluator = actual_base.evaluate_architecture if record_evaluator is None else record_evaluator
     all_records: list[dict[str, Any]] = []
     aggregate_table: dict[str, dict[str, dict[str, Any]]] = {}
     metric_table: dict[str, dict[str, dict[str, float]]] = {}
@@ -148,7 +155,7 @@ def evaluate_items(
     route_counts: dict[str, dict[str, dict[str, int]]] = {}
 
     try:
-        for architecture in ARCHITECTURES:
+        for architecture in selected_architectures:
             aggregate_table[architecture] = {}
             metric_table[architecture] = {}
             seed_snapshots[architecture] = {}
@@ -157,7 +164,7 @@ def evaluate_items(
                 records = []
                 for seed in seeds:
                     for item in items:
-                        record = actual_base.evaluate_architecture(item, architecture, n_passes, seed, summarizer)
+                        record = evaluator(item, architecture, n_passes, seed, summarizer)
                         record["seed"] = seed
                         records.append(record)
                         all_records.append(record)
@@ -169,7 +176,7 @@ def evaluate_items(
         actual_base.PROMPT_VERSION = old_prompt_version
         actual_base.pass_prompt = old_pass_prompt
 
-    return merged_snapshots(aggregate_table, metric_table), seed_snapshots, route_counts, all_records, seeds
+    return merged_snapshots(aggregate_table, metric_table, selected_architectures), seed_snapshots, route_counts, all_records, seeds
 
 
 def aggregate_family(
@@ -180,7 +187,9 @@ def aggregate_family(
     focus_metric: str,
     focus_label: str,
     seeds: list[int],
+    architectures: list[str] | None = None,
 ) -> dict[str, Any]:
+    selected_architectures = ARCHITECTURES if architectures is None else architectures
     all_records = [
         record
         for panel_id in panel_ids
@@ -189,7 +198,7 @@ def aggregate_family(
     snapshots: dict[str, dict[str, Any]] = {}
     seed_snapshots: dict[str, dict[str, Any]] = {}
     route_counts: dict[str, dict[str, dict[str, int]]] = {}
-    for architecture in ARCHITECTURES:
+    for architecture in selected_architectures:
         snapshots[architecture] = {}
         seed_snapshots[architecture] = {}
         route_counts[architecture] = {}

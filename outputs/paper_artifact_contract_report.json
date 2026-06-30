@@ -1,0 +1,32 @@
+{
+  "panels": {
+    "actual_summarizer_slice": {
+      "record_count": 128,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.141,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_recall_expansion": {
+      "record_count": 288,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.139,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_hallucination_stress": {
+      "record_count": 192,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.083,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_carry_forward": {
+      "record_count": 96,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.219,
+      "stage_attribution_coverage": 1.0
+    }
+  }
+}

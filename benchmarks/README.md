@@ -10,6 +10,7 @@ Policy:
 Current state:
 - `halumem/` contains the mirrored official HaluMem repo data and evaluation helpers.
 - `locomo/` contains mirrored LoCoMo raw data plus LongMemEval helper files and verified cleaned subsets.
+- `frozen_slices/` under those benchmark families now contains both the small reviewer-facing slices and a larger expanded official benchmark pool that can feed the next-stage benchmark baseline.
 - `task_extensions/` contains frozen local manifest-backed conflict/unsafe extension slices used to complete four-family primary-base coverage.
 
 Git publication note:

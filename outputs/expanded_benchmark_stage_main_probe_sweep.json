@@ -1,0 +1,278 @@
+{
+  "description": "Threshold sensitivity sweep around the current note-aware route operating point.",
+  "base_thresholds": {
+    "uncertain": 0.56,
+    "conflict": 0.41,
+    "benign": 0.54
+  },
+  "architectures": {
+    "scale_aware_note_aware": [
+      {
+        "offset": -0.15,
+        "uncertain_threshold": 0.41,
+        "conflict_threshold": 0.26,
+        "benign_threshold": 0.39,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": -0.12,
+        "uncertain_threshold": 0.44,
+        "conflict_threshold": 0.29,
+        "benign_threshold": 0.42,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": -0.09,
+        "uncertain_threshold": 0.47,
+        "conflict_threshold": 0.32,
+        "benign_threshold": 0.45,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": -0.06,
+        "uncertain_threshold": 0.5,
+        "conflict_threshold": 0.35,
+        "benign_threshold": 0.48,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": -0.03,
+        "uncertain_threshold": 0.53,
+        "conflict_threshold": 0.38,
+        "benign_threshold": 0.51,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.0,
+        "uncertain_threshold": 0.56,
+        "conflict_threshold": 0.41,
+        "benign_threshold": 0.54,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.03,
+        "uncertain_threshold": 0.59,
+        "conflict_threshold": 0.44,
+        "benign_threshold": 0.57,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.06,
+        "uncertain_threshold": 0.62,
+        "conflict_threshold": 0.47,
+        "benign_threshold": 0.6,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.09,
+        "uncertain_threshold": 0.65,
+        "conflict_threshold": 0.5,
+        "benign_threshold": 0.63,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.12,
+        "uncertain_threshold": 0.68,
+        "conflict_threshold": 0.53,
+        "benign_threshold": 0.66,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      },
+      {
+        "offset": 0.15,
+        "uncertain_threshold": 0.71,
+        "conflict_threshold": 0.56,
+        "benign_threshold": 0.69,
+        "accuracy": 0.9528,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.5786,
+        "false_present_rate": 0.0526,
+        "history_loss_rate_fixed": 0.65,
+        "mean_estimated_cost": 3.5658
+      }
+    ],
+    "psu": [
+      {
+        "offset": -0.15,
+        "uncertain_threshold": 0.41,
+        "conflict_threshold": 0.26,
+        "benign_threshold": 0.39,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": -0.12,
+        "uncertain_threshold": 0.44,
+        "conflict_threshold": 0.29,
+        "benign_threshold": 0.42,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": -0.09,
+        "uncertain_threshold": 0.47,
+        "conflict_threshold": 0.32,
+        "benign_threshold": 0.45,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": -0.06,
+        "uncertain_threshold": 0.5,
+        "conflict_threshold": 0.35,
+        "benign_threshold": 0.48,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": -0.03,
+        "uncertain_threshold": 0.53,
+        "conflict_threshold": 0.38,
+        "benign_threshold": 0.51,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.0,
+        "uncertain_threshold": 0.56,
+        "conflict_threshold": 0.41,
+        "benign_threshold": 0.54,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.03,
+        "uncertain_threshold": 0.59,
+        "conflict_threshold": 0.44,
+        "benign_threshold": 0.57,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.06,
+        "uncertain_threshold": 0.62,
+        "conflict_threshold": 0.47,
+        "benign_threshold": 0.6,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.09,
+        "uncertain_threshold": 0.65,
+        "conflict_threshold": 0.5,
+        "benign_threshold": 0.63,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.12,
+        "uncertain_threshold": 0.68,
+        "conflict_threshold": 0.53,
+        "benign_threshold": 0.66,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      },
+      {
+        "offset": 0.15,
+        "uncertain_threshold": 0.71,
+        "conflict_threshold": 0.56,
+        "benign_threshold": 0.69,
+        "accuracy": 0.9874,
+        "final_abstain_rate": 0.1195,
+        "raw_escalation_rate": 0.0629,
+        "false_present_rate": 0.0,
+        "history_loss_rate_fixed": 0.0714,
+        "mean_estimated_cost": 2.7406
+      }
+    ]
+  }
+}

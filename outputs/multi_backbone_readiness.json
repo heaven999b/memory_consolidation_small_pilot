@@ -1,0 +1,69 @@
+{
+  "description": "A2 readiness surface for cross-backbone summarizer evaluation.",
+  "profiles": [
+    {
+      "label": "deepseek_cli_default",
+      "backend": "deepseek_cli",
+      "ready": true,
+      "missing_env": [],
+      "deepseek_cli_found": true,
+      "notes": "Uses the local `deepseek` CLI path already exercised by the current runs."
+    },
+    {
+      "label": "openai_default",
+      "backend": "openai_compatible",
+      "ready": false,
+      "missing_env": [
+        "OPENAI_API_KEY",
+        "OPENAI_BASE_URL",
+        "OPENAI_MODEL"
+      ],
+      "deepseek_cli_found": null,
+      "notes": "Generic OpenAI-compatible profile. Suitable when a GPT-style model is exposed through a standard chat-completions endpoint."
+    },
+    {
+      "label": "gpt_openai_profile",
+      "backend": "openai_compatible",
+      "ready": false,
+      "missing_env": [
+        "GPT_OPENAI_API_KEY",
+        "GPT_OPENAI_BASE_URL",
+        "GPT_OPENAI_MODEL"
+      ],
+      "deepseek_cli_found": null,
+      "notes": "Dedicated GPT-profile alias so A2 can report a named non-DeepSeek backbone separately from the default profile."
+    },
+    {
+      "label": "qwen_openai_profile",
+      "backend": "openai_compatible",
+      "ready": false,
+      "missing_env": [
+        "QWEN_OPENAI_API_KEY",
+        "QWEN_OPENAI_BASE_URL",
+        "QWEN_OPENAI_MODEL"
+      ],
+      "deepseek_cli_found": null,
+      "notes": "Dedicated Qwen-profile alias for a second non-DeepSeek backbone."
+    },
+    {
+      "label": "llama_openai_profile",
+      "backend": "openai_compatible",
+      "ready": false,
+      "missing_env": [
+        "LLAMA_OPENAI_API_KEY",
+        "LLAMA_OPENAI_BASE_URL",
+        "LLAMA_OPENAI_MODEL"
+      ],
+      "deepseek_cli_found": null,
+      "notes": "Dedicated Llama-profile alias for an additional non-DeepSeek backbone."
+    }
+  ],
+  "verdict": {
+    "multi_backbone_ready": false,
+    "ready_profiles": [
+      "deepseek_cli_default"
+    ],
+    "non_deepseek_ready_profiles": [],
+    "note": "The repo can now route to non-DeepSeek backends, but fewer than two named alternative profiles are configured."
+  }
+}

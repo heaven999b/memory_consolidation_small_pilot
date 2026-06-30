@@ -1,0 +1,12 @@
+# Base runtime for the mirrored HaluMem official evaluation scripts.
+# This file intentionally pins only the common, known dependencies.
+# System-specific SDKs such as Mem0 and Zep should be installed after
+# choosing the exact public baseline to run.
+
+openai
+python-dotenv
+tenacity
+tqdm
+requests
+pandas
+SQLAlchemy

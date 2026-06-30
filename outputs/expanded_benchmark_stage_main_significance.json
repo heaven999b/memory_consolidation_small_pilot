@@ -1,0 +1,79 @@
+{
+  "description": "Paired significance tests for the finished expanded benchmark main run.",
+  "bootstrap_samples": 5000,
+  "bootstrap_seed": 20260630,
+  "baseline_selection": {
+    "benign_accuracy": "tiered",
+    "benign_history_loss": "summary_only",
+    "benign_raw_escalation": "summary_only",
+    "hallucination_false_present": "summary_only",
+    "hallucination_accuracy": "tiered"
+  },
+  "comparisons": [
+    {
+      "label": "Benign N=8 accuracy: tiered -> PSU",
+      "pair_count": 280,
+      "baseline_mean": 0.9464,
+      "treatment_mean": 0.9857,
+      "delta": 0.0393,
+      "ci_low": 0.0179,
+      "ci_high": 0.0643,
+      "treatment_win": 12,
+      "baseline_win": 1,
+      "ties": 267,
+      "mcnemar_p": 0.003418
+    },
+    {
+      "label": "Benign N=8 history retention: summary_only -> PSU",
+      "pair_count": 280,
+      "baseline_mean": 0.4464,
+      "treatment_mean": 0.9286,
+      "delta": 0.4821,
+      "ci_low": 0.4143,
+      "ci_high": 0.5464,
+      "treatment_win": 146,
+      "baseline_win": 11,
+      "ties": 123,
+      "mcnemar_p": 0.0
+    },
+    {
+      "label": "Benign N=8 no-raw-escalation: summary_only -> PSU",
+      "pair_count": 280,
+      "baseline_mean": 1.0,
+      "treatment_mean": 0.9286,
+      "delta": -0.0714,
+      "ci_low": -0.1036,
+      "ci_high": -0.0429,
+      "treatment_win": 0,
+      "baseline_win": 20,
+      "ties": 260,
+      "mcnemar_p": 2e-06
+    },
+    {
+      "label": "Hallucination N=8 no-false-present: summary_only -> PSU",
+      "pair_count": 38,
+      "baseline_mean": 1.0,
+      "treatment_mean": 1.0,
+      "delta": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "treatment_win": 0,
+      "baseline_win": 0,
+      "ties": 38,
+      "mcnemar_p": 1.0
+    },
+    {
+      "label": "Hallucination N=8 accuracy: tiered -> PSU",
+      "pair_count": 38,
+      "baseline_mean": 1.0,
+      "treatment_mean": 1.0,
+      "delta": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "treatment_win": 0,
+      "baseline_win": 0,
+      "ties": 38,
+      "mcnemar_p": 1.0
+    }
+  ]
+}

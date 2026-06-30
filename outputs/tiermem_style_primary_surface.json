@@ -396,7 +396,7 @@
               "conflict_error_rate": 0.375,
               "history_loss_rate": 0.375,
               "supported_current_target_rate": 0.0,
-              "mean_llm_cost_usd": 0.135231
+              "mean_llm_cost_usd": 0.13523
             },
             "8": {
               "count": 8,
@@ -488,7 +488,7 @@
               "conflict_error_rate": 0.0,
               "history_loss_rate": 0.375,
               "supported_current_target_rate": 0.0,
-              "mean_llm_cost_usd": 0.135231
+              "mean_llm_cost_usd": 0.13523
             },
             "8": {
               "count": 8,
@@ -580,7 +580,7 @@
               "conflict_error_rate": 0.0,
               "history_loss_rate": 0.375,
               "supported_current_target_rate": 0.0,
-              "mean_llm_cost_usd": 0.135231
+              "mean_llm_cost_usd": 0.13523
             },
             "8": {
               "count": 8,
@@ -672,7 +672,7 @@
               "conflict_error_rate": 0.0,
               "history_loss_rate": 0.375,
               "supported_current_target_rate": 0.0,
-              "mean_llm_cost_usd": 0.135231
+              "mean_llm_cost_usd": 0.13523
             },
             "8": {
               "count": 8,

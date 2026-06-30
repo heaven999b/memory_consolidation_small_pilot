@@ -1,0 +1,90 @@
+{
+  "repo_root": ".",
+  "description": "Scaffold/runtime audit for the mirrored HaluMem official evaluation path, excluding live API execution.",
+  "status": "partial",
+  "env_templates": {
+    ".env.v3.example": true,
+    ".env.official_eval.example": true,
+    "benchmarks/halumem/official_repo/eval/.env-example": true
+  },
+  "base_requirements_present": true,
+  "rows": [
+    {
+      "runtime": "current_python",
+      "python_path": "/opt/anaconda3/bin/python3",
+      "exists": true,
+      "common_present": [
+        "dotenv",
+        "tenacity",
+        "tqdm",
+        "requests"
+      ],
+      "common_missing": [
+        "openai"
+      ],
+      "baseline_missing": {
+        "mem0_memzero": [
+          "mem0"
+        ],
+        "zep": [
+          "zep_cloud"
+        ],
+        "memos": []
+      }
+    },
+    {
+      "runtime": "tiermem_venv",
+      "python_path": ".venv_tiermem_v2/bin/python",
+      "exists": true,
+      "common_present": [
+        "openai",
+        "dotenv",
+        "tenacity",
+        "tqdm",
+        "requests"
+      ],
+      "common_missing": [],
+      "baseline_missing": {
+        "mem0_memzero": [
+          "mem0"
+        ],
+        "zep": [
+          "zep_cloud"
+        ],
+        "memos": []
+      }
+    },
+    {
+      "runtime": "official_eval_venv",
+      "python_path": ".venv_official_eval/bin/python",
+      "exists": false,
+      "common_present": [],
+      "common_missing": [
+        "openai",
+        "dotenv",
+        "tenacity",
+        "tqdm",
+        "requests"
+      ],
+      "baseline_missing": {
+        "mem0_memzero": [
+          "mem0"
+        ],
+        "zep": [
+          "zep_cloud"
+        ],
+        "memos": []
+      }
+    }
+  ],
+  "ready_runtime_count": 1,
+  "official_eval_venv_present": false,
+  "dataset_expected_present": false,
+  "dataset_expected_path": "benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl",
+  "next_commands": [
+    "python3 -m venv .venv_official_eval",
+    ".venv_official_eval/bin/pip install -r requirements-official-eval-base.txt",
+    "Populate .env.official_eval using the chosen system's keys and endpoints.",
+    "Install the selected system SDK after choosing a concrete baseline (for example, Mem0 or Zep)."
+  ]
+}

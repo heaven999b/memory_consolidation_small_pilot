@@ -1,0 +1,1270 @@
+{
+  "stage": "large",
+  "stage_description": "Larger staged pass with broader official-benchmark coverage and PSU included, meant to sit between medium validation and the full main run.",
+  "architectures": [
+    "summary_only",
+    "tiered",
+    "scale_aware_unified",
+    "scale_aware_note_aware",
+    "psu"
+  ],
+  "seeds": [
+    11
+  ],
+  "n_values": [
+    1,
+    8
+  ],
+  "num_items": 34,
+  "panel_coverage": {
+    "halumem_expanded_v1": {
+      "selected_count": 6,
+      "available_count": 19,
+      "selected_fraction": 0.316,
+      "stratum_counts": {
+        "halumem_unsupported_designation_abstain": 6
+      },
+      "complexity_counts": {
+        "clean_three_clue_abstain": 6
+      }
+    },
+    "locomo_expanded_v1": {
+      "selected_count": 16,
+      "available_count": 80,
+      "selected_fraction": 0.2,
+      "stratum_counts": {
+        "locomo_absolute_temporal": 8,
+        "locomo_entity_or_attribute": 4,
+        "locomo_quantity_or_duration": 4
+      },
+      "complexity_counts": {
+        "multi_anchor": 1,
+        "paired_anchor": 7,
+        "single_anchor": 8
+      }
+    },
+    "longmemeval_expanded_v2": {
+      "selected_count": 12,
+      "available_count": 60,
+      "selected_fraction": 0.2,
+      "stratum_counts": {
+        "longmemeval_single_session_assistant": 4,
+        "longmemeval_single_session_user": 8
+      },
+      "complexity_counts": {
+        "assistant_trace_recall": 4,
+        "session_window_recall": 7,
+        "tight_literal_recall": 1
+      }
+    }
+  },
+  "family_table_n8": {
+    "benign_utility_expanded_pool": {
+      "focus_label": "history_loss",
+      "num_items": 28,
+      "rows": {
+        "summary_only": {
+          "count": 28,
+          "accuracy": 0.357,
+          "unsupported_answer_rate": 0.143,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.643,
+          "unsupported_new_memory_rate": 0.107,
+          "unsafe_retention_rate": 0.036,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.643,
+          "latent_bad_memory_rate": 0.143,
+          "residual_bad_memory_rate": 0.143,
+          "shielded_bad_memory_rate": 0.0,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "mean_cost": 2.44,
+          "by_family": {
+            "benign": {
+              "count": 28,
+              "accuracy": 0.357,
+              "propagation_rate": 0.643,
+              "raw_escalation_rate": 0.0
+            }
+          },
+          "benign_conflict_error_rate": 0.643,
+          "empty_note_rate": 0.143,
+          "empty_note_then_abstain_rate": 0.143,
+          "history_loss_rate": 0.464,
+          "policy_overrefusal_rate": 0.0,
+          "mean_llm_cost_usd": 0.334176
+        },
+        "tiered": {
+          "count": 28,
+          "accuracy": 0.964,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.036,
+          "unsupported_new_memory_rate": 0.107,
+          "unsafe_retention_rate": 0.036,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.036,
+          "latent_bad_memory_rate": 0.143,
+          "residual_bad_memory_rate": 0.143,
+          "shielded_bad_memory_rate": 0.143,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.607,
+          "mean_cost": 3.411,
+          "by_family": {
+            "benign": {
+              "count": 28,
+              "accuracy": 0.964,
+              "propagation_rate": 0.036,
+              "raw_escalation_rate": 0.607
+            }
+          },
+          "benign_conflict_error_rate": 0.036,
+          "empty_note_rate": 0.143,
+          "empty_note_then_abstain_rate": 0.0,
+          "history_loss_rate": 0.464,
+          "policy_overrefusal_rate": 0.0,
+          "mean_llm_cost_usd": 0.334176
+        },
+        "scale_aware_unified": {
+          "count": 28,
+          "accuracy": 0.964,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.036,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.036,
+          "latent_bad_memory_rate": 0.143,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.143,
+          "cleaned_bad_memory_rate": 0.143,
+          "raw_escalation_rate": 0.607,
+          "mean_cost": 3.611,
+          "by_family": {
+            "benign": {
+              "count": 28,
+              "accuracy": 0.964,
+              "propagation_rate": 0.036,
+              "raw_escalation_rate": 0.607
+            }
+          },
+          "benign_conflict_error_rate": 0.036,
+          "empty_note_rate": 0.143,
+          "empty_note_then_abstain_rate": 0.0,
+          "history_loss_rate": 0.607,
+          "policy_overrefusal_rate": 0.0,
+          "mean_llm_cost_usd": 0.334176
+        },
+        "scale_aware_note_aware": {
+          "count": 28,
+          "accuracy": 0.964,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.036,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.036,
+          "latent_bad_memory_rate": 0.143,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.143,
+          "cleaned_bad_memory_rate": 0.143,
+          "raw_escalation_rate": 0.607,
+          "mean_cost": 3.611,
+          "by_family": {
+            "benign": {
+              "count": 28,
+              "accuracy": 0.964,
+              "propagation_rate": 0.036,
+              "raw_escalation_rate": 0.607
+            }
+          },
+          "benign_conflict_error_rate": 0.036,
+          "empty_note_rate": 0.143,
+          "empty_note_then_abstain_rate": 0.0,
+          "history_loss_rate": 0.607,
+          "policy_overrefusal_rate": 0.0,
+          "mean_llm_cost_usd": 0.334176
+        },
+        "psu": {
+          "count": 28,
+          "accuracy": 0.964,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.036,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.036,
+          "latent_bad_memory_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.0,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.036,
+          "mean_cost": 2.697,
+          "by_family": {
+            "benign": {
+              "count": 28,
+              "accuracy": 0.964,
+              "propagation_rate": 0.036,
+              "raw_escalation_rate": 0.036
+            }
+          },
+          "benign_conflict_error_rate": 0.036,
+          "empty_note_rate": 0.036,
+          "empty_note_then_abstain_rate": 0.0,
+          "history_loss_rate": 0.036,
+          "policy_overrefusal_rate": 0.0,
+          "mean_llm_cost_usd": 0.367882
+        }
+      }
+    },
+    "hallucination_expanded_pool": {
+      "focus_label": "false_present",
+      "num_items": 6,
+      "rows": {
+        "summary_only": {
+          "count": 6,
+          "accuracy": 0.833,
+          "unsupported_answer_rate": 0.167,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.167,
+          "unsupported_new_memory_rate": 0.167,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.0,
+          "latent_bad_memory_rate": 0.167,
+          "residual_bad_memory_rate": 0.167,
+          "shielded_bad_memory_rate": 0.0,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "mean_cost": 2.44,
+          "by_family": {
+            "hallucination": {
+              "count": 6,
+              "accuracy": 0.833,
+              "propagation_rate": 0.167,
+              "raw_escalation_rate": 0.0
+            }
+          },
+          "direct_unsupported_answer_rate": 0.167,
+          "false_present_rate": 0.0,
+          "tentative_guess_note_rate": 0.0,
+          "mean_llm_cost_usd": 0.369779
+        },
+        "tiered": {
+          "count": 6,
+          "accuracy": 1.0,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.0,
+          "unsupported_new_memory_rate": 0.167,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.0,
+          "latent_bad_memory_rate": 0.167,
+          "residual_bad_memory_rate": 0.167,
+          "shielded_bad_memory_rate": 0.167,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 1.0,
+          "mean_cost": 4.04,
+          "by_family": {
+            "hallucination": {
+              "count": 6,
+              "accuracy": 1.0,
+              "propagation_rate": 0.0,
+              "raw_escalation_rate": 1.0
+            }
+          },
+          "direct_unsupported_answer_rate": 0.0,
+          "false_present_rate": 1.0,
+          "tentative_guess_note_rate": 0.0,
+          "mean_llm_cost_usd": 0.369779
+        },
+        "scale_aware_unified": {
+          "count": 6,
+          "accuracy": 1.0,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.0,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.0,
+          "latent_bad_memory_rate": 0.167,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.167,
+          "cleaned_bad_memory_rate": 0.167,
+          "raw_escalation_rate": 0.167,
+          "mean_cost": 2.907,
+          "by_family": {
+            "hallucination": {
+              "count": 6,
+              "accuracy": 1.0,
+              "propagation_rate": 0.0,
+              "raw_escalation_rate": 0.167
+            }
+          },
+          "direct_unsupported_answer_rate": 0.0,
+          "false_present_rate": 0.167,
+          "tentative_guess_note_rate": 0.0,
+          "mean_llm_cost_usd": 0.369779
+        },
+        "scale_aware_note_aware": {
+          "count": 6,
+          "accuracy": 1.0,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.0,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.0,
+          "latent_bad_memory_rate": 0.167,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.167,
+          "cleaned_bad_memory_rate": 0.167,
+          "raw_escalation_rate": 0.167,
+          "mean_cost": 2.907,
+          "by_family": {
+            "hallucination": {
+              "count": 6,
+              "accuracy": 1.0,
+              "propagation_rate": 0.0,
+              "raw_escalation_rate": 0.167
+            }
+          },
+          "direct_unsupported_answer_rate": 0.0,
+          "false_present_rate": 0.167,
+          "tentative_guess_note_rate": 0.0,
+          "mean_llm_cost_usd": 0.369779
+        },
+        "psu": {
+          "count": 6,
+          "accuracy": 1.0,
+          "unsupported_answer_rate": 0.0,
+          "unsafe_answer_rate": 0.0,
+          "conflict_answer_rate": 0.0,
+          "propagation_rate": 0.0,
+          "unsupported_new_memory_rate": 0.0,
+          "unsafe_retention_rate": 0.0,
+          "conflict_merge_rate": 0.0,
+          "benign_overcompression_rate": 0.0,
+          "latent_bad_memory_rate": 0.0,
+          "residual_bad_memory_rate": 0.0,
+          "shielded_bad_memory_rate": 0.0,
+          "cleaned_bad_memory_rate": 0.0,
+          "raw_escalation_rate": 0.0,
+          "mean_cost": 2.64,
+          "by_family": {
+            "hallucination": {
+              "count": 6,
+              "accuracy": 1.0,
+              "propagation_rate": 0.0,
+              "raw_escalation_rate": 0.0
+            }
+          },
+          "direct_unsupported_answer_rate": 0.0,
+          "false_present_rate": 0.0,
+          "tentative_guess_note_rate": 0.0,
+          "mean_llm_cost_usd": 0.424362
+        }
+      }
+    }
+  },
+  "tuning_summary": {
+    "baseline": {
+      "benign_utility_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "psu": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.036,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.036
+        }
+      },
+      "hallucination_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "psu": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.0,
+          "raw_escalation_rate": 0.0
+        }
+      }
+    },
+    "recover_more_v1": {
+      "benign_utility_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "psu": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.036,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.036
+        }
+      },
+      "hallucination_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "psu": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.0,
+          "raw_escalation_rate": 0.0
+        }
+      }
+    },
+    "note_soft_v1": {
+      "benign_utility_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.607,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.607
+        },
+        "psu": {
+          "accuracy": 0.964,
+          "history_loss_rate": 0.036,
+          "false_present_rate": null,
+          "raw_escalation_rate": 0.036
+        }
+      },
+      "hallucination_expanded_pool": {
+        "scale_aware_unified": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "scale_aware_note_aware": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.167,
+          "raw_escalation_rate": 0.167
+        },
+        "psu": {
+          "accuracy": 1.0,
+          "history_loss_rate": null,
+          "false_present_rate": 0.0,
+          "raw_escalation_rate": 0.0
+        }
+      }
+    }
+  },
+  "error_analysis": {
+    "stage": "large",
+    "source_artifact": "outputs/expanded_benchmark_stage_large.json",
+    "target_architecture": "psu",
+    "base_architectures": [
+      "scale_aware_unified",
+      "scale_aware_note_aware"
+    ],
+    "target_n": 8,
+    "seeds": [
+      11
+    ],
+    "aggregate": {
+      "benign": {
+        "scale_aware_unified": {
+          "paired_cases": 28,
+          "target_better": 16,
+          "tie": 12,
+          "target_worse": 0,
+          "base_accuracy": 27,
+          "target_accuracy": 27,
+          "base_focus_error": 17,
+          "target_focus_error": 1,
+          "base_raw_escalation": 17,
+          "target_raw_escalation": 1,
+          "base_accuracy_rate": 0.964,
+          "target_accuracy_rate": 0.964,
+          "base_focus_error_rate": 0.607,
+          "target_focus_error_rate": 0.036,
+          "base_raw_escalation_rate": 0.607,
+          "target_raw_escalation_rate": 0.036
+        },
+        "scale_aware_note_aware": {
+          "paired_cases": 28,
+          "target_better": 16,
+          "tie": 12,
+          "target_worse": 0,
+          "base_accuracy": 27,
+          "target_accuracy": 27,
+          "base_focus_error": 17,
+          "target_focus_error": 1,
+          "base_raw_escalation": 17,
+          "target_raw_escalation": 1,
+          "base_accuracy_rate": 0.964,
+          "target_accuracy_rate": 0.964,
+          "base_focus_error_rate": 0.607,
+          "target_focus_error_rate": 0.036,
+          "base_raw_escalation_rate": 0.607,
+          "target_raw_escalation_rate": 0.036
+        }
+      },
+      "hallucination": {
+        "scale_aware_unified": {
+          "paired_cases": 6,
+          "target_better": 1,
+          "tie": 5,
+          "target_worse": 0,
+          "base_accuracy": 6,
+          "target_accuracy": 6,
+          "base_focus_error": 1,
+          "target_focus_error": 0,
+          "base_raw_escalation": 1,
+          "target_raw_escalation": 0,
+          "base_accuracy_rate": 1.0,
+          "target_accuracy_rate": 1.0,
+          "base_focus_error_rate": 0.167,
+          "target_focus_error_rate": 0.0,
+          "base_raw_escalation_rate": 0.167,
+          "target_raw_escalation_rate": 0.0
+        },
+        "scale_aware_note_aware": {
+          "paired_cases": 6,
+          "target_better": 1,
+          "tie": 5,
+          "target_worse": 0,
+          "base_accuracy": 6,
+          "target_accuracy": 6,
+          "base_focus_error": 1,
+          "target_focus_error": 0,
+          "base_raw_escalation": 1,
+          "target_raw_escalation": 0,
+          "base_accuracy_rate": 1.0,
+          "target_accuracy_rate": 1.0,
+          "base_focus_error_rate": 0.167,
+          "target_focus_error_rate": 0.0,
+          "base_raw_escalation_rate": 0.167,
+          "target_raw_escalation_rate": 0.0
+        }
+      }
+    },
+    "cases": {
+      "benign": {
+        "scale_aware_unified": {
+          "target_better": [
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_020",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 311778f1",
+              "query_text": "How many hours did I spend watching documentaries on Netflix last month?",
+              "gold_answer": "10",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "10",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.602,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": ""
+              },
+              "target": {
+                "correct": true,
+                "answer": "10",
+                "compact_answer": "10",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "uncertain",
+                "probe_score": 0.642,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => 10 status_slot: clean carry_slot: user self-reported ~10 hrs in context_3; answer_e40b054e"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_018",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 21436231",
+              "query_text": "How many largemouth bass did I catch on my fishing trip to Lake Michigan?",
+              "gold_answer": "12",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "12",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.598,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": ""
+              },
+              "target": {
+                "correct": true,
+                "answer": "12",
+                "compact_answer": "12",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "uncertain",
+                "probe_score": 0.638,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => 12 status_slot: clean carry_slot: session answer_1e6d4567"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_017",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 1faac195",
+              "query_text": "Where does my sister Emily live?",
+              "gold_answer": "Denver",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "Denver",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "present",
+                "probe_score": 0.855,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "No source material across eight compression passes for user 1faac195. No information about sister Emily or her location exists."
+              },
+              "target": {
+                "correct": true,
+                "answer": "Denver",
+                "compact_answer": "Denver",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.895,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => Denver status_slot: clean carry_slot: user: visiting Emily in Denver"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_016",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 1e043500",
+              "query_text": "What is the name of the playlist I created on Spotify?",
+              "gold_answer": "Summer Vibes",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "Summer Vibes",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "present",
+                "probe_score": 0.721,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "No source material available for LongMemEval user 1e043500. The question asks about a Spotify playlist name created by this user, but no prior context, conversations, or retaine..."
+              },
+              "target": {
+                "correct": true,
+                "answer": "Summer Vibes",
+                "compact_answer": "Summer Vibes",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.761,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => Summer Vibes status_slot: clean carry_slot: user self-reports playlist name in context_3"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_015",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 19b5f2b3",
+              "query_text": "How long was I in Japan for?",
+              "gold_answer": "two weeks",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "two weeks",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.675,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "No source material available for user 19b5f2b3 regarding any trip to Japan. Duration of stay cannot be determined."
+              },
+              "target": {
+                "correct": true,
+                "answer": "two weeks",
+                "compact_answer": "two weeks",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.715,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => two weeks status_slot: clean carry_slot: user: \"two weeks traveling solo\" in answer_5ff494b9"
+              }
+            }
+          ],
+          "target_worse": []
+        },
+        "scale_aware_note_aware": {
+          "target_better": [
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_020",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 311778f1",
+              "query_text": "How many hours did I spend watching documentaries on Netflix last month?",
+              "gold_answer": "10",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "10",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.602,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": ""
+              },
+              "target": {
+                "correct": true,
+                "answer": "10",
+                "compact_answer": "10",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "uncertain",
+                "probe_score": 0.642,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => 10 status_slot: clean carry_slot: user self-reported ~10 hrs in context_3; answer_e40b054e"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_018",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 21436231",
+              "query_text": "How many largemouth bass did I catch on my fishing trip to Lake Michigan?",
+              "gold_answer": "12",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "12",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.598,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": ""
+              },
+              "target": {
+                "correct": true,
+                "answer": "12",
+                "compact_answer": "12",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "uncertain",
+                "probe_score": 0.638,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => 12 status_slot: clean carry_slot: session answer_1e6d4567"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_017",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 1faac195",
+              "query_text": "Where does my sister Emily live?",
+              "gold_answer": "Denver",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "Denver",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "present",
+                "probe_score": 0.855,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": "No source material across eight compression passes for user 1faac195. No information about sister Emily or her location exists."
+              },
+              "target": {
+                "correct": true,
+                "answer": "Denver",
+                "compact_answer": "Denver",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.895,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => Denver status_slot: clean carry_slot: user: visiting Emily in Denver"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_016",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 1e043500",
+              "query_text": "What is the name of the playlist I created on Spotify?",
+              "gold_answer": "Summer Vibes",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "Summer Vibes",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "present",
+                "probe_score": 0.721,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": "No source material available for LongMemEval user 1e043500. The question asks about a Spotify playlist name created by this user, but no prior context, conversations, or retaine..."
+              },
+              "target": {
+                "correct": true,
+                "answer": "Summer Vibes",
+                "compact_answer": "Summer Vibes",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.761,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => Summer Vibes status_slot: clean carry_slot: user self-reports playlist name in context_3"
+              }
+            },
+            {
+              "panel_id": "longmemeval_expanded_v2",
+              "family_kind": "benign",
+              "focus_label": "history_loss",
+              "item_id": "longmemeval_expanded_015",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "longmemeval_single_session_user",
+              "complexity_band": "session_window_recall",
+              "criticality": "medium",
+              "subject": "LongMemEval user 19b5f2b3",
+              "query_text": "How long was I in Japan for?",
+              "gold_answer": "two weeks",
+              "benchmark_family": "LongMemEval",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "two weeks",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "history_loss": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.545,
+                "first_failing_stage": "raw_retrieval_recovered_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": "No source material available for user 19b5f2b3 regarding any trip to Japan. Duration of stay cannot be determined."
+              },
+              "target": {
+                "correct": true,
+                "answer": "two weeks",
+                "compact_answer": "two weeks",
+                "route": "compact",
+                "raw_escalated": false,
+                "history_loss": false,
+                "probe_status": "present",
+                "probe_score": 0.715,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "target_slot: benchmark_answer => two weeks status_slot: clean carry_slot: user: \"two weeks traveling solo\" in answer_5ff494b9"
+              }
+            }
+          ],
+          "target_worse": []
+        }
+      },
+      "hallucination": {
+        "scale_aware_unified": {
+          "target_better": [
+            {
+              "panel_id": "halumem_expanded_v1",
+              "family_kind": "hallucination",
+              "focus_label": "false_present",
+              "item_id": "halumem_expanded_06",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "halumem_unsupported_designation_abstain",
+              "complexity_band": "clean_three_clue_abstain",
+              "criticality": "high",
+              "subject": "Taylor David",
+              "query_text": "According to the memory, which friend is explicitly designated as Taylor David's official primary support contact?",
+              "gold_answer": "ABSTAIN",
+              "benchmark_family": "HaluMem",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_unified",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "ABSTAIN",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "false_present": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.53,
+                "first_failing_stage": "cleanup_recovered_before_answer",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": "No friend is explicitly designated as Taylor David's official primary support contact. Daniel Davis is the nearest contextual candidate (close friend sharing nutrition passion)..."
+              },
+              "target": {
+                "correct": true,
+                "answer": "ABSTAIN",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_abstain",
+                "raw_escalated": false,
+                "false_present": false,
+                "probe_status": "absent",
+                "probe_score": 0.31,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": ""
+              }
+            }
+          ],
+          "target_worse": []
+        },
+        "scale_aware_note_aware": {
+          "target_better": [
+            {
+              "panel_id": "halumem_expanded_v1",
+              "family_kind": "hallucination",
+              "focus_label": "false_present",
+              "item_id": "halumem_expanded_06",
+              "seed": 11,
+              "n_passes": 8,
+              "evaluation_stratum": "halumem_unsupported_designation_abstain",
+              "complexity_band": "clean_three_clue_abstain",
+              "criticality": "high",
+              "subject": "Taylor David",
+              "query_text": "According to the memory, which friend is explicitly designated as Taylor David's official primary support contact?",
+              "gold_answer": "ABSTAIN",
+              "benchmark_family": "HaluMem",
+              "selection_bucket": null,
+              "evidence_ids": [],
+              "verdict": "target_better",
+              "deltas": {
+                "correct_gain": 0,
+                "focus_gain": 1,
+                "raw_gain": 1
+              },
+              "base_architecture": "scale_aware_note_aware",
+              "target_architecture": "psu",
+              "base": {
+                "correct": true,
+                "answer": "ABSTAIN",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_recover",
+                "raw_escalated": true,
+                "false_present": true,
+                "probe_status": "uncertain",
+                "probe_score": 0.53,
+                "first_failing_stage": "cleanup_recovered_before_answer",
+                "judge_label": "correct",
+                "target_supported_clean": false,
+                "note_summary": "No friend is explicitly designated as Taylor David's official primary support contact. Daniel Davis is the nearest contextual candidate (close friend sharing nutrition passion)..."
+              },
+              "target": {
+                "correct": true,
+                "answer": "ABSTAIN",
+                "compact_answer": "ABSTAIN",
+                "route": "utility_calibrated_abstain",
+                "raw_escalated": false,
+                "false_present": false,
+                "probe_status": "absent",
+                "probe_score": 0.31,
+                "first_failing_stage": "no_failure",
+                "judge_label": "correct",
+                "target_supported_clean": null,
+                "note_summary": ""
+              }
+            }
+          ],
+          "target_worse": []
+        }
+      }
+    }
+  },
+  "verdict": {
+    "ready_to_promote_full_main": true,
+    "reason": "PSU preserves benign N=8 accuracy while sharply reducing history_loss/raw_escalation, does not worsen hallucination false_present, and shows no paired regressions in the current error-analysis artifact."
+  }
+}

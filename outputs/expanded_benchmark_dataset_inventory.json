@@ -1,0 +1,106 @@
+{
+  "panel_count": 3,
+  "total_items": 159,
+  "benchmark_family_counts": {
+    "HaluMem": 19,
+    "LoCoMo": 80,
+    "LongMemEval": 60
+  },
+  "task_family_counts": {
+    "benign": 140,
+    "hallucination": 19
+  },
+  "runtime_projection_valid_count": 159,
+  "runtime_projection_total_count": 159,
+  "verification_passed": true,
+  "current_reviewer_section_size": 32,
+  "scale_increase_vs_reviewer_section": 127,
+  "scale_multiplier_vs_reviewer_section": 4.969,
+  "panels": {
+    "halumem_expanded_v1": {
+      "panel_id": "halumem_expanded_v1",
+      "manifest_path": "benchmarks/halumem/frozen_slices/halumem_hallucination_expanded_v1.json",
+      "manifest_version": "v1",
+      "adapter_id": "halumem_hallucination_expanded_slice",
+      "item_count": 19,
+      "benchmark_family": "HaluMem",
+      "task_family": "hallucination",
+      "runtime_projection_valid_count": 19,
+      "runtime_projection_total_count": 19,
+      "runtime_projection_errors": [],
+      "selection_policy": {
+        "target_size": 19,
+        "source_type": "official_hallucination_benchmark_record",
+        "rule": "Keep every official HaluMem persona whose top support clues contain three clean full-name relationship anchors, then preserve the same unsupported explicit-designation query used by the benchmark-core slice."
+      },
+      "extra": {
+        "unique_source_indexes": 19,
+        "source_index_span": [
+          0,
+          19
+        ]
+      }
+    },
+    "locomo_expanded_v1": {
+      "panel_id": "locomo_expanded_v1",
+      "manifest_path": "benchmarks/locomo/frozen_slices/locomo_benign_utility_expanded_v1.json",
+      "manifest_version": "v1",
+      "adapter_id": "locomo_benign_utility_expanded_slice",
+      "item_count": 80,
+      "benchmark_family": "LoCoMo",
+      "task_family": "benign",
+      "runtime_projection_valid_count": 80,
+      "runtime_projection_total_count": 80,
+      "runtime_projection_errors": [],
+      "selection_policy": {
+        "target_size": 80,
+        "source_type": "official_benign_qa_benchmark_record",
+        "rule": "For each LoCoMo conversation, keep four clean category-1 direct factual QA items and four clean category-2 explicit date/time QA items with valid evidence ids, short answers, and low normalization burden.",
+        "per_sample_category_quota": 4
+      },
+      "extra": {
+        "sample_counts": {
+          "conv-26": 8,
+          "conv-30": 8,
+          "conv-41": 8,
+          "conv-42": 8,
+          "conv-43": 8,
+          "conv-44": 8,
+          "conv-47": 8,
+          "conv-48": 8,
+          "conv-49": 8,
+          "conv-50": 8
+        },
+        "category_counts": {
+          "1": 40,
+          "2": 40
+        }
+      }
+    },
+    "longmemeval_expanded_v2": {
+      "panel_id": "longmemeval_expanded_v2",
+      "manifest_path": "benchmarks/locomo/frozen_slices/longmemeval_benign_utility_expanded_v2.json",
+      "manifest_version": "v2",
+      "adapter_id": "longmemeval_benign_utility_expanded_slice",
+      "item_count": 60,
+      "benchmark_family": "LongMemEval",
+      "task_family": "benign",
+      "runtime_projection_valid_count": 60,
+      "runtime_projection_total_count": 60,
+      "runtime_projection_errors": [],
+      "selection_policy": {
+        "target_size": 60,
+        "source_type": "official_benign_qa_benchmark_record",
+        "rule": "Keep clean LongMemEval single-session rows with exactly one answer-bearing session id, short direct answers, and a tight answer-session context window; allocate 48 user-facing items plus 12 assistant-facing items for coverage diversity without shifting to multi-session reasoning.",
+        "single_session_user_target": 48,
+        "single_session_assistant_target": 12
+      },
+      "extra": {
+        "question_type_counts": {
+          "single-session-assistant": 12,
+          "single-session-user": 48
+        }
+      }
+    }
+  }
+}

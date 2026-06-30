@@ -1,0 +1,227 @@
+{
+  "method_spec": {
+    "name": "Provenance-Scaffolded Unified",
+    "short_name": "PSU",
+    "routing_architecture": "scale_aware_note_aware",
+    "compaction_contract": "tiny_carry_forward_scaffold",
+    "component_lineage": [
+      "baseline compact note contract",
+      "tiny_fixed_scaffold",
+      "tiny_refusal_scaffold",
+      "tiny_placeholder_hardened_scaffold",
+      "tiny_carry_forward_scaffold"
+    ],
+    "rules": [
+      "Use a fixed query-slot scaffold so the target field survives repeated compression.",
+      "Drop placeholder or unsupported query values unless they are explicitly marked tentative and low-confidence.",
+      "Carry forward the last valid scaffold when a later pass collapses to empty or missing-only output.",
+      "Use note-aware uncertainty gating so raw escalation depends on provenance, missingness markers, and target-noise signals rather than raw fallback alone."
+    ],
+    "goal": "Reduce high-N benign history loss and unsafe scaffold collapse without giving back the hallucination-side false-present gains already achieved by the note-aware cleanup family."
+  },
+  "defense_axis_projection": [
+    {
+      "axis": "none",
+      "repo_object": "summary_only",
+      "role": "No raw-backed cleanup or provenance-aware recovery.",
+      "evidence_source": "actual_recall_expansion N=8 / actual_hallucination_stress N=8"
+    },
+    {
+      "axis": "classifier_only",
+      "repo_object": "scale_aware_unified",
+      "role": "Cleanup + retrieval classifier without note-aware uncertainty adjustment.",
+      "evidence_source": "actual_recall_expansion N=8 / actual_hallucination_stress N=8"
+    },
+    {
+      "axis": "uncertainty_aware",
+      "repo_object": "scale_aware_note_aware",
+      "role": "Classifier-only baseline plus note-aware probe correction.",
+      "evidence_source": "actual_recall_expansion N=8 / actual_hallucination_stress N=8"
+    },
+    {
+      "axis": "conservative_compaction",
+      "repo_object": "tiny_fixed_scaffold + scale_aware_note_aware",
+      "role": "Structured target-slot retention to reduce high-N evaporation before stronger provenance filtering.",
+      "evidence_source": "actual_note_persistence_results N=8"
+    },
+    {
+      "axis": "provenance_required",
+      "repo_object": "tiny_placeholder_hardened_scaffold + scale_aware_note_aware",
+      "role": "Explicit demotion of placeholder query values and stricter query-slot validity.",
+      "evidence_source": "actual_placeholder_hardening_results N=8"
+    },
+    {
+      "axis": "full_method",
+      "repo_object": "tiny_carry_forward_scaffold + scale_aware_note_aware",
+      "role": "The formal PSU method: scaffolded compaction, placeholder hardening, carry-forward, and note-aware uncertainty gating.",
+      "evidence_source": "actual_carry_forward_results N=8"
+    }
+  ],
+  "baseline_panels": {
+    "recall_n8": {
+      "summary_only": {
+        "accuracy": 0.208,
+        "propagation": 0.5,
+        "raw_escalation": 0.0,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.312
+      },
+      "tiered": {
+        "accuracy": 0.792,
+        "propagation": 0.208,
+        "raw_escalation": 0.75,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.062
+      },
+      "scale_aware_unified": {
+        "accuracy": 0.875,
+        "propagation": 0.125,
+        "raw_escalation": 0.583,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.0
+      },
+      "scale_aware_note_aware": {
+        "accuracy": 0.875,
+        "propagation": 0.125,
+        "raw_escalation": 0.583,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.0
+      }
+    },
+    "hallucination_stress_n8": {
+      "summary_only": {
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.0,
+        "false_present": 0.0,
+        "direct_unsupported": 0.0
+      },
+      "tiered": {
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.875,
+        "false_present": 0.875,
+        "direct_unsupported": 0.0
+      },
+      "scale_aware_unified": {
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.0,
+        "false_present": 0.0,
+        "direct_unsupported": 0.0
+      },
+      "scale_aware_note_aware": {
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.0,
+        "false_present": 0.0,
+        "direct_unsupported": 0.0
+      }
+    }
+  },
+  "intervention_chain": [
+    {
+      "step": "baseline",
+      "description": "Natural compact note with no scaffold or carry-forward rule.",
+      "source": "actual_note_persistence_results",
+      "metrics": {
+        "accuracy": 0.917,
+        "propagation": 0.083,
+        "raw_escalation": 0.667,
+        "residual_bad_memory": 0.0,
+        "benign_conflict_error_rate": 0.0,
+        "empty_note_rate": 0.125,
+        "empty_note_then_abstain_rate": 0.0,
+        "history_loss_rate": 1.0,
+        "target_claim_retained_rate": 0.0,
+        "clean_target_claim_rate": 0.0,
+        "supported_current_target_rate": 0.0,
+        "note_mentions_query_field_rate": 0.5,
+        "mean_note_tokens": 24.625,
+        "mean_llm_cost_usd": 0.263717
+      }
+    },
+    {
+      "step": "tiny_fixed_scaffold",
+      "description": "Structured target_slot/status_slot/carry_slot scaffold.",
+      "source": "actual_note_persistence_results",
+      "metrics": {
+        "accuracy": 0.833,
+        "propagation": 0.167,
+        "raw_escalation": 0.417,
+        "residual_bad_memory": 0.0,
+        "benign_conflict_error_rate": 0.0,
+        "empty_note_rate": 0.125,
+        "empty_note_then_abstain_rate": 0.0,
+        "history_loss_rate": 0.625,
+        "target_claim_retained_rate": 0.375,
+        "clean_target_claim_rate": 0.375,
+        "supported_current_target_rate": 0.375,
+        "note_mentions_query_field_rate": 0.75,
+        "mean_note_tokens": 13.0,
+        "mean_llm_cost_usd": 0.314474
+      }
+    },
+    {
+      "step": "tiny_refusal_scaffold",
+      "description": "Unsafe/policy semantics moved from raw action text into explicit refusal scaffold.",
+      "source": "actual_scaffold_refinement_results",
+      "metrics": {
+        "accuracy": 0.833,
+        "propagation": 0.167,
+        "raw_escalation": 0.417,
+        "residual_bad_memory": 0.0,
+        "history_loss_rate": 0.625,
+        "target_claim_retained_rate": 0.375,
+        "supported_current_target_rate": 0.375,
+        "unsafe_error_rate": 0.5,
+        "unsafe_compact_refuse_rate": 0.5,
+        "mean_note_tokens": 7.0,
+        "mean_llm_cost_usd": 0.356026
+      }
+    },
+    {
+      "step": "tiny_placeholder_hardened_scaffold",
+      "description": "Placeholder or missing-like query values are filtered instead of treated as valid target content.",
+      "source": "actual_placeholder_hardening_results",
+      "metrics": {
+        "accuracy": 0.917,
+        "propagation": 0.083,
+        "raw_escalation": 0.417,
+        "residual_bad_memory": 0.0,
+        "history_loss_rate": 0.625,
+        "target_claim_retained_rate": 0.375,
+        "supported_current_target_rate": 0.375,
+        "unsafe_error_rate": 0.5,
+        "placeholder_answer_rate": 0.0,
+        "hallucination_placeholder_answer_rate": 0.0,
+        "mean_note_tokens": 7.0,
+        "mean_llm_cost_usd": 0.356026
+      }
+    },
+    {
+      "step": "tiny_carry_forward_scaffold",
+      "description": "The final PSU compaction contract; preserves the last valid scaffold when later passes collapse.",
+      "source": "actual_carry_forward_results",
+      "metrics": {
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.042,
+        "residual_bad_memory": 0.0,
+        "history_loss_rate": 0.062,
+        "target_claim_retained_rate": 0.938,
+        "supported_current_target_rate": 0.938,
+        "unsafe_error_rate": 0.0,
+        "hallucination_placeholder_answer_rate": 0.0,
+        "carry_forward_record_rate": 0.5,
+        "mean_carry_forward_events": 1.917,
+        "mean_llm_cost_usd": 0.343942
+      }
+    }
+  ],
+  "conclusions": [
+    "The real blocker after the benchmark-native baseline is no longer unsupported-memory shielding alone; it is benign answerability evaporation under repeated compression.",
+    "The scaffold lineage already identifies a coherent intervention family: fixed target slot, refusal-safe scaffold, placeholder hardening, then carry-forward.",
+    "PSU should be treated as the paper-facing method name for that lineage rather than as another isolated round artifact."
+  ]
+}

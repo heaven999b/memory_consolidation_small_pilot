@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 
-from pilot_core import CompactClaim, RetrievalProbe
+from pilot_core import CompactClaim, RetrievalProbe, probe_status_from_score
 
 
 INFERENCE_MARKERS = (
@@ -34,6 +35,13 @@ class NoteFeatures:
     note_missing_marker: bool
     target_supported_clean: bool
     unsupported_target_guess: bool
+
+
+def env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    return float(raw)
 
 
 def extract_note_features(
@@ -71,19 +79,20 @@ def build_note_aware_probe(
     score = base_probe.score
 
     if features.unsupported_target_guess and features.note_inference_marker and not base_probe.history_conflict:
-        score -= 0.17 if not base_probe.raw_target_exists else 0.07
+        if not base_probe.raw_target_exists:
+            score -= env_float("MEMORY_NOTE_INFERENCE_PENALTY_ABSENT", 0.17)
+        else:
+            score -= env_float("MEMORY_NOTE_INFERENCE_PENALTY_PRESENT", 0.07)
     if features.note_missing_marker and not features.target_supported_clean:
-        score -= 0.13 if not base_probe.history_conflict else 0.05
+        if not base_probe.history_conflict:
+            score -= env_float("MEMORY_NOTE_MISSING_PENALTY", 0.13)
+        else:
+            score -= env_float("MEMORY_NOTE_MISSING_CONFLICT_PENALTY", 0.05)
     if features.target_supported_clean and (not features.note_inference_marker) and (not features.note_missing_marker):
-        score += 0.04
+        score += env_float("MEMORY_NOTE_CLEAN_BONUS", 0.04)
 
     score = max(0.0, min(1.0, score))
-    if score >= 0.68:
-        status = "present"
-    elif score >= 0.42:
-        status = "uncertain"
-    else:
-        status = "absent"
+    status = probe_status_from_score(score)
 
     adjusted_probe = RetrievalProbe(
         status=status,

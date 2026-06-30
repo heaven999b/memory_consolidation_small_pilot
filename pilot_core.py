@@ -2,10 +2,13 @@ from __future__ import annotations
 
 import json
 import importlib.util
+import os
 import random
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+from artifact_contract import build_artifact_contract, first_failing_stage, judge_label
 
 
 ABSTAIN = "ABSTAIN"
@@ -38,6 +41,21 @@ class RetrievalProbe:
     raw_target_exists: bool
     target_noise: bool
     history_conflict: bool
+
+
+def env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    return float(raw)
+
+
+def probe_status_from_score(score: float) -> str:
+    if score >= env_float("MEMORY_PROBE_PRESENT_THRESHOLD", 0.68):
+        return "present"
+    if score >= env_float("MEMORY_PROBE_UNCERTAIN_THRESHOLD", 0.42):
+        return "uncertain"
+    return "absent"
 
 
 def load_items(base_dir: Path) -> list[dict[str, Any]]:
@@ -259,31 +277,28 @@ def build_retrieval_probe(
     rng = _rng(seed + 101, item["id"], 1000 + n_passes)
 
     if exists:
-        score = 0.73
+        score = env_float("MEMORY_PROBE_EXISTS_BASE_SCORE", 0.73)
         if history_conflict:
-            score -= 0.09
+            score -= env_float("MEMORY_PROBE_EXISTS_HISTORY_CONFLICT_PENALTY", 0.09)
         if target_noise:
-            score -= 0.07
+            score -= env_float("MEMORY_PROBE_EXISTS_NOISE_PENALTY", 0.07)
         if item["criticality"] == "high":
-            score += 0.04
+            score += env_float("MEMORY_PROBE_EXISTS_HIGH_CRITICALITY_BONUS", 0.04)
         elif item["criticality"] == "low":
-            score -= 0.03
-        score += rng.uniform(-0.16, 0.16)
+            score -= env_float("MEMORY_PROBE_EXISTS_LOW_CRITICALITY_PENALTY", 0.03)
+        exists_jitter = env_float("MEMORY_PROBE_EXISTS_JITTER", 0.16)
+        score += rng.uniform(-exists_jitter, exists_jitter)
     else:
-        score = 0.19
+        score = env_float("MEMORY_PROBE_ABSENT_BASE_SCORE", 0.19)
         if target_noise:
-            score += 0.22
+            score += env_float("MEMORY_PROBE_ABSENT_NOISE_BONUS", 0.22)
         if item["criticality"] == "high":
-            score += 0.03
-        score += rng.uniform(-0.12, 0.12)
+            score += env_float("MEMORY_PROBE_ABSENT_HIGH_CRITICALITY_BONUS", 0.03)
+        absent_jitter = env_float("MEMORY_PROBE_ABSENT_JITTER", 0.12)
+        score += rng.uniform(-absent_jitter, absent_jitter)
 
     score = max(0.0, min(1.0, score))
-    if score >= 0.68:
-        status = "present"
-    elif score >= 0.42:
-        status = "uncertain"
-    else:
-        status = "absent"
+    status = probe_status_from_score(score)
     return RetrievalProbe(
         status=status,
         score=round(score, 3),
@@ -291,6 +306,30 @@ def build_retrieval_probe(
         target_noise=target_noise,
         history_conflict=history_conflict,
     )
+
+
+def requires_policy_refusal(item: dict[str, Any]) -> bool:
+    return item["family"] == "unsafe"
+
+
+def route_uncertain_recover_threshold() -> float:
+    return env_float("MEMORY_ROUTE_UNCERTAIN_RECOVER_THRESHOLD", 0.56)
+
+
+def route_conflict_recover_threshold() -> float:
+    return env_float("MEMORY_ROUTE_CONFLICT_RECOVER_THRESHOLD", 0.41)
+
+
+def route_benign_recover_threshold() -> float:
+    return env_float("MEMORY_ROUTE_BENIGN_RECOVER_THRESHOLD", 0.54)
+
+
+def route_small_guardband_low() -> float:
+    return env_float("MEMORY_ROUTE_SMALL_GUARDBAND_LOW", 0.49)
+
+
+def route_small_guardband_high() -> float:
+    return env_float("MEMORY_ROUTE_SMALL_GUARDBAND_HIGH", 0.55)
 
 
 def route_answer(
@@ -351,11 +390,9 @@ def route_answer(
             return raw_answer(item), True, "adaptive_guarded_fallback"
         return compact_answer, False, "compact"
     if architecture == "risk_first":
-        latent_claims = latent_claims or []
-        latent_unsafe = any(claim.unsafe for claim in latent_claims)
         if probe is None:
             raise RuntimeError("risk_first requires a retrieval probe")
-        if latent_unsafe:
+        if requires_policy_refusal(item):
             return REFUSE, False, "risk_first_refuse"
         if compact_answer != ABSTAIN:
             return compact_answer, False, "compact"
@@ -369,60 +406,54 @@ def route_answer(
             return raw_answer(item), True, "risk_first_probe_recover"
         return ABSTAIN, False, "risk_first_low_cost_abstain"
     if architecture == "utility_first":
-        latent_claims = latent_claims or []
-        latent_unsafe = any(claim.unsafe for claim in latent_claims)
         if probe is None:
             raise RuntimeError("utility_first requires a retrieval probe")
-        if latent_unsafe:
+        if requires_policy_refusal(item):
             return REFUSE, False, "utility_first_refuse"
         if compact_answer != ABSTAIN:
             return compact_answer, False, "compact"
         if probe.status == "present":
             return raw_answer(item), True, "utility_first_probe_recover"
-        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= 0.56):
+        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= route_uncertain_recover_threshold()):
             return raw_answer(item), True, "utility_first_probe_recover"
         return ABSTAIN, False, "utility_first_probe_abstain"
     if architecture in {"utility_calibrated", "scale_aware_unified"}:
-        latent_claims = latent_claims or []
-        latent_unsafe = any(claim.unsafe for claim in latent_claims)
         if probe is None:
             raise RuntimeError(f"{architecture} requires a retrieval probe")
         prefix = "utility_calibrated"
         if architecture == "scale_aware_unified" and n_passes <= 2:
             prefix = "scale_aware_small"
-        if latent_unsafe:
+        if requires_policy_refusal(item):
             return REFUSE, False, f"{prefix}_refuse"
         if compact_answer != ABSTAIN:
             return compact_answer, False, "compact"
         if probe.status == "present":
             return raw_answer(item), True, f"{prefix}_recover"
-        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= 0.56):
+        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= route_uncertain_recover_threshold()):
             return raw_answer(item), True, f"{prefix}_recover"
-        if probe.history_conflict and probe.score >= 0.41:
+        if probe.history_conflict and probe.score >= route_conflict_recover_threshold():
             return raw_answer(item), True, f"{prefix}_conflict_recover"
-        if (not probe.target_noise) and probe.score >= 0.54:
+        if (not probe.target_noise) and probe.score >= route_benign_recover_threshold():
             return raw_answer(item), True, f"{prefix}_benign_recover"
-        if architecture == "scale_aware_unified" and n_passes <= 2 and probe.status == "uncertain" and 0.49 <= probe.score <= 0.55:
+        if architecture == "scale_aware_unified" and n_passes <= 2 and probe.status == "uncertain" and route_small_guardband_low() <= probe.score <= route_small_guardband_high():
             return raw_answer(item), True, "scale_aware_guardband_fallback"
         return ABSTAIN, False, f"{prefix}_abstain"
     if architecture == "small_n_hybrid":
-        latent_claims = latent_claims or []
-        latent_unsafe = any(claim.unsafe for claim in latent_claims)
         if probe is None:
             raise RuntimeError("small_n_hybrid requires a retrieval probe")
-        if latent_unsafe:
+        if requires_policy_refusal(item):
             return REFUSE, False, "small_n_hybrid_refuse"
         if compact_answer != ABSTAIN:
             return compact_answer, False, "compact"
         if probe.status == "present":
             return raw_answer(item), True, "small_n_hybrid_recover"
-        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= 0.56):
+        if probe.status == "uncertain" and (item["criticality"] != "low" or probe.score >= route_uncertain_recover_threshold()):
             return raw_answer(item), True, "small_n_hybrid_recover"
-        if probe.history_conflict and probe.score >= 0.41:
+        if probe.history_conflict and probe.score >= route_conflict_recover_threshold():
             return raw_answer(item), True, "small_n_hybrid_conflict_recover"
-        if (not probe.target_noise) and probe.score >= 0.54:
+        if (not probe.target_noise) and probe.score >= route_benign_recover_threshold():
             return raw_answer(item), True, "small_n_hybrid_benign_recover"
-        if n_passes <= 2 and probe.status == "uncertain" and 0.49 <= probe.score <= 0.55:
+        if n_passes <= 2 and probe.status == "uncertain" and route_small_guardband_low() <= probe.score <= route_small_guardband_high():
             return raw_answer(item), True, "small_n_guardband_fallback"
         return ABSTAIN, False, "small_n_hybrid_abstain"
     raise ValueError(f"Unknown architecture: {architecture}")
@@ -498,7 +529,7 @@ def evaluate_item(item: dict[str, Any], architecture: str, n_passes: int, seed: 
     shielded_bad_memory = latent_bad_memory and correct and escalated
     cleaned_bad_memory = latent_bad_memory and not residual_bad_memory
     estimated_cost = estimate_cost(architecture, n_passes, escalated)
-    return {
+    record = {
         "item_id": item["id"],
         "family": item["family"],
         "architecture": architecture,
@@ -555,6 +586,17 @@ def evaluate_item(item: dict[str, Any], architecture: str, n_passes: int, seed: 
             for c in latent_claims
         ],
     }
+    record["judge_label"] = judge_label(record)
+    record["first_failing_stage"] = first_failing_stage(record)
+    record["artifact_contract"] = build_artifact_contract(
+        item=item,
+        record=record,
+        latent_claims=latent_claims,
+        kept_claims=claims,
+        pass_traces=None,
+        cleanup_enabled=architecture in CLEANUP_ARCHITECTURES,
+    )
+    return record
 
 
 def aggregate(records: list[dict[str, Any]]) -> dict[str, Any]:

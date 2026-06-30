@@ -1,0 +1,204 @@
+{
+  "method_spec": {
+    "name": "Provenance-Scaffolded Unified",
+    "short_name": "PSU",
+    "routing_architecture": "scale_aware_note_aware",
+    "compaction_contract": "tiny_carry_forward_scaffold",
+    "component_lineage": [
+      "baseline compact note contract",
+      "tiny_fixed_scaffold",
+      "tiny_refusal_scaffold",
+      "tiny_placeholder_hardened_scaffold",
+      "tiny_carry_forward_scaffold"
+    ],
+    "rules": [
+      "Use a fixed query-slot scaffold so the target field survives repeated compression.",
+      "Drop placeholder or unsupported query values unless they are explicitly marked tentative and low-confidence.",
+      "Carry forward the last valid scaffold when a later pass collapses to empty or missing-only output.",
+      "Use note-aware uncertainty gating so raw escalation depends on provenance, missingness markers, and target-noise signals rather than raw fallback alone."
+    ],
+    "goal": "Reduce high-N benign history loss and unsafe scaffold collapse without giving back the hallucination-side false-present gains already achieved by the note-aware cleanup family."
+  },
+  "psu_recall_panel_n8": [
+    {
+      "label": "summary_only",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 0.208,
+      "propagation": 0.5,
+      "raw_escalation": 0.0,
+      "history_loss": 0.875,
+      "empty_note_then_abstain": 0.312,
+      "benign_conflict_error": 0.875,
+      "unsafe_error": 1.0,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.0,
+      "mean_llm_cost_usd": 0.246584
+    },
+    {
+      "label": "tiered",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 0.792,
+      "propagation": 0.208,
+      "raw_escalation": 0.75,
+      "history_loss": 0.875,
+      "empty_note_then_abstain": 0.062,
+      "benign_conflict_error": 0.25,
+      "unsafe_error": 0.25,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.0,
+      "mean_llm_cost_usd": 0.246584
+    },
+    {
+      "label": "scale_aware_unified",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 0.875,
+      "propagation": 0.125,
+      "raw_escalation": 0.583,
+      "history_loss": 0.875,
+      "empty_note_then_abstain": 0.0,
+      "benign_conflict_error": 0.0,
+      "unsafe_error": 0.75,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.0,
+      "mean_llm_cost_usd": 0.246584
+    },
+    {
+      "label": "scale_aware_note_aware",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 0.875,
+      "propagation": 0.125,
+      "raw_escalation": 0.583,
+      "history_loss": 0.875,
+      "empty_note_then_abstain": 0.0,
+      "benign_conflict_error": 0.0,
+      "unsafe_error": 0.75,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.0,
+      "mean_llm_cost_usd": 0.246584
+    },
+    {
+      "label": "psu_no_carry",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 0.958,
+      "propagation": 0.042,
+      "raw_escalation": 0.417,
+      "history_loss": 0.625,
+      "empty_note_then_abstain": 0.0,
+      "benign_conflict_error": 0.0,
+      "unsafe_error": 0.25,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.0,
+      "mean_llm_cost_usd": 0.343942
+    },
+    {
+      "label": "psu",
+      "n_passes": 8,
+      "count": 24,
+      "accuracy": 1.0,
+      "propagation": 0.0,
+      "raw_escalation": 0.042,
+      "history_loss": 0.062,
+      "empty_note_then_abstain": 0.0,
+      "benign_conflict_error": 0.0,
+      "unsafe_error": 0.0,
+      "hallucination_placeholder": 0.0,
+      "carry_forward_record": 0.5,
+      "mean_llm_cost_usd": 0.343942
+    }
+  ],
+  "key_deltas": {
+    "note_aware_to_psu_accuracy": {
+      "label": "Recall N=8 accuracy: scale_aware_note_aware -> PSU",
+      "pair_count": 24,
+      "baseline_mean": 0.875,
+      "treatment_mean": 1.0,
+      "improvement_delta": 0.125,
+      "ci_low": 0.0,
+      "ci_high": 0.2917,
+      "wins": 3,
+      "losses": 0,
+      "ties": 21
+    },
+    "note_aware_to_psu_history_loss": {
+      "label": "Recall N=8 history loss: scale_aware_note_aware -> PSU",
+      "pair_count": 16,
+      "baseline_mean": 0.875,
+      "treatment_mean": 0.0625,
+      "improvement_delta": 0.8125,
+      "ci_low": 0.625,
+      "ci_high": 1.0,
+      "wins": 13,
+      "losses": 0,
+      "ties": 3
+    },
+    "note_aware_to_psu_raw_escalation": {
+      "label": "Recall N=8 raw escalation: scale_aware_note_aware -> PSU",
+      "pair_count": 24,
+      "baseline_mean": 0.5833,
+      "treatment_mean": 0.0417,
+      "improvement_delta": 0.5417,
+      "ci_low": 0.3333,
+      "ci_high": 0.75,
+      "wins": 13,
+      "losses": 0,
+      "ties": 11
+    }
+  },
+  "artifact_contract": {
+    "actual_summarizer_slice": {
+      "record_count": 128,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.141,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_recall_expansion": {
+      "record_count": 288,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.139,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_hallucination_stress": {
+      "record_count": 192,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.083,
+      "stage_attribution_coverage": 1.0
+    },
+    "actual_carry_forward": {
+      "record_count": 96,
+      "pass_trace_coverage": 1.0,
+      "provenance_link_coverage": 1.0,
+      "quarantine_signal_coverage": 0.219,
+      "stage_attribution_coverage": 1.0
+    }
+  },
+  "benchmark_section": {
+    "seeds": [
+      11,
+      23
+    ],
+    "family_rollups": {
+      "benign_utility_benchmark_section": {
+        "num_items": 16,
+        "panel_ids": [
+          "locomo_core_v2",
+          "longmemeval_direct_v1"
+        ]
+      },
+      "hallucination_benchmark_section": {
+        "num_items": 16,
+        "panel_ids": [
+          "halumem_core_v2",
+          "halumem_holdout_v1"
+        ]
+      }
+    }
+  }
+}

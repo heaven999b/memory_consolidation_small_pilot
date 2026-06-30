@@ -1,0 +1,196 @@
+{
+  "selection_stats": {
+    "halumem": {
+      "source_total": 20,
+      "clean_candidate_pool": 19
+    },
+    "locomo": {
+      "source_total": 1986,
+      "clean_candidate_pool": 356
+    },
+    "longmemeval": {
+      "source_total": 500,
+      "clean_candidate_pool": 92
+    }
+  },
+  "layers": {
+    "layer_0_reviewer_core": {
+      "count": 32,
+      "role": "current_frozen_reviewer_table",
+      "verdict": "solid_for_current_reporting"
+    },
+    "layer_1_expanded_official_pool": {
+      "count": 159,
+      "role": "next_stage_benchmark_native_scale_up",
+      "verdict": "staged_run_ready"
+    },
+    "layer_2_four_family_closure": {
+      "count": 165,
+      "official_external_count": 159,
+      "task_extension_count": 6,
+      "role": "four_family_primary_surface",
+      "verdict": "coverage_complete_but_mixed_source_kind"
+    }
+  },
+  "panels": {
+    "halumem_expanded_v1": {
+      "panel_id": "halumem_expanded_v1",
+      "manifest_path": "benchmarks/halumem/frozen_slices/halumem_hallucination_expanded_v1.json",
+      "manifest_version": "v1",
+      "item_count": 19,
+      "source_total": 20,
+      "clean_candidate_pool": 19,
+      "source_selectivity": 0.95,
+      "candidate_selectivity": 1.0,
+      "runtime_projection_valid_count": 19,
+      "runtime_projection_total_count": 19,
+      "runtime_projection_errors": [],
+      "stratum_counts": {
+        "halumem_unsupported_designation_abstain": 19
+      },
+      "complexity_counts": {
+        "clean_three_clue_abstain": 19
+      },
+      "query_field_count": 1,
+      "gold_behavior_signature": [
+        "ABSTAIN"
+      ],
+      "answer_token_range": [
+        1,
+        1
+      ],
+      "context_message_range": [
+        7,
+        7
+      ],
+      "source_category_prefix_mismatch_examples": []
+    },
+    "locomo_expanded_v1": {
+      "panel_id": "locomo_expanded_v1",
+      "manifest_path": "benchmarks/locomo/frozen_slices/locomo_benign_utility_expanded_v1.json",
+      "manifest_version": "v1",
+      "item_count": 80,
+      "source_total": 1986,
+      "clean_candidate_pool": 356,
+      "source_selectivity": 0.0403,
+      "candidate_selectivity": 0.2247,
+      "runtime_projection_valid_count": 80,
+      "runtime_projection_total_count": 80,
+      "runtime_projection_errors": [],
+      "stratum_counts": {
+        "locomo_absolute_temporal": 40,
+        "locomo_entity_or_attribute": 20,
+        "locomo_quantity_or_duration": 20
+      },
+      "complexity_counts": {
+        "multi_anchor": 13,
+        "paired_anchor": 33,
+        "single_anchor": 34
+      },
+      "query_field_count": 1,
+      "gold_behavior_signature": [
+        "19 October 2023",
+        "19 days",
+        "2",
+        "2018",
+        "2019"
+      ],
+      "answer_token_range": [
+        1,
+        5
+      ],
+      "context_message_range": [
+        2,
+        6
+      ],
+      "source_category_prefix_mismatch_examples": [
+        "locomo_expanded_003",
+        "locomo_expanded_009",
+        "locomo_expanded_037",
+        "locomo_expanded_038"
+      ]
+    },
+    "longmemeval_expanded_v2": {
+      "panel_id": "longmemeval_expanded_v2",
+      "manifest_path": "benchmarks/locomo/frozen_slices/longmemeval_benign_utility_expanded_v2.json",
+      "manifest_version": "v2",
+      "item_count": 60,
+      "source_total": 500,
+      "clean_candidate_pool": 92,
+      "source_selectivity": 0.12,
+      "candidate_selectivity": 0.6522,
+      "runtime_projection_valid_count": 60,
+      "runtime_projection_total_count": 60,
+      "runtime_projection_errors": [],
+      "stratum_counts": {
+        "longmemeval_single_session_assistant": 12,
+        "longmemeval_single_session_user": 48
+      },
+      "complexity_counts": {
+        "assistant_trace_recall": 12,
+        "session_window_recall": 45,
+        "tight_literal_recall": 3
+      },
+      "query_field_count": 1,
+      "gold_behavior_signature": [
+        "$2,000",
+        "$800",
+        "10",
+        "10 minutes",
+        "10%"
+      ],
+      "answer_token_range": [
+        1,
+        3
+      ],
+      "context_message_range": [
+        2,
+        6
+      ],
+      "source_category_prefix_mismatch_examples": []
+    }
+  },
+  "stratum_verdicts": {
+    "halumem_unsupported_designation_abstain": {
+      "count": 19,
+      "verdict": "adequate",
+      "use_note": "adequate for staged hallucination evaluation; still smaller than a final paper-scale family table would ideally want"
+    },
+    "locomo_absolute_temporal": {
+      "count": 40,
+      "verdict": "solid",
+      "use_note": "sufficient as a main staged benchmark stratum"
+    },
+    "locomo_entity_or_attribute": {
+      "count": 20,
+      "verdict": "adequate",
+      "use_note": "sufficient as a main staged benchmark stratum"
+    },
+    "locomo_quantity_or_duration": {
+      "count": 20,
+      "verdict": "adequate",
+      "use_note": "sufficient as a main staged benchmark stratum"
+    },
+    "longmemeval_single_session_assistant": {
+      "count": 12,
+      "verdict": "adequate",
+      "use_note": "good auxiliary stress/control stratum; too thin to headline alone"
+    },
+    "longmemeval_single_session_user": {
+      "count": 48,
+      "verdict": "solid",
+      "use_note": "sufficient as a main staged benchmark stratum"
+    }
+  },
+  "overall_verdict": {
+    "expanded_pool_standardized": true,
+    "expanded_pool_staged_run_ready": true,
+    "expanded_pool_full_paper_ready": false,
+    "primary_reason_not_full_paper_ready": "Need full model-backed runs over the expanded pool and still lack official external conflict/unsafe families.",
+    "blocking_notes": [
+      "The LongMemEval assistant-facing stratum is only 12 items, so it should be treated as an auxiliary control slice rather than a standalone headline panel.",
+      "The official expanded pool still covers benign plus hallucination only; conflict and unsafe remain manifest-backed local task extensions rather than official external benchmark panels.",
+      "LoCoMo source categories are not stable enough to serve as the final paper taxonomy by themselves; the derived contract-based strata should be treated as the canonical levels."
+    ]
+  }
+}

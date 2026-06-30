@@ -6,6 +6,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from artifact_contract import build_artifact_contract, first_failing_stage, judge_label
 from deepseek_memory_summarizer import DeepSeekMemorySummarizer
 from note_detector import build_note_aware_probe
 from pilot_core import (
@@ -161,10 +162,15 @@ def pass_prompt(
 
 
 def normalize_claim(item: dict[str, Any], raw_claim: dict[str, Any]) -> CompactClaim | None:
+    claim, _ = normalize_claim_decision(item, raw_claim)
+    return claim
+
+
+def normalize_claim_decision(item: dict[str, Any], raw_claim: dict[str, Any]) -> tuple[CompactClaim | None, str]:
     field = raw_claim["field"]
     value = raw_claim["value"].strip()
     if not value:
-        return None
+        return None, "drop_empty_value"
     placeholder = value.lower() in {
         "unknown",
         "cannot be determined",
@@ -174,11 +180,11 @@ def normalize_claim(item: dict[str, Any], raw_claim: dict[str, Any]) -> CompactC
         "none",
     }
     if field == item["query_field"] and placeholder and (not raw_claim["supported"]):
-        return None
+        return None, "drop_placeholder_query_field"
     conflict_state = raw_claim["conflict_state"]
     if conflict_state == "none":
         conflict_state = "clean"
-    return CompactClaim(
+    claim = CompactClaim(
         field=field,
         value=value,
         supported=bool(raw_claim["supported"]),
@@ -188,6 +194,17 @@ def normalize_claim(item: dict[str, Any], raw_claim: dict[str, Any]) -> CompactC
         provenance_complete=bool(raw_claim["supported"]) and bool(raw_claim["current"]),
         conflict_state=conflict_state,
     )
+    if claim.supported and claim.current and (not claim.unsafe) and claim.conflict_state == "clean":
+        return claim, "keep_supported_current"
+    if claim.field == item["query_field"] and (not claim.supported):
+        return claim, "keep_tentative_query_claim"
+    if claim.unsafe:
+        return claim, "keep_unsafe_claim"
+    if claim.conflict_state != "clean":
+        return claim, f"keep_conflict_{claim.conflict_state}"
+    if not claim.current:
+        return claim, "keep_non_current_claim"
+    return claim, "keep_other_claim"
 
 
 def consolidate_model_backed(
@@ -195,7 +212,7 @@ def consolidate_model_backed(
     n_passes: int,
     seed: int,
     summarizer: DeepSeekMemorySummarizer,
-) -> tuple[list[CompactClaim], list[str], dict[str, float]]:
+) -> tuple[list[CompactClaim], list[str], dict[str, Any]]:
     previous_note: str | None = None
     previous_claims: list[CompactClaim] | None = None
     note_history: list[str] = []
@@ -203,6 +220,7 @@ def consolidate_model_backed(
     total_cost = 0.0
     total_input_tokens = 0
     total_output_tokens = 0
+    pass_traces: list[dict[str, Any]] = []
 
     for pass_idx in range(1, n_passes + 1):
         prompt = pass_prompt(item, pass_idx, seed, previous_note, previous_claims)
@@ -216,8 +234,17 @@ def consolidate_model_backed(
         previous_note = structured.get("note", "").strip()
         raw_claims = structured.get("claims", [])
         claims = []
+        normalization_decisions = []
         for raw_claim in raw_claims:
-            claim = normalize_claim(item, raw_claim)
+            claim, decision_reason = normalize_claim_decision(item, raw_claim)
+            normalization_decisions.append(
+                {
+                    "field": raw_claim["field"],
+                    "value": raw_claim["value"].strip(),
+                    "decision": "keep" if claim is not None else "drop",
+                    "reason": decision_reason,
+                }
+            )
             if claim is not None:
                 claims.append(claim)
         previous_claims = claims
@@ -226,11 +253,49 @@ def consolidate_model_backed(
         usage = result.get("usage", {})
         total_input_tokens += int(usage.get("input_tokens", 0) or 0)
         total_output_tokens += int(usage.get("output_tokens", 0) or 0)
+        pass_traces.append(
+            {
+                "pass_idx": pass_idx,
+                "cache_key": cache_key,
+                "source_kind": "raw_facts" if pass_idx == 1 else "prior_compressed_memory",
+                "note": previous_note,
+                "raw_claims": raw_claims,
+                "normalization_decisions": normalization_decisions,
+                "normalized_claims": [
+                    {
+                        "field": claim.field,
+                        "value": claim.value,
+                        "supported": claim.supported,
+                        "unsafe": claim.unsafe,
+                        "confidence": round(claim.confidence, 3),
+                        "current": claim.current,
+                        "provenance_complete": claim.provenance_complete,
+                        "conflict_state": claim.conflict_state,
+                    }
+                    for claim in claims
+                ],
+                "candidate_memory_writes": [
+                    {
+                        "field": claim.field,
+                        "value": claim.value,
+                        "supported": claim.supported,
+                        "unsafe": claim.unsafe,
+                        "confidence": round(claim.confidence, 3),
+                        "current": claim.current,
+                        "provenance_complete": claim.provenance_complete,
+                        "conflict_state": claim.conflict_state,
+                    }
+                    for claim in claims
+                ],
+                "llm_cost_usd": float(result.get("total_cost_usd", 0.0) or 0.0),
+            }
+        )
 
     return claims, note_history, {
         "llm_cost_usd": round(total_cost, 6),
         "input_tokens": total_input_tokens,
         "output_tokens": total_output_tokens,
+        "pass_traces": pass_traces,
     }
 
 
@@ -286,7 +351,7 @@ def evaluate_architecture(
     cleaned_bad_memory = latent_bad_memory and not residual_bad_memory
     estimated_cost = estimate_cost(eval_arch, n_passes, escalated)
 
-    return {
+    record = {
         "item_id": item["id"],
         "family": item["family"],
         "architecture": architecture,
@@ -352,6 +417,17 @@ def evaluate_architecture(
             for claim in latent_claims
         ],
     }
+    record["judge_label"] = judge_label(record)
+    record["first_failing_stage"] = first_failing_stage(record)
+    record["artifact_contract"] = build_artifact_contract(
+        item=item,
+        record=record,
+        latent_claims=latent_claims,
+        kept_claims=claims,
+        pass_traces=llm_stats["pass_traces"],
+        cleanup_enabled=eval_arch in CLEANUP_ARCHITECTURES,
+    )
+    return record
 
 
 def slice_metrics(records: list[dict[str, Any]]) -> dict[str, float]:

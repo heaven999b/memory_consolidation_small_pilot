@@ -1,0 +1,24 @@
+{
+  "repo_root": ".",
+  "absolute_path_leaks": [
+    {
+      "path": "outputs/v3_halumem_dataset_preflight.json",
+      "hit_count": 1,
+      "sample": "\"copy_hint\": \"cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'\","
+    },
+    {
+      "path": "outputs/v3_halumem_dataset_preflight.md",
+      "hit_count": 1,
+      "sample": "- copy hint: `cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'`"
+    }
+  ],
+  "outputs_inventory": {
+    "file_count": 8262,
+    "total_bytes": 1026716693
+  },
+  "recommendations": [
+    "Strip /Users/ absolute paths from README, monitor HTML, and release-facing markdown before submission.",
+    "Keep only headline CSV/MD artifacts in the public release surface if the outputs tree grows too large.",
+    "Treat outputs/*.json and outputs/*.html as reviewer-facing only after a double-blind pass."
+  ]
+}

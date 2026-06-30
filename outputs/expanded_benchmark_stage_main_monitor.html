@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="20">
+  <title>Expanded Benchmark main Monitor</title>
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --panel: #fffdf8;
+      --ink: #1b1b18;
+      --muted: #6b6a63;
+      --line: #d7d1c5;
+      --accent: #0f766e;
+      --accent-soft: #d7f3ef;
+      --warn: #8a3b12;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px;
+      background:
+        radial-gradient(circle at top left, #fdf4d9 0, transparent 30%),
+        radial-gradient(circle at top right, #d7f3ef 0, transparent 25%),
+        var(--bg);
+      color: var(--ink);
+      font: 15px/1.5 "Avenir Next", "Helvetica Neue", sans-serif;
+    }
+    h1, h2, h3 { margin: 0 0 10px; }
+    p { margin: 0 0 10px; }
+    .wrap { max-width: 1380px; margin: 0 auto; }
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 36px rgba(27, 27, 24, 0.05);
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .subtle { color: var(--muted); font-size: 13px; }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 8px;
+    }
+    .heartbeat {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #f4efe4;
+    }
+    .chip.ok {
+      color: #0f766e;
+      background: #d7f3ef;
+      border-color: #99ddd5;
+    }
+    .chip.warn {
+      color: #9a6700;
+      background: #fff1cc;
+      border-color: #f0d48b;
+    }
+    .chip.stale {
+      color: #b42318;
+      background: #fee4e2;
+      border-color: #f7b4ae;
+    }
+    .metric-card, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .metric-card {
+      background: linear-gradient(180deg, var(--panel), var(--accent-soft));
+    }
+    .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .value { font-size: 28px; font-weight: 700; margin: 6px 0; }
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 18px 36px rgba(27, 27, 24, 0.04);
+    }
+    .log-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border-top: 1px solid var(--line);
+      padding: 12px 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    code {
+      background: rgba(15, 118, 110, 0.08);
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+    .warn {
+      color: var(--warn);
+      font-weight: 600;
+    }
+    @media (max-width: 1120px) {
+      .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .log-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      body { padding: 14px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .hero, .section { padding: 16px; border-radius: 16px; }
+      .value { font-size: 22px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { border-top: 1px solid var(--line); padding: 8px 0; }
+      td { border-top: none; padding: 6px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Expanded Benchmark Live Monitor</div>
+      <h1>Stage: main</h1>
+      <p>Full expanded official benchmark pool.</p>
+      <p><strong>Updated:</strong> 2026-06-30 22:26:27 | <strong>Auto refresh:</strong> every 20s</p>
+      <p><strong>Process:</strong> not detected | PID 72361 | elapsed None</p>
+      <div class="heartbeat">
+        <span id="heartbeat-chip" class="chip ok">fresh</span>
+        <span id="heartbeat-text" class="subtle">render age 0s</span>
+        <span class="chip stale">stalled</span>
+        <span class="subtle">no recent cache activity detected</span>
+      </div>
+      <p class="subtle">Progress counts the actual expensive cache-building work: one shared base cache plus one shared PSU scaffold cache, not duplicated architecture cells.</p>
+      <div class="metric-grid">
+        <div class='metric-card'><div class='label'>Overall expensive work</div><div class='value'>5088/5088</div><div class='subtle'>100.0% of pass units</div></div><div class='metric-card'><div class='label'>Base cache</div><div class='value'>318/318</div><div class='subtle'>100.0% item units</div></div><div class='metric-card'><div class='label'>PSU cache</div><div class='value'>318/318</div><div class='subtle'>100.0% item units</div></div><div class='metric-card'><div class='label'>Heuristic ETA</div><div class='value'>unknown</div><div class='subtle'>main artifacts ready: True</div></div><div class='metric-card'><div class='label'>Cache Heartbeat</div><div class='value'>stalled</div><div class='subtle'>no recent cache activity detected</div></div><div class='metric-card'><div class='label'>Watch Log</div><div class='value'>expanded_benchmark_stage_main_monitor_watch.log</div><div class='subtle'>/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main_monitor_watch.log</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Per-Panel Progress</h2>
+      <p class="subtle">Each seed cell shows completed item-units, pass coverage, the latest partially built item, and the next untouched item.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Panel</th>
+            <th>Method</th>
+            <th>Aggregate</th>
+            <th>Seed 11</th><th>Seed 23</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>halumem_expanded_v1</td><td>base</td><td>38/38</td><td><div><strong>19/19</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 152/152</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>19/19</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 152/152</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr><tr><td>halumem_expanded_v1</td><td>psu</td><td>38/38</td><td><div><strong>19/19</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 152/152</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>19/19</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 152/152</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr><tr><td>locomo_expanded_v1</td><td>base</td><td>160/160</td><td><div><strong>80/80</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 640/640</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>80/80</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 640/640</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr><tr><td>locomo_expanded_v1</td><td>psu</td><td>160/160</td><td><div><strong>80/80</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 640/640</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>80/80</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 640/640</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr><tr><td>longmemeval_expanded_v2</td><td>base</td><td>120/120</td><td><div><strong>60/60</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 480/480</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>60/60</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 480/480</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr><tr><td>longmemeval_expanded_v2</td><td>psu</td><td>120/120</td><td><div><strong>60/60</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 480/480</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td><td><div><strong>60/60</strong> item-units</div><div>██████████████████ 100.0%</div><div class='subtle'>passes 480/480</div><div class='subtle'>latest partial: -</div><div class='subtle'>next: -</div></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Recent Activity</h2>
+      <div class="log-grid">
+        <div class='card'><h3>HaluMem cache log</h3><p><strong>running:</strong> none detected in recent window</p><p><strong>last success:</strong> v2_scaffold_refinement_tiny_refusal_scaffold_halumem_expanded_19_seed23_pass8 (9.044s)</p><p class='subtle'><strong>last event:</strong> cache_hit @ 2026-06-30 13:54:45</p><p class='subtle'><strong>recent median duration:</strong> 14.185s</p></div>
+        <div class='card'><h3>LoCoMo / LongMemEval cache log</h3><p><strong>running:</strong> none detected in recent window</p><p class='subtle'><strong>last event:</strong> cache_hit @ 2026-06-30 13:54:45</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Stage Output Status</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Artifact</th>
+            <th>Path</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>json</td><td>/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main.json</td><td>ready</td></tr><tr><td>summary</td><td>/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main.md</td><td>ready</td></tr><tr><td>traces</td><td>/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/outputs/expanded_benchmark_stage_main_traces.md</td><td>ready</td></tr>
+        </tbody>
+      </table>
+      <p class="subtle">If these stay pending after the process stops, the run likely ended early and needs inspection.</p>
+    </section>
+  </div>
+  <script>
+    const generatedAtMs = 1782829587244;
+    const chip = document.getElementById("heartbeat-chip");
+    const text = document.getElementById("heartbeat-text");
+
+    function updateHeartbeat() {
+      const ageSeconds = Math.max(0, Math.floor((Date.now() - generatedAtMs) / 1000));
+      let label = "fresh";
+      let chipClass = "chip ok";
+      if (ageSeconds >= 300) {
+        label = "stale";
+        chipClass = "chip stale";
+      } else if (ageSeconds >= 120) {
+        label = "lagging";
+        chipClass = "chip warn";
+      }
+      chip.textContent = label;
+      chip.className = chipClass;
+      text.textContent = `render age ${ageSeconds}s`;
+    }
+
+    updateHeartbeat();
+    window.setInterval(updateHeartbeat, 1000);
+  </script>
+</body>
+</html>

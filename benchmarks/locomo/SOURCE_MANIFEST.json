@@ -30,11 +30,15 @@
     }
   ],
   "derived_slice_manifests": [
-    "frozen_slices/locomo_benign_utility_slice_v1.json"
+    "frozen_slices/locomo_benign_utility_slice_v1.json",
+    "frozen_slices/locomo_benign_utility_slice_v2.json",
+    "frozen_slices/longmemeval_benign_utility_slice_v1.json",
+    "frozen_slices/locomo_benign_utility_expanded_v1.json",
+    "frozen_slices/longmemeval_benign_utility_expanded_v2.json"
   ],
   "notes": [
     "LoCoMo raw files and LongMemEval helper assets are mirrored locally under stable paths.",
     "The verified local grounding subset currently keeps LoCoMo plus LongMemEval oracle/s-cleaned files only.",
-    "A first frozen local adapter slice manifest is now committed under benchmarks/locomo/frozen_slices/ and is intended to feed the minimal external benchmark panel."
+    "Frozen local adapter slice manifests under benchmarks/locomo/frozen_slices/ now include both the small benchmark starter panels and a larger expanded benign benchmark pool built under the same direct-answer contract."
   ]
 }

@@ -1,0 +1,223 @@
+{
+  "description": "Paper-facing recall main panel that places PSU beside the baseline routing family on the same actual recall slice.",
+  "n_values": [
+    4,
+    8
+  ],
+  "panel_rows": {
+    "4": [
+      {
+        "label": "summary_only",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 0.458,
+        "propagation": 0.417,
+        "raw_escalation": 0.0,
+        "history_loss": 0.438,
+        "empty_note_then_abstain": 0.125,
+        "benign_conflict_error": 0.438,
+        "unsafe_error": 1.0,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.135433
+      },
+      {
+        "label": "tiered",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 0.833,
+        "propagation": 0.167,
+        "raw_escalation": 0.625,
+        "history_loss": 0.438,
+        "empty_note_then_abstain": 0.062,
+        "benign_conflict_error": 0.125,
+        "unsafe_error": 0.25,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.135433
+      },
+      {
+        "label": "scale_aware_unified",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 0.833,
+        "propagation": 0.167,
+        "raw_escalation": 0.292,
+        "history_loss": 0.438,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.75,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.135433
+      },
+      {
+        "label": "scale_aware_note_aware",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 0.833,
+        "propagation": 0.167,
+        "raw_escalation": 0.292,
+        "history_loss": 0.438,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.75,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.135433
+      },
+      {
+        "label": "psu_no_carry",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 0.917,
+        "propagation": 0.083,
+        "raw_escalation": 0.208,
+        "history_loss": 0.312,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.5,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.177251
+      },
+      {
+        "label": "psu",
+        "n_passes": 4,
+        "count": 24,
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.042,
+        "history_loss": 0.062,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.0,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.25,
+        "mean_llm_cost_usd": 0.177251
+      }
+    ],
+    "8": [
+      {
+        "label": "summary_only",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 0.208,
+        "propagation": 0.5,
+        "raw_escalation": 0.0,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.312,
+        "benign_conflict_error": 0.875,
+        "unsafe_error": 1.0,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.246584
+      },
+      {
+        "label": "tiered",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 0.792,
+        "propagation": 0.208,
+        "raw_escalation": 0.75,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.062,
+        "benign_conflict_error": 0.25,
+        "unsafe_error": 0.25,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.246584
+      },
+      {
+        "label": "scale_aware_unified",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 0.875,
+        "propagation": 0.125,
+        "raw_escalation": 0.583,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.75,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.246584
+      },
+      {
+        "label": "scale_aware_note_aware",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 0.875,
+        "propagation": 0.125,
+        "raw_escalation": 0.583,
+        "history_loss": 0.875,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.75,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.246584
+      },
+      {
+        "label": "psu_no_carry",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 0.958,
+        "propagation": 0.042,
+        "raw_escalation": 0.417,
+        "history_loss": 0.625,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.25,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.0,
+        "mean_llm_cost_usd": 0.343942
+      },
+      {
+        "label": "psu",
+        "n_passes": 8,
+        "count": 24,
+        "accuracy": 1.0,
+        "propagation": 0.0,
+        "raw_escalation": 0.042,
+        "history_loss": 0.062,
+        "empty_note_then_abstain": 0.0,
+        "benign_conflict_error": 0.0,
+        "unsafe_error": 0.0,
+        "hallucination_placeholder": 0.0,
+        "carry_forward_record": 0.5,
+        "mean_llm_cost_usd": 0.343942
+      }
+    ]
+  },
+  "direct_deltas": {
+    "note_aware_to_psu_accuracy": {
+      "pair_count": 24,
+      "mean_delta": 0.125,
+      "wins": 3,
+      "losses": 0,
+      "ties": 21
+    },
+    "note_aware_to_psu_history_loss": {
+      "pair_count": 16,
+      "mean_delta": 0.8125,
+      "wins": 13,
+      "losses": 0,
+      "ties": 3
+    },
+    "note_aware_to_psu_raw_escalation": {
+      "pair_count": 24,
+      "mean_delta": 0.5417,
+      "wins": 13,
+      "losses": 0,
+      "ties": 11
+    },
+    "psu_no_carry_to_psu_unsafe_error": {
+      "pair_count": 4,
+      "mean_delta": 0.25,
+      "wins": 1,
+      "losses": 0,
+      "ties": 3
+    }
+  }
+}

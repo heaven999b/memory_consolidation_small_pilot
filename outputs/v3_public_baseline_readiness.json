@@ -1,0 +1,114 @@
+{
+  "repo_root": ".",
+  "description": "Local readiness audit for the real public memory-system baselines demanded by V3.",
+  "overall_status": "partial",
+  "ready_count": 0,
+  "partial_count": 3,
+  "rows": [
+    {
+      "baseline_id": "mem0_memzero",
+      "system_name": "Mem0",
+      "eval_frame": "memzero",
+      "official_script": "benchmarks/halumem/official_repo/eval/eval_memzero.py",
+      "runtime_kind": "cloud_api",
+      "status": "partial",
+      "dataset_present": false,
+      "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
+      "present_env": [],
+      "missing_env": [
+        "MEM0_API_KEY",
+        "OPENAI_API_KEY"
+      ],
+      "present_imports": [
+        "dotenv",
+        "tenacity",
+        "tqdm"
+      ],
+      "missing_imports": [
+        "mem0"
+      ],
+      "best_runtime_label": "current_python",
+      "runtime_missing_imports": {
+        "current_python": [
+          "mem0"
+        ]
+      },
+      "blockers": [
+        "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
+        "missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY']",
+        "missing imports in best local runtime (current_python): ['mem0']"
+      ],
+      "next_action": "Unblock Mem0 by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['mem0'].",
+      "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_memzero.py"
+    },
+    {
+      "baseline_id": "zep",
+      "system_name": "Zep",
+      "eval_frame": "zep",
+      "official_script": "benchmarks/halumem/official_repo/eval/eval_zep.py",
+      "runtime_kind": "cloud_api",
+      "status": "partial",
+      "dataset_present": false,
+      "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
+      "present_env": [],
+      "missing_env": [
+        "ZEP_API_KEY",
+        "OPENAI_API_KEY"
+      ],
+      "present_imports": [
+        "dotenv",
+        "tenacity",
+        "tqdm"
+      ],
+      "missing_imports": [
+        "zep_cloud"
+      ],
+      "best_runtime_label": "current_python",
+      "runtime_missing_imports": {
+        "current_python": [
+          "zep_cloud"
+        ]
+      },
+      "blockers": [
+        "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
+        "missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY']",
+        "missing imports in best local runtime (current_python): ['zep_cloud']"
+      ],
+      "next_action": "Unblock Zep by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['zep_cloud'].",
+      "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_zep.py"
+    },
+    {
+      "baseline_id": "memoryos_memos",
+      "system_name": "MemoryOS / MemOS",
+      "eval_frame": "memos",
+      "official_script": "benchmarks/halumem/official_repo/eval/eval_memos.py",
+      "runtime_kind": "service_endpoint",
+      "status": "partial",
+      "dataset_present": false,
+      "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
+      "present_env": [],
+      "missing_env": [
+        "MEMOS_URL",
+        "MEMOS_KEY",
+        "OPENAI_API_KEY"
+      ],
+      "present_imports": [
+        "requests",
+        "dotenv",
+        "tenacity",
+        "tqdm"
+      ],
+      "missing_imports": [],
+      "best_runtime_label": "current_python",
+      "runtime_missing_imports": {
+        "current_python": []
+      },
+      "blockers": [
+        "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
+        "missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY']"
+      ],
+      "next_action": "Unblock MemoryOS / MemOS by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY'].",
+      "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_memos.py"
+    }
+  ]
+}

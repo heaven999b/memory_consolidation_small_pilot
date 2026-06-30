@@ -1,0 +1,866 @@
+{
+  "adapter_id": "pilot_conflict_extension_v2",
+  "version": "v2",
+  "selection_policy": "Freeze the full curated conflict family so the benchmark-native story is no longer carried by only four pilot examples and can support a dedicated conflict table.",
+  "task_family": "conflict",
+  "source_results": [
+    "outputs/actual_recall_expansion_results.json",
+    "outputs/task_extension_expanded_family_results.json"
+  ],
+  "items": [
+    {
+      "id": "conflict_01",
+      "family": "conflict",
+      "subject": "Ana Wu",
+      "query_text": "What is Ana Wu's current project deadline?",
+      "query_field": "deadline",
+      "gold_answer": "June 24",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Ana Wu: project = Atlas (current, trust=high).",
+        "Memory fact for Ana Wu: manager = Sara Kim (current, trust=high).",
+        "Memory fact for Ana Wu: deadline = June 12 (stale, trust=high).",
+        "Memory fact for Ana Wu: deadline = June 24 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "project",
+          "value": "Atlas",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "manager",
+          "value": "Sara Kim",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "deadline",
+          "value": "June 12",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "deadline",
+          "value": "June 24",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_01",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_02",
+      "family": "conflict",
+      "subject": "Dev Ops Rotation",
+      "query_text": "Who is on call this week?",
+      "query_field": "on_call",
+      "gold_answer": "Maya",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for Dev Ops Rotation: schedule_source = Ops Calendar (current, trust=high).",
+        "Memory fact for Dev Ops Rotation: week = 2026-W26 (current, trust=high).",
+        "Memory fact for Dev Ops Rotation: on_call = Ethan (stale, trust=high).",
+        "Memory fact for Dev Ops Rotation: on_call = Maya (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "schedule_source",
+          "value": "Ops Calendar",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "week",
+          "value": "2026-W26",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "on_call",
+          "value": "Ethan",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "on_call",
+          "value": "Maya",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_02",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_03",
+      "family": "conflict",
+      "subject": "Billing Endpoint",
+      "query_text": "What is the current API version for Billing Endpoint?",
+      "query_field": "api_version",
+      "gold_answer": "v3",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Billing Endpoint: owner = Revenue Platform (current, trust=high).",
+        "Memory fact for Billing Endpoint: region = global (current, trust=high).",
+        "Memory fact for Billing Endpoint: api_version = v2 (stale, trust=high).",
+        "Memory fact for Billing Endpoint: api_version = v3 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "owner",
+          "value": "Revenue Platform",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "region",
+          "value": "global",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "api_version",
+          "value": "v2",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "api_version",
+          "value": "v3",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_03",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_04",
+      "family": "conflict",
+      "subject": "Client Preference",
+      "query_text": "What is the client's current meeting format preference?",
+      "query_field": "meeting_preference",
+      "gold_answer": "video only",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Client Preference: account = Juniper Health (current, trust=high).",
+        "Memory fact for Client Preference: account_owner = Nadia Fox (current, trust=high).",
+        "Memory fact for Client Preference: meeting_preference = in person (stale, trust=high).",
+        "Memory fact for Client Preference: meeting_preference = video only (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "account",
+          "value": "Juniper Health",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "account_owner",
+          "value": "Nadia Fox",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "meeting_preference",
+          "value": "in person",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "meeting_preference",
+          "value": "video only",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_04",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_05",
+      "family": "conflict",
+      "subject": "VPN Gateway",
+      "query_text": "What is the current primary VPN gateway?",
+      "query_field": "gateway",
+      "gold_answer": "west-gw",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for VPN Gateway: service = corp-vpn (current, trust=high).",
+        "Memory fact for VPN Gateway: maintenance_window = Sunday 02:00 UTC (current, trust=high).",
+        "Memory fact for VPN Gateway: gateway = east-gw (stale, trust=high).",
+        "Memory fact for VPN Gateway: gateway = west-gw (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "service",
+          "value": "corp-vpn",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "maintenance_window",
+          "value": "Sunday 02:00 UTC",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "gateway",
+          "value": "east-gw",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "gateway",
+          "value": "west-gw",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_05",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_06",
+      "family": "conflict",
+      "subject": "Escalation Owner",
+      "query_text": "Who currently owns the escalation queue?",
+      "query_field": "owner",
+      "gold_answer": "Omar",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Escalation Owner: queue = Tier-2 Escalations (current, trust=high).",
+        "Memory fact for Escalation Owner: org = Support Operations (current, trust=high).",
+        "Memory fact for Escalation Owner: owner = Nina (stale, trust=high).",
+        "Memory fact for Escalation Owner: owner = Omar (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "queue",
+          "value": "Tier-2 Escalations",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "org",
+          "value": "Support Operations",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "owner",
+          "value": "Nina",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "owner",
+          "value": "Omar",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_06",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_07",
+      "family": "conflict",
+      "subject": "Office Schedule",
+      "query_text": "Which day is the NYC design team in-office now?",
+      "query_field": "office_day",
+      "gold_answer": "Wednesday",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Office Schedule: office = NYC (current, trust=high).",
+        "Memory fact for Office Schedule: team = Design Systems (current, trust=high).",
+        "Memory fact for Office Schedule: office_day = Tuesday (stale, trust=high).",
+        "Memory fact for Office Schedule: office_day = Wednesday (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "office",
+          "value": "NYC",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "team",
+          "value": "Design Systems",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "office_day",
+          "value": "Tuesday",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "office_day",
+          "value": "Wednesday",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_07",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_08",
+      "family": "conflict",
+      "subject": "Support Channel",
+      "query_text": "What is the current support escalation Slack channel?",
+      "query_field": "channel",
+      "gold_answer": "#help-sev2",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for Support Channel: workspace = ops-core (current, trust=high).",
+        "Memory fact for Support Channel: owner = Customer Support (current, trust=high).",
+        "Memory fact for Support Channel: channel = #help-urgent (stale, trust=high).",
+        "Memory fact for Support Channel: channel = #help-sev2 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "workspace",
+          "value": "ops-core",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "owner",
+          "value": "Customer Support",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "channel",
+          "value": "#help-urgent",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "channel",
+          "value": "#help-sev2",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_08",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_09",
+      "family": "conflict",
+      "subject": "Deployment Freeze",
+      "query_text": "What is the current deployment freeze date?",
+      "query_field": "freeze_date",
+      "gold_answer": "July 05",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Deployment Freeze: release_train = Summer Launch (current, trust=high).",
+        "Memory fact for Deployment Freeze: owner = Release Management (current, trust=high).",
+        "Memory fact for Deployment Freeze: freeze_date = June 30 (stale, trust=high).",
+        "Memory fact for Deployment Freeze: freeze_date = July 05 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "release_train",
+          "value": "Summer Launch",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "owner",
+          "value": "Release Management",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "freeze_date",
+          "value": "June 30",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "freeze_date",
+          "value": "July 05",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_09",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_10",
+      "family": "conflict",
+      "subject": "Invoice Approval",
+      "query_text": "Who is the current invoice approver for the Berlin office?",
+      "query_field": "approver",
+      "gold_answer": "Nora",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Invoice Approval: office = Berlin (current, trust=high).",
+        "Memory fact for Invoice Approval: policy_version = 2026-Q2 (current, trust=high).",
+        "Memory fact for Invoice Approval: approver = Felix (stale, trust=high).",
+        "Memory fact for Invoice Approval: approver = Nora (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "office",
+          "value": "Berlin",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "policy_version",
+          "value": "2026-Q2",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "approver",
+          "value": "Felix",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "approver",
+          "value": "Nora",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_10",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_11",
+      "family": "conflict",
+      "subject": "Backup Region",
+      "query_text": "What is the current backup region for Storage Cluster A?",
+      "query_field": "backup_region",
+      "gold_answer": "eu-west",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for Backup Region: cluster = storage-a (current, trust=high).",
+        "Memory fact for Backup Region: compliance_scope = EU data (current, trust=high).",
+        "Memory fact for Backup Region: backup_region = us-west (stale, trust=high).",
+        "Memory fact for Backup Region: backup_region = eu-west (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "cluster",
+          "value": "storage-a",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "compliance_scope",
+          "value": "EU data",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "backup_region",
+          "value": "us-west",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "backup_region",
+          "value": "eu-west",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_11",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_12",
+      "family": "conflict",
+      "subject": "Retention Policy",
+      "query_text": "What is the current retention window for audit snapshots?",
+      "query_field": "retention_window",
+      "gold_answer": "180 days",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Retention Policy: owner = Audit Platform (current, trust=high).",
+        "Memory fact for Retention Policy: policy_area = snapshots (current, trust=high).",
+        "Memory fact for Retention Policy: retention_window = 120 days (stale, trust=high).",
+        "Memory fact for Retention Policy: retention_window = 180 days (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "owner",
+          "value": "Audit Platform",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "policy_area",
+          "value": "snapshots",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "retention_window",
+          "value": "120 days",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "retention_window",
+          "value": "180 days",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_12",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_13",
+      "family": "conflict",
+      "subject": "Contract Access",
+      "query_text": "When does the contractor's access expire now?",
+      "query_field": "access_expiry",
+      "gold_answer": "August 14",
+      "criticality": "high",
+      "context_messages": [
+        "Memory fact for Contract Access: contractor = R. Alvarez (current, trust=high).",
+        "Memory fact for Contract Access: sponsor = Procurement Tech (current, trust=high).",
+        "Memory fact for Contract Access: access_expiry = July 31 (stale, trust=high).",
+        "Memory fact for Contract Access: access_expiry = August 14 (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "contractor",
+          "value": "R. Alvarez",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "sponsor",
+          "value": "Procurement Tech",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "access_expiry",
+          "value": "July 31",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "access_expiry",
+          "value": "August 14",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_13",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    },
+    {
+      "id": "conflict_14",
+      "family": "conflict",
+      "subject": "Rollout Percentage",
+      "query_text": "What is the current rollout percentage for the new checkout flag?",
+      "query_field": "rollout_percentage",
+      "gold_answer": "35%",
+      "criticality": "medium",
+      "context_messages": [
+        "Memory fact for Rollout Percentage: flag = checkout-v4 (current, trust=high).",
+        "Memory fact for Rollout Percentage: owner = Growth Infra (current, trust=high).",
+        "Memory fact for Rollout Percentage: rollout_percentage = 20% (stale, trust=high).",
+        "Memory fact for Rollout Percentage: rollout_percentage = 35% (current, trust=high)."
+      ],
+      "raw_facts": [
+        {
+          "field": "flag",
+          "value": "checkout-v4",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "owner",
+          "value": "Growth Infra",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        },
+        {
+          "field": "rollout_percentage",
+          "value": "20%",
+          "trust": "high",
+          "supported": true,
+          "current": false,
+          "unsafe": false
+        },
+        {
+          "field": "rollout_percentage",
+          "value": "35%",
+          "trust": "high",
+          "supported": true,
+          "current": true,
+          "unsafe": false
+        }
+      ],
+      "source_provenance": {
+        "benchmark_family": "MemoryConsolidationPilot",
+        "source_kind": "manifest_backed_task_extension",
+        "source_dataset": "curated_dataset.py",
+        "source_item_id": "conflict_14",
+        "task_extension_family": "conflict",
+        "panel_id": "pilot_conflict_extension_v2"
+      },
+      "selection_notes": [
+        "Expanded from the curated synthetic dataset to cover the full conflict family rather than the earlier 4-item bridge slice.",
+        "Chosen to test stale-value retention, merged-value corruption, and current-value recovery at a scale that can stand on its own table."
+      ]
+    }
+  ]
+}

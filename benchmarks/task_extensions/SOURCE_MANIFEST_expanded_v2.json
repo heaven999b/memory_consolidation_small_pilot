@@ -1,0 +1,19 @@
+{
+  "version": "v2",
+  "source_kind": "manifest_backed_task_extensions",
+  "description": "Expanded manifest-backed conflict and unsafe extension panels derived from the curated synthetic dataset so the paper-facing benchmark can carry larger dedicated family tables.",
+  "local_source_paths": [
+    "curated_dataset.py",
+    "outputs/actual_recall_expansion_results.json",
+    "outputs/actual_carry_forward_results.json",
+    "outputs/task_extension_expanded_family_results.json"
+  ],
+  "generated_manifests": [
+    "benchmarks/task_extensions/frozen_slices/conflict_task_extension_v2.json",
+    "benchmarks/task_extensions/frozen_slices/unsafe_task_extension_v2.json"
+  ],
+  "notes": [
+    "These expanded manifests preserve the local pilot family source while moving beyond the tiny v1 bridge slices.",
+    "They are meant for A3-style family-scale reporting rather than replacing the original small v1 compatibility panels."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "stage": "smoke",
+  "profile_label": "deepseek_cli_default",
+  "backend": "deepseek_cli",
+  "returncode": 0,
+  "copied_outputs": [
+    "outputs/expanded_benchmark_stage_smoke__deepseek_cli_default.json",
+    "outputs/expanded_benchmark_stage_smoke__deepseek_cli_default.md",
+    "outputs/expanded_benchmark_stage_smoke_traces__deepseek_cli_default.md"
+  ],
+  "command": [
+    "/opt/anaconda3/bin/python3",
+    "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/run_expanded_benchmark_staged.py",
+    "smoke"
+  ]
+}

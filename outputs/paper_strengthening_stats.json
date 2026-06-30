@@ -1,0 +1,144 @@
+{
+  "bootstrap_samples": 2000,
+  "comparisons": [
+    {
+      "label": "Recall N=8 accuracy: summary_only -> scale_aware_note_aware",
+      "pair_count": 24,
+      "baseline_mean": 0.2083,
+      "treatment_mean": 0.875,
+      "improvement_delta": 0.6667,
+      "ci_low": 0.5,
+      "ci_high": 0.8333,
+      "wins": 16,
+      "losses": 0,
+      "ties": 8
+    },
+    {
+      "label": "Recall N=8 history loss: summary_only -> scale_aware_note_aware",
+      "pair_count": 16,
+      "baseline_mean": 0.875,
+      "treatment_mean": 0.875,
+      "improvement_delta": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 16
+    },
+    {
+      "label": "Stress N=1 false-present: scale_aware_unified -> scale_aware_note_aware",
+      "pair_count": 16,
+      "baseline_mean": 0.125,
+      "treatment_mean": 0.0625,
+      "improvement_delta": 0.0625,
+      "ci_low": 0.0,
+      "ci_high": 0.1875,
+      "wins": 1,
+      "losses": 0,
+      "ties": 15
+    },
+    {
+      "label": "Stress N=8 false-present: scale_aware_unified -> scale_aware_note_aware",
+      "pair_count": 16,
+      "baseline_mean": 0.0,
+      "treatment_mean": 0.0,
+      "improvement_delta": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 16
+    },
+    {
+      "label": "Note persistence N=8 history loss: baseline -> tiny_fixed_scaffold",
+      "pair_count": 8,
+      "baseline_mean": 1.0,
+      "treatment_mean": 0.625,
+      "improvement_delta": 0.375,
+      "ci_low": 0.125,
+      "ci_high": 0.75,
+      "wins": 3,
+      "losses": 0,
+      "ties": 5
+    },
+    {
+      "label": "Scaffold refinement N=8 unsafe error: tiny_fixed_scaffold -> tiny_refusal_scaffold",
+      "pair_count": 12,
+      "baseline_mean": 0.1667,
+      "treatment_mean": 0.0833,
+      "improvement_delta": 0.0833,
+      "ci_low": 0.0,
+      "ci_high": 0.25,
+      "wins": 1,
+      "losses": 0,
+      "ties": 11
+    },
+    {
+      "label": "Placeholder hardening N=8 placeholder answer: tiny_refusal_scaffold -> tiny_placeholder_hardened_scaffold",
+      "pair_count": 12,
+      "baseline_mean": 0.0833,
+      "treatment_mean": 0.0,
+      "improvement_delta": 0.0833,
+      "ci_low": 0.0,
+      "ci_high": 0.25,
+      "wins": 1,
+      "losses": 0,
+      "ties": 11
+    },
+    {
+      "label": "Carry-forward N=8 unsafe error: tiny_placeholder_hardened_scaffold -> tiny_carry_forward_scaffold",
+      "pair_count": 24,
+      "baseline_mean": 0.0417,
+      "treatment_mean": 0.0,
+      "improvement_delta": 0.0417,
+      "ci_low": 0.0,
+      "ci_high": 0.125,
+      "wins": 1,
+      "losses": 0,
+      "ties": 23
+    },
+    {
+      "label": "Recall N=8 accuracy: scale_aware_note_aware -> PSU",
+      "pair_count": 24,
+      "baseline_mean": 0.875,
+      "treatment_mean": 1.0,
+      "improvement_delta": 0.125,
+      "ci_low": 0.0,
+      "ci_high": 0.2917,
+      "wins": 3,
+      "losses": 0,
+      "ties": 21
+    },
+    {
+      "label": "Recall N=8 history loss: scale_aware_note_aware -> PSU",
+      "pair_count": 16,
+      "baseline_mean": 0.875,
+      "treatment_mean": 0.0625,
+      "improvement_delta": 0.8125,
+      "ci_low": 0.625,
+      "ci_high": 1.0,
+      "wins": 13,
+      "losses": 0,
+      "ties": 3
+    },
+    {
+      "label": "Recall N=8 raw escalation: scale_aware_note_aware -> PSU",
+      "pair_count": 24,
+      "baseline_mean": 0.5833,
+      "treatment_mean": 0.0417,
+      "improvement_delta": 0.5417,
+      "ci_low": 0.3333,
+      "ci_high": 0.75,
+      "wins": 13,
+      "losses": 0,
+      "ties": 11
+    }
+  ],
+  "slopes": {
+    "summary_only_recall_history_loss_slope": 0.1158,
+    "scale_aware_note_aware_recall_history_loss_slope": 0.1158,
+    "psu_recall_history_loss_slope": 0.0,
+    "tiered_stress_false_present_slope": -0.0186,
+    "scale_aware_note_aware_stress_false_present_slope": -0.0084
+  }
+}

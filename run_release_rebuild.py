@@ -9,10 +9,19 @@ from pathlib import Path
 
 RUN_STEPS = [
     ("freeze_task_extension_slices.py", {}),
+    ("run_actual_summarizer_slice.py", {}),
     ("run_actual_recall_expansion.py", {"ACTUAL_RECALL_EXPANSION_SEEDS": "11,23"}),
     ("run_actual_hallucination_stress_slice.py", {"ACTUAL_HALLU_STRESS_SEEDS": "11,23"}),
     ("run_actual_hallucination_claim_reintegration_pilot.py", {}),
-    ("run_actual_carry_forward_round.py", {}),
+    ("run_actual_note_persistence_round.py", {}),
+    ("run_actual_scaffold_refinement_round.py", {}),
+    ("run_actual_placeholder_hardening_round.py", {}),
+    ("run_actual_carry_forward_round.py", {"ACTUAL_CARRY_FORWARD_SEEDS": "11,23", "ACTUAL_CARRY_FORWARD_ARCHITECTURES": "scale_aware_note_aware"}),
+    ("run_psu_recall_main_panel.py", {}),
+    ("run_provenance_scaffolded_method_report.py", {}),
+    ("run_paper_strengthening_stats.py", {}),
+    ("run_artifact_contract_audit.py", {}),
+    ("run_psu_paper_packet.py", {}),
     ("run_external_benchmark_adapter_layer.py", {}),
     ("run_external_benchmark_minimal_baseline.py", {}),
     ("run_external_benchmark_reviewer_section.py", {}),
@@ -27,6 +36,7 @@ VERIFY_STEPS = [
     "verify_task_extension_section.py",
     "verify_benchmark_native_primary_base.py",
     "verify_paper_baseline_packet.py",
+    "verify_paper_strengthening_artifacts.py",
 ]
 
 

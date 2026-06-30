@@ -1,0 +1,151 @@
+{
+  "generated_on": "2026-06-30",
+  "current_identity": {
+    "repo_role": "V3 transition workspace",
+    "path_decision": "Path A locked: TierMem is the primary base and harness.",
+    "legacy_demoted_to": "PSU and the prior proxy stack are retained as baselines plus appendix-style prior exploration."
+  },
+  "completed_now": {
+    "tiermem_bridge_present": true,
+    "v3_feasibility_gate_present": true,
+    "v3_halumem_dataset_preflight_present": true,
+    "v3_public_baseline_readiness_present": true,
+    "v3_official_eval_runtime_audit_present": true,
+    "v3_no_rewrite_policy_audit_present": true,
+    "v3_no_rewrite_comparison_present": true,
+    "v3_no_rewrite_statistics_present": true,
+    "v3_no_rewrite_pareto_present": true,
+    "v3_local_capability_matrix_present": true,
+    "v3_local_evidence_packet_present": true,
+    "legacy_pilot_findings_present": true,
+    "v3_alignment_checklist_present": true,
+    "v3_hygiene_audit_present": true,
+    "legacy_release_rebuild_retained": true,
+    "v3_env_template_present": true,
+    "official_eval_env_template_present": true,
+    "official_eval_base_requirements_present": true
+  },
+  "week0_gate": {
+    "tiermem_usable": "partial",
+    "halumem_usable": "partial",
+    "agentpoison_usable": "paper_only",
+    "mpbench_memevobench": "paper_only",
+    "citation_reality": "partial",
+    "license_compatibility": "partial"
+  },
+  "v3_scaffolds_now": {
+    "public_baseline_readiness": "partial",
+    "halumem_dataset_status": "partial",
+    "halumem_expected_dataset_present": false,
+    "halumem_candidate_count": 0,
+    "official_eval_runtime_status": "partial",
+    "official_eval_ready_runtime_count": 1,
+    "official_eval_venv_present": false,
+    "no_rewrite_policy_scaffold": "partial",
+    "no_rewrite_n8_blocked_protected_case_rate": 0.9783,
+    "no_rewrite_comparison_present": true,
+    "no_rewrite_comparison_items": 185,
+    "local_n_sweep_values": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "local_seed_values": [
+      11,
+      23
+    ],
+    "local_architecture_count": 7,
+    "local_query_aware_fairness_surface_present": true,
+    "local_no_rewrite_mechanism_surface_present": true,
+    "no_rewrite_statistics_rows": 24,
+    "no_rewrite_pareto_sections": 2,
+    "local_evidence_packet_present": true,
+    "local_capability_yes_count": 8,
+    "local_capability_partial_count": 3,
+    "tiermem_pre_api_smoke_supported": true
+  },
+  "still_pending_for_full_v3": {
+    "real_public_baselines_run": false,
+    "query_blind_vs_query_aware_fairness_pair": false,
+    "n_sweep_restored_to_0_1_2_4_8_16": false,
+    "five_seed_statistics": false,
+    "human_judge_kappa_reported": false,
+    "multi_backbone_run": false,
+    "full_conflict_unsafe_scale": false,
+    "no_rewrite_tiermem_integration": false
+  },
+  "full_v3_progress_notes": {
+    "real_public_baselines_run": "pending: only readiness audit is complete locally",
+    "halumem_medium_dataset_in_place": "partial: preflight and canonical path are defined, but the final HaluMem-Medium.jsonl file is still absent locally",
+    "official_eval_runtime_scaffold": "partial: templates and base requirements are present, but .venv_official_eval is not created yet",
+    "query_blind_vs_query_aware_fairness_pair": "partial: local proxy fairness surface exists; real TierMem/public-baseline path is pending",
+    "n_sweep_restored_to_0_1_2_4_8_16": "partial: restored on the local proxy surface only",
+    "five_seed_statistics": "pending: current local statistics use two seeds",
+    "human_judge_kappa_reported": "pending",
+    "multi_backbone_run": "pending",
+    "full_conflict_unsafe_scale": "partial: local extension panels exist; real benchmark-grade live runs are pending",
+    "no_rewrite_tiermem_integration": "pending: local policy scaffold exists but is not yet wired into the real TierMem path"
+  },
+  "legacy_release_snapshot": {
+    "release_version": "v0.2.0-idea-baseline-private",
+    "release_date": "2026-06-28",
+    "baseline_status": {
+      "minimal_closed_loop_baseline_ready": true,
+      "paper_level_baseline_ready": false,
+      "primary_external_benchmark_grounding": "pass",
+      "tiermem_style_primary_base": "pass",
+      "manifest_backed_task_extensions": "pass",
+      "benchmark_first_proxy_base_complete": "pass",
+      "exact_non_proxy_frontier_closure": "pass",
+      "broader_benchmark_section_scale": "partial",
+      "synthetic_reference_demotion": "pass",
+      "reproducibility_environment_pinned": "pass",
+      "single_entry_release_rebuild": "pass"
+    },
+    "primary_surface": {
+      "tiermem_style_primary_base_status": "pass",
+      "benchmark_native_primary_base_ready": true,
+      "task_extension_section_ready": true,
+      "benchmark_first_proxy_base_complete": true,
+      "full_tiermem_native_grounding": false
+    },
+    "benchmark_native_primary_base": {
+      "panel_count": 6,
+      "item_count": 38,
+      "benchmark_families": [
+        "HaluMem",
+        "LoCoMo",
+        "LongMemEval",
+        "MemoryConsolidationPilot"
+      ],
+      "task_families": [
+        "benign",
+        "conflict",
+        "hallucination",
+        "unsafe"
+      ]
+    },
+    "publish_layout": {
+      "tracked_artifact_dirs": [
+        "benchmarks/*/frozen_slices",
+        "outputs",
+        "reviews",
+        "state"
+      ],
+      "ignored_large_paths": [
+        "benchmarks/halumem/official_repo/data/",
+        "benchmarks/locomo/locomo_official/data/",
+        "benchmarks/locomo/longmemeval_official/data/",
+        "outputs/*_cache/"
+      ]
+    }
+  },
+  "hygiene_summary": {
+    "absolute_path_leak_files": 2,
+    "outputs_file_count": 8262,
+    "outputs_total_bytes": 1026716693
+  }
+}

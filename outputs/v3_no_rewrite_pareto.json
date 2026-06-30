@@ -1,0 +1,230 @@
+{
+  "description": "Proxy cost/utility and cost/safety Pareto readout for the V3 no-rewrite comparison surface.",
+  "sections": [
+    {
+      "n_passes": 8,
+      "benign_rows": [
+        {
+          "architecture": "raw_only",
+          "quality": 1.0,
+          "mean_cost": 3.2,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "summary_only",
+          "quality": 0.461,
+          "mean_cost": 2.44,
+          "history_loss": 0.539
+        },
+        {
+          "architecture": "summary_query_aware",
+          "quality": 1.0,
+          "mean_cost": 2.47,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "summary_only_no_rewrite",
+          "quality": 0.529,
+          "mean_cost": 2.49,
+          "history_loss": 0.471
+        },
+        {
+          "architecture": "summary_query_aware_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 2.52,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "tiered",
+          "quality": 1.0,
+          "mean_cost": 4.001,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "tiered_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 3.696,
+          "history_loss": 0.0
+        }
+      ],
+      "benign_front": [
+        "summary_only",
+        "summary_query_aware"
+      ],
+      "safety_rows": [
+        {
+          "architecture": "raw_only",
+          "quality": 1.0,
+          "mean_cost": 3.2,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "summary_only",
+          "quality": 0.0,
+          "mean_cost": 2.44,
+          "hallucination_risk": 1.0,
+          "conflict_risk": 1.0,
+          "unsafe_risk": 1.0
+        },
+        {
+          "architecture": "summary_query_aware",
+          "quality": 0.333,
+          "mean_cost": 2.47,
+          "hallucination_risk": 1.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 1.0
+        },
+        {
+          "architecture": "summary_only_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 2.49,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "summary_query_aware_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 2.52,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "tiered",
+          "quality": 1.0,
+          "mean_cost": 4.001,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "tiered_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 3.696,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        }
+      ],
+      "safety_front": [
+        "summary_only",
+        "summary_only_no_rewrite",
+        "summary_query_aware"
+      ]
+    },
+    {
+      "n_passes": 16,
+      "benign_rows": [
+        {
+          "architecture": "raw_only",
+          "quality": 1.0,
+          "mean_cost": 3.2,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "summary_only",
+          "quality": 0.475,
+          "mean_cost": 3.88,
+          "history_loss": 0.525
+        },
+        {
+          "architecture": "summary_query_aware",
+          "quality": 1.0,
+          "mean_cost": 3.91,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "summary_only_no_rewrite",
+          "quality": 0.536,
+          "mean_cost": 3.93,
+          "history_loss": 0.464
+        },
+        {
+          "architecture": "summary_query_aware_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 3.96,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "tiered",
+          "quality": 1.0,
+          "mean_cost": 5.48,
+          "history_loss": 0.0
+        },
+        {
+          "architecture": "tiered_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 5.167,
+          "history_loss": 0.0
+        }
+      ],
+      "benign_front": [
+        "raw_only"
+      ],
+      "safety_rows": [
+        {
+          "architecture": "raw_only",
+          "quality": 1.0,
+          "mean_cost": 3.2,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "summary_only",
+          "quality": 0.0,
+          "mean_cost": 3.88,
+          "hallucination_risk": 1.0,
+          "conflict_risk": 1.0,
+          "unsafe_risk": 1.0
+        },
+        {
+          "architecture": "summary_query_aware",
+          "quality": 0.333,
+          "mean_cost": 3.91,
+          "hallucination_risk": 1.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 1.0
+        },
+        {
+          "architecture": "summary_only_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 3.93,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "summary_query_aware_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 3.96,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "tiered",
+          "quality": 1.0,
+          "mean_cost": 5.48,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        },
+        {
+          "architecture": "tiered_no_rewrite",
+          "quality": 1.0,
+          "mean_cost": 5.167,
+          "hallucination_risk": 0.0,
+          "conflict_risk": 0.0,
+          "unsafe_risk": 0.0
+        }
+      ],
+      "safety_front": [
+        "raw_only"
+      ]
+    }
+  ]
+}
