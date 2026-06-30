@@ -11,16 +11,15 @@
   "rows": [
     {
       "runtime": "current_python",
-      "python_path": "/opt/anaconda3/bin/python3",
+      "python_path": "/opt/homebrew/opt/python@3.14/bin/python3.14",
       "exists": true,
-      "common_present": [
+      "common_present": [],
+      "common_missing": [
+        "openai",
         "dotenv",
         "tenacity",
         "tqdm",
         "requests"
-      ],
-      "common_missing": [
-        "openai"
       ],
       "baseline_missing": {
         "mem0_memzero": [
@@ -79,7 +78,7 @@
   ],
   "ready_runtime_count": 1,
   "official_eval_venv_present": false,
-  "dataset_expected_present": false,
+  "dataset_expected_present": true,
   "dataset_expected_path": "benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl",
   "next_commands": [
     "python3 -m venv .venv_official_eval",

@@ -73,7 +73,7 @@ BENCHMARK_SPECS: Dict[str, BenchmarkSpec] = {
         / "data"
         / "HaluMem-Medium.jsonl",
         split="Medium",
-        notes="TierMem has a HaluMem loader, but the final HaluMem-Medium.jsonl file is not mirrored locally yet.",
+        notes="TierMem's HaluMem loader is wired to the canonical local HaluMem-Medium.jsonl path.",
     ),
 }
 

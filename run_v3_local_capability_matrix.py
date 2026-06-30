@@ -135,10 +135,17 @@ def build_rows(repo_root: Path) -> list[dict[str, Any]]:
         },
         {
             "task": "AgentPoison attack suite grounding",
-            "can_do_on_mac": "no",
+            "can_do_on_mac": (
+                "partial"
+                if feasibility_map.get("AgentPoison usable", {}).get("status") == "partial"
+                else "no"
+            ),
             "status": feasibility_map.get("AgentPoison usable", {}).get("status", "missing"),
             "blocker": ", ".join(feasibility_map.get("AgentPoison usable", {}).get("blockers", ["local repo absent"])) if feasibility_map else "local repo absent",
-            "next_command": "Clone AgentPoison before claiming the safety attack suite is executable.",
+            "next_command": feasibility_map.get("AgentPoison usable", {}).get(
+                "next_action",
+                "Clone AgentPoison before claiming the safety attack suite is executable.",
+            ),
         },
         {
             "task": "V3 defended-method maturity",

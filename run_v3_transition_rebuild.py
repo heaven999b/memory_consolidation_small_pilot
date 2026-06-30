@@ -7,12 +7,14 @@ from pathlib import Path
 
 RUN_STEPS = [
     "run_v3_feasibility_gate.py",
+    "run_v3_attack_suite_grounding_audit.py",
     "run_v3_halumem_dataset_preflight.py",
     "run_v3_public_baseline_readiness.py",
     "run_v3_official_eval_runtime_audit.py",
     "run_v3_no_rewrite_policy_audit.py",
     "run_v3_no_rewrite_comparison.py",
     "run_v3_no_rewrite_statistics.py",
+    "run_v3_no_rewrite_surface_audit.py",
     "run_v3_no_rewrite_pareto.py",
     "run_v3_hygiene_audit.py",
     "run_v3_local_capability_matrix.py",

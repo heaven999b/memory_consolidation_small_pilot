@@ -310,7 +310,9 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
             )
 
     return {
-        "description": "Expanded-manifest local proxy comparison for V3 no-rewrite against summary-only and tiered baselines.",
+        "description": "Expanded-manifest synthetic dry-run comparison for the V3 no-rewrite mechanism over the legacy compaction simulator.",
+        "evidence_class": "synthetic_dry_run",
+        "surface_runtime": "legacy_compaction_simulator",
         "n_values": N_VALUES,
         "seeds": SEEDS,
         "architectures": ARCHITECTURES,
@@ -325,8 +327,11 @@ def build_summary(payload: dict[str, Any]) -> str:
     lines = [
         "# V3 No-Rewrite Comparison",
         "",
-        "This is a local proxy comparison over the expanded manifest-backed pool. It is not a real TierMem result table, but it does turn the V3 defended mechanism into a directly comparable method surface.",
+        "This is a synthetic dry-run over the expanded manifest-backed pool and the legacy compaction simulator.",
+        "It is not a real TierMem result table, not a real public-baseline result table, and not a substitute for E0.",
         "",
+        f"- evidence class: `{payload.get('evidence_class', 'unknown')}`",
+        f"- runtime: `{payload.get('surface_runtime', 'unknown')}`",
         f"- items: `{payload['item_count']}`",
         f"- seeds: `{payload['seeds']}`",
         f"- depths: `{payload['n_values']}`",
@@ -419,9 +424,9 @@ def build_summary(payload: dict[str, Any]) -> str:
         [
             "## Readout",
             "",
-            "- The purpose of this artifact is to compare the V3 mechanism as a method, not just as a checklist item.",
-            "- If `summary_only_no_rewrite` and `tiered_no_rewrite` suppress hallucination / conflict / unsafe failures at high `N` while keeping benign utility reasonable, that is the right local signal before wiring the same rule into the real TierMem path.",
-            "- This artifact should still be treated as a proxy surface until the real TierMem and public-baseline experiments are live.",
+            "- The purpose of this artifact is local mechanism instantiation and audit, not empirical paper evidence.",
+            "- Any suppression of `hallucination` / `conflict` / `unsafe` here should be read as a synthetic policy-surface signal before wiring the same rule into the real TierMem path.",
+            "- This artifact must stay quarantined from real benchmark tables until E0 and the public-baseline path are actually live.",
             "",
         ]
     )

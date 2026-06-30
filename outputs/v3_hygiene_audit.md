@@ -2,16 +2,18 @@
 
 | Check | Value |
 |---|---|
-| absolute path leak files | `2` |
-| outputs file count | `8262` |
-| outputs total bytes | `1026716693` |
+| absolute path leak files | `4` |
+| outputs file count | `8266` |
+| outputs total bytes | `1026848976` |
 
 ## Absolute Path Leaks
 
 | Path | Hits | Sample |
 |---|---|---|
-| outputs/v3_halumem_dataset_preflight.json | `1` | "copy_hint": "cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'", |
-| outputs/v3_halumem_dataset_preflight.md | `1` | - copy hint: `cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'` |
+| outputs/v3_attack_suite_grounding_audit.json | `2` | "repo": "/Users/yihaiwen/Documents/New project/agentpoison_official", |
+| outputs/v3_attack_suite_grounding_audit.md | `2` | - repo: `/Users/yihaiwen/Documents/New project/agentpoison_official` |
+| feasibility_report.md | `1` | - agentpoison_repo: /Users/yihaiwen/Documents/New project/agentpoison_official |
+| outputs/v3_feasibility_gate.json | `1` | "agentpoison_repo: /Users/yihaiwen/Documents/New project/agentpoison_official" |
 
 ## Recommendations
 

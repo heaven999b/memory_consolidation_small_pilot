@@ -6,7 +6,7 @@ Scaffold/runtime audit for the mirrored HaluMem official evaluation path, exclud
 - official eval venv present: `False`
 - ready runtime count: `1`
 - base requirements present: `True`
-- HaluMem expected dataset present: `False`
+- HaluMem expected dataset present: `True`
 - HaluMem expected dataset path: `benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl`
 
 ## Env Templates
@@ -19,7 +19,7 @@ Scaffold/runtime audit for the mirrored HaluMem official evaluation path, exclud
 
 | Runtime | Exists | Common Missing | Mem0 Missing | Zep Missing | MemOS Missing |
 |---|---|---|---|---|---|
-| `current_python` | `True` | openai | mem0 | zep_cloud | none |
+| `current_python` | `True` | openai, dotenv, tenacity, tqdm, requests | mem0 | zep_cloud | none |
 | `tiermem_venv` | `True` | none | mem0 | zep_cloud | none |
 | `official_eval_venv` | `False` | openai, dotenv, tenacity, tqdm, requests | mem0 | zep_cloud | none |
 

@@ -19,12 +19,14 @@ def file_exists(repo_root: Path, relative_path: str) -> bool:
 def build_payload(repo_root: Path) -> dict[str, Any]:
     release_snapshot = load_json(repo_root / "state" / "release_snapshot.json")
     feasibility = load_json(repo_root / "outputs" / "v3_feasibility_gate.json")
+    attack_suite = load_json(repo_root / "outputs" / "v3_attack_suite_grounding_audit.json")
     halumem_preflight = load_json(repo_root / "outputs" / "v3_halumem_dataset_preflight.json")
     public_baselines = load_json(repo_root / "outputs" / "v3_public_baseline_readiness.json")
     official_eval_runtime = load_json(repo_root / "outputs" / "v3_official_eval_runtime_audit.json")
     no_rewrite = load_json(repo_root / "outputs" / "v3_no_rewrite_policy_audit.json")
     no_rewrite_comparison = load_json(repo_root / "outputs" / "v3_no_rewrite_comparison.json")
     no_rewrite_statistics = load_json(repo_root / "outputs" / "v3_no_rewrite_statistics.json")
+    no_rewrite_surface_audit = load_json(repo_root / "outputs" / "v3_no_rewrite_surface_audit.json")
     no_rewrite_pareto = load_json(repo_root / "outputs" / "v3_no_rewrite_pareto.json")
     hygiene = load_json(repo_root / "outputs" / "v3_hygiene_audit.json")
     capability = load_json(repo_root / "outputs" / "v3_local_capability_matrix.json")
@@ -53,6 +55,7 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
         "completed_now": {
             "tiermem_bridge_present": file_exists(repo_root, "run_v2_tiermem_local_bridge.py"),
             "v3_feasibility_gate_present": file_exists(repo_root, "feasibility_report.md"),
+            "v3_attack_suite_grounding_audit_present": file_exists(repo_root, "outputs/v3_attack_suite_grounding_audit.md"),
             "v3_halumem_dataset_preflight_present": file_exists(repo_root, "outputs/v3_halumem_dataset_preflight.md"),
             "v3_public_baseline_readiness_present": file_exists(repo_root, "outputs/v3_public_baseline_readiness.md"),
             "v3_official_eval_runtime_audit_present": file_exists(repo_root, "outputs/v3_official_eval_runtime_audit.md"),
@@ -78,8 +81,15 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
             "citation_reality": feasibility_map.get("Citation reality", "missing"),
             "license_compatibility": feasibility_map.get("License compatibility", "missing"),
         },
+        "execution_order": {
+            "e0_real_sanity_gate_passed": False,
+            "e0_rule": "Do not treat defense comparisons as paper evidence before the real TierMem/HaluMem E0 sanity gate passes.",
+        },
         "v3_scaffolds_now": {
             "public_baseline_readiness": public_baselines.get("overall_status", "missing"),
+            "agentpoison_grounding_status": attack_suite.get("agentpoison", {}).get("status", "missing"),
+            "memevobench_grounding_status": attack_suite.get("memevobench", {}).get("status", "missing"),
+            "mpbench_grounding_status": attack_suite.get("mpbench", {}).get("status", "missing"),
             "halumem_dataset_status": halumem_preflight.get("status", "missing"),
             "halumem_expected_dataset_present": halumem_preflight.get("expected_present"),
             "halumem_candidate_count": halumem_preflight.get("candidate_count"),
@@ -99,6 +109,8 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
             "local_query_aware_fairness_surface_present": fairness_surface_present,
             "local_no_rewrite_mechanism_surface_present": mechanism_surface_present,
             "no_rewrite_statistics_rows": len(no_rewrite_statistics.get("rows", [])),
+            "no_rewrite_surface_evidence_class": no_rewrite_surface_audit.get("evidence_class", "missing"),
+            "no_rewrite_surface_paper_safe": no_rewrite_surface_audit.get("paper_safe"),
             "no_rewrite_pareto_sections": len(no_rewrite_pareto.get("sections", [])),
             "local_evidence_packet_present": bool(local_packet),
             "local_capability_yes_count": capability.get("counts", {}).get("yes"),
@@ -106,6 +118,7 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
             "tiermem_pre_api_smoke_supported": file_exists(repo_root, "run_v2_tiermem_local_bridge.py"),
         },
         "still_pending_for_full_v3": {
+            "e0_real_sanity_gate": True,
             "real_public_baselines_run": False,
             "query_blind_vs_query_aware_fairness_pair": False,
             "n_sweep_restored_to_0_1_2_4_8_16": False,
@@ -116,11 +129,16 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
             "no_rewrite_tiermem_integration": False,
         },
         "full_v3_progress_notes": {
+            "e0_real_sanity_gate": "pending: TierMem and HaluMem are still not both running end-to-end with real credentials and real benchmark files",
             "real_public_baselines_run": "pending: only readiness audit is complete locally",
-            "halumem_medium_dataset_in_place": "partial: preflight and canonical path are defined, but the final HaluMem-Medium.jsonl file is still absent locally",
+            "halumem_medium_dataset_in_place": (
+                "ready: preflight and canonical path are defined, and the final HaluMem-Medium.jsonl file is now present locally"
+                if halumem_preflight.get("expected_present")
+                else "partial: preflight and canonical path are defined, but the final HaluMem-Medium.jsonl file is still absent locally"
+            ),
             "official_eval_runtime_scaffold": "partial: templates and base requirements are present, but .venv_official_eval is not created yet",
             "query_blind_vs_query_aware_fairness_pair": "partial: local proxy fairness surface exists; real TierMem/public-baseline path is pending",
-            "n_sweep_restored_to_0_1_2_4_8_16": "partial: restored on the local proxy surface only",
+            "n_sweep_restored_to_0_1_2_4_8_16": "partial: restored on the synthetic local proxy/statistics surface only",
             "five_seed_statistics": "pending: current local statistics use two seeds",
             "human_judge_kappa_reported": "pending",
             "multi_backbone_run": "pending",
@@ -175,6 +193,9 @@ def write_outputs(repo_root: Path, payload: dict[str, Any]) -> None:
     lines.extend(["", "## Week-0 Gate", ""])
     for key, value in week0.items():
         lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "## Execution Order", ""])
+    for key, value in payload["execution_order"].items():
+        lines.append(f"- {key}: `{value}`")
     lines.extend(["", "## V3 Scaffolds Now", ""])
     for key, value in scaffolds.items():
         lines.append(f"- {key}: `{value}`")
@@ -190,8 +211,9 @@ def write_outputs(repo_root: Path, payload: dict[str, Any]) -> None:
             "## Interpretation",
             "",
             "- The repo is no longer describing PSU as the final paper contribution.",
-            "- The V3 transition now has explicit feasibility, HaluMem dataset preflight, official-eval runtime scaffold audit, public-baseline readiness, no-rewrite dry-run, fairness-paired local comparison, paired statistics, Pareto, capability, hygiene, and legacy-migration documents.",
-            "- The local proxy surface now separates what query awareness explains from what the no-rewrite rule explains, but that decomposition is still not wired into the real TierMem path.",
+            "- The V3 transition now has explicit feasibility, HaluMem dataset preflight, official-eval runtime scaffold audit, public-baseline readiness, synthetic no-rewrite dry-run, fairness-paired local comparison, paired statistics, Pareto, capability, hygiene, and legacy-migration documents.",
+            "- The local proxy surface now separates what query awareness explains from what the no-rewrite rule explains, but that decomposition is still synthetic and is not wired into the real TierMem path.",
+            "- E0 is still the controlling gate: defense-side dry-run artifacts should not be elevated above the not-yet-passed real sanity run.",
             "- Full V3 completion still requires real public baseline execution, fairness-paired summary baselines, larger conflict/unsafe scale, human judge validation, and multi-backbone evidence.",
             "",
         ]

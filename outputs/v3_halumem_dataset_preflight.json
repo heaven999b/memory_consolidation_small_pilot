@@ -1,19 +1,24 @@
 {
   "repo_root": ".",
   "description": "Canonical-path preflight for the HaluMem-Medium file required by TierMem and the mirrored official eval harness.",
-  "status": "partial",
+  "status": "ready",
   "expected_path": "benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl",
   "expected_filename": "HaluMem-Medium.jsonl",
-  "expected_present": false,
-  "expected_size_mb": null,
-  "expected_line_count": null,
+  "expected_present": true,
+  "expected_size_mb": 31.96,
+  "expected_line_count": 20,
   "official_source_url": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
   "official_readme_present": true,
   "eval_readme_present": true,
   "license_signal": "CC-BY-NC-ND-4.0",
-  "candidate_count": 0,
-  "candidates": [],
-  "next_action": "Download HaluMem-Medium from the official Hugging Face dataset and place it at benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl.",
-  "copy_hint": "cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'",
+  "candidate_count": 1,
+  "candidates": [
+    {
+      "path": "benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl",
+      "size_mb": 31.96
+    }
+  ],
+  "next_action": "Dataset already present at the canonical path.",
+  "copy_hint": null,
   "data_dir_exists": true
 }

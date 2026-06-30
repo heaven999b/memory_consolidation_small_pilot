@@ -12,6 +12,7 @@ Date: 2026-06-30
 
 - tiermem_bridge_present: `True`
 - v3_feasibility_gate_present: `True`
+- v3_attack_suite_grounding_audit_present: `True`
 - v3_halumem_dataset_preflight_present: `True`
 - v3_public_baseline_readiness_present: `True`
 - v3_official_eval_runtime_audit_present: `True`
@@ -33,17 +34,25 @@ Date: 2026-06-30
 
 - tiermem_usable: `partial`
 - halumem_usable: `partial`
-- agentpoison_usable: `paper_only`
-- mpbench_memevobench: `paper_only`
+- agentpoison_usable: `partial`
+- mpbench_memevobench: `partial`
 - citation_reality: `partial`
 - license_compatibility: `partial`
+
+## Execution Order
+
+- e0_real_sanity_gate_passed: `False`
+- e0_rule: `Do not treat defense comparisons as paper evidence before the real TierMem/HaluMem E0 sanity gate passes.`
 
 ## V3 Scaffolds Now
 
 - public_baseline_readiness: `partial`
-- halumem_dataset_status: `partial`
-- halumem_expected_dataset_present: `False`
-- halumem_candidate_count: `0`
+- agentpoison_grounding_status: `partial`
+- memevobench_grounding_status: `partial`
+- mpbench_grounding_status: `missing`
+- halumem_dataset_status: `ready`
+- halumem_expected_dataset_present: `True`
+- halumem_candidate_count: `1`
 - official_eval_runtime_status: `partial`
 - official_eval_ready_runtime_count: `1`
 - official_eval_venv_present: `False`
@@ -56,15 +65,18 @@ Date: 2026-06-30
 - local_architecture_count: `7`
 - local_query_aware_fairness_surface_present: `True`
 - local_no_rewrite_mechanism_surface_present: `True`
-- no_rewrite_statistics_rows: `24`
+- no_rewrite_statistics_rows: `72`
+- no_rewrite_surface_evidence_class: `synthetic_dry_run`
+- no_rewrite_surface_paper_safe: `False`
 - no_rewrite_pareto_sections: `2`
 - local_evidence_packet_present: `True`
 - local_capability_yes_count: `8`
-- local_capability_partial_count: `3`
+- local_capability_partial_count: `4`
 - tiermem_pre_api_smoke_supported: `True`
 
 ## Still Pending For Full V3
 
+- e0_real_sanity_gate: `True`
 - real_public_baselines_run: `False`
 - query_blind_vs_query_aware_fairness_pair: `False`
 - n_sweep_restored_to_0_1_2_4_8_16: `False`
@@ -76,11 +88,12 @@ Date: 2026-06-30
 
 ## Pending Notes
 
+- e0_real_sanity_gate: pending: TierMem and HaluMem are still not both running end-to-end with real credentials and real benchmark files
 - real_public_baselines_run: pending: only readiness audit is complete locally
-- halumem_medium_dataset_in_place: partial: preflight and canonical path are defined, but the final HaluMem-Medium.jsonl file is still absent locally
+- halumem_medium_dataset_in_place: ready: preflight and canonical path are defined, and the final HaluMem-Medium.jsonl file is now present locally
 - official_eval_runtime_scaffold: partial: templates and base requirements are present, but .venv_official_eval is not created yet
 - query_blind_vs_query_aware_fairness_pair: partial: local proxy fairness surface exists; real TierMem/public-baseline path is pending
-- n_sweep_restored_to_0_1_2_4_8_16: partial: restored on the local proxy surface only
+- n_sweep_restored_to_0_1_2_4_8_16: partial: restored on the synthetic local proxy/statistics surface only
 - five_seed_statistics: pending: current local statistics use two seeds
 - human_judge_kappa_reported: pending
 - multi_backbone_run: pending
@@ -90,6 +103,7 @@ Date: 2026-06-30
 ## Interpretation
 
 - The repo is no longer describing PSU as the final paper contribution.
-- The V3 transition now has explicit feasibility, HaluMem dataset preflight, official-eval runtime scaffold audit, public-baseline readiness, no-rewrite dry-run, fairness-paired local comparison, paired statistics, Pareto, capability, hygiene, and legacy-migration documents.
-- The local proxy surface now separates what query awareness explains from what the no-rewrite rule explains, but that decomposition is still not wired into the real TierMem path.
+- The V3 transition now has explicit feasibility, HaluMem dataset preflight, official-eval runtime scaffold audit, public-baseline readiness, synthetic no-rewrite dry-run, fairness-paired local comparison, paired statistics, Pareto, capability, hygiene, and legacy-migration documents.
+- The local proxy surface now separates what query awareness explains from what the no-rewrite rule explains, but that decomposition is still synthetic and is not wired into the real TierMem path.
+- E0 is still the controlling gate: defense-side dry-run artifacts should not be elevated above the not-yet-passed real sanity run.
 - Full V3 completion still requires real public baseline execution, fairness-paired summary baselines, larger conflict/unsafe scale, human judge validation, and multi-backbone evidence.

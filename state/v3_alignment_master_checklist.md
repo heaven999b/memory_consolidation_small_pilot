@@ -39,6 +39,7 @@ This checklist treats `02_revised_plan_v3.md` as the controlling plan.
 - [x] Add a no-rewrite policy dry-run audit.
 - [x] Add a no-rewrite comparison artifact over the expanded manifest pool.
 - [x] Add no-rewrite statistics and Pareto readouts.
+- [x] Add an explicit no-rewrite surface audit that labels the surface as synthetic dry-run only.
 - [x] Add a local capability matrix.
 - [x] Add a V3 hygiene audit.
 - [x] Add a V3 transition snapshot.
@@ -50,7 +51,7 @@ This checklist treats `02_revised_plan_v3.md` as the controlling plan.
 - [~] HaluMem-Medium canonical data placement: expected path and preflight are fixed, but the file is still absent locally
 - [~] official eval runtime: env templates and base requirements are present, but `.venv_official_eval` is not built yet
 - [~] query-blind vs query-aware summary-only fairness pair: local proxy comparison now exists; real TierMem/public-baseline path is still pending
-- [~] full `N in {0,1,2,4,8,16}`: restored on the local proxy comparison surface; not yet restored on the real final-path runs
+- [~] full `N in {0,1,2,4,8,16}`: restored on the local synthetic comparison/statistics surface; not yet restored on the real final-path runs
 - [ ] ≥5 seed statistics with CI / paired tests
 - [ ] human-validated judge and Cohen's `kappa`
 - [ ] multi-backbone evidence
@@ -60,5 +61,11 @@ This checklist treats `02_revised_plan_v3.md` as the controlling plan.
 ## Working interpretation
 
 The repo is now **V3-aligned in direction and structure**, but **not yet V3-complete in experiments**.
+
+The most important operational rule is now explicit:
+
+- real `E0` sanity first
+- synthetic `no-rewrite` surfaces second
+- paper-facing defense claims only after the real path runs
 
 That is the correct state to communicate.

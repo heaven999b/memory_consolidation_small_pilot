@@ -43,12 +43,18 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
     audit = load_json(repo_root / "outputs" / "v3_no_rewrite_policy_audit.json")
     comparison = load_json(repo_root / "outputs" / "v3_no_rewrite_comparison.json")
     stats = load_json(repo_root / "outputs" / "v3_no_rewrite_statistics.json")
+    surface_audit = load_json(repo_root / "outputs" / "v3_no_rewrite_surface_audit.json")
     pareto = load_json(repo_root / "outputs" / "v3_no_rewrite_pareto.json")
     capability = load_json(repo_root / "outputs" / "v3_local_capability_matrix.json")
 
-    focus_rows = select_rows(stats, "Main: blind -> no-rewrite", 16)
+    available_n = sorted({int(row.get("n_passes", 0)) for row in stats.get("rows", [])})
+    focus_n = max(available_n) if available_n else 16
+    focus_rows = select_rows(stats, "Main: blind -> no-rewrite", focus_n)
     return {
-        "description": "Consolidated local evidence packet for the current V3 transition state.",
+        "description": "Consolidated local synthetic dry-run packet for the current V3 transition state.",
+        "evidence_class": surface_audit.get("evidence_class", stats.get("evidence_class", "synthetic_dry_run")),
+        "paper_safe": surface_audit.get("paper_safe", False),
+        "do_not_mix_with_real_results": surface_audit.get("do_not_mix_with_real_results", True),
         "tiermem_week0_gate": check_status(feasibility, "TierMem usable"),
         "public_baseline_readiness": readiness,
         "no_rewrite_audit": audit.get("overall", {}),
@@ -56,9 +62,10 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
         "n_values": comparison.get("n_values", []),
         "seeds": comparison.get("seeds", []),
         "architectures": comparison.get("architectures", []),
+        "focus_n": focus_n,
         "no_rewrite_focus_statistics": focus_rows,
-        "fairness_focus_statistics": select_rows(stats, "Fairness: blind -> query-aware", 16),
-        "mechanism_focus_statistics": select_rows(stats, "Mechanism: query-aware -> no-rewrite", 16),
+        "fairness_focus_statistics": select_rows(stats, "Fairness: blind -> query-aware", focus_n),
+        "mechanism_focus_statistics": select_rows(stats, "Mechanism: query-aware -> no-rewrite", focus_n),
         "pareto_n8": select_pareto_section(pareto, 8),
         "pareto": pareto.get("sections", []),
         "capability_counts": capability.get("counts", {}),
@@ -87,6 +94,9 @@ def build_summary(payload: dict[str, Any]) -> str:
         "",
         "## Current State",
         "",
+        f"- Evidence class: `{payload.get('evidence_class', 'unknown')}`",
+        f"- Paper safe: `{payload.get('paper_safe')}`",
+        f"- Do-not-mix-with-real-results: `{payload.get('do_not_mix_with_real_results')}`",
         f"- TierMem week-0 gate: `{payload.get('tiermem_week0_gate', 'missing')}`",
         f"- Public baseline readiness: `{payload['public_baseline_readiness'].get('overall_status', 'missing')}`",
         f"- No-rewrite audit N=8 blocked protected rate: `{payload['no_rewrite_audit'].get('n8_blocked_protected_case_rate', 'missing')}`",
@@ -96,7 +106,7 @@ def build_summary(payload: dict[str, Any]) -> str:
         f"- Local architectures: `{payload.get('architectures', [])}`",
         f"- Capability counts: `{payload['capability_counts']}`",
         "",
-        "## Main Local Statistical Readout (blind -> no-rewrite at N=16)",
+        f"## Main Synthetic Statistical Readout (blind -> no-rewrite at N={payload.get('focus_n')})",
         "",
         "| Family | Left | Right | Delta | 95% CI | McNemar p |",
         "|---|---:|---:|---:|---|---:|",
@@ -112,20 +122,20 @@ def build_summary(payload: dict[str, Any]) -> str:
             "## Mechanism Decomposition",
             "",
             (
-                "- `query-aware` alone fixes the current local `conflict` collapse and restores "
+                "- On this synthetic proxy surface, `query-aware` alone fixes the current local `conflict` collapse and restores "
                 f"`benign` accuracy (`{fairness_map.get('benign', {}).get('left_mean', 0.0):.3f}` -> "
-                f"`{fairness_map.get('benign', {}).get('right_mean', 0.0):.3f}` at `N=16`), "
-                "but it does not reduce `hallucination` or `unsafe` risk in this proxy surface."
+                f"`{fairness_map.get('benign', {}).get('right_mean', 0.0):.3f}` at `N={payload.get('focus_n')}`), "
+                "but it does not reduce `hallucination` or `unsafe` risk in this dry-run surface."
             ),
             (
-                "- `no-rewrite` is the part that removes the local `hallucination` and `unsafe` failures: "
+                "- On the same synthetic surface, `no-rewrite` is the part that removes the local `hallucination` and `unsafe` failures: "
                 f"`hallucination` risk `{mechanism_map.get('hallucination', {}).get('left_mean', 0.0):.3f}` -> "
                 f"`{mechanism_map.get('hallucination', {}).get('right_mean', 0.0):.3f}`, "
                 f"`unsafe` risk `{mechanism_map.get('unsafe', {}).get('left_mean', 0.0):.3f}` -> "
-                f"`{mechanism_map.get('unsafe', {}).get('right_mean', 0.0):.3f}` at `N=16`."
+                f"`{mechanism_map.get('unsafe', {}).get('right_mean', 0.0):.3f}` at `N={payload.get('focus_n')}`."
             ),
             (
-                "- Relative to the blind summary baseline, `summary_only_no_rewrite` gives a smaller but still "
+                "- Relative to the blind summary baseline, `summary_only_no_rewrite` gives a smaller but still synthetic-only "
                 f"significant `benign` gain (`{main_map.get('benign', {}).get('left_mean', 0.0):.3f}` -> "
                 f"`{main_map.get('benign', {}).get('right_mean', 0.0):.3f}`), while fully removing the three local risk-family failures."
             ),
@@ -151,9 +161,9 @@ def build_summary(payload: dict[str, Any]) -> str:
             "",
             "## Interpretation",
             "",
-            "- The local evidence now goes beyond a checklist: the main V3 mechanism is instantiated, fairness-paired, cost-profiled, and statistically contrasted against both blind and query-aware summary baselines.",
-            "- The strongest local conclusion is now sharper: query awareness explains the conflict/benign recovery, while the no-rewrite rule explains the hallucination/unsafe suppression.",
-            "- The remaining gap is no longer conceptual. It is executional: real TierMem runs, real public baselines, and real external credentials/data.",
+            "- This packet is useful for local mechanism instantiation, fairness pairing, and audit scaffolding, but it is still synthetic dry-run evidence.",
+            "- The strongest safe conclusion here is narrow: in the legacy simulator, query awareness aligns with conflict/benign recovery, while the no-rewrite rule aligns with hallucination/unsafe suppression.",
+            "- The decisive remaining gap is empirical: real TierMem runs, real public baselines, real benchmark data placement, and real external credentials.",
             "",
         ]
     )

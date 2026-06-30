@@ -1,8 +1,8 @@
 {
   "stage": "main",
   "stage_description": "Full expanded official benchmark pool.",
-  "generated_at_epoch": 1782829647.416,
-  "generated_at": "2026-06-30 22:27:27",
+  "generated_at_epoch": 1782832657.887,
+  "generated_at": "2026-06-30 23:17:37",
   "seeds": [
     11,
     23
@@ -306,23 +306,23 @@
       "status": "stalled",
       "summary": "no recent cache activity",
       "active_age_seconds": null,
-      "success_age_seconds": 135083,
-      "last_event_age_seconds": 30762
+      "success_age_seconds": 138093,
+      "last_event_age_seconds": 33772
     },
     "locomo": {
       "status": "stalled",
       "summary": "no recent cache activity",
       "active_age_seconds": null,
       "success_age_seconds": null,
-      "last_event_age_seconds": 30762
+      "last_event_age_seconds": 33772
     }
   },
   "activity_health": {
     "status": "stalled",
     "summary": "no recent cache activity detected",
     "active_age_seconds": null,
-    "success_age_seconds": 135083,
-    "last_event_age_seconds": 30762,
+    "success_age_seconds": 138093,
+    "last_event_age_seconds": 33772,
     "latest_active": null,
     "latest_success": {
       "event": "attempt_success",

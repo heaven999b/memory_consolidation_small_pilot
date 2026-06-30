@@ -2,19 +2,29 @@
   "repo_root": ".",
   "absolute_path_leaks": [
     {
-      "path": "outputs/v3_halumem_dataset_preflight.json",
-      "hit_count": 1,
-      "sample": "\"copy_hint\": \"cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'\","
+      "path": "outputs/v3_attack_suite_grounding_audit.json",
+      "hit_count": 2,
+      "sample": "\"repo\": \"/Users/yihaiwen/Documents/New project/agentpoison_official\","
     },
     {
-      "path": "outputs/v3_halumem_dataset_preflight.md",
+      "path": "outputs/v3_attack_suite_grounding_audit.md",
+      "hit_count": 2,
+      "sample": "- repo: `/Users/yihaiwen/Documents/New project/agentpoison_official`"
+    },
+    {
+      "path": "feasibility_report.md",
       "hit_count": 1,
-      "sample": "- copy hint: `cp /path/to/HaluMem-Medium.jsonl '/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/benchmarks/halumem/official_repo/data/HaluMem-Medium.jsonl'`"
+      "sample": "- agentpoison_repo: /Users/yihaiwen/Documents/New project/agentpoison_official"
+    },
+    {
+      "path": "outputs/v3_feasibility_gate.json",
+      "hit_count": 1,
+      "sample": "\"agentpoison_repo: /Users/yihaiwen/Documents/New project/agentpoison_official\""
     }
   ],
   "outputs_inventory": {
-    "file_count": 8262,
-    "total_bytes": 1026716693
+    "file_count": 8266,
+    "total_bytes": 1026848976
   },
   "recommendations": [
     "Strip /Users/ absolute paths from README, monitor HTML, and release-facing markdown before submission.",

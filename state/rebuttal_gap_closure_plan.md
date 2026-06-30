@@ -35,7 +35,8 @@ This note maps the current repo state against the A/B/C concerns raised after th
 
 ## Suggested order
 
-1. Run the new `B4/B5/B6` artifacts and fold their conclusions into the paper packet.
-2. Use `run_halumem_official_baseline_matrix.py` to close `A1` readiness gaps and execute at least two official systems.
-3. Launch a backbone matrix once a second and third summarizer backend are configured.
-4. Either scale `conflict/unsafe` into real benchmark-sized tables or reduce their prominence in the paper claim set.
+1. Pass the real `E0` sanity gate first: TierMem tiny run plus HaluMem canonical data placement.
+2. Treat the current `v3_no_rewrite_*` family as synthetic dry-run infrastructure, not as paper evidence.
+3. Use `run_halumem_official_baseline_matrix.py` to close `A1` readiness gaps and execute at least two official systems.
+4. Launch a backbone matrix once a second and third summarizer backend are configured.
+5. Either scale `conflict/unsafe` into real benchmark-sized tables or reduce their prominence in the paper claim set.

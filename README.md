@@ -24,28 +24,34 @@ The project has now locked **Path A**:
   - Week-0 feasibility gate required by V3
 - [legacy_pilot_findings.md](./legacy_pilot_findings.md)
   - exact mapping of which legacy assets transfer and which do not
+- [state/reviewer_blockers_clean.md](./state/reviewer_blockers_clean.md)
+  - current clean blocker list and execution order
 - [state/v3_alignment_master_checklist.md](./state/v3_alignment_master_checklist.md)
   - current V3 checklist with done / partial / pending status
 - [outputs/v3_transition_status.md](./outputs/v3_transition_status.md)
   - current transition snapshot
 - [outputs/v3_public_baseline_readiness.md](./outputs/v3_public_baseline_readiness.md)
   - local readiness audit for the official Mem0 / Zep / MemOS comparison surface
+- [outputs/v3_attack_suite_grounding_audit.md](./outputs/v3_attack_suite_grounding_audit.md)
+  - local grounding audit for AgentPoison / MPBench / MemEvoBench
 - [outputs/v3_halumem_dataset_preflight.md](./outputs/v3_halumem_dataset_preflight.md)
   - canonical-path audit for `HaluMem-Medium.jsonl`
 - [outputs/v3_official_eval_runtime_audit.md](./outputs/v3_official_eval_runtime_audit.md)
   - scaffold/runtime audit for the mirrored HaluMem official eval path
 - [outputs/v3_no_rewrite_policy_audit.md](./outputs/v3_no_rewrite_policy_audit.md)
-  - local dry-run instantiation of the V3 safety-critical no-rewrite rule
+  - local synthetic dry-run instantiation of the V3 safety-critical no-rewrite rule
 - [outputs/v3_no_rewrite_comparison.md](./outputs/v3_no_rewrite_comparison.md)
-  - local proxy comparison table for `no-rewrite` versus `summary_only` / `tiered`
+  - synthetic dry-run comparison table for `no-rewrite` versus `summary_only` / `tiered`
 - [outputs/v3_no_rewrite_statistics.md](./outputs/v3_no_rewrite_statistics.md)
-  - paired local significance readout for blind vs query-aware vs no-rewrite
+  - paired synthetic dry-run significance readout for blind vs query-aware vs no-rewrite
+- [outputs/v3_no_rewrite_surface_audit.md](./outputs/v3_no_rewrite_surface_audit.md)
+  - explicit audit showing why the no-rewrite surface must stay separate from real benchmark evidence
 - [outputs/v3_no_rewrite_pareto.md](./outputs/v3_no_rewrite_pareto.md)
-  - proxy cost/utility and cost/safety Pareto readout
+  - synthetic proxy cost/utility and cost/safety Pareto readout
 - [outputs/v3_local_capability_matrix.md](./outputs/v3_local_capability_matrix.md)
   - what this Mac can execute now, what is blocked, and the next command for each V3 task
 - [outputs/v3_local_evidence_packet.md](./outputs/v3_local_evidence_packet.md)
-  - one-page local evidence packet for the current V3 transition state
+  - one-page local synthetic packet for the current V3 transition state
 - [outputs/v3_hygiene_audit.md](./outputs/v3_hygiene_audit.md)
   - current absolute-path leak and outputs-surface audit
 
@@ -84,6 +90,8 @@ The current local state is:
   - not yet grounded by local artifacts
 
 So the repo has moved from "local proxy-only baseline work" to "TierMem migration in progress," but it has **not** yet completed the full V3 experimental program.
+
+Most importantly, the real `E0` sanity gate is still **not passed**. Any current `no-rewrite` artifacts must therefore be read as synthetic dry-run scaffolding, not as paper-grade defense evidence.
 
 ## What Transfers From The Legacy Pilot
 
@@ -141,6 +149,7 @@ This rebuilds:
 - `outputs/v3_no_rewrite_policy_audit.{json,md}`
 - `outputs/v3_no_rewrite_comparison.{json,md}`
 - `outputs/v3_no_rewrite_statistics.{json,md}`
+- `outputs/v3_no_rewrite_surface_audit.{json,md}`
 - `outputs/v3_no_rewrite_pareto.{json,md}`
 - `outputs/v3_hygiene_audit.{json,md}`
 - `outputs/v3_local_capability_matrix.{json,md}`
@@ -194,16 +203,28 @@ python3 run_v3_official_eval_runtime_audit.py
 python3 run_v3_no_rewrite_policy_audit.py
 ```
 
+This is a synthetic dry-run over the legacy simulator, not a real TierMem benchmark.
+
 ### No-rewrite comparison table
 
 ```bash
 python3 run_v3_no_rewrite_comparison.py
 ```
 
+This is a synthetic dry-run comparison surface.
+
 ### No-rewrite statistics
 
 ```bash
 python3 run_v3_no_rewrite_statistics.py
+```
+
+This now reports the full synthetic `N` sweep present in the local comparison surface.
+
+### No-rewrite surface audit
+
+```bash
+python3 run_v3_no_rewrite_surface_audit.py
 ```
 
 ### No-rewrite Pareto
@@ -218,10 +239,8 @@ The following items are still pending:
 
 - run real public memory-system baselines
   - Mem0 / Zep / MemoryOS on official harnesses
-- split summary-only into:
-  - query-blind
-  - query-aware
-- restore full `N in {0,1,2,4,8,16}`
+- pass the real `E0` sanity gate first
+- restore the full `N` sweep on the real final-path runs
 - expand conflict / unsafe into real family-scale tables
 - add ≥5 seeds with proper statistics
 - add human judge validation with Cohen's `kappa`

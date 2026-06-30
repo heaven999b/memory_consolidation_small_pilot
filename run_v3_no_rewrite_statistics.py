@@ -22,11 +22,17 @@ FAMILY_METRICS = {
     "unsafe": ("unsafe_answer", "Unsafe answer"),
     "benign": ("correct", "Accuracy"),
 }
-N_VALUES = [8, 16]
 
 
 def load_payload(repo_root: Path) -> dict[str, Any]:
     return json.loads((repo_root / "outputs" / "v3_no_rewrite_comparison.json").read_text(encoding="utf-8"))
+
+
+def available_n_values(payload: dict[str, Any]) -> list[int]:
+    explicit = payload.get("n_values")
+    if isinstance(explicit, list) and explicit:
+        return [int(value) for value in explicit]
+    return sorted({int(record["n_passes"]) for record in payload.get("records", [])})
 
 
 def pair_records(
@@ -129,11 +135,12 @@ def evaluate_binary_pairs(
 def build_payload(repo_root: Path) -> dict[str, Any]:
     payload = load_payload(repo_root)
     records = payload["records"]
+    n_values = available_n_values(payload)
     rows: list[dict[str, Any]] = []
     seed_offset = 0
     for left_arch, right_arch, label in COMPARISONS:
         for family, (metric_key, metric_label) in FAMILY_METRICS.items():
-            for n_passes in N_VALUES:
+            for n_passes in n_values:
                 pairs = pair_records(records, left_arch, right_arch, family, n_passes)
                 positive_is_good = family == "benign"
                 stats = evaluate_binary_pairs(
@@ -156,9 +163,12 @@ def build_payload(repo_root: Path) -> dict[str, Any]:
                 )
                 seed_offset += 1
     return {
-        "description": "Paired local statistics for the V3 no-rewrite comparison surface.",
+        "description": "Paired synthetic dry-run statistics for the V3 no-rewrite comparison surface.",
+        "evidence_class": payload.get("evidence_class", "synthetic_dry_run"),
+        "surface_runtime": payload.get("surface_runtime", "legacy_compaction_simulator"),
         "bootstrap_samples": BOOTSTRAP_SAMPLES,
         "bootstrap_seed": BOOTSTRAP_SEED,
+        "n_values": n_values,
         "rows": rows,
     }
 
@@ -169,8 +179,14 @@ def build_summary(payload: dict[str, Any]) -> str:
         "",
         payload["description"],
         "",
+        f"- evidence class: `{payload.get('evidence_class', 'unknown')}`",
+        f"- runtime: `{payload.get('surface_runtime', 'unknown')}`",
         f"- bootstrap samples: `{payload['bootstrap_samples']}`",
         f"- bootstrap seed: `{payload['bootstrap_seed']}`",
+        f"- depths: `{payload.get('n_values', [])}`",
+        "",
+        "Warning: this table is a synthetic dry-run over the legacy compaction simulator.",
+        "Zero-width confidence intervals or exact `0.000` / `+/-1.000` deltas here should not be interpreted as real-model stochastic evidence.",
         "",
         "| Comparison | Family | N | Left | Right | Delta | 95% CI | Left-win | Right-win | Ties | McNemar p |",
         "|---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|",
@@ -183,6 +199,7 @@ def build_summary(payload: dict[str, Any]) -> str:
         )
     lines.append("")
     lines.append("Interpretation note: `benign` uses accuracy, while the other families use failure endpoints, so negative deltas on risk families are improvements.")
+    lines.append("Paper-safety note: do not mix this synthetic table with real TierMem or official public-baseline result tables.")
     lines.append("")
     return "\n".join(lines)
 
@@ -198,4 +215,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

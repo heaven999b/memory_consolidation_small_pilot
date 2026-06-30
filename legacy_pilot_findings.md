@@ -89,6 +89,7 @@ The following should not be treated as final paper evidence anymore:
 
 - PSU's in-sample headline wins
 - any result obtained after repeated micro-round tuning on fixed small slices
+- the many `run_actual_hallucination_*pilot.py` and similarly narrow patch-round scripts as headline result sources
 - `scale_aware_unified` as a paper-facing method
 - DeepSeek-only proxy conclusions
 
@@ -106,6 +107,7 @@ When deciding whether to keep something from the earlier pilot, use this rule:
   - a tuned result
   - a locally composite method
   - a proxy-only conclusion
+  - a micro-round patch script targeting one tiny failure pocket
 
 ## Bottom line
 

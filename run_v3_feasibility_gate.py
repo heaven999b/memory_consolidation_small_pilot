@@ -129,6 +129,8 @@ def build_checks(repo_root: Path) -> list[CheckResult]:
     halumem_readme = read_text(halumem_root / "README.md")
     halumem_hf_link = "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem"
     halumem_license_badge = "CC-BY-NC-ND-4.0" if "CC-BY-NC-ND-4.0" in halumem_readme else None
+    agentpoison_license = load_license_first_line(agentpoison_root / "LICENSE") if agentpoison_root else None
+    memevobench_license = load_license_first_line(memevobench_root / "LICENSE") if memevobench_root else None
 
     checks: list[CheckResult] = []
 
@@ -183,7 +185,11 @@ def build_checks(repo_root: Path) -> list[CheckResult]:
             status="partial" if halumem_root.exists() else "fail",
             pass_condition="Load the official HaluMem data and run one official Medium eval end-to-end.",
             current_state=(
-                "The mirrored HaluMem repo and eval helpers are present, and the official README points to the Hugging Face release. The remaining local gap is the missing HaluMem-Medium.jsonl file expected by both TierMem and the official eval scripts."
+                (
+                    "The mirrored HaluMem repo, eval helpers, and canonical HaluMem-Medium file are now present locally. The remaining blocker for a real end-to-end run is OPENAI_API_KEY."
+                    if halumem_root.exists() and halumem_medium.exists()
+                    else "The mirrored HaluMem repo and eval helpers are present, and the official README points to the Hugging Face release. The remaining local gap is the missing HaluMem-Medium.jsonl file expected by both TierMem and the official eval scripts."
+                )
                 if halumem_root.exists()
                 else "The local HaluMem mirror is missing."
             ),
@@ -195,7 +201,11 @@ def build_checks(repo_root: Path) -> list[CheckResult]:
                 f"license_badge_in_readme: {halumem_license_badge or 'not found'}",
             ],
             blockers=halumem_blockers or ["none recorded"],
-            next_action="Download HaluMem-Medium from the official Hugging Face dataset, place it under benchmarks/halumem/official_repo/data/, and rerun the bridge check with a real API key.",
+            next_action=(
+                "Set OPENAI_API_KEY and rerun the HaluMem bridge sanity pass."
+                if halumem_medium.exists()
+                else "Download HaluMem-Medium from the official Hugging Face dataset, place it under benchmarks/halumem/official_repo/data/, and rerun the bridge check with a real API key."
+            ),
         )
     )
 
@@ -207,32 +217,58 @@ def build_checks(repo_root: Path) -> list[CheckResult]:
             current_state=(
                 "No local AgentPoison repo was found in the workspace."
                 if agentpoison_root is None
-                else "A local AgentPoison-like repo exists, but it has not yet been audited by this workspace."
+                else "The official AgentPoison repo is now mirrored locally, but its trigger/query poisoning path has not yet been executed in this workspace."
             ),
-            evidence=[f"local_repo: {'../' + agentpoison_root.name if agentpoison_root else 'not found'}"],
-            blockers=["local AgentPoison artifacts are absent"],
-            next_action="Clone AgentPoison and confirm trigger generation before claiming the safety attack suite is executable.",
+            evidence=[
+                f"local_repo: {'../' + agentpoison_root.name if agentpoison_root else 'not found'}",
+                f"license: {agentpoison_license or 'missing'}",
+            ],
+            blockers=(
+                ["local AgentPoison artifacts are absent"]
+                if agentpoison_root is None
+                else ["official repo is present, but local trigger generation and overlay validation are still pending"]
+            ),
+            next_action=(
+                "Clone AgentPoison and confirm trigger generation before claiming the safety attack suite is executable."
+                if agentpoison_root is None
+                else "Run a minimal local AgentPoison artifact audit and generate one small trigger/query overlay."
+            ),
         )
     )
 
     checks.append(
         CheckResult(
             name="MPBench / MemEvoBench availability",
-            status="paper_only",
+            status="paper_only" if mpbench_root is None and memevobench_root is None else "partial",
             pass_condition="Confirm whether MPBench and MemEvoBench release runnable code plus data, not only papers.",
-            current_state="Neither MPBench nor MemEvoBench local repos were found in the workspace, so they should still be treated as taxonomy references only.",
+            current_state=(
+                "Neither MPBench nor MemEvoBench local repos were found in the workspace, so they should still be treated as taxonomy references only."
+                if mpbench_root is None and memevobench_root is None
+                else "At least one MPBench/MemEvoBench-like repo now exists locally, but runnable artifact availability is still not fully verified."
+            ),
             evidence=[
                 f"mpbench_repo: {'../' + mpbench_root.name if mpbench_root else 'not found'}",
                 f"memevobench_repo: {'../' + memevobench_root.name if memevobench_root else 'not found'}",
+                f"memevobench_license: {memevobench_license or 'missing'}",
             ],
-            blockers=["artifact availability is still unverified locally"],
-            next_action="Keep them out of promised experiments until real public artifacts are confirmed.",
+            blockers=(
+                ["artifact availability is still unverified locally"]
+                if mpbench_root is None and memevobench_root is None
+                else ["local repo presence is no longer the blocker; runnable artifact verification is still pending"]
+            ),
+            next_action=(
+                "Keep them out of promised experiments until real public artifacts are confirmed."
+                if mpbench_root is None and memevobench_root is None
+                else "Inspect the local repo contents and confirm whether runnable benchmark data plus code are actually released."
+            ),
         )
     )
 
     citation_blockers: list[str] = []
-    if agentpoison_root is None:
+    if agentpoison_root is None and memevobench_root is None:
         citation_blockers.append("recent safety benchmark repos are not yet verified locally")
+    if mpbench_root is None:
+        citation_blockers.append("MPBench runnable artifact is still unresolved locally")
     if not halumem_medium.exists():
         citation_blockers.append("HaluMem final dataset packaging remains incomplete locally")
     checks.append(
@@ -240,7 +276,11 @@ def build_checks(repo_root: Path) -> list[CheckResult]:
             name="Citation reality",
             status="partial",
             pass_condition="Every cited paper ID, repo URL, and benchmark artifact must resolve to a real accessible object before release.",
-            current_state="TierMem, HaluMem, and LongMemEval are grounded by local repos or mirrors, but the more recent safety-side citations are still only plan references in this workspace.",
+            current_state=(
+                "TierMem, HaluMem, LongMemEval, and AgentPoison are grounded by local repos or mirrors, and MemEvoBench now also has a local repo mirror. MPBench is still unresolved as a runnable local artifact."
+                if agentpoison_root is not None or memevobench_root is not None
+                else "TierMem, HaluMem, and LongMemEval are grounded by local repos or mirrors, but the more recent safety-side citations are still only plan references in this workspace."
+            ),
             evidence=[
                 f"tiermem_repo: {tiermem_root.exists()}",
                 f"halumem_repo: {halumem_root.exists()}",

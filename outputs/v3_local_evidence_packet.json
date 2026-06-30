@@ -1,5 +1,8 @@
 {
-  "description": "Consolidated local evidence packet for the current V3 transition state.",
+  "description": "Consolidated local synthetic dry-run packet for the current V3 transition state.",
+  "evidence_class": "synthetic_dry_run",
+  "paper_safe": false,
+  "do_not_mix_with_real_results": true,
   "tiermem_week0_gate": "partial",
   "public_baseline_readiness": {
     "repo_root": ".",
@@ -15,33 +18,34 @@
         "official_script": "benchmarks/halumem/official_repo/eval/eval_memzero.py",
         "runtime_kind": "cloud_api",
         "status": "partial",
-        "dataset_present": false,
+        "dataset_present": true,
         "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
         "present_env": [],
         "missing_env": [
           "MEM0_API_KEY",
           "OPENAI_API_KEY"
         ],
-        "present_imports": [
+        "present_imports": [],
+        "missing_imports": [
+          "mem0",
           "dotenv",
           "tenacity",
           "tqdm"
         ],
-        "missing_imports": [
-          "mem0"
-        ],
         "best_runtime_label": "current_python",
         "runtime_missing_imports": {
           "current_python": [
-            "mem0"
+            "mem0",
+            "dotenv",
+            "tenacity",
+            "tqdm"
           ]
         },
         "blockers": [
-          "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
           "missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY']",
-          "missing imports in best local runtime (current_python): ['mem0']"
+          "missing imports in best local runtime (current_python): ['mem0', 'dotenv', 'tenacity', 'tqdm']"
         ],
-        "next_action": "Unblock Mem0 by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['mem0'].",
+        "next_action": "Unblock Mem0 by resolving: missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['mem0', 'dotenv', 'tenacity', 'tqdm'].",
         "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_memzero.py"
       },
       {
@@ -51,33 +55,34 @@
         "official_script": "benchmarks/halumem/official_repo/eval/eval_zep.py",
         "runtime_kind": "cloud_api",
         "status": "partial",
-        "dataset_present": false,
+        "dataset_present": true,
         "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
         "present_env": [],
         "missing_env": [
           "ZEP_API_KEY",
           "OPENAI_API_KEY"
         ],
-        "present_imports": [
+        "present_imports": [],
+        "missing_imports": [
+          "zep_cloud",
           "dotenv",
           "tenacity",
           "tqdm"
         ],
-        "missing_imports": [
-          "zep_cloud"
-        ],
         "best_runtime_label": "current_python",
         "runtime_missing_imports": {
           "current_python": [
-            "zep_cloud"
+            "zep_cloud",
+            "dotenv",
+            "tenacity",
+            "tqdm"
           ]
         },
         "blockers": [
-          "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
           "missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY']",
-          "missing imports in best local runtime (current_python): ['zep_cloud']"
+          "missing imports in best local runtime (current_python): ['zep_cloud', 'dotenv', 'tenacity', 'tqdm']"
         ],
-        "next_action": "Unblock Zep by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['zep_cloud'].",
+        "next_action": "Unblock Zep by resolving: missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['zep_cloud', 'dotenv', 'tenacity', 'tqdm'].",
         "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_zep.py"
       },
       {
@@ -87,7 +92,7 @@
         "official_script": "benchmarks/halumem/official_repo/eval/eval_memos.py",
         "runtime_kind": "service_endpoint",
         "status": "partial",
-        "dataset_present": false,
+        "dataset_present": true,
         "dataset_source": "https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
         "present_env": [],
         "missing_env": [
@@ -95,22 +100,27 @@
           "MEMOS_KEY",
           "OPENAI_API_KEY"
         ],
-        "present_imports": [
+        "present_imports": [],
+        "missing_imports": [
           "requests",
           "dotenv",
           "tenacity",
           "tqdm"
         ],
-        "missing_imports": [],
         "best_runtime_label": "current_python",
         "runtime_missing_imports": {
-          "current_python": []
+          "current_python": [
+            "requests",
+            "dotenv",
+            "tenacity",
+            "tqdm"
+          ]
         },
         "blockers": [
-          "HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem)",
-          "missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY']"
+          "missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY']",
+          "missing imports in best local runtime (current_python): ['requests', 'dotenv', 'tenacity', 'tqdm']"
         ],
-        "next_action": "Unblock MemoryOS / MemOS by resolving: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem), missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY'].",
+        "next_action": "Unblock MemoryOS / MemOS by resolving: missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY'], missing imports in best local runtime (current_python): ['requests', 'dotenv', 'tenacity', 'tqdm'].",
         "command_example": "python3 benchmarks/halumem/official_repo/eval/eval_memos.py"
       }
     ]
@@ -144,6 +154,7 @@
     "tiered",
     "tiered_no_rewrite"
   ],
+  "focus_n": 16,
   "no_rewrite_focus_statistics": [
     {
       "comparison": "Main: blind -> no-rewrite",
@@ -381,8 +392,8 @@
       "left_mean": 1.0,
       "right_mean": 0.5357,
       "delta": -0.4643,
-      "ci_low": -0.5214,
-      "ci_high": -0.4036,
+      "ci_low": -0.525,
+      "ci_high": -0.4071,
       "left_win": 130,
       "right_win": 0,
       "ties": 150,
@@ -733,7 +744,7 @@
   ],
   "capability_counts": {
     "yes": 8,
-    "partial": 3,
-    "no": 1
+    "partial": 4,
+    "no": 0
   }
 }

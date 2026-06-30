@@ -27,61 +27,61 @@
       "name": "HaluMem usable",
       "status": "partial",
       "pass_condition": "Load the official HaluMem data and run one official Medium eval end-to-end.",
-      "current_state": "The mirrored HaluMem repo and eval helpers are present, and the official README points to the Hugging Face release. The remaining local gap is the missing HaluMem-Medium.jsonl file expected by both TierMem and the official eval scripts.",
+      "current_state": "The mirrored HaluMem repo, eval helpers, and canonical HaluMem-Medium file are now present locally. The remaining blocker for a real end-to-end run is OPENAI_API_KEY.",
       "evidence": [
         "repo: benchmarks/halumem/official_repo",
-        "final_medium_present: False",
+        "final_medium_present: True",
         "bridge returncode=1",
         "dataset_source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem",
         "license_badge_in_readme: CC-BY-NC-ND-4.0"
       ],
       "blockers": [
-        "final HaluMem-Medium.jsonl is not mirrored locally; source is the official Hugging Face dataset",
         "HaluMem bridge also needs OPENAI_API_KEY once the Medium file is present"
       ],
-      "next_action": "Download HaluMem-Medium from the official Hugging Face dataset, place it under benchmarks/halumem/official_repo/data/, and rerun the bridge check with a real API key."
+      "next_action": "Set OPENAI_API_KEY and rerun the HaluMem bridge sanity pass."
     },
     {
       "name": "AgentPoison usable",
-      "status": "paper_only",
+      "status": "partial",
       "pass_condition": "Clone AgentPoison and generate at least one usable trigger/query poisoning overlay.",
-      "current_state": "No local AgentPoison repo was found in the workspace.",
+      "current_state": "The official AgentPoison repo is now mirrored locally, but its trigger/query poisoning path has not yet been executed in this workspace.",
       "evidence": [
-        "local_repo: not found"
+        "local_repo: ../agentpoison_official",
+        "license: MIT License"
       ],
       "blockers": [
-        "local AgentPoison artifacts are absent"
+        "official repo is present, but local trigger generation and overlay validation are still pending"
       ],
-      "next_action": "Clone AgentPoison and confirm trigger generation before claiming the safety attack suite is executable."
+      "next_action": "Run a minimal local AgentPoison artifact audit and generate one small trigger/query overlay."
     },
     {
       "name": "MPBench / MemEvoBench availability",
-      "status": "paper_only",
+      "status": "partial",
       "pass_condition": "Confirm whether MPBench and MemEvoBench release runnable code plus data, not only papers.",
-      "current_state": "Neither MPBench nor MemEvoBench local repos were found in the workspace, so they should still be treated as taxonomy references only.",
+      "current_state": "At least one MPBench/MemEvoBench-like repo now exists locally, but runnable artifact availability is still not fully verified.",
       "evidence": [
         "mpbench_repo: not found",
-        "memevobench_repo: not found"
+        "memevobench_repo: ../memevobench_official",
+        "memevobench_license: missing"
       ],
       "blockers": [
-        "artifact availability is still unverified locally"
+        "local repo presence is no longer the blocker; runnable artifact verification is still pending"
       ],
-      "next_action": "Keep them out of promised experiments until real public artifacts are confirmed."
+      "next_action": "Inspect the local repo contents and confirm whether runnable benchmark data plus code are actually released."
     },
     {
       "name": "Citation reality",
       "status": "partial",
       "pass_condition": "Every cited paper ID, repo URL, and benchmark artifact must resolve to a real accessible object before release.",
-      "current_state": "TierMem, HaluMem, and LongMemEval are grounded by local repos or mirrors, but the more recent safety-side citations are still only plan references in this workspace.",
+      "current_state": "TierMem, HaluMem, LongMemEval, and AgentPoison are grounded by local repos or mirrors, and MemEvoBench now also has a local repo mirror. MPBench is still unresolved as a runnable local artifact.",
       "evidence": [
         "tiermem_repo: True",
         "halumem_repo: True",
         "longmemeval_repo: True",
-        "agentpoison_repo: not found"
+        "agentpoison_repo: /Users/yihaiwen/Documents/New project/agentpoison_official"
       ],
       "blockers": [
-        "recent safety benchmark repos are not yet verified locally",
-        "HaluMem final dataset packaging remains incomplete locally"
+        "MPBench runnable artifact is still unresolved locally"
       ],
       "next_action": "Do a fresh citation-and-license pass before any public release or paper submission."
     },

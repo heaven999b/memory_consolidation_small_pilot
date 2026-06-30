@@ -57,6 +57,7 @@ It refreshes:
 - `outputs/v3_no_rewrite_policy_audit.{json,md}`
 - `outputs/v3_no_rewrite_comparison.{json,md}`
 - `outputs/v3_no_rewrite_statistics.{json,md}`
+- `outputs/v3_no_rewrite_surface_audit.{json,md}`
 - `outputs/v3_no_rewrite_pareto.{json,md}`
 - `outputs/v3_hygiene_audit.{json,md}`
 - `outputs/v3_local_capability_matrix.{json,md}`
@@ -85,6 +86,8 @@ Tiny real sanity run:
 ```
 
 This real bridge path still requires a valid `OPENAI_API_KEY`.
+
+Until that real bridge path succeeds, the `v3_no_rewrite_*` artifacts remain synthetic dry-run scaffolds rather than real benchmark evidence.
 
 ## Official Eval Scaffold
 

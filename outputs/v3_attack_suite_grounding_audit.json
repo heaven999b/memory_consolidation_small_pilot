@@ -1,0 +1,32 @@
+{
+  "description": "Local grounding audit for safety-side benchmark and attack-suite repositories.",
+  "agentpoison": {
+    "status": "partial",
+    "repo": "/Users/yihaiwen/Documents/New project/agentpoison_official",
+    "license": "MIT License",
+    "has_environment_yml": true,
+    "has_trigger_optimization": true,
+    "has_scripts_dir": true,
+    "requires_external_dataset_download": true,
+    "readme_mentions_openai_or_remote_models": true,
+    "next_action": "Create a minimal local artifact audit and generate one tiny trigger/query overlay."
+  },
+  "mpbench": {
+    "status": "missing",
+    "repo": null,
+    "next_action": "Search for the official runnable MPBench artifact."
+  },
+  "memevobench": {
+    "status": "partial",
+    "repo": "/Users/yihaiwen/Documents/New project/memevobench_official",
+    "license": null,
+    "has_readme": true,
+    "has_evaluation_dir": true,
+    "has_memorybench_dir": true,
+    "mentions_workflow_json": true,
+    "mentions_openai_key": true,
+    "mentions_judge_key": true,
+    "next_action": "Inspect one QA-style command and one workflow-style command on a tiny local slice."
+  },
+  "overall_conclusion": "AgentPoison and MemEvoBench are now locally grounded at the repository level, but neither attack-suite path is yet counted as executed evidence. MPBench remains unresolved."
+}

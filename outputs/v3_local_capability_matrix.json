@@ -26,8 +26,8 @@
     {
       "task": "HaluMem dataset preflight",
       "can_do_on_mac": "yes",
-      "status": "partial",
-      "blocker": "canonical HaluMem-Medium.jsonl file is still missing",
+      "status": "ready",
+      "blocker": "dataset is already present",
       "next_command": "python3 run_v3_halumem_dataset_preflight.py"
     },
     {
@@ -41,7 +41,7 @@
       "task": "Official public baseline live runs",
       "can_do_on_mac": "partial",
       "status": "partial",
-      "blocker": "Mem0: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem); missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY']; missing imports in best local runtime (current_python): ['mem0'] | Zep: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem); missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY']; missing imports in best local runtime (current_python): ['zep_cloud'] | MemOS: HaluMem-Medium.jsonl missing (official source: https://huggingface.co/datasets/IAAR-Shanghai/HaluMem); missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY']",
+      "blocker": "Mem0: missing env vars: ['MEM0_API_KEY', 'OPENAI_API_KEY']; missing imports in best local runtime (current_python): ['mem0', 'dotenv', 'tenacity', 'tqdm'] | Zep: missing env vars: ['ZEP_API_KEY', 'OPENAI_API_KEY']; missing imports in best local runtime (current_python): ['zep_cloud', 'dotenv', 'tenacity', 'tqdm'] | MemOS: missing env vars: ['MEMOS_URL', 'MEMOS_KEY', 'OPENAI_API_KEY']; missing imports in best local runtime (current_python): ['requests', 'dotenv', 'tenacity', 'tqdm']",
       "next_command": "python3 benchmarks/halumem/official_repo/eval/eval_memzero.py"
     },
     {
@@ -74,10 +74,10 @@
     },
     {
       "task": "AgentPoison attack suite grounding",
-      "can_do_on_mac": "no",
-      "status": "paper_only",
-      "blocker": "local AgentPoison artifacts are absent",
-      "next_command": "Clone AgentPoison before claiming the safety attack suite is executable."
+      "can_do_on_mac": "partial",
+      "status": "partial",
+      "blocker": "official repo is present, but local trigger generation and overlay validation are still pending",
+      "next_command": "Run a minimal local AgentPoison artifact audit and generate one small trigger/query overlay."
     },
     {
       "task": "V3 defended-method maturity",
@@ -89,7 +89,7 @@
   ],
   "counts": {
     "yes": 8,
-    "partial": 3,
-    "no": 1
+    "partial": 4,
+    "no": 0
   }
 }
