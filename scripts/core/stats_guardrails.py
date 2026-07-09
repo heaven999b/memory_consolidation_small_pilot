@@ -123,6 +123,42 @@ def pareto_gate(
     }
 
 
+def cochran_armitage_trend(levels: list[float], events: list[int], totals: list[int]) -> dict[str, Any]:
+    """Cochran-Armitage test for a linear trend in a proportion over ordered N.
+
+    This is the ORIGINAL RQ1/RQ2 primary test the plan calls for: does a rate
+    (SRR/UAF/unsafe-answer, or a hallucination rate) rise *monotonically* with the
+    consolidation depth N? Pairwise N-vs-0 McNemar does NOT answer that; a trend
+    test does.
+
+    levels : the ordered dose scores, e.g. the N values [0,1,2,4,8,16].
+    events : count with the outcome at each level (e.g. #unsafe-laundered).
+    totals : denominator at each level.
+    Returns z, two-sided p, and direction ('amplifying' if the rate increases
+    with N, 'attenuating' if it falls, 'flat' if ~0).
+    """
+    import math
+    if not (len(levels) == len(events) == len(totals)) or len(levels) < 2:
+        return {"z": None, "p_value": None, "direction": None, "note": "need >=2 aligned levels"}
+    N_tot = sum(totals)
+    X = sum(events)
+    if N_tot == 0 or X == 0 or X == N_tot:
+        return {"z": 0.0, "p_value": 1.0, "direction": "flat",
+                "note": "degenerate (all-0 / all-1 / empty)"}
+    p_bar = X / N_tot
+    T = sum(t * (x - n * p_bar) for t, x, n in zip(levels, events, totals))
+    sum_nt = sum(n * t for n, t in zip(totals, levels))
+    sum_nt2 = sum(n * t * t for n, t in zip(totals, levels))
+    var = p_bar * (1 - p_bar) * (sum_nt2 - (sum_nt ** 2) / N_tot)
+    if var <= 0:
+        return {"z": 0.0, "p_value": 1.0, "direction": "flat", "note": "zero variance"}
+    z = T / math.sqrt(var)
+    p = math.erfc(abs(z) / math.sqrt(2))  # two-sided normal
+    direction = "amplifying" if z > 0 else ("attenuating" if z < 0 else "flat")
+    return {"z": z, "p_value": float(p), "direction": direction,
+            "levels": levels, "rates": [x / n if n else None for x, n in zip(events, totals)]}
+
+
 def _self_test() -> None:
     rows = holm_bonferroni([0.001, 0.009, 0.02, 0.2], alpha=0.01)
     assert rows[0]["holm_reject"] is True
@@ -132,6 +168,12 @@ def _self_test() -> None:
     assert gate["promising"] is True, gate
     gate2 = pareto_gate(0.40, 0.34, 0.82, 0.74)
     assert gate2["promising"] is False, gate2
+    # RQ1 amplification: a rate rising with N must read 'amplifying' + significant.
+    up = cochran_armitage_trend([0, 1, 2, 4, 8], [2, 5, 8, 14, 19], [20, 20, 20, 20, 20])
+    assert up["direction"] == "amplifying" and up["p_value"] < 0.01, up
+    # A flat rate must not be called a trend.
+    flat = cochran_armitage_trend([0, 1, 2, 4, 8], [10, 10, 10, 10, 10], [20, 20, 20, 20, 20])
+    assert flat["direction"] == "flat" or flat["p_value"] > 0.5, flat
     print("[stats_guardrails self-test] OK")
 
 
