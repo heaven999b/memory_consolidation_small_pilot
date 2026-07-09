@@ -91,6 +91,15 @@ These files are not tied to a single RQ and support the whole repo.
 - `export_kappa.py`
 - `gen_kappa_html.py`
 
+## Archived Legacy Surfaces
+
+The repository keeps older benchmark-native, PSU, expanded-benchmark, and V3-transition runners under:
+
+- `archive/legacy_baselines/`
+- `archive/spikes/`
+
+These are retained for continuity, but they are no longer the main entry surface for current RQ reporting.
+
 ## Report And Dashboard Generators
 
 These are code files that generate research-facing artifacts.

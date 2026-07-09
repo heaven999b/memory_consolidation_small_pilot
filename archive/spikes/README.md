@@ -9,3 +9,5 @@ This directory stores exploratory spike scripts and one-off analysis code that i
 - `blindspot_*`: detection-blindspot exploration
 
 These files are kept for research continuity, not as primary evidence surfaces.
+
+This directory also carries a small `sitecustomize.py` shim so moved scripts can still import shared modules from the repository root when run directly.

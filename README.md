@@ -30,8 +30,9 @@ If you want the short version: this is no longer just a "compression makes thing
 - `docs/handoffs/`: handoff packets for new collaborators
 - `tools/reporting/`: report, docx, and presentation generators
 - `archive/spikes/`: exploratory spike and one-off analysis scripts
+- `archive/legacy_baselines/`: older PSU / V3 / expanded-benchmark runners retained for history
 
-This cleanup pass keeps the most active experiment runners at the repo root for compatibility, while moving reporting and exploratory clutter out of the GitHub landing page.
+This cleanup pass keeps the most active current experiment runners at the repo root, while moving older baselines and reporting clutter out of the GitHub landing page.
 
 ### 1. Core experimental runners
 
@@ -44,6 +45,8 @@ This cleanup pass keeps the most active experiment runners at the repo root for 
 - `run_rq_know_vs_do.py`
 
 These are the main experiment entry points for the current research questions.
+
+Older benchmark-native, PSU, V3-transition, and expanded-baseline runners now live under `archive/legacy_baselines/`.
 
 ### 2. TierMem-based execution bridge
 

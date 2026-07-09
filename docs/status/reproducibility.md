@@ -26,13 +26,13 @@ This is the older reviewer-facing packet rebuild.
 Run:
 
 ```bash
-python3 run_release_rebuild.py
+python3 archive/legacy_baselines/run_release_rebuild.py
 ```
 
 Skip verifiers:
 
 ```bash
-python3 run_release_rebuild.py --skip-verify
+python3 archive/legacy_baselines/run_release_rebuild.py --skip-verify
 ```
 
 This path still assumes the older model-backed local stack and may depend on the local `deepseek` CLI being installed and authenticated.
@@ -44,7 +44,7 @@ This is the new V3 status refresh entrypoint.
 Run:
 
 ```bash
-python3 run_v3_transition_rebuild.py
+python3 archive/legacy_baselines/run_v3_transition_rebuild.py
 ```
 
 It refreshes:
