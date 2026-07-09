@@ -97,13 +97,20 @@ These are code files that generate research-facing artifacts.
 
 - `build_rq3_readtime_dashboard_data.py`
 - `watch_rq3_readtime_dashboard_data.py`
-- `make_technical_status_docx_20260709.py`
-- `make_speaker_cheatsheet_docx_20260709.py`
-- `make_technical_status_ppt_20260709.mjs`
-- `gen_report_ascii.py`
-- `gen_report_full.py`
-- `gen_research_report.py`
-- `gen_paper.py`
+- `tools/reporting/make_technical_status_docx_20260709.py`
+- `tools/reporting/make_speaker_cheatsheet_docx_20260709.py`
+- `tools/reporting/make_technical_status_ppt_20260709.mjs`
+- `tools/reporting/gen_report_ascii.py`
+- `tools/reporting/gen_report_full.py`
+- `tools/reporting/gen_research_report.py`
+- `tools/reporting/gen_paper.py`
+
+## Reader-Facing Weekly Reports
+
+- `docs/weekly_reports/week1_report_20260709_en.md`
+- `docs/weekly_reports/README.md`
+
+These are short external-facing progress summaries rather than internal state logs.
 
 ## Suggested Entry Order For New Readers
 

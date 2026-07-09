@@ -8,7 +8,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 
 BASE_SCRIPT_PATH = Path(
-    "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/make_technical_status_docx_20260709.py"
+    "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/tools/reporting/make_technical_status_docx_20260709.py"
 )
 OUT_DIR = Path(
     "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/state/docx_speaker_cheatsheet_20260709"

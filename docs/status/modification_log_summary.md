@@ -1,5 +1,7 @@
 # Modification Log Summary
 
+> Historical status log. Some links below follow the older top-level layout; use [README.md](../../README.md) for the current repository map.
+
 ## V3 Transition Pass: `2026-06-30`
 
 - Reframed the repo as a **V3 transition workspace** rather than a PSU-final paper repo.
@@ -35,7 +37,7 @@
 - Added [REPO_REVIEW_AND_TABLE_ANALYSIS.md](./REPO_REVIEW_AND_TABLE_ANALYSIS.md) to summarize remaining issues, reviewer-facing weaknesses, and the meaning of the current tables.
 - Updated [README.md](./README.md) so the release snapshot section also points to the simple modification log and the new review-and-analysis report.
 - Added frozen manifest-backed task extensions for `conflict` and `unsafe`, plus [run_task_extension_section.py](./run_task_extension_section.py), so task-family coverage no longer stops at `benign` / `hallucination`.
-- Added [requirements.txt](./requirements.txt), [environment.yml](./environment.yml), and [REPRODUCIBILITY.md](./REPRODUCIBILITY.md) so the release environment is explicitly pinned.
+- Added [requirements.txt](../../requirements.txt), [environment.yml](../../environment.yml), and [reproducibility.md](./reproducibility.md) so the release environment is explicitly pinned.
 - Added [run_release_rebuild.py](./run_release_rebuild.py) so the reviewer-facing packet can be rebuilt from one entrypoint with the intended multi-seed configuration preserved.
 - Added [outputs/provenance_scaffolded_method_report.md](./outputs/provenance_scaffolded_method_report.md) so the current best scaffold / provenance / note-aware chain is no longer just a sequence of rounds, but a formal method object (`PSU`).
 - Added [outputs/paper_strengthening_stats.md](./outputs/paper_strengthening_stats.md) so key reviewer-facing comparisons now have paired-bootstrap deltas and `metric-vs-N` slope readouts instead of only point estimates.

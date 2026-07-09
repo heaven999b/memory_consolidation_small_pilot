@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import json
-rows=json.load(open("outputs/safety/m1_bestofN.json"))
+from pathlib import Path
+PROJ = Path("/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot")
+rows=json.loads((PROJ / "outputs" / "safety" / "m1_bestofN.json").read_text(encoding="utf-8"))
 CAP={"gpt-3.5-turbo":0.46,"gpt-4.1-nano":0.58,"gpt-4o-mini":0.71,"gpt-4.1-mini":0.75,"gpt-4-turbo":0.88,"gpt-4o":0.96,"gpt-4.1":0.96}
 MODELS=sorted(CAP,key=lambda m:CAP[m])
 P=[r for r in rows if r["cls"]=="param"]

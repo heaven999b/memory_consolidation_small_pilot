@@ -1,5 +1,7 @@
 # Changelog
 
+> Historical status log. Some entries point to files that still live at the repo root; use [README.md](../../README.md) for the current top-level map.
+
 ## v0.3.0-v3-transition - 2026-06-30
 
 - Repositioned the repository as a **V3 transition workspace** instead of a PSU-final paper repo.
@@ -16,7 +18,7 @@
 - Added [outputs/v3_no_rewrite_comparison.md](./outputs/v3_no_rewrite_comparison.md) so the V3 defended mechanism is now a directly comparable method surface over the expanded manifest-backed pool, not only a checklist or audit item.
 - Added [outputs/v3_no_rewrite_statistics.md](./outputs/v3_no_rewrite_statistics.md), [outputs/v3_no_rewrite_pareto.md](./outputs/v3_no_rewrite_pareto.md), and [outputs/v3_local_evidence_packet.md](./outputs/v3_local_evidence_packet.md) so the local V3 evidence now includes paired significance, proxy cost tradeoffs, and a one-page status packet instead of only raw tables.
 - Extended [.gitignore](./.gitignore) so `.venv_tiermem_v2/` stays out of version control.
-- Updated [REPRODUCIBILITY.md](./REPRODUCIBILITY.md) so it now distinguishes the legacy pilot rebuild from the new V3 transition rebuild and documents the real TierMem bridge entrypoint.
+- Updated [reproducibility.md](./reproducibility.md) so it now distinguishes the legacy pilot rebuild from the new V3 transition rebuild and documents the real TierMem bridge entrypoint.
 
 ## v0.2.0-idea-baseline-private - 2026-06-28
 

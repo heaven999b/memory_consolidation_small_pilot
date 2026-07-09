@@ -1,5 +1,7 @@
 # Repo Review And Table Analysis
 
+> Historical review note retained for context. For the current repository layout, use [README.md](../../README.md).
+
 ## Current Snapshot
 
 - Repo status: clean local checkout on `main`, already bound to the private GitHub repo.
@@ -60,7 +62,7 @@
 
 ### 2. Reproducibility is now explicitly pinned
 
-- The repo now ships [requirements.txt](./requirements.txt), [environment.yml](./environment.yml), and [REPRODUCIBILITY.md](./REPRODUCIBILITY.md).
+- The repo now ships [requirements.txt](../../requirements.txt), [environment.yml](../../environment.yml), and [reproducibility.md](./reproducibility.md).
 - The release path also documents the non-Python requirement on the local `deepseek` CLI.
 
 ### 3. Release regeneration is no longer fragmented

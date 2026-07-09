@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import json
-res=json.load(open("outputs/safety/rq2_retest.json"))
+from pathlib import Path
+PROJ = Path("/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot")
+res=json.loads((PROJ / "outputs" / "safety" / "rq2_retest.json").read_text(encoding="utf-8"))
 flag=[r for r in res if r["halluc"]]          # 规则判"幻觉"的(最需人核实是否误判)
 ok=[r for r in res if not r["halluc"]]        # 规则判"不幻觉"的
 # 去重相似答案, 取代表

@@ -22,6 +22,17 @@ If you want the short version: this is no longer just a "compression makes thing
 
 ## What Is In This Repo
 
+### Repository Layout
+
+- `benchmarks/`, `configs/`, `schemas/`: data surfaces and configs
+- `docs/weekly_reports/`: reader-facing weekly updates
+- `docs/status/`: historical status notes, changelog-style summaries, reproducibility notes
+- `docs/handoffs/`: handoff packets for new collaborators
+- `tools/reporting/`: report, docx, and presentation generators
+- `archive/spikes/`: exploratory spike and one-off analysis scripts
+
+This cleanup pass keeps the most active experiment runners at the repo root for compatibility, while moving reporting and exploratory clutter out of the GitHub landing page.
+
 ### 1. Core experimental runners
 
 - `run_rq1_safety_consolidation.py`
@@ -71,15 +82,16 @@ This bridge is the main implementation surface for running official and semi-off
   - `build_rq2_suite_catalog_zh.py`
 - dashboards and reports:
   - `build_rq3_readtime_dashboard_data.py`
-  - `make_technical_status_docx_20260709.py`
-  - `make_technical_status_ppt_20260709.mjs`
+  - `tools/reporting/make_technical_status_docx_20260709.py`
+  - `tools/reporting/make_technical_status_ppt_20260709.mjs`
 
 ### 5. Documentation
 
 - [RESEARCH_README.md](./RESEARCH_README.md): current research conclusions and caveats
-- [REPRODUCIBILITY.md](./REPRODUCIBILITY.md): environment and rerun notes
+- [docs/status/reproducibility.md](./docs/status/reproducibility.md): environment and rerun notes
 - [docs/research_question_map.md](./docs/research_question_map.md): where each RQ lives in code
 - [docs/operator_branches.md](./docs/operator_branches.md): comparison branches for alternative memory-management styles
+- [docs/weekly_reports/README.md](./docs/weekly_reports/README.md): reader-facing weekly reports
 
 ## Research Question Map
 
@@ -121,6 +133,6 @@ Common entry points:
 
 1. [RESEARCH_README.md](./RESEARCH_README.md)
 2. [docs/research_question_map.md](./docs/research_question_map.md)
-3. [REPRODUCIBILITY.md](./REPRODUCIBILITY.md)
+3. [docs/status/reproducibility.md](./docs/status/reproducibility.md)
 
 That order gives you the current claims, the code entry points, and then the rerun instructions.

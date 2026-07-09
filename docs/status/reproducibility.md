@@ -49,7 +49,7 @@ python3 run_v3_transition_rebuild.py
 
 It refreshes:
 
-- `feasibility_report.md`
+- `docs/status/feasibility_report.md`
 - `outputs/v3_feasibility_gate.json`
 - `outputs/v3_halumem_dataset_preflight.{json,md}`
 - `outputs/v3_public_baseline_readiness.{json,md}`
