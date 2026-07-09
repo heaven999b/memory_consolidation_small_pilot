@@ -1,275 +1,126 @@
 # Memory Consolidation Small Pilot
 
-Current repository identity: `v0.3.0-v3-transition`
+This repository is the working codebase for a memory-agent research project on:
 
-This repo is no longer framed as "the PSU paper repo." It is now a **V3 transition workspace** whose job is to move the project onto the execution-locked, TierMem-based path defined in `02_revised_plan_v3.md`.
+- iterative memory consolidation
+- safety retention vs. attenuation under repeated compression
+- fabricated memory and hallucination
+- provenance-aware read-time defenses
+- evaluation reliability for agent safety claims
 
-## V3 Path Decision
+The project now contains both the original `RQ1` to `RQ5` surfaces and the later reframed lines of work such as `know-do gap`, `read-time failure analysis`, and `judge reliability`.
 
-The project has now locked **Path A**:
+## Current Status
 
-- **TierMem is the primary implementation base and evaluation harness.**
-- The earlier self-built stack (`psu`, `scale_aware_unified`, the many micro-round fixes) is retained only as:
-  - a **legacy baseline family**
-  - a **prior-exploration appendix surface**
-- The main contribution is no longer "PSU beats local baselines."
-- The main contribution is now the narrower V3 claim:
-  - **safety-critical fields should not be freely rewritten during iterative consolidation, and this must be enforced and tested inside a provenance-aware TierMem-style pipeline under repeated `C^N` compression and adversarial updates.**
+This repo keeps the real research state, including negative results.
 
-## What This Repo Now Contains
+- Several original hypotheses were weakened or rejected after cleaner reruns.
+- The repo therefore contains both exploratory scripts and cleaner retest pipelines.
+- The most up-to-date plain-language research summary is in [RESEARCH_README.md](./RESEARCH_README.md).
 
-### 1. V3 first-class transition documents
+If you want the short version: this is no longer just a "compression makes things worse" repo. It is also a repo about how memory-agent safety claims can flip when the endpoint, judge, or read-time protocol changes.
 
-- [feasibility_report.md](./feasibility_report.md)
-  - Week-0 feasibility gate required by V3
-- [legacy_pilot_findings.md](./legacy_pilot_findings.md)
-  - exact mapping of which legacy assets transfer and which do not
-- [state/reviewer_blockers_clean.md](./state/reviewer_blockers_clean.md)
-  - current clean blocker list and execution order
-- [state/v3_alignment_master_checklist.md](./state/v3_alignment_master_checklist.md)
-  - current V3 checklist with done / partial / pending status
-- [outputs/v3_transition_status.md](./outputs/v3_transition_status.md)
-  - current transition snapshot
-- [outputs/v3_public_baseline_readiness.md](./outputs/v3_public_baseline_readiness.md)
-  - local readiness audit for the official Mem0 / Zep / MemOS comparison surface
-- [outputs/v3_attack_suite_grounding_audit.md](./outputs/v3_attack_suite_grounding_audit.md)
-  - local grounding audit for AgentPoison / MPBench / MemEvoBench
-- [outputs/v3_halumem_dataset_preflight.md](./outputs/v3_halumem_dataset_preflight.md)
-  - canonical-path audit for `HaluMem-Medium.jsonl`
-- [outputs/v3_official_eval_runtime_audit.md](./outputs/v3_official_eval_runtime_audit.md)
-  - scaffold/runtime audit for the mirrored HaluMem official eval path
-- [outputs/v3_no_rewrite_policy_audit.md](./outputs/v3_no_rewrite_policy_audit.md)
-  - local synthetic dry-run instantiation of the V3 safety-critical no-rewrite rule
-- [outputs/v3_no_rewrite_comparison.md](./outputs/v3_no_rewrite_comparison.md)
-  - synthetic dry-run comparison table for `no-rewrite` versus `summary_only` / `tiered`
-- [outputs/v3_no_rewrite_statistics.md](./outputs/v3_no_rewrite_statistics.md)
-  - paired synthetic dry-run significance readout for blind vs query-aware vs no-rewrite
-- [outputs/v3_no_rewrite_surface_audit.md](./outputs/v3_no_rewrite_surface_audit.md)
-  - explicit audit showing why the no-rewrite surface must stay separate from real benchmark evidence
-- [outputs/v3_no_rewrite_pareto.md](./outputs/v3_no_rewrite_pareto.md)
-  - synthetic proxy cost/utility and cost/safety Pareto readout
-- [outputs/v3_local_capability_matrix.md](./outputs/v3_local_capability_matrix.md)
-  - what this Mac can execute now, what is blocked, and the next command for each V3 task
-- [outputs/v3_local_evidence_packet.md](./outputs/v3_local_evidence_packet.md)
-  - one-page local synthetic packet for the current V3 transition state
-- [outputs/v3_hygiene_audit.md](./outputs/v3_hygiene_audit.md)
-  - current absolute-path leak and outputs-surface audit
+## What Is In This Repo
 
-### 2. Real TierMem bridge work
+### 1. Core experimental runners
 
-- cloned TierMem upstream repo:
-  - `../tiermem_upstream`
-- local bridge script:
-  - [run_v2_tiermem_local_bridge.py](./run_v2_tiermem_local_bridge.py)
-- dedicated local environment:
-  - `.venv_tiermem_v2/`
-- official eval scaffold files:
-  - `.env.v3.example`
-  - `.env.official_eval.example`
-  - `requirements-official-eval-base.txt`
+- `run_rq1_safety_consolidation.py`
+- `run_rq1_authority_experiment.py`
+- `run_rq1_agentpoison_overlay.py`
+- `run_rq2_factual_poison.py`
+- `run_rq3_provenance_clean.py`
+- `run_rq3_readtime_defense_matrix.py`
+- `run_rq_know_vs_do.py`
 
-This bridge is important because it already does three non-trivial V3 migration tasks:
+These are the main experiment entry points for the current research questions.
 
-- rewires TierMem dataset loaders to local benchmark mirrors
-- uses local-path Qdrant mode instead of assuming an external Qdrant service
-- redirects `mem0` local state into repo outputs instead of relying on `~/.mem0`
+### 2. TierMem-based execution bridge
 
-## Current Week-0 Gate Status
+- [run_v2_tiermem_local_bridge.py](./run_v2_tiermem_local_bridge.py)
+- [week1_surface.py](./week1_surface.py)
+- local TierMem source: `../tiermem_upstream`
 
-The current local state is:
+This bridge is the main implementation surface for running official and semi-official memory benchmarks on a local machine.
 
-- `TierMem usable`: `partial`
-  - real code is cloned and the bridge runtime exists
-  - LoCoMo and LongMemEval are now blocked mainly by `OPENAI_API_KEY`, not by missing code
-- `HaluMem usable`: `partial`
-  - local mirror, eval helpers, and canonical `HaluMem-Medium.jsonl` are now present
-  - the remaining blocker for a real run is `OPENAI_API_KEY`
-- `AgentPoison usable`: `partial`
-  - the official repo is now mirrored locally
-  - trigger/query poisoning has not yet been executed in this workspace
-- `MPBench / MemEvoBench`: `partial`
-  - `MemEvoBench` is now mirrored locally but not yet verified by a tiny runnable path
-  - `MPBench` is still unresolved as a runnable local artifact
+### 3. Benchmarks and suites
 
-So the repo has moved from "local proxy-only baseline work" to "TierMem migration in progress," but it has **not** yet completed the full V3 experimental program.
+- official or official-derived slices:
+  - `benchmarks/halumem`
+  - `benchmarks/locomo`
+  - `benchmarks/longmemeval`
+- self-built safety suites:
+  - `benchmarks/safety/unsafe_seed_suite_v1.json`
+  - `benchmarks/safety/stealthy_poison_suite_v1.json`
+  - `benchmarks/safety/agentpoison_trigger_suite_v1.json`
+- small sanity surface:
+  - `benchmarks/tiny_synth/data/week1_tiny_synth.json`
 
-Most importantly, the real `E0` sanity gate is still **not passed**. Any current `no-rewrite` artifacts must therefore be read as synthetic dry-run scaffolding, not as paper-grade defense evidence.
+### 4. Supporting code
 
-## What Transfers From The Legacy Pilot
+- metrics and rescoring:
+  - `safety_metrics.py`
+  - `safety_honest_metrics.py`
+  - `run_rq1_safety_judge.py`
+  - `run_rq1_safety_rescore.py`
+  - `kappa_score.py`
+  - `export_kappa.py`
+- suite builders:
+  - `build_rq2_local_dialogue_suite_v6.py`
+  - `build_rq2_manual_annotation_zh.py`
+  - `build_rq2_manual_annotation_diverse_zh.py`
+  - `build_rq2_suite_catalog_zh.py`
+- dashboards and reports:
+  - `build_rq3_readtime_dashboard_data.py`
+  - `make_technical_status_docx_20260709.py`
+  - `make_technical_status_ppt_20260709.mjs`
 
-The old repo work is not thrown away. It transfers in four high-value buckets:
+### 5. Documentation
 
-- benchmark integration
-  - mirrored HaluMem / LoCoMo / LongMemEval assets
-  - frozen benchmark slices
-  - benchmark-facing adapters and manifests
-- metrics
-  - `propagation`, `false_present`, `history_loss`, `raw_escalation`
-- artifact infrastructure
-  - `run_*` + `verify_*`
-  - JSONL traces
-  - monitors
-  - packet-style markdown outputs
-- failure-mode taxonomy
-  - the many micro-rounds now serve as prior exploration and design motivation
+- [RESEARCH_README.md](./RESEARCH_README.md): current research conclusions and caveats
+- [REPRODUCIBILITY.md](./REPRODUCIBILITY.md): environment and rerun notes
+- [docs/research_question_map.md](./docs/research_question_map.md): where each RQ lives in code
+- [docs/operator_branches.md](./docs/operator_branches.md): comparison branches for alternative memory-management styles
 
-What does **not** transfer as paper evidence:
+## Research Question Map
 
-- PSU headline win numbers from tuned in-sample small panels
-- `scale_aware_unified` as a main system
-- any claim that a DeepSeek-only tuned proxy stack is the final method
+The repo now mixes two layers:
 
-## Legacy Surface Still Present
+1. the original `RQ1` to `RQ5` program
+2. the later reframed questions that emerged after failure analysis
 
-The earlier reviewer-facing packet is still kept in this repo because it remains useful as a legacy baseline surface:
+Use [docs/research_question_map.md](./docs/research_question_map.md) as the code index for:
 
-- [run_release_rebuild.py](./run_release_rebuild.py)
-- [state/release_snapshot.json](./state/release_snapshot.json)
-- [outputs/psu_paper_packet.md](./outputs/psu_paper_packet.md)
+- which scripts belong to each RQ
+- which runs are benchmark-backed vs. self-built
+- where the main data builders live
+- which surfaces are complete, partial, or still missing
 
-But these are now explicitly **legacy**:
-
-- they show what the prior pilot already built
-- they do **not** define the V3 paper contribution
-- they should be read as migration assets and baselines, not the final system
-
-## New V3 Entry Points
-
-### V3 transition refresh
+## Quick Start
 
 ```bash
-python3 run_v3_transition_rebuild.py
+cd "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot"
+set -a && source .env.v3 && set +a
 ```
 
-This rebuilds:
-
-- `feasibility_report.md`
-- `outputs/v3_feasibility_gate.json`
-- `outputs/v3_halumem_dataset_preflight.{json,md}`
-- `outputs/v3_public_baseline_readiness.{json,md}`
-- `outputs/v3_official_eval_runtime_audit.{json,md}`
-- `outputs/v3_no_rewrite_policy_audit.{json,md}`
-- `outputs/v3_no_rewrite_comparison.{json,md}`
-- `outputs/v3_no_rewrite_statistics.{json,md}`
-- `outputs/v3_no_rewrite_surface_audit.{json,md}`
-- `outputs/v3_no_rewrite_pareto.{json,md}`
-- `outputs/v3_hygiene_audit.{json,md}`
-- `outputs/v3_local_capability_matrix.{json,md}`
-- `outputs/v3_local_evidence_packet.{json,md}`
-- `outputs/v3_transition_status.{json,md}`
-- `state/v3_transition_snapshot.json`
-
-### Real TierMem local readiness
+Common entry points:
 
 ```bash
 .venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --check-only --benchmark locomo
+.venv_tiermem_v2/bin/python run_rq_know_vs_do.py --endpoint judge --report-id knowdo_none
+.venv_tiermem_v2/bin/python run_rq2_factual_poison.py --repetition 3
+.venv_tiermem_v2/bin/python run_rq3_provenance_clean.py --help
 ```
 
-### TierMem pre-API smoke
+## Notes On Scope
 
-```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --pre-api-smoke --benchmark locomo
-```
+- Environment files such as `.env.v3` are intentionally not versioned.
+- Large generated outputs, local caches, and presentation artifacts are not the main Git surface.
+- Some benchmark corpora are mirrored locally, but large raw benchmark dumps are intentionally excluded from version control.
 
-This exercises dataset-loader plus `LinkedViewSystem` init/reset without running a live benchmark pass.
+## Recommended Reading Order
 
-### Tiny real TierMem sanity run
+1. [RESEARCH_README.md](./RESEARCH_README.md)
+2. [docs/research_question_map.md](./docs/research_question_map.md)
+3. [REPRODUCIBILITY.md](./REPRODUCIBILITY.md)
 
-```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --benchmark locomo --limit 2
-```
-
-This last command still requires a valid `OPENAI_API_KEY`.
-
-### Official public baseline readiness
-
-```bash
-python3 run_v3_public_baseline_readiness.py
-```
-
-### HaluMem dataset preflight
-
-```bash
-python3 run_v3_halumem_dataset_preflight.py
-```
-
-### Official eval runtime audit
-
-```bash
-python3 run_v3_official_eval_runtime_audit.py
-```
-
-### No-rewrite policy dry-run
-
-```bash
-python3 run_v3_no_rewrite_policy_audit.py
-```
-
-This is a synthetic dry-run over the legacy simulator, not a real TierMem benchmark.
-
-### No-rewrite comparison table
-
-```bash
-python3 run_v3_no_rewrite_comparison.py
-```
-
-This is a synthetic dry-run comparison surface.
-
-### No-rewrite statistics
-
-```bash
-python3 run_v3_no_rewrite_statistics.py
-```
-
-This now reports the full synthetic `N` sweep present in the local comparison surface.
-
-### No-rewrite surface audit
-
-```bash
-python3 run_v3_no_rewrite_surface_audit.py
-```
-
-### No-rewrite Pareto
-
-```bash
-python3 run_v3_no_rewrite_pareto.py
-```
-
-## What Is Still Missing For Full V3
-
-The following items are still pending:
-
-- run real public memory-system baselines
-  - Mem0 / Zep / MemoryOS on official harnesses
-- pass the real `E0` sanity gate first
-- restore the full `N` sweep on the real final-path runs
-- execute real attack-suite paths
-  - AgentPoison trigger/query overlay
-  - a tiny MemEvoBench runnable path
-  - resolve MPBench artifact availability
-- expand conflict / unsafe into real family-scale tables
-- add ≥5 seeds with proper statistics
-- add human judge validation with Cohen's `kappa`
-- add multi-backbone robustness
-- finish TierMem integration of the safety-critical-field no-rewrite mechanism
-
-## Repository Scope
-
-This repo should now be interpreted as:
-
-- a **V3 migration workspace**
-- a **TierMem bridge and audit surface**
-- a **legacy pilot asset bank**
-
-It should **not** be interpreted anymore as:
-
-- a finished PSU paper repo
-- a fully complete TierMem reproduction
-- a final paper-ready benchmark result release
-
-## Related Files
-
-- [REPRODUCIBILITY.md](./REPRODUCIBILITY.md)
-- [CHANGELOG.md](./CHANGELOG.md)
-- [MODIFICATION_LOG_SUMMARY.md](./MODIFICATION_LOG_SUMMARY.md)
-- [state/rebuttal_gap_closure_plan.md](./state/rebuttal_gap_closure_plan.md)
+That order gives you the current claims, the code entry points, and then the rerun instructions.

@@ -2,13 +2,20 @@ import re
 import os
 import json
 import logging
+from pathlib import Path
 from dotenv import load_dotenv
 
 from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_random_exponential, before_sleep_log
 
 
-load_dotenv()
+def _load_official_eval_env() -> None:
+    repo_root = Path(__file__).resolve().parents[4]
+    load_dotenv(repo_root / ".env.official_eval")
+    load_dotenv(repo_root / ".env")
+
+
+_load_official_eval_env()
 
 logger = logging.getLogger(__name__)
 

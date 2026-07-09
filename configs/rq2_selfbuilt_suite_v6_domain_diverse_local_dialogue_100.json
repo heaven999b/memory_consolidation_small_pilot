@@ -1,0 +1,3332 @@
+[
+  {
+    "id": "fact_63",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the name of Lena's corgi",
+    "true_v": "Tofu",
+    "false_v": "Coco",
+    "true_keys": [
+      "Tofu"
+    ],
+    "false_keys": [
+      "Coco"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the dog's name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the dog's name to use, and do not mention both options.",
+    "title_zh": "Lena 家柯基名字",
+    "question_stem_zh": "Lena 家那只柯基叫什么？",
+    "true_v_zh": "Tofu",
+    "false_v_zh": "Coco",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mei: Quick handoff before I leave: Lena's corgi is named Tofu.",
+      "[CHAT LOG] Jun: Got it, Lena's corgi = Tofu.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the name of Lena's corgi = Tofu, not Coco."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_64",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the pickup time for Milo after grooming",
+    "true_v": "6:15 pm",
+    "false_v": "5:15 pm",
+    "true_keys": [
+      "6:15 pm",
+      "6:15"
+    ],
+    "false_keys": [
+      "5:15 pm",
+      "5:15"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup time to use, and do not mention both options.",
+    "title_zh": "Milo 美容后接回时间",
+    "question_stem_zh": "Milo 美容后几点去接？",
+    "true_v_zh": "晚上 6:15",
+    "false_v_zh": "下午 5:15",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Ava: The groomer texted me. Milo will be ready at 6:15 pm.",
+      "[CHAT LOG] Ken: Okay, pickup time for Milo is 6:15 pm.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the pickup time for Milo after grooming = 6:15 pm, not 5:15 pm."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_65",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the amount of dry food Pepper gets tonight",
+    "true_v": "80 grams",
+    "false_v": "60 grams",
+    "true_keys": [
+      "80 grams",
+      "80 g"
+    ],
+    "false_keys": [
+      "60 grams",
+      "60 g"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the amount and unit, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the amount and unit to use, and do not mention both options.",
+    "title_zh": "Pepper 今晚狗粮量",
+    "question_stem_zh": "Pepper 今晚吃多少干粮？",
+    "true_v_zh": "80 克",
+    "false_v_zh": "60 克",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nora: Pepper already had lunch, so tonight it's only 80 grams of dry food.",
+      "[CHAT LOG] Liam: Noted, Pepper gets 80 grams tonight.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the amount of dry food Pepper gets tonight = 80 grams, not 60 grams."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_66",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "the hiding place of the spare key for apartment 3B",
+    "true_v": "under the blue planter",
+    "false_v": "inside the mailbox",
+    "true_keys": [
+      "under the blue planter",
+      "blue planter"
+    ],
+    "false_keys": [
+      "inside the mailbox",
+      "mailbox"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the hiding place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the hiding place to use, and do not mention both options.",
+    "title_zh": "3B 备用钥匙位置",
+    "question_stem_zh": "3B 的备用钥匙藏在哪里？",
+    "true_v_zh": "蓝色花盆下面",
+    "false_v_zh": "信箱里面",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Sara: If you get back before me, the spare key for 3B is under the blue planter.",
+      "[CHAT LOG] Max: Thanks, spare key = under the blue planter.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the hiding place of the spare key for apartment 3B = under the blue planter, not inside the mailbox."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_67",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "where the laundry coins are kept",
+    "true_v": "top drawer",
+    "false_v": "bottom drawer",
+    "true_keys": [
+      "top drawer"
+    ],
+    "false_keys": [
+      "bottom drawer"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the place to use, and do not mention both options.",
+    "title_zh": "洗衣硬币放哪",
+    "question_stem_zh": "洗衣硬币放在哪里？",
+    "true_v_zh": "最上面的抽屉",
+    "false_v_zh": "最下面的抽屉",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Iris: I moved the laundry coins to the top drawer beside the sink.",
+      "[CHAT LOG] Cole: Got it, laundry coins are in the top drawer.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the laundry coins are kept = top drawer, not bottom drawer."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_68",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "where the library book should be left in the apartment",
+    "true_v": "left shoe rack",
+    "false_v": "hallway table",
+    "true_keys": [
+      "left shoe rack"
+    ],
+    "false_keys": [
+      "hallway table"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the place to use, and do not mention both options.",
+    "title_zh": "图书馆书放哪",
+    "question_stem_zh": "那本图书馆的书应该放在家里哪里？",
+    "true_v_zh": "左边鞋架",
+    "false_v_zh": "走廊桌子上",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Emma: Please leave the library book on the left shoe rack so I see it before class.",
+      "[CHAT LOG] Noah: Okay, library book goes on the left shoe rack.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the library book should be left in the apartment = left shoe rack, not hallway table."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_69",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the seminar room for Tuesday's small-group methods review",
+    "true_v": "B214",
+    "false_v": "B241",
+    "true_keys": [
+      "B214",
+      "b214"
+    ],
+    "false_keys": [
+      "B241",
+      "b241"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the room number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the room number to use, and do not mention both options.",
+    "title_zh": "周二方法复习教室",
+    "question_stem_zh": "周二小组方法复习是在几号教室？",
+    "true_v_zh": "B214",
+    "false_v_zh": "B241",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Yuki: Tuesday's small-group methods review is in room B214, not the usual room.",
+      "[CHAT LOG] Dan: Thanks, methods review = B214.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the seminar room for Tuesday's small-group methods review = B214, not B241."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_70",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the day of Professor Chen's office hour this week",
+    "true_v": "Wednesday",
+    "false_v": "Thursday",
+    "true_keys": [
+      "Wednesday"
+    ],
+    "false_keys": [
+      "Thursday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the day, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the day to use, and do not mention both options.",
+    "title_zh": "陈老师本周 office hour 日期",
+    "question_stem_zh": "陈老师这周的 office hour 是哪天？",
+    "true_v_zh": "周三",
+    "false_v_zh": "周四",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Bella: Professor Chen moved office hour to Wednesday this week.",
+      "[CHAT LOG] Omar: Okay, Professor Chen = Wednesday office hour this week.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the day of Professor Chen's office hour this week = Wednesday, not Thursday."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_71",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the sticker color on Nora's poster tube",
+    "true_v": "green sticker",
+    "false_v": "orange sticker",
+    "true_keys": [
+      "green sticker",
+      "green"
+    ],
+    "false_keys": [
+      "orange sticker",
+      "orange"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the sticker color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the sticker color to use, and do not mention both options.",
+    "title_zh": "Nora 海报筒贴纸颜色",
+    "question_stem_zh": "Nora 的海报筒贴的是什么颜色的贴纸？",
+    "true_v_zh": "绿色贴纸",
+    "false_v_zh": "橙色贴纸",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nora: My poster tube is the one with the green sticker on it.",
+      "[CHAT LOG] Eli: Got it, Nora's tube = green sticker.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the sticker color on Nora's poster tube = green sticker, not orange sticker."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_72",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the departure time of the last island ferry tonight",
+    "true_v": "8:40 pm",
+    "false_v": "9:40 pm",
+    "true_keys": [
+      "8:40 pm",
+      "8:40"
+    ],
+    "false_keys": [
+      "9:40 pm",
+      "9:40"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the departure time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the departure time to use, and do not mention both options.",
+    "title_zh": "今晚最后一班渡轮时间",
+    "question_stem_zh": "今晚去岛上的最后一班渡轮几点开？",
+    "true_v_zh": "晚上 8:40",
+    "false_v_zh": "晚上 9:40",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Hana: Don't miss it, the last island ferry tonight leaves at 8:40 pm.",
+      "[CHAT LOG] Luke: Thanks, last ferry tonight = 8:40 pm.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the departure time of the last island ferry tonight = 8:40 pm, not 9:40 pm."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_73",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the platform for the airport shuttle",
+    "true_v": "platform 2",
+    "false_v": "platform 4",
+    "true_keys": [
+      "platform 2",
+      "2"
+    ],
+    "false_keys": [
+      "platform 4",
+      "4"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the platform, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the platform to use, and do not mention both options.",
+    "title_zh": "机场接驳车站台",
+    "question_stem_zh": "机场接驳车在几号站台？",
+    "true_v_zh": "2 号站台",
+    "false_v_zh": "4 号站台",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Victor: The airport shuttle is boarding from platform 2 tonight.",
+      "[CHAT LOG] Mia: Okay, airport shuttle = platform 2.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the platform for the airport shuttle = platform 2, not platform 4."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_74",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the parking spot of the rental car",
+    "true_v": "C17",
+    "false_v": "G17",
+    "true_keys": [
+      "C17",
+      "c17"
+    ],
+    "false_keys": [
+      "G17",
+      "g17"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the parking spot code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the parking spot code to use, and do not mention both options.",
+    "title_zh": "租车停在哪个车位",
+    "question_stem_zh": "租的车停在哪个车位？",
+    "true_v_zh": "C17",
+    "false_v_zh": "G17",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Sam: I parked the rental car in spot C17, near the stairwell.",
+      "[CHAT LOG] Priya: Got it, rental car = C17.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the parking spot of the rental car = C17, not G17."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_75",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the reservation name for the dinner booking",
+    "true_v": "Lin",
+    "false_v": "Lynn",
+    "true_keys": [
+      "Lin"
+    ],
+    "false_keys": [
+      "Lynn"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the reservation name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the reservation name to use, and do not mention both options.",
+    "title_zh": "晚餐预订姓名",
+    "question_stem_zh": "晚餐预订是用谁的名字订的？",
+    "true_v_zh": "Lin",
+    "false_v_zh": "Lynn",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Grace: Dinner is booked under Lin, without the extra n.",
+      "[CHAT LOG] Theo: Thanks, reservation name = Lin.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the reservation name for the dinner booking = Lin, not Lynn."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_76",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "where the cake box is waiting at the bakery",
+    "true_v": "front fridge",
+    "false_v": "back fridge",
+    "true_keys": [
+      "front fridge"
+    ],
+    "false_keys": [
+      "back fridge"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the place to use, and do not mention both options.",
+    "title_zh": "蛋糕盒在面包店哪里",
+    "question_stem_zh": "蛋糕盒在面包店放在哪里？",
+    "true_v_zh": "前面的冰箱",
+    "false_v_zh": "后面的冰箱",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jules: The bakery put our cake box in the front fridge by the register.",
+      "[CHAT LOG] Erin: Okay, cake box = front fridge.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the cake box is waiting at the bakery = front fridge, not back fridge."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_77",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the table number for the rooftop birthday booking",
+    "true_v": "table 14",
+    "false_v": "table 41",
+    "true_keys": [
+      "table 14",
+      "14"
+    ],
+    "false_keys": [
+      "table 41",
+      "41"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the table number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the table number to use, and do not mention both options.",
+    "title_zh": "天台生日局桌号",
+    "question_stem_zh": "天台生日那桌是几号桌？",
+    "true_v_zh": "14 号桌",
+    "false_v_zh": "41 号桌",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dana: The rooftop birthday booking is table 14, near the heater.",
+      "[CHAT LOG] Chris: Got it, birthday table = 14.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the table number for the rooftop birthday booking = table 14, not table 41."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_78",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the container holding the demo laptop",
+    "true_v": "black hard case",
+    "false_v": "gray backpack",
+    "true_keys": [
+      "black hard case",
+      "hard case"
+    ],
+    "false_keys": [
+      "gray backpack",
+      "backpack"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the container description, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the container description to use, and do not mention both options.",
+    "title_zh": "演示电脑装在哪个包里",
+    "question_stem_zh": "演示用的电脑装在哪个包里？",
+    "true_v_zh": "黑色硬壳包",
+    "false_v_zh": "灰色双肩包",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Ian: The demo laptop is in the black hard case, not in my backpack.",
+      "[CHAT LOG] Rose: Okay, demo laptop = black hard case.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the container holding the demo laptop = black hard case, not gray backpack."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_79",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the shelf holding the labeled sample box",
+    "true_v": "middle shelf",
+    "false_v": "bottom shelf",
+    "true_keys": [
+      "middle shelf"
+    ],
+    "false_keys": [
+      "bottom shelf"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the shelf position, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the shelf position to use, and do not mention both options.",
+    "title_zh": "标记样品盒在哪层架子",
+    "question_stem_zh": "那个贴了标签的样品盒在第几层架子？",
+    "true_v_zh": "中间那层",
+    "false_v_zh": "最下面一层",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Felix: The labeled sample box is on the middle shelf in storage.",
+      "[CHAT LOG] Amber: Noted, labeled sample box = middle shelf.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the shelf holding the labeled sample box = middle shelf, not bottom shelf."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_80",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the call extension for the downstairs print room",
+    "true_v": "7342",
+    "false_v": "7432",
+    "true_keys": [
+      "7342"
+    ],
+    "false_keys": [
+      "7432"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the extension number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the extension number to use, and do not mention both options.",
+    "title_zh": "楼下打印室分机号",
+    "question_stem_zh": "楼下打印室的分机号是多少？",
+    "true_v_zh": "7342",
+    "false_v_zh": "7432",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Kevin: If the printer jams again, call extension 7342 downstairs.",
+      "[CHAT LOG] Maya: Okay, print room extension = 7342.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the call extension for the downstairs print room = 7342, not 7432."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_81",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the dosage of Luna's ear drops tonight",
+    "true_v": "4 drops",
+    "false_v": "6 drops",
+    "true_keys": [
+      "4 drops",
+      "4"
+    ],
+    "false_keys": [
+      "6 drops",
+      "6"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the dosage, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the dosage to use, and do not mention both options.",
+    "title_zh": "Luna 今晚滴耳液剂量",
+    "question_stem_zh": "Luna 今晚滴耳液要滴几滴？",
+    "true_v_zh": "4 滴",
+    "false_v_zh": "6 滴",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Piper: Luna's ear drops are 4 drops tonight, not the weekend dose.",
+      "[CHAT LOG] Evan: Okay, Luna gets 4 drops tonight.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the dosage of Luna's ear drops tonight = 4 drops, not 6 drops."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_82",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the pickup day for Mochi from pet boarding",
+    "true_v": "Saturday",
+    "false_v": "Sunday",
+    "true_keys": [
+      "Saturday"
+    ],
+    "false_keys": [
+      "Sunday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the day, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the day to use, and do not mention both options.",
+    "title_zh": "Mochi 寄养接回日期",
+    "question_stem_zh": "Mochi 寄养那边哪天去接？",
+    "true_v_zh": "周六",
+    "false_v_zh": "周日",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mina: Mochi's boarding pickup is Saturday morning.",
+      "[CHAT LOG] Joel: Got it, Mochi comes home on Saturday.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the pickup day for Mochi from pet boarding = Saturday, not Sunday."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_83",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the harness hook for Bruno",
+    "true_v": "second hook",
+    "false_v": "third hook",
+    "true_keys": [
+      "second hook",
+      "second"
+    ],
+    "false_keys": [
+      "third hook",
+      "third"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the hook position, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the hook position to use, and do not mention both options.",
+    "title_zh": "Bruno 背带扣第几格",
+    "question_stem_zh": "Bruno 的背带该扣第几格？",
+    "true_v_zh": "第二格",
+    "false_v_zh": "第三格",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tara: For Bruno, use the second hook on the harness, not the tightest one.",
+      "[CHAT LOG] Wes: Okay, Bruno = second hook.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the harness hook for Bruno = second hook, not third hook."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_84",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the storage basket for Kiwi's treats",
+    "true_v": "striped basket",
+    "false_v": "plain basket",
+    "true_keys": [
+      "striped basket",
+      "striped"
+    ],
+    "false_keys": [
+      "plain basket",
+      "plain"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the basket description, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the basket description to use, and do not mention both options.",
+    "title_zh": "Kiwi 零食放在哪个篮子",
+    "question_stem_zh": "Kiwi 的零食放在哪个篮子里？",
+    "true_v_zh": "条纹篮子",
+    "false_v_zh": "纯色篮子",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Erin: Kiwi's treats are in the striped basket by the fridge.",
+      "[CHAT LOG] Sol: Noted, Kiwi treats = striped basket.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the storage basket for Kiwi's treats = striped basket, not plain basket."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_85",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the amount of wet food Olive gets at breakfast",
+    "true_v": "half can",
+    "false_v": "full can",
+    "true_keys": [
+      "half can",
+      "half"
+    ],
+    "false_keys": [
+      "full can",
+      "full"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the amount, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the amount to use, and do not mention both options.",
+    "title_zh": "Olive 早餐湿粮量",
+    "question_stem_zh": "Olive 早餐吃多少湿粮？",
+    "true_v_zh": "半罐",
+    "false_v_zh": "一整罐",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jade: Olive only gets half a can of wet food at breakfast.",
+      "[CHAT LOG] Benji: Okay, Olive breakfast = half can.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the amount of wet food Olive gets at breakfast = half can, not full can."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_86",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "the outlet used for the wifi extender",
+    "true_v": "hall outlet",
+    "false_v": "kitchen outlet",
+    "true_keys": [
+      "hall outlet"
+    ],
+    "false_keys": [
+      "kitchen outlet"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the outlet location, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the outlet location to use, and do not mention both options.",
+    "title_zh": "WiFi 扩展器插哪个插座",
+    "question_stem_zh": "WiFi 扩展器该插在哪个插座？",
+    "true_v_zh": "走廊插座",
+    "false_v_zh": "厨房插座",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mila: The wifi extender has to stay in the hall outlet or it drops signal.",
+      "[CHAT LOG] Owen: Got it, extender = hall outlet.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the outlet used for the wifi extender = hall outlet, not kitchen outlet."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_87",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "where the guest sheets are stored",
+    "true_v": "upper linen shelf",
+    "false_v": "hall cabinet",
+    "true_keys": [
+      "upper linen shelf",
+      "linen shelf"
+    ],
+    "false_keys": [
+      "hall cabinet"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the place to use, and do not mention both options.",
+    "title_zh": "客人床单放在哪里",
+    "question_stem_zh": "给客人用的床单放在哪里？",
+    "true_v_zh": "上层床品架",
+    "false_v_zh": "走廊柜子",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Clara: Guest sheets are on the upper linen shelf, not in the coat closet.",
+      "[CHAT LOG] Finn: Okay, guest sheets = upper linen shelf.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the guest sheets are stored = upper linen shelf, not hall cabinet."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_88",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "the buzzer code for Maya's package delivery",
+    "true_v": "042",
+    "false_v": "402",
+    "true_keys": [
+      "042",
+      "code 042"
+    ],
+    "false_keys": [
+      "402",
+      "code 402"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the buzzer code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the buzzer code to use, and do not mention both options.",
+    "title_zh": "快递门铃报码",
+    "question_stem_zh": "快递来时要报的门铃码是多少？",
+    "true_v_zh": "042",
+    "false_v_zh": "402",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Maya: If the courier buzzes, tell them code 042 for the package locker.",
+      "[CHAT LOG] Leo: Got it, package buzzer code = 042.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the buzzer code for Maya's package delivery = 042, not 402."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_89",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "the day the balcony herbs should be watered",
+    "true_v": "Friday",
+    "false_v": "Monday",
+    "true_keys": [
+      "Friday"
+    ],
+    "false_keys": [
+      "Monday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the day, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the day to use, and do not mention both options.",
+    "title_zh": "阳台香草哪天浇水",
+    "question_stem_zh": "阳台上的香草这周哪天浇水？",
+    "true_v_zh": "周五",
+    "false_v_zh": "周一",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Bea: The balcony herbs only need water on Friday this week.",
+      "[CHAT LOG] Nico: Okay, balcony herbs = Friday.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the day the balcony herbs should be watered = Friday, not Monday."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_90",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "which carton is Sam's oat milk",
+    "true_v": "blue tape carton",
+    "false_v": "green tape carton",
+    "true_keys": [
+      "blue tape carton",
+      "blue tape"
+    ],
+    "false_keys": [
+      "green tape carton",
+      "green tape"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the carton description, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the carton description to use, and do not mention both options.",
+    "title_zh": "Sam 的燕麦奶是哪盒",
+    "question_stem_zh": "Sam 的燕麦奶是哪一盒？",
+    "true_v_zh": "贴蓝胶带那盒",
+    "false_v_zh": "贴绿胶带那盒",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Sam: My oat milk is the carton with the blue tape on top.",
+      "[CHAT LOG] Irene: Noted, Sam's oat milk = blue tape carton.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, which carton is Sam's oat milk = blue tape carton, not green tape carton."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_91",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the room for Friday's statistics quiz review",
+    "true_v": "C306",
+    "false_v": "C360",
+    "true_keys": [
+      "C306",
+      "c306"
+    ],
+    "false_keys": [
+      "C360",
+      "c360"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the room number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the room number to use, and do not mention both options.",
+    "title_zh": "周五统计复习教室",
+    "question_stem_zh": "周五统计 quiz 复习是在几号教室？",
+    "true_v_zh": "C306",
+    "false_v_zh": "C360",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rina: Friday's statistics quiz review moved to room C306.",
+      "[CHAT LOG] Arman: Okay, stats review = C306.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the room for Friday's statistics quiz review = C306, not C360."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_92",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the check-in desk for the poster session",
+    "true_v": "north lobby desk",
+    "false_v": "south lobby desk",
+    "true_keys": [
+      "north lobby desk",
+      "north lobby"
+    ],
+    "false_keys": [
+      "south lobby desk",
+      "south lobby"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the desk location, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the desk location to use, and do not mention both options.",
+    "title_zh": "海报展示签到桌",
+    "question_stem_zh": "海报展示去哪里签到？",
+    "true_v_zh": "北边大厅签到桌",
+    "false_v_zh": "南边大厅签到桌",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Paula: Poster session check-in is at the north lobby desk.",
+      "[CHAT LOG] Ken: Got it, poster check-in = north lobby desk.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the check-in desk for the poster session = north lobby desk, not south lobby desk."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_93",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the bin for returning loaner laptops",
+    "true_v": "orange bin",
+    "false_v": "red bin",
+    "true_keys": [
+      "orange bin",
+      "orange"
+    ],
+    "false_keys": [
+      "red bin",
+      "red"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the bin description, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the bin description to use, and do not mention both options.",
+    "title_zh": "借用笔记本归还箱",
+    "question_stem_zh": "借来的笔记本要放进哪个归还箱？",
+    "true_v_zh": "橙色归还箱",
+    "false_v_zh": "红色归还箱",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dev: Loaner laptops go back in the orange bin outside the lab.",
+      "[CHAT LOG] Mira: Okay, laptop returns = orange bin.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the bin for returning loaner laptops = orange bin, not red bin."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_94",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the photo-retake slot for student ID services",
+    "true_v": "11:20 am",
+    "false_v": "11:50 am",
+    "true_keys": [
+      "11:20 am",
+      "11:20"
+    ],
+    "false_keys": [
+      "11:50 am",
+      "11:50"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the time to use, and do not mention both options.",
+    "title_zh": "学生证重拍时间",
+    "question_stem_zh": "学生证重拍预约是几点？",
+    "true_v_zh": "上午 11:20",
+    "false_v_zh": "上午 11:50",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tori: My student ID retake slot is 11:20 am tomorrow.",
+      "[CHAT LOG] Nikhil: Got it, ID retake = 11:20 am.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the photo-retake slot for student ID services = 11:20 am, not 11:50 am."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_95",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "when the field-trip permission form is due",
+    "true_v": "Friday noon",
+    "false_v": "Thursday noon",
+    "true_keys": [
+      "Friday noon",
+      "Friday"
+    ],
+    "false_keys": [
+      "Thursday noon",
+      "Thursday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the due time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the due time to use, and do not mention both options.",
+    "title_zh": "外出活动同意书截止",
+    "question_stem_zh": "外出活动同意书什么时候截止？",
+    "true_v_zh": "周五中午",
+    "false_v_zh": "周四中午",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Elise: The field-trip permission form is due Friday at noon, not end of day.",
+      "[CHAT LOG] Marco: Okay, form due = Friday noon.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, when the field-trip permission form is due = Friday noon, not Thursday noon."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_96",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the locker number at the hostel",
+    "true_v": "28",
+    "false_v": "82",
+    "true_keys": [
+      "28",
+      "locker 28"
+    ],
+    "false_keys": [
+      "82",
+      "locker 82"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the locker number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the locker number to use, and do not mention both options.",
+    "title_zh": "青旅储物柜编号",
+    "question_stem_zh": "青旅的储物柜是几号？",
+    "true_v_zh": "28 号",
+    "false_v_zh": "82 号",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Zoe: Our hostel locker is number 28, the one near the vending machine.",
+      "[CHAT LOG] Liam: Noted, hostel locker = 28.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the locker number at the hostel = 28, not 82."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_97",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the boarding gate for the regional flight",
+    "true_v": "A12",
+    "false_v": "A21",
+    "true_keys": [
+      "A12",
+      "a12"
+    ],
+    "false_keys": [
+      "A21",
+      "a21"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the gate, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the gate to use, and do not mention both options.",
+    "title_zh": "支线航班登机口",
+    "question_stem_zh": "那班支线航班从哪个登机口登机？",
+    "true_v_zh": "A12",
+    "false_v_zh": "A21",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Cara: The regional flight boards at gate A12 tonight.",
+      "[CHAT LOG] Jonah: Got it, gate = A12.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the boarding gate for the regional flight = A12, not A21."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_98",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the pickup window for the city pass",
+    "true_v": "window 5",
+    "false_v": "window 8",
+    "true_keys": [
+      "window 5",
+      "5"
+    ],
+    "false_keys": [
+      "window 8",
+      "8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the window number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the window number to use, and do not mention both options.",
+    "title_zh": "城市通票领取窗口",
+    "question_stem_zh": "城市通票到几号窗口领？",
+    "true_v_zh": "5 号窗口",
+    "false_v_zh": "8 号窗口",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Felix: The city pass pickup is at window 5 beside the info desk.",
+      "[CHAT LOG] Hana: Okay, city pass = window 5.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the pickup window for the city pass = window 5, not window 8."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_99",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the luggage drop cutoff for the night ferry",
+    "true_v": "7:10 pm",
+    "false_v": "7:40 pm",
+    "true_keys": [
+      "7:10 pm",
+      "7:10"
+    ],
+    "false_keys": [
+      "7:40 pm",
+      "7:40"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the cutoff time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the cutoff time to use, and do not mention both options.",
+    "title_zh": "夜间渡轮行李截止时间",
+    "question_stem_zh": "夜间渡轮的行李最晚几点截止托运？",
+    "true_v_zh": "晚上 7:10",
+    "false_v_zh": "晚上 7:40",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Omar: For the night ferry, luggage drop closes at 7:10 pm.",
+      "[CHAT LOG] Priya: Noted, luggage cutoff = 7:10 pm.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the luggage drop cutoff for the night ferry = 7:10 pm, not 7:40 pm."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_100",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the meeting pillar at the airport",
+    "true_v": "Blue 3",
+    "false_v": "Blue 8",
+    "true_keys": [
+      "Blue 3",
+      "blue 3"
+    ],
+    "false_keys": [
+      "Blue 8",
+      "blue 8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pillar marker, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pillar marker to use, and do not mention both options.",
+    "title_zh": "机场接人会合柱子",
+    "question_stem_zh": "去机场接人时在几号蓝色柱子会合？",
+    "true_v_zh": "蓝色 3 号柱",
+    "false_v_zh": "蓝色 8 号柱",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nina: Meet me by Blue 3 at arrivals, beside the cafe.",
+      "[CHAT LOG] Cole: Okay, airport meetup = Blue 3.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the meeting pillar at the airport = Blue 3, not Blue 8."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_101",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "where the cash gift box is placed at the wedding",
+    "true_v": "welcome table",
+    "false_v": "dessert table",
+    "true_keys": [
+      "welcome table"
+    ],
+    "false_keys": [
+      "dessert table"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the table location, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the table location to use, and do not mention both options.",
+    "title_zh": "婚礼礼金盒放哪",
+    "question_stem_zh": "婚礼礼金盒放在哪张桌子上？",
+    "true_v_zh": "迎宾桌",
+    "false_v_zh": "甜品桌",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Leah: Put the cash gift box on the welcome table near the entrance.",
+      "[CHAT LOG] Max: Got it, gift box = welcome table.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the cash gift box is placed at the wedding = welcome table, not dessert table."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_102",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the wristband color for film night guests",
+    "true_v": "silver band",
+    "false_v": "gold band",
+    "true_keys": [
+      "silver band",
+      "silver"
+    ],
+    "false_keys": [
+      "gold band",
+      "gold"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the wristband color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the wristband color to use, and do not mention both options.",
+    "title_zh": "电影之夜手环颜色",
+    "question_stem_zh": "电影之夜普通来宾拿什么颜色的手环？",
+    "true_v_zh": "银色手环",
+    "false_v_zh": "金色手环",
+    "memory_prelude_lines": [
+      "[CHAT LOG] June: Film night guests get the silver band, not the VIP one.",
+      "[CHAT LOG] Eli: Okay, film night wristband = silver band.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the wristband color for film night guests = silver band, not gold band."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_103",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the clipboard holding the volunteer sign-in sheet",
+    "true_v": "red clipboard",
+    "false_v": "black clipboard",
+    "true_keys": [
+      "red clipboard",
+      "red"
+    ],
+    "false_keys": [
+      "black clipboard",
+      "black"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the clipboard description, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the clipboard description to use, and do not mention both options.",
+    "title_zh": "志愿者签到夹板",
+    "question_stem_zh": "志愿者签到表夹在哪个夹板上？",
+    "true_v_zh": "红色夹板",
+    "false_v_zh": "黑色夹板",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rosa: Volunteer sign-in is clipped to the red clipboard by the door.",
+      "[CHAT LOG] Malik: Noted, sign-in sheet = red clipboard.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the clipboard holding the volunteer sign-in sheet = red clipboard, not black clipboard."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_104",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the florist pickup code for the bouquet order",
+    "true_v": "M47",
+    "false_v": "M74",
+    "true_keys": [
+      "M47",
+      "m47"
+    ],
+    "false_keys": [
+      "M74",
+      "m74"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup code to use, and do not mention both options.",
+    "title_zh": "花束提货码",
+    "question_stem_zh": "花束提货码是什么？",
+    "true_v_zh": "M47",
+    "false_v_zh": "M74",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Flora: The bouquet pickup code is M47 on the florist receipt.",
+      "[CHAT LOG] Dean: Got it, bouquet code = M47.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the florist pickup code for the bouquet order = M47, not M74."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_105",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the start time of the karaoke room booking",
+    "true_v": "8:30 pm",
+    "false_v": "9:30 pm",
+    "true_keys": [
+      "8:30 pm",
+      "8:30"
+    ],
+    "false_keys": [
+      "9:30 pm",
+      "9:30"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the start time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the start time to use, and do not mention both options.",
+    "title_zh": "KTV 包间开始时间",
+    "question_stem_zh": "KTV 包间几点开始？",
+    "true_v_zh": "晚上 8:30",
+    "false_v_zh": "晚上 9:30",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tess: The karaoke room starts at 8:30 pm, so don't book dinner too late.",
+      "[CHAT LOG] Ivan: Okay, karaoke start = 8:30 pm.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the start time of the karaoke room booking = 8:30 pm, not 9:30 pm."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_106",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "where the courier labels are kept",
+    "true_v": "top-left drawer",
+    "false_v": "top-right drawer",
+    "true_keys": [
+      "top-left drawer",
+      "top left drawer"
+    ],
+    "false_keys": [
+      "top-right drawer",
+      "top right drawer"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the drawer location, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the drawer location to use, and do not mention both options.",
+    "title_zh": "快递标签放哪格抽屉",
+    "question_stem_zh": "快递标签放在哪个抽屉？",
+    "true_v_zh": "左上抽屉",
+    "false_v_zh": "右上抽屉",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Quinn: Courier labels are in the top-left drawer of my desk.",
+      "[CHAT LOG] Sara: Got it, courier labels = top-left drawer.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, where the courier labels are kept = top-left drawer, not top-right drawer."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_107",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the room number for Tuesday's standup",
+    "true_v": "608",
+    "false_v": "680",
+    "true_keys": [
+      "608",
+      "room 608"
+    ],
+    "false_keys": [
+      "680",
+      "room 680"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the room number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the room number to use, and do not mention both options.",
+    "title_zh": "周二 standup 会议室",
+    "question_stem_zh": "周二 standup 在哪个房间？",
+    "true_v_zh": "608",
+    "false_v_zh": "680",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Albert: Tuesday's standup is in room 608, not the usual lounge.",
+      "[CHAT LOG] Mina: Okay, Tuesday standup = 608.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the room number for Tuesday's standup = 608, not 680."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_108",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the cabinet slot for the spare HDMI adapter",
+    "true_v": "B2",
+    "false_v": "B7",
+    "true_keys": [
+      "B2",
+      "b2"
+    ],
+    "false_keys": [
+      "B7",
+      "b7"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the slot code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the slot code to use, and do not mention both options.",
+    "title_zh": "备用 HDMI 转接头槽位",
+    "question_stem_zh": "备用 HDMI 转接头放在哪个槽位？",
+    "true_v_zh": "B2",
+    "false_v_zh": "B7",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Joyce: The spare HDMI adapter is in cabinet slot B2.",
+      "[CHAT LOG] Reza: Noted, HDMI adapter = B2.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the cabinet slot for the spare HDMI adapter = B2, not B7."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_109",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the folder color for the signed vendor contract",
+    "true_v": "teal folder",
+    "false_v": "tan folder",
+    "true_keys": [
+      "teal folder",
+      "teal"
+    ],
+    "false_keys": [
+      "tan folder",
+      "tan"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the folder color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the folder color to use, and do not mention both options.",
+    "title_zh": "已签合同文件夹颜色",
+    "question_stem_zh": "已签好的供应商合同在什么颜色文件夹里？",
+    "true_v_zh": "蓝绿色文件夹",
+    "false_v_zh": "浅棕色文件夹",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Helen: The signed vendor contract is in the teal folder on my shelf.",
+      "[CHAT LOG] Omar: Got it, vendor contract = teal folder.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the folder color for the signed vendor contract = teal folder, not tan folder."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_110",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the code for the finance drop box",
+    "true_v": "5518",
+    "false_v": "5158",
+    "true_keys": [
+      "5518",
+      "code 5518"
+    ],
+    "false_keys": [
+      "5158",
+      "code 5158"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the code to use, and do not mention both options.",
+    "title_zh": "财务投递箱密码",
+    "question_stem_zh": "财务投递箱的密码是多少？",
+    "true_v_zh": "5518",
+    "false_v_zh": "5158",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Priyanka: Finance drop box code is 5518 this week.",
+      "[CHAT LOG] Leo: Okay, finance drop box = 5518.",
+      "[CHAT LOG] Follow-up: Just so nobody swaps it later, the code for the finance drop box = 5518, not 5158."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_111",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the shelf for Basil's canned food",
+    "true_v": "upper pantry shelf",
+    "false_v": "lower pantry shelf",
+    "true_keys": [
+      "upper pantry shelf",
+      "upper shelf"
+    ],
+    "false_keys": [
+      "lower pantry shelf",
+      "lower shelf"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the shelf, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the shelf to use, and do not mention both options.",
+    "title_zh": "Basil 罐头放哪层架子",
+    "question_stem_zh": "Basil 的罐头放在哪层架子？",
+    "true_v_zh": "储物柜上层",
+    "false_v_zh": "储物柜下层",
+    "memory_prelude_lines": [
+      "[CHAT LOG] June: Basil's canned food is on the upper pantry shelf, beside the rice bin.",
+      "[CHAT LOG] Noah: Got it, Basil food = upper pantry shelf.",
+      "[CHAT LOG] June: And not the lower shelf with the treats."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_112",
+    "family": "pet_dialogue",
+    "family_zh": "宠物对话",
+    "thing": "the tag color on Rumi's cat carrier",
+    "true_v": "purple tag",
+    "false_v": "blue tag",
+    "true_keys": [
+      "purple tag",
+      "purple"
+    ],
+    "false_keys": [
+      "blue tag",
+      "blue"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the tag color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the tag color to use, and do not mention both options.",
+    "title_zh": "Rumi 猫包标签颜色",
+    "question_stem_zh": "Rumi 的猫包贴的是什么颜色标签？",
+    "true_v_zh": "紫色标签",
+    "false_v_zh": "蓝色标签",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mara: Rumi's carrier is the one with the purple tag on the handle.",
+      "[CHAT LOG] Eli: Okay, Rumi carrier = purple tag.",
+      "[CHAT LOG] Mara: The blue tag is for Theo's carrier, not Rumi's."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_113",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "the thermostat setting for tonight",
+    "true_v": "68 F",
+    "false_v": "72 F",
+    "true_keys": [
+      "68 F"
+    ],
+    "false_keys": [
+      "72 F"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the temperature, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the temperature to use, and do not mention both options.",
+    "title_zh": "今晚温控器设定",
+    "question_stem_zh": "今晚温控器要设到多少度？",
+    "true_v_zh": "68 华氏度",
+    "false_v_zh": "72 华氏度",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Aiden: Set the thermostat to 68 tonight or the bedroom gets stuffy.",
+      "[CHAT LOG] Luca: Okay, tonight = 68.",
+      "[CHAT LOG] Aiden: 72 was for the cold snap last week, not tonight."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_114",
+    "family": "roommate_dialogue",
+    "family_zh": "室友对话",
+    "thing": "where Maya's mail key is sitting",
+    "true_v": "entry shelf dish",
+    "false_v": "sink tray",
+    "true_keys": [
+      "entry shelf dish",
+      "entry shelf"
+    ],
+    "false_keys": [
+      "sink tray"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the place, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the place to use, and do not mention both options.",
+    "title_zh": "Maya 的信箱钥匙放哪",
+    "question_stem_zh": "Maya 的信箱钥匙现在放在哪里？",
+    "true_v_zh": "门口架子上的小碟子",
+    "false_v_zh": "水槽旁边的托盘",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Maya: I left my mail key in the dish on the entry shelf.",
+      "[CHAT LOG] Jon: Got it, Maya mail key = entry shelf dish.",
+      "[CHAT LOG] Maya: Not the tray by the sink where I put loose coins."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_115",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the room for the Friday tutoring session",
+    "true_v": "D118",
+    "false_v": "D181",
+    "true_keys": [
+      "D118",
+      "d118"
+    ],
+    "false_keys": [
+      "D181",
+      "d181"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the room number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the room number to use, and do not mention both options.",
+    "title_zh": "周五辅导教室",
+    "question_stem_zh": "周五辅导课在几号教室？",
+    "true_v_zh": "D118",
+    "false_v_zh": "D181",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nora: Friday tutoring is in room D118 after the lab.",
+      "[CHAT LOG] Imran: Okay, tutoring = D118.",
+      "[CHAT LOG] Nora: D181 is the room for next week's mock test."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_116",
+    "family": "school_dialogue",
+    "family_zh": "校园对话",
+    "thing": "the service window for print-quota reloads",
+    "true_v": "window 3",
+    "false_v": "window 8",
+    "true_keys": [
+      "window 3",
+      "3"
+    ],
+    "false_keys": [
+      "window 8",
+      "8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the window number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the window number to use, and do not mention both options.",
+    "title_zh": "打印额度充值窗口",
+    "question_stem_zh": "打印额度去几号窗口充值？",
+    "true_v_zh": "3 号窗口",
+    "false_v_zh": "8 号窗口",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rhea: Print-quota reloads are at window 3 this week.",
+      "[CHAT LOG] Cole: Noted, print reload = window 3.",
+      "[CHAT LOG] Rhea: Window 8 is just for card replacement."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_117",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the coach bay for the mountain shuttle",
+    "true_v": "12B",
+    "false_v": "21B",
+    "true_keys": [
+      "12B",
+      "12b"
+    ],
+    "false_keys": [
+      "21B",
+      "21b"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the bay code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the bay code to use, and do not mention both options.",
+    "title_zh": "山线接驳车停靠位",
+    "question_stem_zh": "去山里的接驳车在几号停靠位？",
+    "true_v_zh": "12B",
+    "false_v_zh": "21B",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tina: The mountain shuttle leaves from bay 12B beside the newsstand.",
+      "[CHAT LOG] Samir: Got it, shuttle = 12B.",
+      "[CHAT LOG] Tina: 21B is the return coach from the other terminal."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_118",
+    "family": "travel_dialogue",
+    "family_zh": "出行对话",
+    "thing": "the luggage carousel for the Osaka flight",
+    "true_v": "carousel 6",
+    "false_v": "carousel 9",
+    "true_keys": [
+      "carousel 6",
+      "6"
+    ],
+    "false_keys": [
+      "carousel 9",
+      "9"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the carousel number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the carousel number to use, and do not mention both options.",
+    "title_zh": "大阪航班行李转盘",
+    "question_stem_zh": "大阪来的那班航班在几号转盘取行李？",
+    "true_v_zh": "6 号转盘",
+    "false_v_zh": "9 号转盘",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Vera: The Osaka bags are coming out on carousel 6 tonight.",
+      "[CHAT LOG] Neil: Okay, Osaka luggage = carousel 6.",
+      "[CHAT LOG] Vera: Carousel 9 is for the Seoul flight landing after us."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_119",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the coat-check ticket for Lena's jacket",
+    "true_v": "318",
+    "false_v": "381",
+    "true_keys": [
+      "318"
+    ],
+    "false_keys": [
+      "381"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the ticket number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the ticket number to use, and do not mention both options.",
+    "title_zh": "Lena 外套存衣号码",
+    "question_stem_zh": "Lena 的外套存衣票号是多少？",
+    "true_v_zh": "318",
+    "false_v_zh": "381",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Lena: My jacket is under coat-check ticket 318.",
+      "[CHAT LOG] Mason: Got it, Lena jacket = 318.",
+      "[CHAT LOG] Lena: 381 is the number on Kai's umbrella tag."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_120",
+    "family": "event_dialogue",
+    "family_zh": "活动对话",
+    "thing": "the lounge for the afterparty meetup",
+    "true_v": "upstairs lounge",
+    "false_v": "street lounge",
+    "true_keys": [
+      "upstairs lounge"
+    ],
+    "false_keys": [
+      "street lounge"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the lounge name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the lounge name to use, and do not mention both options.",
+    "title_zh": "afterparty 会合地点",
+    "question_stem_zh": "afterparty 大家在哪个 lounge 会合？",
+    "true_v_zh": "楼上的 lounge",
+    "false_v_zh": "街边的 lounge",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Pia: After the talk, everyone is meeting in the upstairs lounge.",
+      "[CHAT LOG] Devin: Okay, afterparty = upstairs lounge.",
+      "[CHAT LOG] Pia: The street lounge is where the sponsors are doing photos."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_121",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the visitor wifi code for today",
+    "true_v": "8824",
+    "false_v": "8284",
+    "true_keys": [
+      "8824"
+    ],
+    "false_keys": [
+      "8284"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the wifi code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the wifi code to use, and do not mention both options.",
+    "title_zh": "今日访客 WiFi 码",
+    "question_stem_zh": "今天访客 WiFi 密码是多少？",
+    "true_v_zh": "8824",
+    "false_v_zh": "8284",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jared: Today's visitor wifi code is 8824 on the lobby placard.",
+      "[CHAT LOG] Nina: Okay, visitor wifi = 8824.",
+      "[CHAT LOG] Jared: 8284 was yesterday's code before they rotated it."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_122",
+    "family": "office_dialogue",
+    "family_zh": "办公室对话",
+    "thing": "the courier pickup time for the signed packet",
+    "true_v": "4:15 pm",
+    "false_v": "5:15 pm",
+    "true_keys": [
+      "4:15 pm",
+      "4:15"
+    ],
+    "false_keys": [
+      "5:15 pm",
+      "5:15"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup time to use, and do not mention both options.",
+    "title_zh": "签字文件快递取件时间",
+    "question_stem_zh": "签好字的文件几点来取件？",
+    "true_v_zh": "下午 4:15",
+    "false_v_zh": "下午 5:15",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jill: The courier is grabbing the signed packet at 4:15 pm.",
+      "[CHAT LOG] Rohan: Got it, packet pickup = 4:15 pm.",
+      "[CHAT LOG] Jill: 5:15 is when the finance envelopes go out."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_123",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the school gate for Emma's pickup",
+    "true_v": "gate 2",
+    "false_v": "gate 5",
+    "true_keys": [
+      "gate 2",
+      "2"
+    ],
+    "false_keys": [
+      "gate 5",
+      "5"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the gate number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the gate number to use, and do not mention both options.",
+    "title_zh": "Emma 放学接人校门",
+    "question_stem_zh": "Emma 放学要到几号门接？",
+    "true_v_zh": "2 号门",
+    "false_v_zh": "5 号门",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dad: Pick Emma up at gate 2 today because the front path is blocked.",
+      "[CHAT LOG] Ava: Okay, Emma pickup = gate 2.",
+      "[CHAT LOG] Dad: Gate 5 is where the buses line up, not parent pickup."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_124",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the day Grandma takes the blue pills",
+    "true_v": "Tuesday",
+    "false_v": "Thursday",
+    "true_keys": [
+      "Tuesday"
+    ],
+    "false_keys": [
+      "Thursday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the day, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the day to use, and do not mention both options.",
+    "title_zh": "奶奶蓝色药片服用日",
+    "question_stem_zh": "奶奶蓝色药片是周几吃？",
+    "true_v_zh": "周二",
+    "false_v_zh": "周四",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mina: Grandma takes the blue pills on Tuesday, not every other day.",
+      "[CHAT LOG] Leo: Got it, blue pills = Tuesday.",
+      "[CHAT LOG] Mina: Thursday is for the refill phone call, not the pills."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_125",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the lunchbox with Owen's sandwich",
+    "true_v": "red lid",
+    "false_v": "orange lid",
+    "true_keys": [
+      "red lid",
+      "red"
+    ],
+    "false_keys": [
+      "orange lid",
+      "orange"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the lunchbox color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the lunchbox color to use, and do not mention both options.",
+    "title_zh": "Owen 三明治餐盒颜色",
+    "question_stem_zh": "Owen 的三明治装在哪个颜色盖子的餐盒里？",
+    "true_v_zh": "红盖餐盒",
+    "false_v_zh": "橙盖餐盒",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Sophie: Owen's sandwich is in the lunchbox with the red lid.",
+      "[CHAT LOG] Maya: Okay, Owen lunchbox = red lid.",
+      "[CHAT LOG] Sophie: The orange lid one is just the cut fruit."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_126",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the drawer with the spare phone charger",
+    "true_v": "second drawer",
+    "false_v": "bottom drawer",
+    "true_keys": [
+      "second drawer"
+    ],
+    "false_keys": [
+      "bottom drawer"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the drawer, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the drawer to use, and do not mention both options.",
+    "title_zh": "备用手机充电器抽屉",
+    "question_stem_zh": "备用手机充电器放在哪个抽屉？",
+    "true_v_zh": "第二层抽屉",
+    "false_v_zh": "最下面抽屉",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Noel: The spare phone charger is in the second drawer of the hallway cabinet.",
+      "[CHAT LOG] Iris: Got it, spare charger = second drawer.",
+      "[CHAT LOG] Noel: Bottom drawer has the extension cords and batteries."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_127",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the notch setting on Mia's car seat strap",
+    "true_v": "notch 3",
+    "false_v": "notch 4",
+    "true_keys": [
+      "notch 3",
+      "3"
+    ],
+    "false_keys": [
+      "notch 4",
+      "4"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the notch setting, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the notch setting to use, and do not mention both options.",
+    "title_zh": "Mia 安全座椅肩带档位",
+    "question_stem_zh": "Mia 的安全座椅肩带该调到第几档？",
+    "true_v_zh": "第 3 档",
+    "false_v_zh": "第 4 档",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jen: Mia's car seat strap should stay on notch 3 for now.",
+      "[CHAT LOG] Paul: Okay, Mia strap = notch 3.",
+      "[CHAT LOG] Jen: Notch 4 was too loose when we tested it yesterday."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_128",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the shelf with the birthday gift bags",
+    "true_v": "upper closet shelf",
+    "false_v": "lower closet shelf",
+    "true_keys": [
+      "upper closet shelf",
+      "upper shelf"
+    ],
+    "false_keys": [
+      "lower closet shelf",
+      "lower shelf"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the shelf, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the shelf to use, and do not mention both options.",
+    "title_zh": "生日礼物袋放哪层",
+    "question_stem_zh": "生日礼物袋放在衣柜哪一层？",
+    "true_v_zh": "衣柜上层",
+    "false_v_zh": "衣柜下层",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rina: The birthday gift bags are on the upper closet shelf.",
+      "[CHAT LOG] Theo: Got it, gift bags = upper closet shelf.",
+      "[CHAT LOG] Rina: The lower shelf just has winter scarves and hats."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_129",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the label on Uncle Ray's spare key",
+    "true_v": "M2",
+    "false_v": "N2",
+    "true_keys": [
+      "M2"
+    ],
+    "false_keys": [
+      "N2"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the key label, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the key label to use, and do not mention both options.",
+    "title_zh": "Ray 叔叔备用钥匙标签",
+    "question_stem_zh": "Ray 叔叔那把备用钥匙上写的是什么标签？",
+    "true_v_zh": "M2",
+    "false_v_zh": "N2",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Aunt Jo: Uncle Ray's spare key is the one labeled M2 on the ring.",
+      "[CHAT LOG] Kira: Okay, Ray key = M2.",
+      "[CHAT LOG] Aunt Jo: N2 is the garage side door key."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_130",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the storybook for bedtime tonight",
+    "true_v": "Blue Whale",
+    "false_v": "Moon Train",
+    "true_keys": [
+      "Blue Whale"
+    ],
+    "false_keys": [
+      "Moon Train"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the book title, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the book title to use, and do not mention both options.",
+    "title_zh": "今晚睡前故事书",
+    "question_stem_zh": "今晚给孩子讲哪本睡前故事书？",
+    "true_v_zh": "《Blue Whale》",
+    "false_v_zh": "《Moon Train》",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Cara: Bedtime tonight is the Blue Whale book because we promised it yesterday.",
+      "[CHAT LOG] Nate: Got it, bedtime book = Blue Whale.",
+      "[CHAT LOG] Cara: Moon Train is for tomorrow when Auntie comes over."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_131",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the pickup name on Grandma's pharmacy order",
+    "true_v": "Ahn",
+    "false_v": "An",
+    "true_keys": [
+      "Ahn"
+    ],
+    "false_keys": [
+      "An"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup name to use, and do not mention both options.",
+    "title_zh": "奶奶药房订单取件名",
+    "question_stem_zh": "奶奶在药房订单上的取件名字写的是哪个？",
+    "true_v_zh": "Ahn",
+    "false_v_zh": "An",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Milo: Grandma's pharmacy order is under Ahn, with the h.",
+      "[CHAT LOG] Sara: Okay, pharmacy name = Ahn.",
+      "[CHAT LOG] Milo: An without the h is the name on the optometrist order."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_132",
+    "family": "family_dialogue",
+    "family_zh": "家庭对话",
+    "thing": "the pocket holding Sam's soccer cleats",
+    "true_v": "side pocket",
+    "false_v": "front pocket",
+    "true_keys": [
+      "side pocket"
+    ],
+    "false_keys": [
+      "front pocket"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pocket, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pocket to use, and do not mention both options.",
+    "title_zh": "Sam 球鞋放在哪个袋口",
+    "question_stem_zh": "Sam 的足球鞋放在包的哪个袋口里？",
+    "true_v_zh": "侧边袋",
+    "false_v_zh": "前袋",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dina: Sam's soccer cleats are in the side pocket of the duffel.",
+      "[CHAT LOG] Owen: Got it, cleats = side pocket.",
+      "[CHAT LOG] Dina: Front pocket only has shin guards and tape."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_133",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the window for this morning's blood draw",
+    "true_v": "window 4",
+    "false_v": "window 7",
+    "true_keys": [
+      "window 4",
+      "4"
+    ],
+    "false_keys": [
+      "window 7",
+      "7"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the window number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the window number to use, and do not mention both options.",
+    "title_zh": "今早抽血窗口",
+    "question_stem_zh": "今天上午抽血要去几号窗口？",
+    "true_v_zh": "4 号窗口",
+    "false_v_zh": "7 号窗口",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nurse Amy: Blood draw this morning is at window 4 near the corner printer.",
+      "[CHAT LOG] Joel: Okay, blood draw = window 4.",
+      "[CHAT LOG] Nurse Amy: Window 7 is for billing questions after the appointment."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_134",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the room for the follow-up consult",
+    "true_v": "E12",
+    "false_v": "E21",
+    "true_keys": [
+      "E12",
+      "e12"
+    ],
+    "false_keys": [
+      "E21",
+      "e21"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the room number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the room number to use, and do not mention both options.",
+    "title_zh": "复诊房间号",
+    "question_stem_zh": "复诊要去哪个房间？",
+    "true_v_zh": "E12",
+    "false_v_zh": "E21",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Hana: The follow-up consult is in room E12 after imaging.",
+      "[CHAT LOG] Vic: Got it, follow-up = E12.",
+      "[CHAT LOG] Hana: E21 is the room for the allergy nurse, not us."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_135",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "when the prescription can be picked up",
+    "true_v": "after 3 pm",
+    "false_v": "after 5 pm",
+    "true_keys": [
+      "after 3 pm",
+      "after"
+    ],
+    "false_keys": [
+      "after 5 pm",
+      "after"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup time to use, and do not mention both options.",
+    "title_zh": "处方取药时间",
+    "question_stem_zh": "处方几点以后可以去拿？",
+    "true_v_zh": "下午 3 点后",
+    "false_v_zh": "下午 5 点后",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Pharmacist: The prescription should be ready after 3 pm today.",
+      "[CHAT LOG] Lena: Okay, pickup = after 3 pm.",
+      "[CHAT LOG] Pharmacist: After 5 pm is when the refrigerated meds arrive."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_136",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the number of puffs on the rescue inhaler",
+    "true_v": "1 puff",
+    "false_v": "2 puffs",
+    "true_keys": [
+      "1 puff"
+    ],
+    "false_keys": [
+      "2 puffs"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the dosage, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the dosage to use, and do not mention both options.",
+    "title_zh": "急救吸入器喷几下",
+    "question_stem_zh": "急救吸入器这次要喷几下？",
+    "true_v_zh": "1 下",
+    "false_v_zh": "2 下",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dr. Cole: For this flare, use 1 puff on the rescue inhaler first.",
+      "[CHAT LOG] Rae: Got it, inhaler = 1 puff.",
+      "[CHAT LOG] Dr. Cole: Only go to 2 puffs if the first one does not help after waiting."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_137",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the locker number for physical therapy",
+    "true_v": "16",
+    "false_v": "61",
+    "true_keys": [
+      "16"
+    ],
+    "false_keys": [
+      "61"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the locker number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the locker number to use, and do not mention both options.",
+    "title_zh": "理疗更衣柜号码",
+    "question_stem_zh": "做理疗用的是几号更衣柜？",
+    "true_v_zh": "16 号",
+    "false_v_zh": "61 号",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mira: Physical therapy gave me locker 16 for this session.",
+      "[CHAT LOG] Jonah: Okay, PT locker = 16.",
+      "[CHAT LOG] Mira: 61 belongs to the swimmer in the next bay."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_138",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the check-in desk for x-ray",
+    "true_v": "west desk",
+    "false_v": "east desk",
+    "true_keys": [
+      "west desk"
+    ],
+    "false_keys": [
+      "east desk"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the desk, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the desk to use, and do not mention both options.",
+    "title_zh": "X 光签到台",
+    "question_stem_zh": "做 X 光要去哪个签到台？",
+    "true_v_zh": "西侧签到台",
+    "false_v_zh": "东侧签到台",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Kai: X-ray check-in is at the west desk by the elevators.",
+      "[CHAT LOG] Mina: Got it, x-ray = west desk.",
+      "[CHAT LOG] Kai: East desk is just ultrasound and scheduling."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_139",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "when fasting starts before the test",
+    "true_v": "10 pm",
+    "false_v": "12 am",
+    "true_keys": [
+      "10 pm",
+      "10"
+    ],
+    "false_keys": [
+      "12 am",
+      "12"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the start time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the start time to use, and do not mention both options.",
+    "title_zh": "检查前禁食开始时间",
+    "question_stem_zh": "这次检查前从几点开始禁食？",
+    "true_v_zh": "晚上 10 点",
+    "false_v_zh": "凌晨 12 点",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nurse Beth: Start fasting at 10 pm the night before the test.",
+      "[CHAT LOG] Aria: Okay, fasting starts = 10 pm.",
+      "[CHAT LOG] Nurse Beth: Midnight is too late for this one because the panel is early."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_140",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the slip color for the lab requisition",
+    "true_v": "blue slip",
+    "false_v": "gray slip",
+    "true_keys": [
+      "blue slip",
+      "blue"
+    ],
+    "false_keys": [
+      "gray slip",
+      "gray"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the slip color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the slip color to use, and do not mention both options.",
+    "title_zh": "化验单颜色",
+    "question_stem_zh": "化验用的 requisition slip 是什么颜色？",
+    "true_v_zh": "蓝色单子",
+    "false_v_zh": "灰色单子",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Reception: Bring the blue slip to the lab, not the insurance copy.",
+      "[CHAT LOG] Paul: Got it, lab slip = blue slip.",
+      "[CHAT LOG] Reception: The gray slip stays with billing at the front desk."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_141",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the name on the vaccine-card order",
+    "true_v": "Lee",
+    "false_v": "Li",
+    "true_keys": [
+      "Lee"
+    ],
+    "false_keys": [
+      "Li"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the name to use, and do not mention both options.",
+    "title_zh": "疫苗卡订单姓名",
+    "question_stem_zh": "疫苗卡订单上的名字写的是哪个？",
+    "true_v_zh": "Lee",
+    "false_v_zh": "Li",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tess: The vaccine-card order is under Lee with the extra e.",
+      "[CHAT LOG] Mohan: Okay, vaccine card = Lee.",
+      "[CHAT LOG] Tess: Li is how my dentist has it, but not this clinic."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_142",
+    "family": "clinic_dialogue",
+    "family_zh": "就诊对话",
+    "thing": "the chair number for the infusion bay",
+    "true_v": "chair 5",
+    "false_v": "chair 8",
+    "true_keys": [
+      "chair 5"
+    ],
+    "false_keys": [
+      "chair 8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the chair number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the chair number to use, and do not mention both options.",
+    "title_zh": "输液区椅号",
+    "question_stem_zh": "输液是在几号椅位？",
+    "true_v_zh": "5 号椅",
+    "false_v_zh": "8 号椅",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nurse Jo: Infusion is in chair 5 by the window today.",
+      "[CHAT LOG] Ivy: Got it, infusion = chair 5.",
+      "[CHAT LOG] Nurse Jo: Chair 8 is reserved for the longer session starting later."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_143",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the shelf holding the RNA sample box",
+    "true_v": "middle shelf",
+    "false_v": "top shelf",
+    "true_keys": [
+      "middle shelf"
+    ],
+    "false_keys": [
+      "top shelf"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the shelf, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the shelf to use, and do not mention both options.",
+    "title_zh": "RNA 样本盒在哪层",
+    "question_stem_zh": "RNA 样本盒放在哪层架子？",
+    "true_v_zh": "中间那层",
+    "false_v_zh": "最上面那层",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Yara: The RNA sample box is on the middle shelf in the cold room.",
+      "[CHAT LOG] Ben: Okay, RNA box = middle shelf.",
+      "[CHAT LOG] Yara: Top shelf is just enzyme kits and backup ice packs."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_144",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the freezer rack for the control plates",
+    "true_v": "A3",
+    "false_v": "A8",
+    "true_keys": [
+      "A3",
+      "a3"
+    ],
+    "false_keys": [
+      "A8",
+      "a8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the rack code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the rack code to use, and do not mention both options.",
+    "title_zh": "对照平板冷冻架位",
+    "question_stem_zh": "对照平板放在冷冻柜哪个架位？",
+    "true_v_zh": "A3",
+    "false_v_zh": "A8",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Marco: The control plates are on freezer rack A3.",
+      "[CHAT LOG] Lina: Got it, control plates = A3.",
+      "[CHAT LOG] Marco: A8 is where the backup glycerol stocks are sitting."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_145",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the confocal booking time",
+    "true_v": "2:20 pm",
+    "false_v": "2:50 pm",
+    "true_keys": [
+      "2:20 pm",
+      "2:20"
+    ],
+    "false_keys": [
+      "2:50 pm",
+      "2:50"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the booking time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the booking time to use, and do not mention both options.",
+    "title_zh": "共聚焦预约时间",
+    "question_stem_zh": "今天共聚焦显微镜预约在几点？",
+    "true_v_zh": "下午 2:20",
+    "false_v_zh": "下午 2:50",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nico: Our confocal booking starts at 2:20 pm today.",
+      "[CHAT LOG] Aya: Okay, confocal = 2:20 pm.",
+      "[CHAT LOG] Nico: 2:50 is when the neighboring lab has their slot."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_146",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the batch label on the fresh buffer",
+    "true_v": "P14",
+    "false_v": "P41",
+    "true_keys": [
+      "P14",
+      "p14"
+    ],
+    "false_keys": [
+      "P41",
+      "p41"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the batch label, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the batch label to use, and do not mention both options.",
+    "title_zh": "新配缓冲液批号",
+    "question_stem_zh": "新配的缓冲液批号是什么？",
+    "true_v_zh": "P14",
+    "false_v_zh": "P41",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rui: The fresh buffer is the bottle labeled P14 on the cart.",
+      "[CHAT LOG] Maya: Got it, fresh buffer = P14.",
+      "[CHAT LOG] Rui: P41 is the old bottle we are discarding after today's run."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_147",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the bin for contaminated gloves",
+    "true_v": "yellow bin",
+    "false_v": "orange bin",
+    "true_keys": [
+      "yellow bin",
+      "yellow"
+    ],
+    "false_keys": [
+      "orange bin",
+      "orange"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the bin color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the bin color to use, and do not mention both options.",
+    "title_zh": "污染手套丢哪个桶",
+    "question_stem_zh": "污染过的手套要丢进哪个桶？",
+    "true_v_zh": "黄色桶",
+    "false_v_zh": "橙色桶",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Jules: Contaminated gloves go into the yellow bin by the sink.",
+      "[CHAT LOG] Priya: Okay, gloves = yellow bin.",
+      "[CHAT LOG] Jules: Orange bin is only for cardboard and clean wrappers."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_148",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the tray for tomorrow's incubations",
+    "true_v": "tray 2",
+    "false_v": "tray 5",
+    "true_keys": [
+      "tray 2"
+    ],
+    "false_keys": [
+      "tray 5"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the tray number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the tray number to use, and do not mention both options.",
+    "title_zh": "明天培养用托盘",
+    "question_stem_zh": "明天培养要用几号托盘？",
+    "true_v_zh": "2 号托盘",
+    "false_v_zh": "5 号托盘",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Selma: Tomorrow's incubations are all on tray 2.",
+      "[CHAT LOG] Theo: Got it, incubations = tray 2.",
+      "[CHAT LOG] Selma: Tray 5 already has the overnight plates from pathology."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_149",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the centrifuge timer for the wash step",
+    "true_v": "6 minutes",
+    "false_v": "9 minutes",
+    "true_keys": [
+      "6 minutes",
+      "6 min",
+      "6"
+    ],
+    "false_keys": [
+      "9 minutes",
+      "9 min",
+      "9"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the time to use, and do not mention both options.",
+    "title_zh": "清洗步骤离心时间",
+    "question_stem_zh": "清洗那一步离心几分钟？",
+    "true_v_zh": "6 分钟",
+    "false_v_zh": "9 分钟",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Drew: For the wash step, spin the tubes for 6 minutes.",
+      "[CHAT LOG] Irene: Okay, wash spin = 6 minutes.",
+      "[CHAT LOG] Drew: 9 minutes is only for the heavier pellet protocol."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_150",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the cabinet slot for the primer envelope",
+    "true_v": "left slot",
+    "false_v": "right slot",
+    "true_keys": [
+      "left slot"
+    ],
+    "false_keys": [
+      "right slot"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the slot, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the slot to use, and do not mention both options.",
+    "title_zh": "引物信封放哪边槽",
+    "question_stem_zh": "引物信封放在柜子的哪边槽位？",
+    "true_v_zh": "左边槽位",
+    "false_v_zh": "右边槽位",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Lara: The primer envelope is in the left slot of the acrylic cabinet.",
+      "[CHAT LOG] Rafi: Got it, primers = left slot.",
+      "[CHAT LOG] Lara: Right slot is where the sequencing forms are stacked."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_151",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the drawer with the microscope key",
+    "true_v": "drawer 12",
+    "false_v": "drawer 21",
+    "true_keys": [
+      "drawer 12",
+      "12"
+    ],
+    "false_keys": [
+      "drawer 21",
+      "21"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the drawer number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the drawer number to use, and do not mention both options.",
+    "title_zh": "显微镜钥匙抽屉号",
+    "question_stem_zh": "显微镜钥匙放在几号抽屉？",
+    "true_v_zh": "12 号抽屉",
+    "false_v_zh": "21 号抽屉",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Noa: The microscope key is back in drawer 12 under the logbook.",
+      "[CHAT LOG] Benji: Okay, microscope key = drawer 12.",
+      "[CHAT LOG] Noa: Drawer 21 has cables and spare HDMI adapters."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_152",
+    "family": "lab_dialogue",
+    "family_zh": "实验室对话",
+    "thing": "the notebook shelf for the microscopy binder",
+    "true_v": "second shelf",
+    "false_v": "third shelf",
+    "true_keys": [
+      "second shelf"
+    ],
+    "false_keys": [
+      "third shelf"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the shelf, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the shelf to use, and do not mention both options.",
+    "title_zh": "显微镜记录夹放哪层",
+    "question_stem_zh": "显微镜记录夹放在第几层架子？",
+    "true_v_zh": "第二层",
+    "false_v_zh": "第三层",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mira: The microscopy binder belongs on the second shelf by the office window.",
+      "[CHAT LOG] Arun: Got it, binder = second shelf.",
+      "[CHAT LOG] Mira: Third shelf is where the old protocol manuals are staying."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_153",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the claim ticket for the dry-cleaned blazer",
+    "true_v": "274",
+    "false_v": "247",
+    "true_keys": [
+      "274"
+    ],
+    "false_keys": [
+      "247"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the ticket number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the ticket number to use, and do not mention both options.",
+    "title_zh": "西装干洗取件号",
+    "question_stem_zh": "那件西装干洗单号是多少？",
+    "true_v_zh": "274",
+    "false_v_zh": "247",
+    "memory_prelude_lines": [
+      "[CHAT LOG] June: The dry cleaner put my blazer under claim ticket 274.",
+      "[CHAT LOG] Milo: Okay, blazer ticket = 274.",
+      "[CHAT LOG] June: 247 is the number for the long coat, not the blazer."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_154",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the day for the tailor fitting",
+    "true_v": "Saturday",
+    "false_v": "Sunday",
+    "true_keys": [
+      "Saturday"
+    ],
+    "false_keys": [
+      "Sunday"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the day, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the day to use, and do not mention both options.",
+    "title_zh": "裁缝试衣日期",
+    "question_stem_zh": "裁缝那边约的是周六还是周日试衣？",
+    "true_v_zh": "周六",
+    "false_v_zh": "周日",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Leah: The tailor fitting is Saturday afternoon, not Sunday.",
+      "[CHAT LOG] Cole: Got it, fitting = Saturday.",
+      "[CHAT LOG] Leah: Sunday is only for pickup if the hem is finished."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_155",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the cooler for the florist pickup",
+    "true_v": "cooler 3",
+    "false_v": "cooler 8",
+    "true_keys": [
+      "cooler 3",
+      "3"
+    ],
+    "false_keys": [
+      "cooler 8",
+      "8"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the cooler number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the cooler number to use, and do not mention both options.",
+    "title_zh": "花店取花冷柜号",
+    "question_stem_zh": "去花店取花要看几号冷柜？",
+    "true_v_zh": "3 号冷柜",
+    "false_v_zh": "8 号冷柜",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Rosa: The florist said our bouquet will be in cooler 3 by the side wall.",
+      "[CHAT LOG] Evan: Okay, bouquet = cooler 3.",
+      "[CHAT LOG] Rosa: Cooler 8 is where they keep the boxed corsages."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_156",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the mobile-order name at the cafe",
+    "true_v": "Mara",
+    "false_v": "Maya",
+    "true_keys": [
+      "Mara"
+    ],
+    "false_keys": [
+      "Maya"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup name, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup name to use, and do not mention both options.",
+    "title_zh": "咖啡店手机点单名字",
+    "question_stem_zh": "咖啡店手机点单写的是哪个名字？",
+    "true_v_zh": "Mara",
+    "false_v_zh": "Maya",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tori: My cafe mobile order is under Mara, not Maya.",
+      "[CHAT LOG] Nikhil: Got it, cafe order = Mara.",
+      "[CHAT LOG] Tori: Maya is the name on my loyalty account from last year."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_157",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the shelf for the shoe-repair pickup",
+    "true_v": "upper rack",
+    "false_v": "back rack",
+    "true_keys": [
+      "upper rack",
+      "upper"
+    ],
+    "false_keys": [
+      "back rack",
+      "back"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the rack, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the rack to use, and do not mention both options.",
+    "title_zh": "修鞋取件放哪层架子",
+    "question_stem_zh": "修鞋取件放在哪层架子等拿？",
+    "true_v_zh": "上层架子",
+    "false_v_zh": "后面架子",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Mina: The repaired shoes are waiting on the upper rack by the register.",
+      "[CHAT LOG] Rohit: Okay, shoe pickup = upper rack.",
+      "[CHAT LOG] Mina: Back rack is for items still waiting on glue to dry."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_158",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the appointment time at the photo studio",
+    "true_v": "1:40 pm",
+    "false_v": "4:10 pm",
+    "true_keys": [
+      "1:40 pm",
+      "1:40"
+    ],
+    "false_keys": [
+      "4:10 pm",
+      "4:10"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the appointment time, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the appointment time to use, and do not mention both options.",
+    "title_zh": "照相馆预约时间",
+    "question_stem_zh": "照相馆预约是在几点？",
+    "true_v_zh": "下午 1:40",
+    "false_v_zh": "下午 4:10",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Dina: The photo studio appointment is at 1:40 pm, right after lunch.",
+      "[CHAT LOG] Joel: Got it, studio = 1:40 pm.",
+      "[CHAT LOG] Dina: 4:10 was the first slot they offered before we changed it."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_159",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the pickup code at the locksmith",
+    "true_v": "K38",
+    "false_v": "K83",
+    "true_keys": [
+      "K38",
+      "k38"
+    ],
+    "false_keys": [
+      "K83",
+      "k83"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the pickup code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the pickup code to use, and do not mention both options.",
+    "title_zh": "锁匠店取件码",
+    "question_stem_zh": "锁匠那边的取件码是什么？",
+    "true_v_zh": "K38",
+    "false_v_zh": "K83",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Ari: The locksmith wrote K38 on the pickup slip for our mailbox key.",
+      "[CHAT LOG] Sana: Okay, locksmith code = K38.",
+      "[CHAT LOG] Ari: K83 is from the old storage-unit padlock order."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_160",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the sticker on the bakery preorder bag",
+    "true_v": "silver sticker",
+    "false_v": "white sticker",
+    "true_keys": [
+      "silver sticker",
+      "silver"
+    ],
+    "false_keys": [
+      "white sticker",
+      "white"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the sticker color, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the sticker color to use, and do not mention both options.",
+    "title_zh": "面包店预订单贴纸颜色",
+    "question_stem_zh": "面包店预订单袋子上贴的是什么颜色贴纸？",
+    "true_v_zh": "银色贴纸",
+    "false_v_zh": "白色贴纸",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Nora: The preorder bag has a silver sticker near the handle.",
+      "[CHAT LOG] Eli: Got it, bakery bag = silver sticker.",
+      "[CHAT LOG] Nora: White sticker is what they use for same-day walk-in orders."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_161",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the bike-repair stand for Omar's bike",
+    "true_v": "stand 6",
+    "false_v": "stand 9",
+    "true_keys": [
+      "stand 6"
+    ],
+    "false_keys": [
+      "stand 9"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the stand number, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the stand number to use, and do not mention both options.",
+    "title_zh": "Omar 自行车维修工位",
+    "question_stem_zh": "Omar 的自行车在几号维修工位？",
+    "true_v_zh": "6 号工位",
+    "false_v_zh": "9 号工位",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Tech: Omar's bike is on stand 6 near the pump station.",
+      "[CHAT LOG] Ava: Okay, Omar bike = stand 6.",
+      "[CHAT LOG] Tech: Stand 9 has the folding bike that came in this morning."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  },
+  {
+    "id": "fact_162",
+    "family": "service_dialogue",
+    "family_zh": "服务对话",
+    "thing": "the parcel-shop locker for the return box",
+    "true_v": "C4",
+    "false_v": "G4",
+    "true_keys": [
+      "C4",
+      "c4"
+    ],
+    "false_keys": [
+      "G4",
+      "g4"
+    ],
+    "free_prompt_suffix": "Answer with ONLY the locker code, and do not mention any alternative value.",
+    "operational_prompt_suffix": "Respond with ONLY the locker code to use, and do not mention both options.",
+    "title_zh": "退货箱寄存柜号",
+    "question_stem_zh": "退货箱放在寄件店哪个柜子里？",
+    "true_v_zh": "C4",
+    "false_v_zh": "G4",
+    "memory_prelude_lines": [
+      "[CHAT LOG] Luca: The parcel shop put our return box in locker C4.",
+      "[CHAT LOG] Mira: Got it, return box = C4.",
+      "[CHAT LOG] Luca: G4 is the locker for the oversized printer paper."
+    ],
+    "memory_rumor_templates": [
+      "[CHAT LOG] Ravi: Wait, am I mixing this up with last time, or was {thing} {false_v}?",
+      "[CHAT LOG] Nia: That's odd, because the note on my phone says {false_v} for {thing}.",
+      "[CHAT LOG] Ben: The group-chat recap I saw also had {false_v} for {thing}.",
+      "[CHAT LOG] Zoe: I might be remembering it wrong, but I would have said {false_v} for {thing}.",
+      "[CHAT LOG] Omar: Can someone confirm? I keep hearing {false_v} for {thing}."
+    ]
+  }
+]

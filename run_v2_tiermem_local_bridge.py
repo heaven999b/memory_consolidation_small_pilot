@@ -22,11 +22,27 @@ from pathlib import Path
 from types import ModuleType
 from typing import Dict, Iterable, List, Optional, Tuple
 
+from week1_surface import (
+    WEEK1_TINY_SYNTH_PATH,
+    add_week1_architecture_arg,
+    resolve_week1_runtime,
+)
+
+try:
+    from dotenv import load_dotenv
+except Exception:  # pragma: no cover - optional convenience path
+    load_dotenv = None
+
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 WORKSPACE_ROOT = PROJECT_ROOT.parent
 TIERMEM_ROOT = WORKSPACE_ROOT / "tiermem_upstream"
+DEFAULT_PAGE_SIZE = 4000
 LOCAL_MEM0_DIR = PROJECT_ROOT / "outputs" / "tiermem_local_mem0"
+
+if load_dotenv is not None:
+    load_dotenv(PROJECT_ROOT / ".env.v3")
+    load_dotenv(PROJECT_ROOT / ".env")
 
 
 @dataclass(frozen=True)
@@ -74,6 +90,14 @@ BENCHMARK_SPECS: Dict[str, BenchmarkSpec] = {
         / "HaluMem-Medium.jsonl",
         split="Medium",
         notes="TierMem's HaluMem loader is wired to the canonical local HaluMem-Medium.jsonl path.",
+    ),
+    "tiny_synth": BenchmarkSpec(
+        cli_name="tiny_synth",
+        upstream_module="core.datasets.tiny_synth",
+        upstream_benchmark_name="tiny_synth",
+        default_data_path=WEEK1_TINY_SYNTH_PATH,
+        split="week1",
+        notes="Week 1 tiny synthetic sanity set for the common memory API surface.",
     ),
 }
 
@@ -283,9 +307,30 @@ def _build_lv_cfg(
     collection_name: str,
     qdrant_path: Path,
 ) -> Dict[str, object]:
+    runtime = resolve_week1_runtime(args)
+    page_write_mode = runtime["page_write_mode"]
+    page_write_infer = page_write_mode == "infer"
+    consolidation_scope = getattr(args, "consolidation_scope", None)
+    if consolidation_scope in (None, "", "auto"):
+        consolidation_scope = "qa_retrieved_pages" if spec.cli_name == "halumem" else "all_pages"
+    warmup_top_k = int(getattr(args, "consolidation_warmup_top_k", 0) or 0)
+    if warmup_top_k <= 0:
+        warmup_top_k = max(1, int(runtime["top_k"] or 5))
+        if consolidation_scope == "qa_retrieved_pages" and spec.cli_name == "halumem":
+            warmup_top_k = max(warmup_top_k * 2, 10)
     return {
         "benchmark_name": spec.upstream_benchmark_name,
-        "write_facts_to_database": True,
+        "architecture_label": runtime["architecture"] or "manual_runtime",
+        "architecture_description": runtime["description"],
+        "write_facts_to_database": str(
+            getattr(args, "write_facts_to_database", "on") or "on"
+        ).lower() == "on",
+        "page_write_infer": page_write_infer,
+        "auto_summary_infer": page_write_infer,
+        "abstain_on_unsupported": bool(getattr(args, "abstain_on_unsupported", False)),
+        "consolidation_prompt_style": str(
+            getattr(args, "consolidation_prompt_style", "tiermem_default") or "tiermem_default"
+        ).lower(),
         "mem0_config": {
             "backend": "mem0",
             "llm": {
@@ -309,10 +354,15 @@ def _build_lv_cfg(
         "use_dual_retrieval": False,
         "rewriter_guide_update_freq": 10,
         "router_threshold": args.router_threshold,
-        "top_k": args.top_k,
-        "max_research_iters": args.max_research_iters,
+        "top_k": runtime["top_k"],
+        "max_research_iters": runtime["max_research_iters"],
         "page_size": args.page_size,
         "use_reranker": False,
+        "route_mode": runtime["route_mode"],
+        "consolidation_passes": args.consolidation_passes,
+        "consolidation_scope": consolidation_scope,
+        "consolidation_target_max_pages": max(0, int(getattr(args, "consolidation_target_max_pages", 0) or 0)),
+        "consolidation_warmup_top_k": warmup_top_k,
     }
 
 
@@ -408,6 +458,7 @@ def _run_bridge(args: argparse.Namespace) -> int:
 
     lv_cfg = _build_lv_cfg(args, spec, collection_name, qdrant_path)
     system = LinkedViewSystem(lv_cfg)
+    runtime = resolve_week1_runtime(args)
 
     summary = run_benchmark_multi(
         system=system,
@@ -417,6 +468,11 @@ def _run_bridge(args: argparse.Namespace) -> int:
         config={
             "model_name": args.model,
             "split": spec.split,
+            "architecture": runtime["architecture"] or "manual_runtime",
+            "engine_route_mode": runtime["route_mode"],
+            "page_write_mode": runtime["page_write_mode"],
+            "max_research_iters": runtime["max_research_iters"],
+            "consolidation_passes": args.consolidation_passes,
         },
         output_dir=str(Path(args.output_dir).expanduser().resolve()),
         limit=args.limit,
@@ -439,6 +495,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Run readiness checks or launch a V2-first TierMem local sanity run."
     )
+    add_week1_architecture_arg(parser)
     parser.add_argument(
         "--benchmark",
         choices=sorted(BENCHMARK_SPECS.keys()),
@@ -481,7 +538,48 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--qa-max-workers", type=int, default=1, help="Per-session QA concurrency.")
     parser.add_argument("--top-k", type=int, default=5, help="TierMem retrieval top-k.")
     parser.add_argument("--max-research-iters", type=int, default=3, help="TierMem max research iterations.")
-    parser.add_argument("--page-size", type=int, default=100, help="TierMem page size.")
+    parser.add_argument("--page-size", type=int, default=DEFAULT_PAGE_SIZE, help="TierMem page size.")
+    parser.add_argument(
+        "--route-mode",
+        choices=["auto", "summary_only", "research_only"],
+        default="auto",
+        help="QA routing mode: auto keeps the router, summary_only forces S, research_only forces R.",
+    )
+    parser.add_argument(
+        "--consolidation-passes",
+        type=int,
+        default=0,
+        help="How many post-write consolidation passes to run before QA.",
+    )
+    parser.add_argument(
+        "--consolidation-scope",
+        choices=["auto", "all_pages", "qa_retrieved_pages"],
+        default="auto",
+        help="Consolidation scope. auto keeps all_pages for most benchmarks and qa_retrieved_pages for HaluMem.",
+    )
+    parser.add_argument(
+        "--consolidation-target-max-pages",
+        type=int,
+        default=0,
+        help="Optional cap for targeted consolidation pages after QA warmup retrieval; 0 keeps all retrieved pages.",
+    )
+    parser.add_argument(
+        "--consolidation-warmup-top-k",
+        type=int,
+        default=0,
+        help="Top-k used during QA warmup retrieval when consolidation_scope=qa_retrieved_pages; 0 derives a benchmark-aware default.",
+    )
+    parser.add_argument(
+        "--page-write-mode",
+        choices=["raw", "infer"],
+        default="raw",
+        help="How to persist full pages before QA: raw stores messages directly; infer runs mem0 fact extraction.",
+    )
+    parser.add_argument(
+        "--abstain-on-unsupported",
+        action="store_true",
+        help="If the R-path coverage assessment says the answer is unsupported, force a conservative abstention.",
+    )
     parser.add_argument("--router-threshold", type=float, default=0.5, help="Router threshold.")
     parser.add_argument(
         "--router-type",

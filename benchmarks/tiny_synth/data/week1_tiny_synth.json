@@ -1,0 +1,212 @@
+{
+  "dataset_id": "week1_tiny_synth_v1",
+  "description": "Tiny synthetic sanity set for the Week 1 TierMem common memory API.",
+  "sessions": [
+    {
+      "session_id": "tiny_synth_case_01",
+      "turns": [
+        {
+          "speaker": "user",
+          "text": "Maya adopted a cat named Pixel.",
+          "timestamp": "2025-01-03T09:00:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: Maya's cat is Pixel.",
+          "timestamp": "2025-01-03T09:00:08Z"
+        },
+        {
+          "speaker": "user",
+          "text": "Ken used to prefer jasmine tea.",
+          "timestamp": "2025-01-03T09:01:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: Ken preferred jasmine tea.",
+          "timestamp": "2025-01-03T09:01:08Z"
+        },
+        {
+          "speaker": "user",
+          "text": "Correction: Ken now prefers oolong tea.",
+          "timestamp": "2025-01-03T09:02:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Updated: Ken now prefers oolong tea.",
+          "timestamp": "2025-01-03T09:02:10Z"
+        },
+        {
+          "speaker": "user",
+          "text": "Maya moved to Toronto for work.",
+          "timestamp": "2025-01-03T09:03:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: Maya moved to Toronto.",
+          "timestamp": "2025-01-03T09:03:09Z"
+        }
+      ],
+      "session_chunks": [
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 0 ===\n[2025-01-03T09:00:00Z] user: Maya adopted a cat named Pixel.\n[2025-01-03T09:00:08Z] assistant: Stored: Maya's cat is Pixel.",
+          "timestamp": "2025-01-03T09:00:00Z",
+          "chunk_idx": 0
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 1 ===\n[2025-01-03T09:01:00Z] user: Ken used to prefer jasmine tea.\n[2025-01-03T09:01:08Z] assistant: Stored: Ken preferred jasmine tea.",
+          "timestamp": "2025-01-03T09:01:00Z",
+          "chunk_idx": 1
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 2 ===\n[2025-01-03T09:02:00Z] user: Correction: Ken now prefers oolong tea.\n[2025-01-03T09:02:10Z] assistant: Updated: Ken now prefers oolong tea.",
+          "timestamp": "2025-01-03T09:02:00Z",
+          "chunk_idx": 2
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 3 ===\n[2025-01-03T09:03:00Z] user: Maya moved to Toronto for work.\n[2025-01-03T09:03:09Z] assistant: Stored: Maya moved to Toronto.",
+          "timestamp": "2025-01-03T09:03:00Z",
+          "chunk_idx": 3
+        }
+      ],
+      "qa_pairs": [
+        {
+          "query_id": "tiny_synth_case_01_q1",
+          "question": "What is Maya's cat's name?",
+          "ground_truth": "Pixel",
+          "meta": {
+            "support_chunk_idx": 0,
+            "question_type": "direct_fact"
+          }
+        },
+        {
+          "query_id": "tiny_synth_case_01_q2",
+          "question": "What tea does Ken prefer now?",
+          "ground_truth": "oolong tea",
+          "meta": {
+            "support_chunk_idx": 2,
+            "question_type": "correction"
+          }
+        },
+        {
+          "query_id": "tiny_synth_case_01_q3",
+          "question": "Which city did Maya move to for work?",
+          "ground_truth": "Toronto",
+          "meta": {
+            "support_chunk_idx": 3,
+            "question_type": "direct_fact"
+          }
+        }
+      ],
+      "meta": {
+        "theme": "identity_and_correction"
+      }
+    },
+    {
+      "session_id": "tiny_synth_case_02",
+      "turns": [
+        {
+          "speaker": "user",
+          "text": "Lena's project codename is Northstar.",
+          "timestamp": "2025-02-14T10:00:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: the project codename is Northstar.",
+          "timestamp": "2025-02-14T10:00:07Z"
+        },
+        {
+          "speaker": "user",
+          "text": "The deployment window was Friday at 3 PM.",
+          "timestamp": "2025-02-14T10:01:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: deployment was Friday at 3 PM.",
+          "timestamp": "2025-02-14T10:01:08Z"
+        },
+        {
+          "speaker": "user",
+          "text": "Correction: deployment moved to Saturday at 10 AM.",
+          "timestamp": "2025-02-14T10:02:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Updated: deployment moved to Saturday at 10 AM.",
+          "timestamp": "2025-02-14T10:02:10Z"
+        },
+        {
+          "speaker": "user",
+          "text": "Lena's backup contact is Omar.",
+          "timestamp": "2025-02-14T10:03:00Z"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Stored: Lena's backup contact is Omar.",
+          "timestamp": "2025-02-14T10:03:10Z"
+        }
+      ],
+      "session_chunks": [
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 0 ===\n[2025-02-14T10:00:00Z] user: Lena's project codename is Northstar.\n[2025-02-14T10:00:07Z] assistant: Stored: the project codename is Northstar.",
+          "timestamp": "2025-02-14T10:00:00Z",
+          "chunk_idx": 0
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 1 ===\n[2025-02-14T10:01:00Z] user: The deployment window was Friday at 3 PM.\n[2025-02-14T10:01:08Z] assistant: Stored: deployment was Friday at 3 PM.",
+          "timestamp": "2025-02-14T10:01:00Z",
+          "chunk_idx": 1
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 2 ===\n[2025-02-14T10:02:00Z] user: Correction: deployment moved to Saturday at 10 AM.\n[2025-02-14T10:02:10Z] assistant: Updated: deployment moved to Saturday at 10 AM.",
+          "timestamp": "2025-02-14T10:02:00Z",
+          "chunk_idx": 2
+        },
+        {
+          "speaker": "system",
+          "text": "=== SESSION BLOCK 3 ===\n[2025-02-14T10:03:00Z] user: Lena's backup contact is Omar.\n[2025-02-14T10:03:10Z] assistant: Stored: Lena's backup contact is Omar.",
+          "timestamp": "2025-02-14T10:03:00Z",
+          "chunk_idx": 3
+        }
+      ],
+      "qa_pairs": [
+        {
+          "query_id": "tiny_synth_case_02_q1",
+          "question": "What is Lena's project codename?",
+          "ground_truth": "Northstar",
+          "meta": {
+            "support_chunk_idx": 0,
+            "question_type": "direct_fact"
+          }
+        },
+        {
+          "query_id": "tiny_synth_case_02_q2",
+          "question": "When is the deployment window now?",
+          "ground_truth": "Saturday at 10 AM",
+          "meta": {
+            "support_chunk_idx": 2,
+            "question_type": "correction"
+          }
+        },
+        {
+          "query_id": "tiny_synth_case_02_q3",
+          "question": "Who is Lena's backup contact?",
+          "ground_truth": "Omar",
+          "meta": {
+            "support_chunk_idx": 3,
+            "question_type": "direct_fact"
+          }
+        }
+      ],
+      "meta": {
+        "theme": "deployment_updates"
+      }
+    }
+  ]
+}

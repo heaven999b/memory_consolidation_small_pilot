@@ -18,6 +18,8 @@ __pycache__/
 outputs/*_cache/
 outputs/*_summarizer_log.jsonl
 outputs/actual_carry_forward_progress.json
+outputs/*.log
+outputs/*/
 outputs/tiermem_local_mem0/
 outputs/tiermem_local_qdrant/
 
@@ -29,3 +31,13 @@ outputs/expanded_benchmark_stage_main.json
 benchmarks/halumem/official_repo/data/
 benchmarks/locomo/locomo_official/data/
 benchmarks/locomo/longmemeval_official/data/
+
+# Local run artifacts and generated review surfaces
+logs/
+tmp/
+state/*.csv
+state/*.html
+state/*.json
+state/docx_*/
+state/ppt_*/
+*.bak

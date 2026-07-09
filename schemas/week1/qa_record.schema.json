@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "memory_consolidation_small_pilot/week1/qa_record.schema.json",
+  "title": "Week 1 QA Record",
+  "type": "object",
+  "required": [
+    "run_id",
+    "benchmark",
+    "system",
+    "model",
+    "phase",
+    "session_id",
+    "query_id",
+    "question",
+    "ground_truth",
+    "model_response",
+    "score",
+    "timestamp",
+    "cost_metrics",
+    "mechanism_trace"
+  ],
+  "properties": {
+    "run_id": { "type": "string" },
+    "benchmark": { "type": "string" },
+    "system": { "type": "string" },
+    "model": { "type": "string" },
+    "phase": { "const": "qa" },
+    "session_id": { "type": "string" },
+    "query_id": { "type": "string" },
+    "question": { "type": "string" },
+    "ground_truth": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      ]
+    },
+    "model_response": { "type": "string" },
+    "score": { "type": "number" },
+    "timestamp": { "type": "string" },
+    "cost_metrics": { "type": "object" },
+    "mechanism_trace": { "type": "object" }
+  },
+  "additionalProperties": true
+}

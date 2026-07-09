@@ -1,0 +1,19 @@
+{
+  "benchmark": "tiny_synth",
+  "architecture": "summary_only",
+  "description": "Week 1 pinned summary-only baseline over the tiny synthetic sanity set.",
+  "session_limit": 2,
+  "qa_limit": 3,
+  "consolidation_passes": [
+    0,
+    1
+  ],
+  "top_k": 4,
+  "max_research_iters": 1,
+  "page_write_mode": "infer",
+  "route_mode": "summary_only",
+  "page_size": 4000,
+  "max_workers": 1,
+  "write_max_workers": 1,
+  "qa_max_workers": 1
+}

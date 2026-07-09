@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "memory_consolidation_small_pilot/week1/summary.schema.json",
+  "title": "Week 1 Summary Artifact",
+  "type": "object",
+  "required": [
+    "run_id",
+    "benchmark",
+    "system",
+    "model",
+    "config",
+    "metrics",
+    "cost_summary",
+    "num_sessions",
+    "num_write_logs",
+    "num_qa_logs",
+    "timestamp"
+  ],
+  "properties": {
+    "run_id": { "type": "string" },
+    "benchmark": { "type": "string" },
+    "system": { "type": "string" },
+    "model": { "type": "string" },
+    "config": { "type": "object" },
+    "metrics": { "type": "object" },
+    "eval_report": {
+      "oneOf": [
+        { "type": "object" },
+        { "type": "null" }
+      ]
+    },
+    "cost_summary": { "type": "object" },
+    "num_sessions": { "type": "integer", "minimum": 0 },
+    "num_write_logs": { "type": "integer", "minimum": 0 },
+    "num_qa_logs": { "type": "integer", "minimum": 0 },
+    "timestamp": { "type": "string" }
+  },
+  "additionalProperties": true
+}
