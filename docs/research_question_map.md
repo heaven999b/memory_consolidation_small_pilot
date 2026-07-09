@@ -122,12 +122,6 @@ These are code files that generate research-facing artifacts.
 
 These are short external-facing progress summaries rather than internal state logs.
 
-## Round-Specific Viewing Guides
-
-- `docs/HOW_TO_VIEW_ROUND_RESULTS_20260709.md`
-
-This is the fastest “what file should I open and how should I read it?” guide for someone who did not participate in the run.
-
 ## Suggested Entry Order For New Readers
 
 1. `README.md`
