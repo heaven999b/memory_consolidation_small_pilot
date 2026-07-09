@@ -39,11 +39,24 @@ VERIFY_STEPS = [
     "verify_paper_strengthening_artifacts.py",
 ]
 
+LEGACY_SUBDIRS = [
+    "actual",
+    "benchmark",
+    "expanded_benchmark",
+    "support",
+    "v3",
+    "verify",
+]
+
 
 def resolve_step(repo_root: Path, legacy_dir: Path, step: str) -> Path:
     legacy_path = legacy_dir / step
     if legacy_path.exists():
         return legacy_path
+    for subdir in LEGACY_SUBDIRS:
+        nested_path = legacy_dir / subdir / step
+        if nested_path.exists():
+            return nested_path
     return repo_root / step
 
 

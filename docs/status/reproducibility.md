@@ -15,7 +15,7 @@ They serve different purposes.
 - TierMem bridge environment:
   - `.venv_tiermem_v2/`
 - official HaluMem eval scaffold:
-  - `.env.official_eval.example`
+  - `configs/env/.env.official_eval.example`
   - `requirements-official-eval-base.txt`
   - optional runtime target: `.venv_official_eval/`
 
@@ -63,26 +63,26 @@ It refreshes:
 - `outputs/v3_local_capability_matrix.{json,md}`
 - `outputs/v3_local_evidence_packet.{json,md}`
 - `outputs/v3_transition_status.{json,md}`
-- `state/v3_transition_snapshot.json`
+- `docs/state/v3_transition_snapshot.json`
 
 ## Real TierMem Bridge Checks
 
 Use the dedicated TierMem environment:
 
 ```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --check-only --benchmark locomo
+.venv_tiermem_v2/bin/python scripts/run/run_v2_tiermem_local_bridge.py --check-only --benchmark locomo
 ```
 
 Pre-API smoke:
 
 ```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --pre-api-smoke --benchmark locomo
+.venv_tiermem_v2/bin/python scripts/run/run_v2_tiermem_local_bridge.py --pre-api-smoke --benchmark locomo
 ```
 
 Tiny real sanity run:
 
 ```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --benchmark locomo --limit 2
+.venv_tiermem_v2/bin/python scripts/run/run_v2_tiermem_local_bridge.py --benchmark locomo --limit 2
 ```
 
 This real bridge path still requires a valid `OPENAI_API_KEY`.
@@ -94,9 +94,9 @@ Until that real bridge path succeeds, the `v3_no_rewrite_*` artifacts remain syn
 Before any live public-baseline run, prepare:
 
 ```bash
-cp .env.official_eval.example .env.official_eval
-python3 run_v3_halumem_dataset_preflight.py
-python3 run_v3_official_eval_runtime_audit.py
+cp configs/env/.env.official_eval.example .env.official_eval
+python3 archive/legacy_baselines/v3/run_v3_halumem_dataset_preflight.py
+python3 archive/legacy_baselines/v3/run_v3_official_eval_runtime_audit.py
 ```
 
 If you want a dedicated runtime later:

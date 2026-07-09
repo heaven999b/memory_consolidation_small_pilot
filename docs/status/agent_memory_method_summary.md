@@ -462,7 +462,7 @@ flowchart LR
 
 - **Memory 核心范式**：`MemTree` 风格最合适。
 - **原始证据存放**：git diff、日志片段、测试输出。
-- **抽象记忆存放**：`state/*.md`、issue notes、decision log。
+- **抽象记忆存放**：`docs/state/*.md`、issue notes、decision log。
 - **检索策略**：先向量或词汇召回模块摘要，再必要时跳回原始 diff / traceback。
 
 #### 一个更完整的 MVP 形态

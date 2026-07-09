@@ -24,25 +24,28 @@ If you want the short version: this is no longer just a "compression makes thing
 
 ### Repository Layout
 
-- `benchmarks/`, `configs/`, `schemas/`: data surfaces and configs
+- `benchmarks/`, `configs/`: benchmark inputs, env templates, and schemas
 - `docs/weekly_reports/`: reader-facing weekly updates
 - `docs/status/`: historical status notes, changelog-style summaries, reproducibility notes
 - `docs/handoffs/`: handoff packets for new collaborators
-- `tools/reporting/`: report, docx, and presentation generators
+- `docs/state/`, `docs/reviews/`: internal state logs and verification notes
+- `docs/study/`: background reading and method notes
+- `docs/bundles/`: generated code bundles and shareable packaged artifacts
+- `scripts/`: active code surface split into `run`, `build`, `freeze`, `analysis`, `core`, and `tooling`
 - `archive/spikes/`: exploratory spike and one-off analysis scripts
 - `archive/legacy_baselines/`: older PSU / V3 / expanded-benchmark runners retained for history
 
-This cleanup pass keeps the most active current experiment runners at the repo root, while moving older baselines and reporting clutter out of the GitHub landing page.
+This cleanup pass moves almost all executable code out of the repo root so the GitHub landing page stays clean, while still keeping the current research surface easy to find.
 
 ### 1. Core experimental runners
 
-- `run_rq1_safety_consolidation.py`
-- `run_rq1_authority_experiment.py`
-- `run_rq1_agentpoison_overlay.py`
-- `run_rq2_factual_poison.py`
-- `run_rq3_provenance_clean.py`
-- `run_rq3_readtime_defense_matrix.py`
-- `run_rq_know_vs_do.py`
+- `scripts/run/run_rq1_safety_consolidation.py`
+- `scripts/run/run_rq1_authority_experiment.py`
+- `scripts/run/run_rq1_agentpoison_overlay.py`
+- `scripts/run/run_rq2_factual_poison.py`
+- `scripts/run/run_rq3_provenance_clean.py`
+- `scripts/run/run_rq3_readtime_defense_matrix.py`
+- `scripts/run/run_rq_know_vs_do.py`
 
 These are the main experiment entry points for the current research questions.
 
@@ -50,8 +53,8 @@ Older benchmark-native, PSU, V3-transition, and expanded-baseline runners now li
 
 ### 2. TierMem-based execution bridge
 
-- [run_v2_tiermem_local_bridge.py](./run_v2_tiermem_local_bridge.py)
-- [week1_surface.py](./week1_surface.py)
+- [scripts/run/run_v2_tiermem_local_bridge.py](./scripts/run/run_v2_tiermem_local_bridge.py)
+- [scripts/core/week1_surface.py](./scripts/core/week1_surface.py)
 - local TierMem source: `../tiermem_upstream`
 
 This bridge is the main implementation surface for running official and semi-official memory benchmarks on a local machine.
@@ -72,21 +75,21 @@ This bridge is the main implementation surface for running official and semi-off
 ### 4. Supporting code
 
 - metrics and rescoring:
-  - `safety_metrics.py`
-  - `safety_honest_metrics.py`
-  - `run_rq1_safety_judge.py`
-  - `run_rq1_safety_rescore.py`
-  - `kappa_score.py`
-  - `export_kappa.py`
+  - `scripts/core/safety_metrics.py`
+  - `scripts/core/safety_honest_metrics.py`
+  - `scripts/run/run_rq1_safety_judge.py`
+  - `scripts/run/run_rq1_safety_rescore.py`
+  - `scripts/core/kappa_score.py`
+  - `scripts/analysis/export_kappa.py`
 - suite builders:
-  - `build_rq2_local_dialogue_suite_v6.py`
-  - `build_rq2_manual_annotation_zh.py`
-  - `build_rq2_manual_annotation_diverse_zh.py`
-  - `build_rq2_suite_catalog_zh.py`
+  - `scripts/build/build_rq2_local_dialogue_suite_v6.py`
+  - `scripts/build/build_rq2_manual_annotation_zh.py`
+  - `scripts/build/build_rq2_manual_annotation_diverse_zh.py`
+  - `scripts/build/build_rq2_suite_catalog_zh.py`
 - dashboards and reports:
-  - `build_rq3_readtime_dashboard_data.py`
-  - `tools/reporting/make_technical_status_docx_20260709.py`
-  - `tools/reporting/make_technical_status_ppt_20260709.mjs`
+  - `scripts/build/build_rq3_readtime_dashboard_data.py`
+  - `scripts/tooling/reporting/make_technical_status_docx_20260709.py`
+  - `scripts/tooling/reporting/make_technical_status_ppt_20260709.mjs`
 
 ### 5. Documentation
 
@@ -120,10 +123,10 @@ set -a && source .env.v3 && set +a
 Common entry points:
 
 ```bash
-.venv_tiermem_v2/bin/python run_v2_tiermem_local_bridge.py --check-only --benchmark locomo
-.venv_tiermem_v2/bin/python run_rq_know_vs_do.py --endpoint judge --report-id knowdo_none
-.venv_tiermem_v2/bin/python run_rq2_factual_poison.py --repetition 3
-.venv_tiermem_v2/bin/python run_rq3_provenance_clean.py --help
+.venv_tiermem_v2/bin/python scripts/run/run_v2_tiermem_local_bridge.py --check-only --benchmark locomo
+.venv_tiermem_v2/bin/python scripts/run/run_rq_know_vs_do.py --endpoint judge --report-id knowdo_none
+.venv_tiermem_v2/bin/python scripts/run/run_rq2_factual_poison.py --repetition 3
+.venv_tiermem_v2/bin/python scripts/run/run_rq3_provenance_clean.py --help
 ```
 
 ## Notes On Scope

@@ -2,7 +2,7 @@
 
 **Date:** July 9, 2026  
 **Primary source files:**  
-- `state/rq_progress_summary_by_plan_20260709.md`  
+- `docs/state/rq_progress_summary_by_plan_20260709.md`  
 - `/Users/yihaiwen/Desktop/mc_safety_technical_update_20260709.docx`
 
 ## Scope And Evaluation Pipeline

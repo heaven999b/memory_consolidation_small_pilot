@@ -57,9 +57,9 @@ All three configs pin:
 
 - schema doc: [week1_artifact_schema.md](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/docs/week1_artifact_schema.md:1)
 - machine schemas:
-  - [memory_write_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/memory_write_record.schema.json:1)
-  - [qa_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/qa_record.schema.json:1)
-  - [summary.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/summary.schema.json:1)
+  - [memory_write_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/memory_write_record.schema.json:1)
+  - [qa_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/qa_record.schema.json:1)
+  - [summary.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/summary.schema.json:1)
 
 ### 5. One-command Week 1 sanity runner
 

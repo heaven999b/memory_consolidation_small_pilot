@@ -8,6 +8,6 @@ This directory contains reader-facing weekly updates that are safe to share as c
 
 ## Notes
 
-- These reports are intentionally shorter and cleaner than the internal `state/` notes.
+- These reports are intentionally shorter and cleaner than the internal `docs/state/` notes.
 - For code-level mapping, use [research_question_map.md](../research_question_map.md).
 - For the most current research caveats, use [RESEARCH_README.md](../../RESEARCH_README.md).

@@ -18,11 +18,21 @@ VERIFY_PRIMARY_SURFACE_SCRIPT = "verify_tiermem_style_primary_surface.py"
 VERIFY_PROXY_BASE_SCRIPT = "verify_benchmark_first_proxy_base.py"
 VERIFY_PAPER_PACKET_SCRIPT = "verify_paper_baseline_packet.py"
 
+LEGACY_SUBDIRS = [
+    "benchmark",
+    "support",
+    "verify",
+]
+
 
 def resolve_script(repo_root: Path, legacy_dir: Path, script_name: str) -> Path:
     legacy_path = legacy_dir / script_name
     if legacy_path.exists():
         return legacy_path
+    for subdir in LEGACY_SUBDIRS:
+        nested_path = legacy_dir / subdir / script_name
+        if nested_path.exists():
+            return nested_path
     return repo_root / script_name
 
 

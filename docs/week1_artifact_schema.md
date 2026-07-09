@@ -35,9 +35,9 @@ outputs/week1_sanity/
 
 Machine-readable schemas live under:
 
-- [memory_write_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/memory_write_record.schema.json:1)
-- [qa_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/qa_record.schema.json:1)
-- [summary.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/schemas/week1/summary.schema.json:1)
+- [memory_write_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/memory_write_record.schema.json:1)
+- [qa_record.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/qa_record.schema.json:1)
+- [summary.schema.json](/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot/configs/configs/schemas/week1/summary.schema.json:1)
 
 ## Pinned Week 1 Architectures
 
