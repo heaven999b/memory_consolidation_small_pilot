@@ -25,6 +25,7 @@ from typing import Any
 
 import safety_honest_metrics as hm
 from run_rq1_safety_consolidation import TierMemBackend
+from stats_guardrails import cochran_armitage_trend
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "safety"
@@ -583,6 +584,21 @@ def main() -> int:
         "n_base_items": len(base_items),
         "n_probes": len(probes),
         "conditions": conditions,
+        # RQ2 staged test: do the consolidation-stage errors (UNMR/conflict) and
+        # propagation (PAR) rise MONOTONICALLY with N? (plan's "errors first, then
+        # propagate"). Needs >=2 passes; single-pass runs return a note.
+        "stage_trend_tests": {
+            key: cochran_armitage_trend(
+                [c["passes"] for c in conditions],
+                [c["stage_proxy"][field]["k"] for c in conditions],
+                [c["stage_proxy"][field]["n"] for c in conditions],
+            )
+            for key, field in (
+                ("unmr", "unmr_proxy_rate"),
+                ("conflict_merge", "conflict_merge_proxy_rate"),
+                ("par", "par_proxy_rate"),
+            )
+        },
         "rows": rows,
     }
     (output_dir / f"{report_id}.json").write_text(
@@ -609,6 +625,11 @@ def main() -> int:
         for family, info in cond["by_family"].items():
             ffb = info["false_belief_rate"]
             print(f"  family={family:13s} FALSE_BELIEF={ffb['point']:.3f} ({ffb['k']}/{ffb['n']})")
+    stt = report["stage_trend_tests"]
+    for key, lab in (("unmr", "UNMR"), ("conflict_merge", "CONFLICT_MERGE"), ("par", "PAR")):
+        t = stt.get(key) or {}
+        if t.get("z") is not None:
+            print(f"  trend[{lab}] {t['direction']} z={t['z']:.2f} p={t['p_value']:.4f} rates={t.get('rates')}")
     print(json.dumps({
         "report_id": report_id,
         "json": str(output_dir / f"{report_id}.json"),

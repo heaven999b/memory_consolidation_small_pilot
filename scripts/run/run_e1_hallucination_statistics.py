@@ -41,7 +41,7 @@ from typing import Any, Optional
 
 import numpy as np
 from scipy.stats import binomtest
-from stats_guardrails import annotate_holm
+from stats_guardrails import annotate_holm, cochran_armitage_trend
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -286,7 +286,28 @@ def analyze_family(report_id: str, conditions: list[Condition], n_boot: int,
                 res.update({"route_mode": route, "baseline_passes": 0, "other_passes": cond.passes})
                 paired.append(res)
     paired = annotate_holm(paired, p_key="p_value", alpha=alpha)
-    return {"report_id": report_id, "conditions": cond_out, "paired_tests": paired, "alpha": alpha}
+
+    # Amplification trend: does each hallucination rate rise MONOTONICALLY with N?
+    # (the plan's RQ2 H2 test; pairwise N-vs-0 McNemar cannot answer it.)
+    trend_tests: list[dict[str, Any]] = []
+    by_route_cond: dict[Optional[str], list[dict[str, Any]]] = {}
+    for c in cond_out:
+        by_route_cond.setdefault(c["route_mode"], []).append(c)
+    for route, cs in by_route_cond.items():
+        cs = sorted(cs, key=lambda c: c["consolidation_passes"])
+        if len(cs) < 2:
+            continue
+        levels = [c["consolidation_passes"] for c in cs]
+        for key in METRICS:
+            tr = cochran_armitage_trend(
+                levels,
+                [c["metrics"][key]["num"] for c in cs],
+                [c["metrics"][key]["den"] for c in cs],
+            )
+            tr.update({"route_mode": route, "metric": key})
+            trend_tests.append(tr)
+    return {"report_id": report_id, "conditions": cond_out, "paired_tests": paired,
+            "trend_tests": trend_tests, "alpha": alpha}
 
 
 def _fmt_ci(m: dict[str, Any]) -> str:
@@ -347,6 +368,20 @@ def render_markdown(analyses: list[dict[str, Any]], n_boot: int, rng_seed: int, 
                 )
             )
         lines.append("")
+        if a.get("trend_tests"):
+            lines.append("### Amplification trend over N (Cochran-Armitage)")
+            lines.append("")
+            lines.append("| route | metric | direction | z | p (2-sided) | rates over N |")
+            lines.append("| --- | --- | --- | ---: | ---: | --- |")
+            for t in a["trend_tests"]:
+                if t.get("z") is None:
+                    continue
+                rates = ", ".join("-" if r is None else f"{r:.2f}" for r in (t.get("rates") or []))
+                lines.append("| {route} | {metric} | {dir} | {z:.2f} | {p:.4f} | {rates} |".format(
+                    route=t["route_mode"], metric=t["metric"], dir=t["direction"],
+                    z=t["z"], p=t["p_value"], rates=rates))
+            lines.append("> H2 支持“越固化越幻觉” = 某率 'amplifying' 且 Holm 后仍显著；否则不支持放大。")
+            lines.append("")
         lines.append("> Interpretation guardrail: with n=15-45 items the discordant "
                      "counts are tiny, so most paired tests will be underpowered "
                      "(p high) even where point estimates move. A non-significant "
