@@ -25,7 +25,7 @@ If you want the short version: this is no longer just a "compression makes thing
 ### Repository Layout
 
 - `benchmarks/`, `configs/`: benchmark inputs, env templates, and schemas
-- `docs/weekly_reports/`: reader-facing weekly updates
+- `weekly_reports/`: reader-facing weekly updates
 - `docs/status/`: historical status notes, changelog-style summaries, reproducibility notes
 - `docs/handoffs/`: handoff packets for new collaborators
 - `docs/state/`, `docs/reviews/`: internal state logs and verification notes
@@ -97,7 +97,7 @@ This bridge is the main implementation surface for running official and semi-off
 - [docs/status/reproducibility.md](./docs/status/reproducibility.md): environment and rerun notes
 - [docs/research_question_map.md](./docs/research_question_map.md): where each RQ lives in code
 - [docs/operator_branches.md](./docs/operator_branches.md): comparison branches for alternative memory-management styles
-- [docs/weekly_reports/README.md](./docs/weekly_reports/README.md): reader-facing weekly reports
+- [weekly_reports/README.md](./weekly_reports/README.md): reader-facing weekly reports
 
 ## Research Question Map
 
