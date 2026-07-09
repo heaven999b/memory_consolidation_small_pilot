@@ -37,9 +37,9 @@ from typing import Any, Optional
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-MICRO_RUNNER = PROJECT_ROOT / "run_v2_tiermem_micro_slice.py"
-JUDGE_RUNNER = PROJECT_ROOT / "run_v2_tiermem_micro_failure_mode_judge.py"
-STATS_RUNNER = PROJECT_ROOT / "run_e1_multiseed_statistics.py"
+MICRO_RUNNER = PROJECT_ROOT / "scripts" / "run" / "run_v2_tiermem_micro_slice.py"
+JUDGE_RUNNER = PROJECT_ROOT / "scripts" / "run" / "run_v2_tiermem_micro_failure_mode_judge.py"
+STATS_RUNNER = PROJECT_ROOT / "scripts" / "run" / "run_e1_multiseed_statistics.py"
 OUTPUT_DIR = PROJECT_ROOT / "outputs" / "v2_tiermem_micro"
 MICRO_REPORTS = OUTPUT_DIR / "micro_reports"
 

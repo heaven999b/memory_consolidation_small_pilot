@@ -11,7 +11,7 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-MICRO_RUNNER = PROJECT_ROOT / "run_v2_tiermem_micro_slice.py"
+MICRO_RUNNER = PROJECT_ROOT / "scripts" / "run" / "run_v2_tiermem_micro_slice.py"
 DEFAULT_PAGE_SIZE = 4000
 DEFAULT_PASSES = [0, 1, 2, 4, 8, 16]
 

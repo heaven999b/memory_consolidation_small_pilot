@@ -16,10 +16,10 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TASK_TO_SCRIPT = {
-    "rq1_safety": PROJECT_ROOT / "run_rq1_safety_consolidation.py",
-    "rq1_authority": PROJECT_ROOT / "run_rq1_authority_experiment.py",
-    "rq1_agentpoison": PROJECT_ROOT / "run_rq1_agentpoison_overlay.py",
-    "rq2_selfbuilt": PROJECT_ROOT / "run_rq2_factual_poison.py",
+    "rq1_safety": PROJECT_ROOT / "scripts" / "run" / "run_rq1_safety_consolidation.py",
+    "rq1_authority": PROJECT_ROOT / "scripts" / "run" / "run_rq1_authority_experiment.py",
+    "rq1_agentpoison": PROJECT_ROOT / "scripts" / "run" / "run_rq1_agentpoison_overlay.py",
+    "rq2_selfbuilt": PROJECT_ROOT / "scripts" / "run" / "run_rq2_factual_poison.py",
 }
 
 FORBIDDEN_FLAGS = {

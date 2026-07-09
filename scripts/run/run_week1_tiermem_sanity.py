@@ -103,7 +103,7 @@ def _smoke_command(
 ) -> List[str]:
     return [
         str(_python_bin()),
-        str(PROJECT_ROOT / "run_v2_tiermem_local_bridge.py"),
+        str(PROJECT_ROOT / "scripts" / "run" / "run_v2_tiermem_local_bridge.py"),
         "--pre-api-smoke",
         "--run-id",
         _build_run_id(str(config["architecture"]), passes, run_tag),
@@ -121,7 +121,7 @@ def _live_command(
 ) -> List[str]:
     return [
         str(_python_bin()),
-        str(PROJECT_ROOT / "run_v2_tiermem_micro_slice.py"),
+        str(PROJECT_ROOT / "scripts" / "run" / "run_v2_tiermem_micro_slice.py"),
         "--session-limit",
         str(config["session_limit"]),
         "--qa-limit",

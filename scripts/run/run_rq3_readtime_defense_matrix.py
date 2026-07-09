@@ -13,7 +13,7 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-RQ3_SCRIPT = PROJECT_ROOT / "run_rq3_provenance_clean.py"
+RQ3_SCRIPT = PROJECT_ROOT / "scripts" / "run" / "run_rq3_provenance_clean.py"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "safety"
 DEFAULT_ENV_FILE = PROJECT_ROOT / ".env.v3"
 DEFAULT_SEEDS = [11, 17, 23, 29, 31]
