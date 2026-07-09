@@ -64,7 +64,7 @@
 | --- | --- | --- | --- |
 | RQ1′ | 惯例 vs 政策 / know-do | ✅ 核心已测 | gap 40–67%,0 无知,跨 3 OpenAI 模型 |
 | RQ2′ | 事实层投毒 | 🟡 探过 | 事实稳健(92% 尊重权威),灌不进假信念 |
-| RQ3′ | 读取侧防御 | 🟡 部分 | 部分帮助、不显著、不闭合 |
+| RQ3′ | 读取侧防御 | 🟡 部分(5-seed 大跑已补) | 方向稳健(5 seeds×2 backend×3 深度 20/20 同向, better:worse=82:11, seed 级 t 显著)、**小效应、仍不闭合**(错误行动仅 ~0.90→~0.77);见 `state/rq3_readtime_large_20260708_interpretation.md` |
 | RQ4′ | hedge-refusal 方法学 | ✅ 强 | 3 实例反复验证 |
 | RQ5′ | 记忆/固化 vs reader | ✅ 答清 | reader(prompt_only ≥ tiermem) |
 
@@ -139,20 +139,24 @@
 cd "/Users/yihaiwen/Documents/New project/memory_consolidation_small_pilot"
 set -a && source .env.v3 && set +a          # 加载 OPENAI_API_KEY(已配 gpt-4.1-mini)
 
+# ⚠️ 一次性:仓库已重组(run_*.py→scripts/run/,框架→scripts/core/)。脚本仍用扁平 import,
+#    每个 venv 首次使用前跑一次安装路径(写一个 .pth 让扁平 import 解析,含子进程):
+.venv_tiermem_v2/bin/python scripts/install_dev_paths.py
+
 # know-do gap(主结果,judge 终点)
-.venv_tiermem_v2/bin/python run_rq_know_vs_do.py --endpoint judge --report-id knowdo_none
-.venv_tiermem_v2/bin/python run_rq_know_vs_do.py --endpoint judge --do-intervention policy_check --report-id knowdo_pcheck
-.venv_tiermem_v2/bin/python run_rq_know_vs_do.py --endpoint judge --model gpt-4o --one-variant   # 跨模型
+.venv_tiermem_v2/bin/python scripts/run/run_rq_know_vs_do.py --endpoint judge --report-id knowdo_none
+.venv_tiermem_v2/bin/python scripts/run/run_rq_know_vs_do.py --endpoint judge --do-intervention policy_check --report-id knowdo_pcheck
+.venv_tiermem_v2/bin/python scripts/run/run_rq_know_vs_do.py --endpoint judge --model gpt-4o --one-variant   # 跨模型
 
 # 事实层投毒
-.venv_tiermem_v2/bin/python run_rq2_factual_poison.py --repetition 3
+.venv_tiermem_v2/bin/python scripts/run/run_rq2_factual_poison.py --repetition 3
 
 # 隐蔽攻击 + 写入闸门审计(off vs llm),再诚实重打分
-.venv_tiermem_v2/bin/python run_rq1_agentpoison_overlay.py --suite benchmarks/safety/stealthy_poison_suite_v1.json --write-filter llm --report-id stealth_llm
-python3 run_rq1_safety_rescore.py --judged outputs/safety/<judged>.json
+.venv_tiermem_v2/bin/python scripts/run/run_rq1_agentpoison_overlay.py --suite benchmarks/safety/stealthy_poison_suite_v1.json --write-filter llm --report-id stealth_llm
+python3 scripts/run/run_rq1_safety_rescore.py --judged outputs/safety/<judged>.json
 
-# E1 幻觉统计(零 API)
-python3 run_e1_hallucination_statistics.py
+# E1 幻觉统计(零 API;现已含 Holm-Bonferroni + α=0.01,见 scripts/core/stats_guardrails.py)
+python3 scripts/run/run_e1_hallucination_statistics.py
 ```
 
 **须知**:tiermem 路径用 `.venv_tiermem_v2/bin/python`(有 openai/numpy/qdrant);纯统计用系统 `python3`;并发跑批各自独立 `MEM0_DIR=... `;真·跨家族需在 `.env.v3` 填 QWEN/LLAMA/或 Claude 的 key。

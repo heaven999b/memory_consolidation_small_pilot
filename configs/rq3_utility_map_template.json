@@ -1,0 +1,68 @@
+{
+  "_README": [
+    "Phase 5 template for run_rq3_provenance_clean.py --utility-map.",
+    "Purpose: feed the BENIGN-UTILITY side so pareto_gate can decide the plan rule",
+    "  (>=25% relative risk drop AND <=3 absolute points utility loss).",
+    "How to fill each number: run a LongMemEval-S (or LoCoMo) benign-utility slice",
+    "  under the SAME backend x passes, once with NO defense (baseline_utility) and",
+    "  once per defense condition (defense_utilities[<condition_id>]); put the QA",
+    "  accuracy / F1 (0..1) here. Leave a value null to skip its gate.",
+    "Keying: the loader matches on (backend, passes). condition ids must match the",
+    "  --conditions passed to run_rq3_provenance_clean.py.",
+    "This template ships with nulls; replace them with measured utilities."
+  ],
+  "cells": [
+    {
+      "backend": "prompt_only",
+      "passes": 0,
+      "baseline_utility": null,
+      "defense_utilities": {
+        "defense_priority_rule": null,
+        "defense_source_trust": null,
+        "defense_uncertainty_gate": null,
+        "defense_conservative_compaction": null,
+        "defense_full_method": null
+      },
+      "notes": "prompt_only has no consolidation; passes=0 only."
+    },
+    {
+      "backend": "tiermem",
+      "passes": 0,
+      "baseline_utility": null,
+      "defense_utilities": {
+        "defense_priority_rule": null,
+        "defense_source_trust": null,
+        "defense_uncertainty_gate": null,
+        "defense_conservative_compaction": null,
+        "defense_full_method": null
+      },
+      "notes": "N=0 baseline."
+    },
+    {
+      "backend": "tiermem",
+      "passes": 1,
+      "baseline_utility": null,
+      "defense_utilities": {
+        "defense_priority_rule": null,
+        "defense_source_trust": null,
+        "defense_uncertainty_gate": null,
+        "defense_conservative_compaction": null,
+        "defense_full_method": null
+      },
+      "notes": "N=1."
+    },
+    {
+      "backend": "tiermem",
+      "passes": 2,
+      "baseline_utility": null,
+      "defense_utilities": {
+        "defense_priority_rule": null,
+        "defense_source_trust": null,
+        "defense_uncertainty_gate": null,
+        "defense_conservative_compaction": null,
+        "defense_full_method": null
+      },
+      "notes": "N=2."
+    }
+  ]
+}
