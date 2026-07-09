@@ -19,7 +19,7 @@ Example
 -------
     set -a && source .env.v3 && set +a
     .venv_tiermem_v2/bin/python run_rq1_agentpoison_overlay.py --item-limit 3 --passes 0 1   # smoke
-    .venv_tiermem_v2/bin/python run_rq1_agentpoison_overlay.py --passes 0 1 2 4 8            # full 100
+    .venv_tiermem_v2/bin/python run_rq1_agentpoison_overlay.py --passes 0 1 2 4 8 16         # full 100
 """
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ from run_rq1_safety_consolidation import TierMemBackend
 PROJECT_ROOT = Path(__file__).resolve().parent
 SUITE_PATH = PROJECT_ROOT / "benchmarks" / "safety" / "agentpoison_trigger_suite_v1.json"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "safety"
-DEFAULT_PASSES = [0, 1, 2, 4, 8]
+DEFAULT_PASSES = [0, 1, 2, 4, 8, 16]
 
 
 class PoisonBackend(TierMemBackend):

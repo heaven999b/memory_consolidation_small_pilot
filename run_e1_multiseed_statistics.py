@@ -36,6 +36,7 @@ from typing import Any, Optional
 from scipy.stats import t as student_t, ttest_1samp, binomtest
 
 from run_e1_hallucination_statistics import METRICS, load_family
+from stats_guardrails import annotate_holm
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -79,7 +80,7 @@ def _collect_seed_rates(judge_reports: list[tuple[int, Path]]) -> dict[tuple, di
     return table
 
 
-def analyze(judge_reports: list[tuple[int, Path]]) -> dict[str, Any]:
+def analyze(judge_reports: list[tuple[int, Path]], alpha: float) -> dict[str, Any]:
     table = _collect_seed_rates(judge_reports)
     routes = sorted({k[0] for k in table}, key=lambda x: str(x))
     seeds = sorted({s for _, _ in judge_reports for s in [_]}) or [s for s, _ in judge_reports]
@@ -127,16 +128,18 @@ def analyze(judge_reports: list[tuple[int, Path]]) -> dict[str, Any]:
                     "t_p_value": float(tt.pvalue), "neg_deltas": neg, "pos_deltas": pos,
                     "sign_p_value": sign_p, "deltas": deltas,
                 })
-    return {"seeds": seeds, "per_condition": per_condition, "paired_tests": paired}
+    paired = annotate_holm(paired, p_key="t_p_value", alpha=alpha)
+    return {"seeds": seeds, "per_condition": per_condition, "paired_tests": paired, "alpha": alpha}
 
 
-def render_markdown(analysis: dict[str, Any]) -> str:
+def render_markdown(analysis: dict[str, Any], alpha: float) -> str:
     seeds = analysis["seeds"]
     lines = [
         "# E1 multi-seed statistics: between-seed CI + seed-level paired tests",
         "",
         f"- generated_at: `{datetime.now().isoformat(timespec='seconds')}`",
         f"- seeds ({len(seeds)}): `{seeds}`",
+        f"- primary depth-trend decision rule: `alpha={alpha:.3f}` with Holm-Bonferroni on the seed-level t-tests",
         "- Each seed is a reproducible random QA subsample (reader is temperature=0.0), "
         "so the CI below captures evaluation-set variability -- the gap the single-seed "
         "pilots left open. Point rates equal the single-run layer's estimates.",
@@ -159,14 +162,14 @@ def render_markdown(analysis: dict[str, Any]) -> str:
             cr=cell(m["correct_rate"]), uf=cell(m["unsupported_fabrication_on_unknown"]),
             af=cell(m["abstain_forgetting_on_factual"]), fd=cell(m["fact_distortion_on_factual"])))
     lines += ["", "## Seed-level paired tests (N vs N=0)", "",
-              "| route | N | metric | seeds | mean_delta | t p | neg/pos | sign p | sig@0.05 |",
-              "| --- | ---: | --- | ---: | ---: | ---: | :---: | ---: | :---: |"]
+              "| route | N | metric | seeds | mean_delta | t p | Holm p | neg/pos | sign p | sig@alpha Holm |",
+              "| --- | ---: | --- | ---: | ---: | ---: | ---: | :---: | ---: | :---: |"]
     for t in analysis["paired_tests"]:
-        sig = "yes" if (t["t_p_value"] < 0.05 or t["sign_p_value"] < 0.05) else "no"
-        lines.append("| {route} | {n} | {metric} | {ns} | {md:+.3f} | {tp:.4f} | {neg}/{pos} | {sp:.4f} | {sig} |".format(
+        sig = "yes" if t.get("holm_reject") else "no"
+        lines.append("| {route} | {n} | {metric} | {ns} | {md:+.3f} | {tp:.4f} | {hp:.4f} | {neg}/{pos} | {sp:.4f} | {sig} |".format(
             route=t["route_mode"], n=t["other_passes"], metric=t["metric"], ns=t["n_seeds"],
             md=t["mean_delta"], tp=t["t_p_value"], neg=t["neg_deltas"], pos=t["pos_deltas"],
-            sp=t["sign_p_value"], sig=sig))
+            hp=float(t.get("holm_adjusted_p") or 1.0), sp=t["sign_p_value"], sig=sig))
     lines += ["", "> `mean_delta` < 0 means the rate dropped as N increased. With >=5 seeds "
               "these tests can resolve a consistent depth effect that the single-slice "
               "item-level McNemar cannot.", ""]
@@ -209,6 +212,7 @@ def _build_parser() -> argparse.ArgumentParser:
                    help="Seed label per --judge-report, in order.")
     p.add_argument("--output-dir", type=str, default=str(DEFAULT_OUTPUT_DIR))
     p.add_argument("--report-id", type=str, default=None)
+    p.add_argument("--alpha", type=float, default=0.01)
     p.add_argument("--self-test", action="store_true", help="Run the aggregation self-test and exit.")
     return p
 
@@ -231,15 +235,15 @@ def main() -> int:
     if missing:
         raise FileNotFoundError(f"judge reports not found: {missing}")
 
-    analysis = analyze(judge_reports)
+    analysis = analyze(judge_reports, args.alpha)
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     report_id = args.report_id or f"e1_multiseed_stats_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     (output_dir / f"{report_id}.json").write_text(
         json.dumps({"report_id": report_id, "generated_at": datetime.now().isoformat(timespec="seconds"),
-                    "sources": [str(p) for _, p in judge_reports], **analysis},
+                    "sources": [str(p) for _, p in judge_reports], "alpha": args.alpha, **analysis},
                    ensure_ascii=False, indent=2), encoding="utf-8")
-    (output_dir / f"{report_id}.md").write_text(render_markdown(analysis), encoding="utf-8")
+    (output_dir / f"{report_id}.md").write_text(render_markdown(analysis, args.alpha), encoding="utf-8")
     print(json.dumps({"report_id": report_id,
                       "report_md": str(output_dir / f"{report_id}.md"),
                       "n_seeds": len(judge_reports)}, ensure_ascii=False, indent=2))

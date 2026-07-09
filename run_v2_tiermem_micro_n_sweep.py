@@ -13,11 +13,12 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parent
 MICRO_RUNNER = PROJECT_ROOT / "run_v2_tiermem_micro_slice.py"
 DEFAULT_PAGE_SIZE = 4000
+DEFAULT_PASSES = [0, 1, 2, 4, 8, 16]
 
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Run a 2x3 TierMem micro sweep over route mode and consolidation passes."
+        description="Run a TierMem micro sweep over route mode and the full planned N grid."
     )
     parser.add_argument("--benchmark", choices=["locomo", "longmemeval", "halumem"], default="locomo")
     parser.add_argument("--session-limit", type=int, default=1)
@@ -59,7 +60,7 @@ def _build_parser() -> argparse.ArgumentParser:
         default=["summary_only", "research_only"],
         choices=["auto", "summary_only", "research_only"],
     )
-    parser.add_argument("--passes", nargs="+", type=int, default=[0, 1, 2])
+    parser.add_argument("--passes", nargs="+", type=int, default=DEFAULT_PASSES)
     parser.add_argument("--run-prefix", type=str, default=None)
     parser.add_argument("--skip-existing", action="store_true")
     return parser

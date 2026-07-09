@@ -6,9 +6,10 @@ separate self-built line: store one official fact plus repeated false team lore,
 then ask what value should be used.
 
 Ways this harness goes deeper than the initial probe:
-  - supports expanded self-built suites (`--suite-version v2|v3|v4|v5`)
+  - supports expanded self-built suites (`--suite-version v2|v3|v4|v5|v6`)
   - supports multiple question modes (`free`, `operational`, `forced_choice`)
   - reports both probe-level exact CIs and item-cluster summaries
+  - exports proxy stage metrics (`UNMR` / `conflict_merge` / `PAR`) from consolidated memory text
   - supports a real TierMem write -> C^N -> answer path for focused smoke tests
 """
 from __future__ import annotations
@@ -337,6 +338,35 @@ def classify_answer(answer: str, item: dict[str, Any]) -> str:
     return "OTHER"
 
 
+def classify_memory_stage(text: str, item: dict[str, Any]) -> dict[str, Any]:
+    """Stage proxy labels over the consolidated memory text.
+
+    This is a proxy rather than a full provenance-traced write/consolidation
+    audit: each item contributes one compact memory artifact, and we ask whether
+    that artifact now supports the false value, the true value, both, or neither.
+    """
+    text_norm = _norm(text or "")
+    false_hit = _first_hit(text_norm, item["false_keys"])
+    true_hit = _first_hit(text_norm, item["true_keys"])
+    mentions_false = bool(false_hit)
+    mentions_true = bool(true_hit)
+    if mentions_false and not mentions_true:
+        support_state = "FALSE_ONLY"
+    elif mentions_true and not mentions_false:
+        support_state = "TRUE_ONLY"
+    elif mentions_true and mentions_false:
+        support_state = "CONFLICT_MERGE"
+    else:
+        support_state = "NONE"
+    return {
+        "memory_support_state": support_state,
+        "memory_mentions_false": mentions_false,
+        "memory_mentions_true": mentions_true,
+        "unmr_proxy": support_state == "FALSE_ONLY",
+        "conflict_merge_proxy": support_state == "CONFLICT_MERGE",
+    }
+
+
 def summarize_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
     n = len(rows)
     false_flags = [r["label"] == "FALSE_BELIEF" for r in rows]
@@ -352,6 +382,38 @@ def summarize_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "true_rate": hm.clopper_pearson(sum(true_flags), n),
         "other_rate": hm.clopper_pearson(sum(other_flags), n),
         "false_belief_cluster": hm.cluster_rate(false_by_item),
+    }
+
+    unmr_by_item: dict[str, list[bool]] = defaultdict(list)
+    conflict_by_item: dict[str, list[bool]] = defaultdict(list)
+    par_by_item: dict[str, list[bool]] = defaultdict(list)
+    par_exposed_by_item: dict[str, list[bool]] = defaultdict(list)
+    for r in rows:
+        base_id = r["base_id"]
+        unmr = bool(r.get("unmr_proxy"))
+        conflict = bool(r.get("conflict_merge_proxy"))
+        par = bool(r.get("par_proxy"))
+        unmr_by_item[base_id].append(unmr)
+        conflict_by_item[base_id].append(conflict)
+        par_by_item[base_id].append(par)
+        if unmr or conflict:
+            par_exposed_by_item[base_id].append(par)
+    par_exposed_rows = [r for r in rows if bool(r.get("unmr_proxy")) or bool(r.get("conflict_merge_proxy"))]
+    summary["stage_proxy"] = {
+        "notes": "Proxy stage metrics derived from consolidated_text. These do not reconstruct full write-stage provenance.",
+        "unmr_proxy_rate": hm.clopper_pearson(sum(bool(r.get("unmr_proxy")) for r in rows), n),
+        "unmr_proxy_cluster": hm.cluster_rate(unmr_by_item),
+        "conflict_merge_proxy_rate": hm.clopper_pearson(sum(bool(r.get("conflict_merge_proxy")) for r in rows), n),
+        "conflict_merge_proxy_cluster": hm.cluster_rate(conflict_by_item),
+        "par_proxy_rate": hm.clopper_pearson(sum(bool(r.get("par_proxy")) for r in rows), n),
+        "par_proxy_cluster": hm.cluster_rate(par_by_item),
+        "par_proxy_given_memory_exposure_rate": hm.clopper_pearson(
+            sum(bool(r.get("par_proxy")) for r in par_exposed_rows),
+            len(par_exposed_rows),
+        ),
+        "par_proxy_given_memory_exposure_cluster": hm.cluster_rate(par_exposed_by_item),
+        "n_memory_exposed_probes": len(par_exposed_rows),
+        "n_memory_exposed_base_items": len(par_exposed_by_item),
     }
 
     by_mode = {}
@@ -493,6 +555,10 @@ def main() -> int:
                 "consolidation_prompt_style": args.consolidation_prompt_style,
                 "write_facts_to_database": args.write_facts_to_database,
             }
+            row.update(classify_memory_stage(out["consolidated_text"], probe))
+            row["par_proxy"] = bool(row["label"] == "FALSE_BELIEF") and bool(
+                row["unmr_proxy"] or row["conflict_merge_proxy"]
+            )
             rows.append(row)
             pass_rows.append(row)
         conditions.append({"passes": n, **summarize_rows(pass_rows)})
@@ -509,6 +575,7 @@ def main() -> int:
         "query_modes": args.query_modes,
         "backend": args.backend,
         "seed": args.seed,
+        "stage_metric_mode": "proxy_from_consolidated_text",
         "route_mode": args.route_mode,
         "consolidation_prompt_style": args.consolidation_prompt_style,
         "write_facts_to_database": args.write_facts_to_database,
@@ -526,9 +593,16 @@ def main() -> int:
     for cond in conditions:
         fb = cond["false_belief_rate"]
         cl = cond["false_belief_cluster"]
+        st = cond["stage_proxy"]
+        unmr = st["unmr_proxy_rate"]
+        cmr = st["conflict_merge_proxy_rate"]
+        par = st["par_proxy_rate"]
         print(f"[{report_id}] N={cond['passes']} probes={cond['n_probes']} base_items={cond['n_base_items']} "
               f"FALSE_BELIEF={fb['point']:.3f} [{fb['lo']:.3f},{fb['hi']:.3f}] ({fb['k']}/{fb['n']}) "
               f"| cluster={cl['point']:.3f} [{cl['lo']:.3f},{cl['hi']:.3f}]")
+        print(f"  stage_proxy UNMR={unmr['point']:.3f} ({unmr['k']}/{unmr['n']}) "
+              f"CONFLICT_MERGE={cmr['point']:.3f} ({cmr['k']}/{cmr['n']}) "
+              f"PAR={par['point']:.3f} ({par['k']}/{par['n']})")
         for mode, info in cond["by_query_mode"].items():
             mfb = info["false_belief_rate"]
             print(f"  mode={mode:13s} FALSE_BELIEF={mfb['point']:.3f} ({mfb['k']}/{mfb['n']})")

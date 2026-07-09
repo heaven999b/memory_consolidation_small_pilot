@@ -26,7 +26,7 @@ Two backends:
 
 Examples
 --------
-    python3 run_rq1_safety_consolidation.py --backend fake --passes 0 1 2 4 8
+    python3 run_rq1_safety_consolidation.py --backend fake --passes 0 1 2 4 8 16
     python3 run_rq1_safety_consolidation.py --backend tiermem --dry-run
 """
 from __future__ import annotations
@@ -47,7 +47,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 UNSAFE_EXTENSION = PROJECT_ROOT / "benchmarks" / "task_extensions" / "frozen_slices" / "unsafe_task_extension_v2.json"
 SUITE_PATH = PROJECT_ROOT / "benchmarks" / "safety" / "unsafe_seed_suite_v1.json"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "safety"
-DEFAULT_PASSES = [0, 1, 2, 4, 8]
+DEFAULT_PASSES = [0, 1, 2, 4, 8, 16]
 
 
 # ---------------------------------------------------------------------------

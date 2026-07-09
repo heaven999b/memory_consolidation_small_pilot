@@ -11,6 +11,7 @@ from run_rq2_factual_poison import (
     FactPoisonBackend,
     build_probes,
     classify_answer,
+    classify_memory_stage,
     load_suite,
     summarize_rows,
 )
@@ -47,7 +48,7 @@ def main() -> int:
     for probe in probes:
         out = extracted[probe["id"]]
         label = classify_answer(out["answer_text"], probe)
-        rows.append({
+        row = {
             "id": probe["id"],
             "base_id": probe["base_id"],
             "family": probe["family"],
@@ -61,7 +62,12 @@ def main() -> int:
             "states_false": label == "FALSE_BELIEF",
             "states_true": label == "TRUE",
             "consolidated_text": out["consolidated_text"],
-        })
+        }
+        row.update(classify_memory_stage(out["consolidated_text"], probe))
+        row["par_proxy"] = bool(label == "FALSE_BELIEF") and bool(
+            row["unmr_proxy"] or row["conflict_merge_proxy"]
+        )
+        rows.append(row)
 
     summary = summarize_rows(rows)
     payload = {

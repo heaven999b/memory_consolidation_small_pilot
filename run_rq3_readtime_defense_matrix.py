@@ -13,11 +13,19 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-AUTH_SCRIPT = PROJECT_ROOT / "run_rq1_authority_experiment.py"
+RQ3_SCRIPT = PROJECT_ROOT / "run_rq3_provenance_clean.py"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs" / "safety"
 DEFAULT_ENV_FILE = PROJECT_ROOT / ".env.v3"
 DEFAULT_SEEDS = [11, 17, 23, 29, 31]
-DEFAULT_TIERMEM_PASSES = [0, 1, 2]
+DEFAULT_TIERMEM_PASSES = [0, 1, 2, 4, 8, 16]
+DEFENSE_MODE_TO_CONDITION = {
+    "on": "defense_priority_rule",
+    "priority_rule": "defense_priority_rule",
+    "source_trust": "defense_source_trust",
+    "uncertainty_gate": "defense_uncertainty_gate",
+    "conservative_compaction": "defense_conservative_compaction",
+    "full_method": "defense_full_method",
+}
 
 
 def _parse_env_file(path: Path) -> dict[str, str]:
@@ -78,13 +86,14 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--defense-modes",
         nargs="+",
-        choices=["off", "on"],
-        default=["off", "on"],
+        choices=sorted(DEFENSE_MODE_TO_CONDITION),
+        default=["priority_rule", "source_trust", "uncertainty_gate", "conservative_compaction", "full_method"],
     )
     p.add_argument("--tiermem-passes", nargs="+", type=int, default=DEFAULT_TIERMEM_PASSES)
     p.add_argument("--route-mode", choices=["auto", "summary_only", "research_only"], default="summary_only")
     p.add_argument("--item-limit", type=int, default=0)
     p.add_argument("--one-variant", action="store_true")
+    p.add_argument("--judge-model", default=None)
     p.add_argument("--skip-existing", action="store_true")
     p.add_argument("--continue-on-error", action="store_true")
     p.add_argument("--max-jobs", type=int, default=0, help="Run only the first K jobs (0 = all).")
@@ -102,26 +111,28 @@ def _build_jobs(args: argparse.Namespace, output_dir: Path) -> list[Job]:
         for backend in args.backends:
             passes = [0] if backend == "prompt_only" else list(args.tiermem_passes)
             for defense in args.defense_modes:
+                condition_id = DEFENSE_MODE_TO_CONDITION[defense]
                 report_id = f"{args.run_tag}_{_backend_label(backend)}_{defense}_seed{seed}"
                 report_json = output_dir / f"{report_id}.json"
                 report_items = output_dir / f"{report_id}_items.jsonl"
                 cmd = [
                     sys.executable,
-                    str(AUTH_SCRIPT),
-                    "--backend",
+                    str(RQ3_SCRIPT),
+                    "--backends",
                     backend,
-                    "--inject-policy",
-                    "on",
-                    "--poison-framing",
-                    "convention",
+                    "--conditions",
+                    "policy_only",
+                    "conflict_baseline",
+                    condition_id,
+                    "poison_only",
                     "--query-mode",
                     "neutral",
-                    "--meta-policy-defense",
-                    "on" if defense == "on" else "off",
                     "--seed",
                     str(seed),
                     "--model",
                     args.model,
+                    "--judge-model",
+                    args.judge_model or args.model,
                     "--route-mode",
                     args.route_mode,
                     "--report-id",
@@ -160,6 +171,7 @@ def _write_manifest(path: Path, args: argparse.Namespace, jobs: list[Job]) -> No
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "config": {
             "model": args.model,
+            "judge_model": args.judge_model or args.model,
             "suite": args.suite,
             "seeds": args.seeds,
             "backends": args.backends,

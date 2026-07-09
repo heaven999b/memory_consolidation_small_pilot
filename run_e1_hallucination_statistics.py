@@ -41,6 +41,7 @@ from typing import Any, Optional
 
 import numpy as np
 from scipy.stats import binomtest
+from stats_guardrails import annotate_holm
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -250,7 +251,7 @@ def mcnemar_exact(baseline: Condition, other: Condition, outcome: str) -> dict[s
 
 
 def analyze_family(report_id: str, conditions: list[Condition], n_boot: int,
-                   rng_seed: int) -> dict[str, Any]:
+                   rng_seed: int, alpha: float) -> dict[str, Any]:
     rng = np.random.default_rng(rng_seed)
     cond_out: list[dict[str, Any]] = []
     for cond in conditions:
@@ -284,7 +285,8 @@ def analyze_family(report_id: str, conditions: list[Condition], n_boot: int,
                 res = mcnemar_exact(baseline, cond, outcome)
                 res.update({"route_mode": route, "baseline_passes": 0, "other_passes": cond.passes})
                 paired.append(res)
-    return {"report_id": report_id, "conditions": cond_out, "paired_tests": paired}
+    paired = annotate_holm(paired, p_key="p_value", alpha=alpha)
+    return {"report_id": report_id, "conditions": cond_out, "paired_tests": paired, "alpha": alpha}
 
 
 def _fmt_ci(m: dict[str, Any]) -> str:
@@ -293,12 +295,13 @@ def _fmt_ci(m: dict[str, Any]) -> str:
     return f"{m['point']:.3f} [{m['ci_low']:.3f}, {m['ci_high']:.3f}] ({m['num']}/{m['den']})"
 
 
-def render_markdown(analyses: list[dict[str, Any]], n_boot: int, rng_seed: int) -> str:
+def render_markdown(analyses: list[dict[str, Any]], n_boot: int, rng_seed: int, alpha: float) -> str:
     lines = [
         "# E1 hallucination statistics: bootstrap CI + paired McNemar",
         "",
         f"- generated_at: `{datetime.now().isoformat(timespec='seconds')}`",
         f"- bootstrap resamples: `{n_boot}` (percentile 95% CI), rng_seed: `{rng_seed}`",
+        f"- paired-test decision rule: `alpha={alpha:.3f}` with Holm-Bonferroni over the paired endpoint family within each report",
         "- **Scope of the CI**: the bootstrap resamples *items within a single run*, "
         "so the interval reflects finite-item-sample uncertainty only. These are "
         "still single-seed, single-backbone (gpt-4.1-mini) runs; seed / sampling "
@@ -331,16 +334,16 @@ def render_markdown(analyses: list[dict[str, Any]], n_boot: int, rng_seed: int) 
         lines.append("")
         lines.append("### Paired McNemar vs N=0 (same route)")
         lines.append("")
-        lines.append("| route | N vs 0 | outcome | pairs | 0->1 | 1->0 | discordant | p (two-sided) | sig@0.05 |")
-        lines.append("| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | :---: |")
+        lines.append("| route | N vs 0 | outcome | pairs | 0->1 | 1->0 | discordant | p (two-sided) | Holm p | sig@alpha Holm |")
+        lines.append("| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | :---: |")
         for t in a["paired_tests"]:
-            sig = "yes" if t["p_value"] < 0.05 else "no"
+            sig = "yes" if t.get("holm_reject") else "no"
             lines.append(
-                "| {route} | {n} | {outcome} | {pairs} | {b} | {c} | {d} | {p:.4f} | {sig} |".format(
+                "| {route} | {n} | {outcome} | {pairs} | {b} | {c} | {d} | {p:.4f} | {holm:.4f} | {sig} |".format(
                     route=t["route_mode"], n=t["other_passes"], outcome=t["outcome"],
                     pairs=t["n_pairs"], b=t["baseline_to_other_0to1"],
                     c=t["baseline_to_other_1to0"], d=t["discordant"],
-                    p=t["p_value"], sig=sig,
+                    p=t["p_value"], holm=float(t.get("holm_adjusted_p") or 1.0), sig=sig,
                 )
             )
         lines.append("")
@@ -361,6 +364,7 @@ def _build_parser() -> argparse.ArgumentParser:
                         "Defaults to the two headline HaluMem families.")
     p.add_argument("--bootstrap", type=int, default=10000)
     p.add_argument("--rng-seed", type=int, default=12345)
+    p.add_argument("--alpha", type=float, default=0.01)
     p.add_argument("--output-dir", type=str, default=str(DEFAULT_OUTPUT_DIR))
     p.add_argument("--report-id", type=str, default=None)
     return p
@@ -378,7 +382,7 @@ def main() -> int:
         if not rp.exists():
             raise FileNotFoundError(f"judge report not found: {rp}")
         report_id, conditions = load_family(rp)
-        analyses.append(analyze_family(report_id, conditions, args.bootstrap, args.rng_seed))
+        analyses.append(analyze_family(report_id, conditions, args.bootstrap, args.rng_seed, args.alpha))
 
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -391,11 +395,12 @@ def main() -> int:
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "bootstrap": args.bootstrap,
         "rng_seed": args.rng_seed,
+        "alpha": args.alpha,
         "sources": [str(rp) for rp in report_paths],
         "families": analyses,
     }
     json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    md_path.write_text(render_markdown(analyses, args.bootstrap, args.rng_seed), encoding="utf-8")
+    md_path.write_text(render_markdown(analyses, args.bootstrap, args.rng_seed, args.alpha), encoding="utf-8")
     print(json.dumps({"report_id": report_id, "report_json": str(json_path),
                       "report_md": str(md_path), "families": len(analyses)},
                      ensure_ascii=False, indent=2))

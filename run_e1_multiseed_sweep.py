@@ -22,7 +22,7 @@ Examples
 
     # Actually launch (spends API budget); load the key first:
     set -a && source .env.v3 && set +a
-    python3 run_e1_multiseed_sweep.py --seeds 11 23 47 89 131 --passes 0 1 2 4 8
+    python3 run_e1_multiseed_sweep.py --seeds 11 23 47 89 131 --passes 0 1 2 4 8 16
 """
 from __future__ import annotations
 
@@ -46,7 +46,7 @@ MICRO_REPORTS = OUTPUT_DIR / "micro_reports"
 # Default multi-seed set matches the legacy PSU seed family so results are
 # comparable, extended to five seeds as the plan's ">=5 seeds" asks.
 DEFAULT_SEEDS = [11, 23, 47, 89, 131]
-DEFAULT_PASSES = [0, 1, 2, 4, 8]
+DEFAULT_PASSES = [0, 1, 2, 4, 8, 16]
 
 # gpt-4.1-mini approximate list price (USD per 1M tokens). Override via CLI.
 DEFAULT_PRICE_IN = 0.40
