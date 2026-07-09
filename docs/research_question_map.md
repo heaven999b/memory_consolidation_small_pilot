@@ -116,8 +116,9 @@ These are code files that generate research-facing artifacts.
 
 ## Reader-Facing Weekly Reports
 
-- `weekly_reports/week1_report_20260709_en.md`
 - `weekly_reports/README.md`
+- `weekly_reports/week1/README.md`
+- `weekly_reports/week1/week1_report_20260709_en.md`
 
 These are short external-facing progress summaries rather than internal state logs.
 

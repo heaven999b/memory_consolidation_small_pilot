@@ -1,9 +1,14 @@
 # Week 1 Technical Update
 
 **Date:** July 9, 2026  
-**Primary source files:**  
-- `docs/state/rq_progress_summary_by_plan_20260709.md`  
-- `/Users/yihaiwen/Desktop/mc_safety_technical_update_20260709.docx`
+**Companion files:**  
+- [week1_metric_and_parameter_guide.md](./week1_metric_and_parameter_guide.md)  
+- [week1_artifact_index.md](./week1_artifact_index.md)  
+- [supporting_materials/README.md](./supporting_materials/README.md)
+
+**Primary source files used for this summary:**  
+- `supporting_materials/rq_progress_summary_by_plan_20260709.md`  
+- `supporting_materials/OPERATOR_GUIDE.md`
 
 ## Scope And Evaluation Pipeline
 
@@ -15,6 +20,8 @@ Week 1 used one shared pipeline:
 4. Score the final answer with a **negation-aware LLM judge** as the primary endpoint.
 
 Lexical metrics were kept only as secondary audits because they repeatedly overstated both risk and defense success. The main settings were `prompt_only`, TierMem `summary_only`, older TierMem `auto`, and read-time policy-priority defense.
+
+The copied tables, CSVs, and dashboards behind these claims are bundled under `supporting_materials/` so the report can be reviewed without browsing the whole repository.
 
 ## RQ Status Summary
 
