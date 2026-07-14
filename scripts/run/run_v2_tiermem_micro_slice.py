@@ -96,7 +96,13 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--sample-qa", action="store_true",
                         help="Randomly sample qa_limit QA per session under --seed instead of head-truncating.")
     parser.add_argument("--session-pool", type=int, default=0,
-                        help="If > session_limit and --seed set, draw session_limit sessions from this larger pool.")
+                        help="If > session_limit and --seed set, draw session_limit sessions from this larger pool. "
+                             "With --stratify-by it caps the user pool the four families are drawn from (0 = all).")
+    parser.add_argument("--stratify-by", choices=["question_type"], default=None,
+                        help="RQ2 four-family stratified sampling by question_type (replaces head-truncation, "
+                             "so multi-hop/temporal/conflict aren't systematically dropped).")
+    parser.add_argument("--family-quota", default=None,
+                        help="per-family quota, e.g. single_hop=30,multi_hop=30,temporal_update=30,conflict=15,abstention=15")
     return parser
 
 
@@ -108,8 +114,21 @@ def _slice_sessions(
     seed: int | None = None,
     sample_qa: bool = False,
     session_pool: int = 0,
+    stratify_by: str | None = None,
+    family_quota: str | None = None,
 ) -> list[dict[str, Any]]:
     import random
+
+    if stratify_by == "question_type":
+        # RQ2 four-family stratified sampling across the user pool (--session-pool
+        # caps how many users to draw from; 0 = all). Replaces head-truncation so
+        # scarce question types (multi-hop/temporal/conflict) aren't dropped.
+        from rq2_dataset_build import stratified_slice, parse_quota
+        all_sessions = list(dataset_module.iter_sessions(split=split, limit=(session_pool or 0)))
+        sliced, report = stratified_slice(all_sessions, parse_quota(family_quota), seed)
+        for s in sliced:
+            s.setdefault("micro_slice_meta", {})["rq2_family_report"] = report
+        return sliced
 
     rng = random.Random(seed) if seed is not None else None
     # When resampling sessions we need a pool larger than session_limit to draw
@@ -354,6 +373,8 @@ def main() -> int:
         seed=args.seed,
         sample_qa=args.sample_qa,
         session_pool=args.session_pool,
+        stratify_by=args.stratify_by,
+        family_quota=args.family_quota,
     )
     if not sessions:
         raise RuntimeError(f"No sessions loaded for benchmark={args.benchmark}.")

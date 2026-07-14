@@ -12,24 +12,16 @@
     {
       "label": "openai_default",
       "backend": "openai_compatible",
-      "ready": false,
-      "missing_env": [
-        "OPENAI_API_KEY",
-        "OPENAI_BASE_URL",
-        "OPENAI_MODEL"
-      ],
+      "ready": true,
+      "missing_env": [],
       "deepseek_cli_found": null,
       "notes": "Generic OpenAI-compatible profile. Suitable when a GPT-style model is exposed through a standard chat-completions endpoint."
     },
     {
       "label": "gpt_openai_profile",
       "backend": "openai_compatible",
-      "ready": false,
-      "missing_env": [
-        "GPT_OPENAI_API_KEY",
-        "GPT_OPENAI_BASE_URL",
-        "GPT_OPENAI_MODEL"
-      ],
+      "ready": true,
+      "missing_env": [],
       "deepseek_cli_found": null,
       "notes": "Dedicated GPT-profile alias so A2 can report a named non-DeepSeek backbone separately from the default profile."
     },
@@ -59,11 +51,16 @@
     }
   ],
   "verdict": {
-    "multi_backbone_ready": false,
+    "multi_backbone_ready": true,
     "ready_profiles": [
-      "deepseek_cli_default"
+      "deepseek_cli_default",
+      "openai_default",
+      "gpt_openai_profile"
     ],
-    "non_deepseek_ready_profiles": [],
-    "note": "The repo can now route to non-DeepSeek backends, but fewer than two named alternative profiles are configured."
+    "non_deepseek_ready_profiles": [
+      "openai_default",
+      "gpt_openai_profile"
+    ],
+    "note": "At least two named non-DeepSeek backbone profiles are configured, so cross-backbone A2 runs can start."
   }
 }

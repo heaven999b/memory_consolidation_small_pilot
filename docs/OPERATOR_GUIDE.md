@@ -198,7 +198,7 @@ python3 $RUN/run_rq1_safety_rescore.py --judged outputs/safety/<judged>.json   #
 ### 5.3 可靠性：Cohen's κ（人 vs judge）
 ```bash
 python3 $CORE/kappa_score.py        # 产出 outputs/safety/kappa_result.json
-python3 $CORE/export_kappa.py # 导出可标注表；gen_kappa_html.py 出可视化
+python3 $ANA/export_kappa.py # 导出可标注表；$ANA/gen_kappa_html.py 出可视化
 ```
 > 现状：RQ1 安全轴已有真 κ=0.85（n=30）；**RQ2 的 `human_label` 还全空，需要真人标注后再算 κ。**
 

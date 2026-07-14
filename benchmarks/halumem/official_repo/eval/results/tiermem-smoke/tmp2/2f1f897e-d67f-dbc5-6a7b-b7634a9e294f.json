@@ -1,0 +1,1278 @@
+{
+    "memory_integrity_records": [
+        {
+            "index": 2,
+            "memory_content": "Martin Mark's current job as director at Huaxin Consulting is negatively affecting his mental health.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 8,
+            "memory_content": "Martin Mark's emotional state fluctuates between concern for his health and optimism for future job opportunities.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 10,
+            "memory_content": "Martin Mark shared anecdotes of resolving past conflicts through innovation and teamwork.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_integrity_score": 2
+        },
+        {
+            "memory_content": "Martin Mark is considering a career change due to a desire for higher financial stability.",
+            "memory_type": "Event Memory",
+            "reason": "This interference memory point introduces an alternative motivation for Martin Mark's career change, focusing on financial stability rather than health impacts.",
+            "source_memory_index": 1,
+            "is_update": "False",
+            "original_memories": [],
+            "memory_source": "interference",
+            "reference_memory_content": "Martin Mark is considering a career change due to health impacts from his current role.",
+            "reference_memory_index": 1,
+            "reference_memory_type": "Event Memory",
+            "index": 11,
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 1.0,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_integrity_score": 0
+        },
+        {
+            "memory_content": "Martin Mark's creative motivation is to collaborate with diverse teams to generate innovative solutions.",
+            "memory_type": "Persona Memory",
+            "reason": "This interference memory point suggests a different aspect of Martin Mark's creative motivation, emphasizing collaboration instead of using assistant tools.",
+            "source_memory_index": 2,
+            "is_update": "False",
+            "original_memories": [],
+            "memory_source": "interference",
+            "reference_memory_content": "Martin Mark's creative motivation is to use assistant tools to inspire ideas and overcome creative blocks.",
+            "reference_memory_index": 6,
+            "reference_memory_type": "Persona Memory",
+            "index": 12,
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 1.0,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 2,
+            "memory_content": "Martin appreciates Golden Retrievers for their calm demeanor and ability to adapt to different situations.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 3,
+            "memory_content": "Martin's interaction with a friend's Golden Retriever impressed him and influenced his pet preference.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 5,
+            "memory_content": "Martin values adaptability and calm demeanor in pets, which he finds crucial for his active lifestyle.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 4,
+            "memory_content": "Martin sees pets as essential for emotional support and companionship, enhancing his mental well-being.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 6,
+            "memory_content": "Martin's recent pet preference change reflects his openness to new experiences and interactions.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 7,
+            "memory_content": "Martin discussed how pets provide relaxation and comfort, balancing his demanding career.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 8,
+            "memory_content": "Martin expressed optimism about integrating his new pet preference into his daily life.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "index": 9,
+            "memory_content": "Martin's evolving pet preference signifies his desire to explore new interactions and experiences.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "False",
+            "original_memories": [],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "memory_content": "Martin's evolving pet preference signifies his interest in exploring different pet species and their unique behaviors.",
+            "memory_type": "Persona Memory",
+            "reason": "This interference memory point introduces a variation in Martin's interest, focusing on species diversity rather than new interactions.",
+            "source_memory_index": 1,
+            "is_update": "False",
+            "original_memories": [],
+            "memory_source": "interference",
+            "reference_memory_content": "Martin's evolving pet preference signifies his desire to explore new interactions and experiences.",
+            "reference_memory_index": 9,
+            "reference_memory_type": "Persona Memory",
+            "index": 10,
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 1.0,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        },
+        {
+            "memory_content": "Martin's recent pet preference change highlights his willingness to try unconventional pet choices.",
+            "memory_type": "Persona Memory",
+            "reason": "This interference memory point suggests a different reason for Martin's openness, emphasizing unconventional choices over new experiences.",
+            "source_memory_index": 2,
+            "is_update": "False",
+            "original_memories": [],
+            "memory_source": "interference",
+            "reference_memory_content": "Martin's recent pet preference change reflects his openness to new experiences and interactions.",
+            "reference_memory_index": 6,
+            "reference_memory_type": "Persona Memory",
+            "index": 11,
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 1.0,
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_integrity_score": 2
+        }
+    ],
+    "memory_accuracy_records": [
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin is currently a director at Huaxin Consulting. [Scene: Career Reflection]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin believes a new role could inspire fresh ideas and help him overcome creative blocks. [Scene: Creative Motivation]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin has always used tools to inspire ideas as part of his creative process. [Scene: Creative Motivation]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin values collaboration and believes it has helped him resolve past conflicts through innovation and teamwork. [Scene: Collaboration Value]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin's past experiences include resolving conflicts through teamwork, demonstrating the power of collaborative efforts. [Scene: Collaboration Value]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin thrives in environments that encourage open communication and innovative thinking. [Scene: Work Environment Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 06:58:11, the user planned to research companies' values and their impact on communities to ensure alignment with the user's own values and aspirations. [Scene: Career Planning]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:02:18, the user stated having a few contacts in the industry who might provide valuable insights and that networking has always been a key part of the user's career development. [Scene: Career Networking]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:06:57, the user stated focusing on positive aspects and reminding themselves of long-term goals to find balance and stay true to personal values. [Scene: Maintaining Positive Mindset]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:09:37, the user stated that yoga helps maintain mental clarity and flexibility, which are essential for the user's demanding role. [Scene: Stress Management]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:12:13, the user planned to prioritize regular exercise and mindfulness, ensuring time for self-care amidst work demands. [Scene: Self-Care Planning]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:19:04, the user planned to set specific times for exercise and mindfulness activities and treat them as non-negotiable appointments with themselves. [Scene: Self-Care Scheduling]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "On December 15, 2025, at 07:27:31, the user stated that discussing work-life balance during interviews is important to ensure the role supports the user's health and goals. [Scene: Job Interview Preparation]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user is open to negotiating aspects of a role to find one that aligns with the user's values and supports the user's well-being. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user focuses primarily on finding a role that aligns with the user's humanitarian goals and personal well-being. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user considers financial stability to be secondary to the user's humanitarian goals and personal well-being. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user measures success by the impact on healthcare access and the ability to maintain personal health and creativity. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user plans to track progress by setting milestones and celebrating small victories. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user stays motivated by reminding the user of the bigger picture. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user aims to enhance leadership skills and deepen understanding of global health initiatives to better serve communities. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user is considering enrolling in online courses and seeking mentorship from industry leaders to support the user's growth. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user believes that interactions with mentors and industry leaders will offer new perspectives and inspire innovative approaches to healthcare challenges. [Scene: Career Goals Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user plans to share experiences through workshops and collaborative projects to foster a culture of innovation and learning. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user believes that empathetic nature helps in understanding diverse perspectives. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user balances priorities by setting clear goals and being adaptable to change while staying focused on core values. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user believes that debate skills encourage open dialogue and idea exchange. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user aims to ensure that creative motivation and desire for higher financial stability complement goals by aligning them with a long-term vision and being open to new opportunities. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user plans to apply lessons from resolving past conflicts through innovation and collaboration by fostering a collaborative environment and encouraging innovative problem-solving in the team. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The user envisions the team working together to develop solutions that enhance healthcare access and promote well-being in underserved communities. [Scene: Leadership Development]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Empowering a team involves providing resources, fostering a supportive culture, and encouraging continuous learning and growth. [Scene: Leadership Philosophy]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Balancing guidance with autonomy involves setting clear expectations and trusting the team to execute their ideas. [Scene: Leadership Strategy]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "Adapting a leadership approach involves actively listening to the team and being open to feedback to ensure alignment with goals. [Scene: Leadership Adaptation]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_content": "The leadership vision includes inspiring others to prioritize healthcare access and well-being to create a ripple effect of positive change. [Scene: Leadership Vision]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "A person spent time at a friend's house and interacted with the friend's Golden Retriever on January 6, 2026. [Scene: Pet Interaction]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person found the Golden Retriever to be a gentle creature on January 6, 2026. [Scene: Pet Interaction]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person found the adaptability of the Golden Retriever to be really impressive on January 6, 2026. [Scene: Pet Interaction]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers are known for their calm demeanor and ability to adapt to various situations. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person is interested in exploring different pet species and their unique behaviors as of January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person shifted their pet preference from Labradors to Golden Retrievers, aligning with their values of adaptability and companionship on January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person believes that pets provide significant emotional support and companionship, enhancing mental well-being, especially in balancing a demanding career as of January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person expressed openness to new experiences and interactions on January 6, 2026. [Scene: Personal Values]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person values the emotional support and companionship that pets offer as of January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers have a gentle nature that complements the person's desire for relaxation and comfort as of January 6, 2026. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person is optimistic about integrating the new preference for Golden Retrievers into their daily life on January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person is willing to try unconventional pet choices, showcasing a broader interest in exploring unique pet behaviors as of January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person finds the calm demeanor of pets crucial for their active lifestyle, especially after a long day as of January 6, 2026. [Scene: Lifestyle Balance]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person's evolving pet preference signifies a desire to explore new interactions and experiences as of January 6, 2026. [Scene: Pet Preference]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers fit perfectly into the person's lifestyle by providing both companionship and relaxation as of January 6, 2026. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person has always valued adaptability in pets as of January 6, 2026. [Scene: Personal Values]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers embody the trait of adaptability well as of January 6, 2026. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The person appreciates the gentle nature in pets as of January 6, 2026. [Scene: Personal Values]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The gentle nature of Golden Retrievers impressed the person on January 6, 2026. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The balance provided by pets is essential for the person as of January 6, 2026. [Scene: Lifestyle Balance]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Achieving balance between personal preferences and professional responsibilities is vital. [Scene: Personal and Professional Balance]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can play a significant role in achieving balance between personal preferences and professional responsibilities. [Scene: Personal and Professional Balance]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers have a calm and adaptable nature. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers offer a blend of relaxation and companionship. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user changed their pet preference recently, reflecting openness to new experiences and interactions. [Scene: Pet Preference Change]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's recent pet preference change highlights willingness to try unconventional pet choices. [Scene: Pet Preference Change]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's evolving pet preference signifies interest in exploring different pet species and their unique behaviors. [Scene: Pet Preference Change]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user is optimistic about how the new pet preference will fit into their life as of January 6, 2026. [Scene: Pet Preference Integration]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers are known for their gentle nature and adaptability. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers are ideal companions for an active lifestyle. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's evolving pet preference signifies a desire to explore new interactions and experiences. [Scene: Pet Preference Change]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user appreciates that Golden Retrievers can adapt to different situations as of January 6, 2026. [Scene: Pet Adaptability]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can provide relaxation and comfort, balancing a demanding career. [Scene: Work-Life Balance]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers can fit seamlessly into various environments. [Scene: Pet Adaptability]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's appreciation for adaptability in pets aligns with their lifestyle values. [Scene: Personal Values]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The calm demeanor of Golden Retrievers is an essential trait for the user's lifestyle. [Scene: Pet Characteristics]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's interaction with a friend's pet influenced the user's choice of Golden Retriever as a pet. [Scene: Pet Influence]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can offer significant emotional support and companionship, enhancing mental well-being. [Scene: Emotional Support]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user has always valued pets that can offer relaxation and comfort as of January 6, 2026. [Scene: Pet Preferences]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user values adaptability as a significant trait in pets. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers embody adaptability well and fit seamlessly into various lifestyles and environments. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's appreciation for adaptability in pets highlights the user's values and how those values align with the user's lifestyle. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's evolving pet preference signifies the user's interest in exploring different pet species and their unique behaviors. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can provide relaxation and comfort, which helps balance a demanding career. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user is optimistic about integrating the new pet preference into the user's life. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers are known for their gentle nature and adaptability, making them ideal companions for an active lifestyle. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's evolving pet preference signifies the user's desire to explore new interactions and experiences. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's openness to exploring new interactions and experiences is admirable. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The recent pet preference change highlights the user's willingness to try unconventional pet choices. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 1,
+            "is_included_in_golden_memories": "false"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers have a calm demeanor and adaptability that fit perfectly into the user's lifestyle, providing companionship and relaxation. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can offer significant emotional support and companionship, enhancing mental well-being, especially in balancing a demanding career. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user appreciates how Golden Retrievers can adapt to different situations. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The calm demeanor of Golden Retrievers is an essential trait for the user's lifestyle. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's preference for pets with a calm demeanor aligns with the user's values of adaptability and companionship. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's interaction with a friend's pet has influenced the user's pet choice. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers are known for offering relaxation and comfort. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user has always valued pets that can offer relaxation and comfort. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's recent pet preference change reflects the user's openness to new experiences and interactions. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can enhance mental well-being by offering emotional support and companionship, which is essential for maintaining balance in a demanding career. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's interaction with a friend's pet influenced the user's choice of pet preference. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's preference for pets with calm demeanor aligns with the user's values of adaptability and companionship. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets enhance mental well-being by offering emotional support and companionship, which is essential for maintaining balance in a demanding career. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's recent pet preference change reflects openness to new experiences and interactions. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user appreciates adaptability as a significant trait in pets. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user is optimistic about how the new pet preference will fit into the user's life as of January 6, 2026. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Pets can provide relaxation and comfort, balancing a demanding career. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's evolving pet preference signifies a desire to explore new interactions and experiences. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's openness to exploring new interactions and experiences highlights a willingness to try unconventional pet choices. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "The user's change in pet preference is a step towards exploring new interactions and experiences as of January 6, 2026. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        },
+        {
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_content": "Golden Retrievers have a calm demeanor and adaptability, fitting perfectly into the user's lifestyle by providing companionship and relaxation. [Scene: Pet Preference Discussion]",
+            "memory_accuracy_score": 2,
+            "is_included_in_golden_memories": "true"
+        }
+    ],
+    "memory_update_records": [
+        {
+            "index": 3,
+            "memory_content": "Martin Mark aims to find a job that better aligns with his personal well-being, humanitarian goals, and career aspirations.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark aims to find a job that better aligns with his personal well-being and career goals."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "The user focuses primarily on finding a role that aligns with the user's humanitarian goals and personal well-being. [Scene: Career Goals Discussion]",
+                "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]",
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "Martin is currently a director at Huaxin Consulting. [Scene: Career Reflection]",
+                "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+                "The user is open to negotiating aspects of a role to find one that aligns with the user's values and supports the user's well-being. [Scene: Career Goals Discussion]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Correct"
+        },
+        {
+            "index": 1,
+            "memory_content": "Martin Mark is considering a career change due to the impact of his current role on his mental health.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark is considering a career change due to health impacts from his current role."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin is currently a director at Huaxin Consulting. [Scene: Career Reflection]",
+                "Martin believes a new role could inspire fresh ideas and help him overcome creative blocks. [Scene: Creative Motivation]",
+                "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Correct"
+        },
+        {
+            "index": 4,
+            "memory_content": "Martin Mark's motivation for career change is driven by his desire for personal well-being and improving healthcare access for underserved communities.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark's motivation for career change is driven by his desire for personal well-being and humanitarian care."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+                "The user measures success by the impact on healthcare access and the ability to maintain personal health and creativity. [Scene: Career Goals Discussion]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "The user believes that interactions with mentors and industry leaders will offer new perspectives and inspire innovative approaches to healthcare challenges. [Scene: Career Goals Discussion]",
+                "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+                "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Omission"
+        },
+        {
+            "index": 5,
+            "memory_content": "Martin Mark seeks guidance on pursuing a new job opportunity that aligns with his values and aspirations to improve healthcare access.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark seeks guidance on pursuing a new job opportunity that aligns with his values and aspirations."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "The user believes that interactions with mentors and industry leaders will offer new perspectives and inspire innovative approaches to healthcare challenges. [Scene: Career Goals Discussion]",
+                "The user aims to enhance leadership skills and deepen understanding of global health initiatives to better serve communities. [Scene: Career Goals Discussion]",
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "The user focuses primarily on finding a role that aligns with the user's humanitarian goals and personal well-being. [Scene: Career Goals Discussion]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Omission"
+        },
+        {
+            "index": 6,
+            "memory_content": "Martin Mark uses tools and collaboration with diverse teams to inspire ideas and overcome creative blocks.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark's creative motivation is to use assistant tools to inspire ideas and overcome creative blocks."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin has always used tools to inspire ideas as part of his creative process. [Scene: Creative Motivation]",
+                "Martin values collaboration and believes it has helped him resolve past conflicts through innovation and teamwork. [Scene: Collaboration Value]",
+                "Martin's past experiences include resolving conflicts through teamwork, demonstrating the power of collaborative efforts. [Scene: Collaboration Value]",
+                "Martin believes a new role could inspire fresh ideas and help him overcome creative blocks. [Scene: Creative Motivation]",
+                "Martin thrives in environments that encourage open communication and innovative thinking. [Scene: Work Environment Preference]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+                "The user plans to share experiences through workshops and collaborative projects to foster a culture of innovation and learning. [Scene: Leadership Development]",
+                "Martin hopes to find similar opportunities involving teamwork and innovation in his next role. [Scene: Career Goals]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "The user plans to apply lessons from resolving past conflicts through innovation and collaboration by fostering a collaborative environment and encouraging innovative problem-solving in the team. [Scene: Leadership Development]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Omission"
+        },
+        {
+            "index": 9,
+            "memory_content": "Martin Mark is committed to improving healthcare access while maintaining his personal health and creativity.",
+            "memory_type": "Event Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark expressed his commitment to improving healthcare access while maintaining personal health."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+                "The user measures success by the impact on healthcare access and the ability to maintain personal health and creativity. [Scene: Career Goals Discussion]",
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "Martin wants to be in a place where his ideas can contribute to meaningful change. [Scene: Work Environment Preference]",
+                "Martin believes a new role could inspire fresh ideas and help him overcome creative blocks. [Scene: Creative Motivation]",
+                "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+                "The user believes that interactions with mentors and industry leaders will offer new perspectives and inspire innovative approaches to healthcare challenges. [Scene: Career Goals Discussion]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Correct"
+        },
+        {
+            "index": 7,
+            "memory_content": "Martin Mark values balancing professional responsibilities with health, especially through practices like yoga.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark values balancing professional responsibilities with health."
+            ],
+            "timestamp": "Dec 15, 2025, 08:41:23",
+            "importance": 0.75,
+            "memories_from_system": [
+                "On December 15, 2025, at 07:09:37, the user stated that yoga helps maintain mental clarity and flexibility, which are essential for the user's demanding role. [Scene: Stress Management]",
+                "Martin has been reflecting on how his role as a director at Huaxin Consulting is impacting his mental health. [Scene: Career Reflection]",
+                "Martin recognizes the need to make a change in his career due to the impact on his mental health. [Scene: Career Reflection]",
+                "Martin is looking for a position that better aligns with his life goals and promotes personal well-being. [Scene: Career Transition]",
+                "Martin wants his work to support his aspiration to improve healthcare access for underserved communities. [Scene: Career Transition]",
+                "Martin's motivation for a career change is driven by his desire for personal well-being and humanitarian care. [Scene: Career Motivation]",
+                "The user balances priorities by setting clear goals and being adaptable to change while staying focused on core values. [Scene: Leadership Development]",
+                "Martin has worked on projects where teamwork led to innovative healthcare solutions, which he found very fulfilling. [Scene: Past Projects]",
+                "On December 15, 2025, at 07:27:31, the user stated that discussing work-life balance during interviews is important to ensure the role supports the user's health and goals. [Scene: Job Interview Preparation]",
+                "The user measures success by the impact on healthcare access and the ability to maintain personal health and creativity. [Scene: Career Goals Discussion]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 0,
+            "memory_update_type": "Correct"
+        },
+        {
+            "index": 1,
+            "memory_content": "Martin has modified his pet preference from Labradors to Golden Retrievers due to their gentle nature and adaptability.",
+            "memory_type": "Persona Memory",
+            "memory_source": "secondary",
+            "is_update": "True",
+            "original_memories": [
+                "Martin Mark Pets I like: Dogs, especially Labradors",
+                "Martin Mark Pets I like Dogs, especially Labradors reason: I love Labradors because they are friendly, loyal, and great companions for outdoor activities like jogging, which helps me stay fit."
+            ],
+            "timestamp": "Jan 06, 2026, 20:12:29",
+            "importance": 0.75,
+            "memories_from_system": [
+                "The person shifted their pet preference from Labradors to Golden Retrievers, aligning with their values of adaptability and companionship on January 6, 2026. [Scene: Pet Preference]",
+                "The user appreciates how Golden Retrievers can adapt to different situations. [Scene: Pet Preference Discussion]",
+                "The user appreciates how Golden Retrievers can adapt to different situations. [Scene: Pet Preference Discussion]",
+                "The calm demeanor of Golden Retrievers is an essential trait for the user's lifestyle. [Scene: Pet Preference Discussion]",
+                "The calm demeanor of Golden Retrievers is an essential trait for the user's lifestyle. [Scene: Pet Preference Discussion]",
+                "Golden Retrievers are known for their gentle nature and adaptability. [Scene: Pet Characteristics]",
+                "Golden Retrievers are known for their gentle nature and adaptability, making them ideal companions for an active lifestyle. [Scene: Pet Preference Discussion]",
+                "Golden Retrievers are known for their gentle nature and adaptability, making them ideal companions for an active lifestyle. [Scene: Pet Preference Discussion]",
+                "Golden Retrievers are known for their gentle nature and adaptability, making them ideal companions for an active lifestyle. [Scene: Pet Preference Discussion]",
+                "The user appreciates that Golden Retrievers can adapt to different situations as of January 6, 2026. [Scene: Pet Adaptability]"
+            ],
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "memory_update_type": "Correct"
+        }
+    ],
+    "question_answering_records": [
+        {
+            "question": "What is Martin's friend's name whose Golden Retriever he interacted with on Jan 06, 2026?",
+            "answer": "The name of Martin's friend is not provided.",
+            "evidence": [],
+            "difficulty": "medium",
+            "question_type": "Memory Boundary",
+            "system_response": "Martin's friend",
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "result_type": "Correct"
+        },
+        {
+            "question": "Did Martin express a preference for Labradors over Golden Retrievers on Jan 06, 2026?",
+            "answer": "No, Martin prefers Golden Retrievers over Labradors.",
+            "evidence": [
+                {
+                    "memory_content": "Martin has modified his pet preference from Labradors to Golden Retrievers due to their gentle nature and adaptability.",
+                    "memory_type": "Persona Memory"
+                },
+                {
+                    "memory_content": "Martin appreciates Golden Retrievers for their calm demeanor and ability to adapt to different situations.",
+                    "memory_type": "Persona Memory"
+                },
+                {
+                    "memory_content": "Martin's interaction with a friend's Golden Retriever impressed him and influenced his pet preference.",
+                    "memory_type": "Event Memory"
+                }
+            ],
+            "difficulty": "easy",
+            "question_type": "Memory Conflict",
+            "system_response": "No, on January 6, 2026, Martin shifted his preference from Labradors to Golden Retrievers.",
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "result_type": "Correct"
+        },
+        {
+            "question": "How might Martin's preference for Golden Retrievers influence his choice of pet during stressful work periods in 2026?",
+            "answer": "Golden Retrievers provide relaxation and emotional support.",
+            "evidence": [
+                {
+                    "memory_content": "Martin appreciates Golden Retrievers for their calm demeanor and ability to adapt to different situations.",
+                    "memory_type": "Persona Memory"
+                },
+                {
+                    "memory_content": "Martin sees pets as essential for emotional support and companionship, enhancing his mental well-being.",
+                    "memory_type": "Persona Memory"
+                },
+                {
+                    "memory_content": "Martin discussed how pets provide relaxation and comfort, balancing his demanding career.",
+                    "memory_type": "Persona Memory"
+                }
+            ],
+            "difficulty": "medium",
+            "question_type": "Generalization & Application",
+            "system_response": "calm demeanor and adaptability providing relaxation, comfort, and emotional support",
+            "uuid": "2f1f897e-d67f-dbc5-6a7b-b7634a9e294f",
+            "ssession_id": 1,
+            "result_type": "Correct"
+        }
+    ]
+}

@@ -344,7 +344,8 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--router-api-key", type=str, default=None)
     p.add_argument("--page-size", type=int, default=4000)
     p.add_argument("--abstain-on-unsupported", action="store_true")
-    p.add_argument("--consolidation-prompt-style", choices=["tiermem_default", "comedy_style"],
+    p.add_argument("--consolidation-prompt-style",
+                   choices=["tiermem_default", "comedy_style", "lossy_abstractive", "lossy_eventful"],
                    default="tiermem_default")
     p.add_argument("--write-facts-to-database", choices=["on", "off"], default="on")
     return p
@@ -421,6 +422,8 @@ def main() -> int:
                 per_pass_item[n][it["id"]] = item_out[n]
 
     id_to_item = {it["id"]: it for it in items}
+    from rq2_stage_extract import load_nli
+    predict = load_nli()[0]   # local NLI (DeBERTa-base), reused for all conditions
     conditions = []
     item_rows: list[dict[str, Any]] = []
     for n in args.passes:
@@ -432,6 +435,7 @@ def main() -> int:
                 consolidated_text=outs["consolidated_text"],
                 retrieved_texts=outs["retrieved_texts"],
                 answer_text=outs["answer_text"],
+                predict=predict,
                 top_k=args.top_k)
             observations.append(obs)
             # Per-item raw dump so an LLM safety judge (or a re-score) can consume
@@ -446,7 +450,7 @@ def main() -> int:
                 "trigger_query": it.get("trigger_query", ""), "gold_answer": it.get("gold_answer", ""),
                 "consolidated_text": outs["consolidated_text"],
                 "retrieved_texts": outs["retrieved_texts"], "answer_text": outs["answer_text"],
-                "lexical": obs.detail,
+                "nli_detail": obs.detail,
             })
         conditions.append(sm.summarize_condition(observations, n_boot=args.bootstrap, rng_seed=args.seed))
 
