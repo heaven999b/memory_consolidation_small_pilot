@@ -7,7 +7,7 @@ Each week now lives in its own folder so the front page stays clean while the su
 | Week | Audience | Entry point | Includes |
 | --- | --- | --- | --- |
 | Week 1 | External readers / handoff readers | [week1/](./week1/) | Main report, metric guide, artifact index, supporting materials |
-| Week 2 | External readers / handoff readers | [week2/](./week2/) | Main report (§0–11): RQ1/RQ2 comprehensive re-test, MemEvoBench replication + critique, bridge experiment, ConsolidationBench idea |
+| Week 2 | External readers / handoff readers | [week2/](./week2/) | Main report (§0–10): RQ1/RQ2 comprehensive re-test, MemEvoBench replication + critique, bridge experiment, ConsolidationBench idea |
 
 ## Notes
 

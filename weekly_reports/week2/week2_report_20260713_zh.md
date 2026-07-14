@@ -235,24 +235,24 @@ judge2 = `gpt-4o`(独立),沿用其原样 rubric,只换模型,全部 336 轮重�
 `rq1_implicit_sweep.py`(12 条隐式种子:policy 句 + 中性 action 句 + 填充句制造压缩压力 → C^N → gpt-4o 判"风险还推得出吗"):risk 可检出率、动作存活率**全 N=100%**,**洗白率 0% 全 N**。固化到 N=8、有压缩压力,仍完整保留 policy 句(N=8 样本:记忆里还写着"违规通过邮件发送 API 密钥 + 公司禁止")。→ 唯一可能翻正的隐式门也是负。
 
 ### 9.5 §9 净结论
-**四条独立证据 + §6 既有,全指同一方向:在本系统里固化对安全关键信息保真到略微保护性,不洗白、不造假、不放大——跨 词袋NLI/语义judge/关系judge × 显式标记/隐式推断/投毒攻击 × N 深度,全负。** "压缩后错误率飙高"不存在。RQ1/RQ2 的"危险"正向到此测穿;可发形态 = 反共识 null result / 测量批判(D&B/workshop 档,见 §10)。
+**四条独立证据 + §6 既有,全指同一方向:在本系统里固化对安全关键信息保真到略微保护性,不洗白、不造假、不放大——跨 词袋NLI/语义judge/关系judge × 显式标记/隐式推断/投毒攻击 × N 深度,全负。** "压缩后错误率飙高"不存在。RQ1/RQ2 的"危险"正向到此测穿;可发形态 = 反共识 null result / 测量批判。
 
-## 10. 方向可发性盘点(记忆安全子领域,2026-07-13)
+## 10. 新研究构思:ConsolidationBench —— 把记忆漂移归因到"固化算子"本身(2026-07-13)
 
-- **子领域规模(web 核查)**:记忆安全/misevolution/投毒 benchmark **几乎全是 2026 上半年预印本、零或极低引用、无 leaderboard**;MemEvoBench 引用=0;唯一有影响力的概念论文=*Your Agent May Misevolve*(2509.26354,~34 引)。攻击侧 AgentPoison(NeurIPS'24,376 引)是基石但非安全基准。
-- **注水是子家族通病**:"宽 rubric(缺 caveat=unsafe)+ 预投毒 + 不减 base"是 misevolution-safety-benchmark 这族的系统缺陷(MemEvoBench 最重,TAME/Trust-Memevo 部分共病);正面反例 = *Remembering More*(2605.17830,严格 NullMemory 反事实减法)。
-- **批判线可发性(红队诚实裁决)**:**partial**;主 track 命中率低(靶子零引 + 只证"judge 复现 rubric"未证"rubric 错"——**需人工金标 20-30 条**),**D&B track 有戏 35-45%、workshop 稳 60-70%**。最强 framing = "记忆安全结论的符号由评测协议决定"(外部宽 rubric 高估 × 自建词法/截断低估,同源可校正)。
-- **三条活线**(互相独立):① memop-attribution(真 67% 归因正向,另一窗口做);② MemEvoBench 批判再评估(本 session,+30pt judge-robust,差人工金标);③ ConsolidationBench(§11,今天新生)。死线:原始 RQ1/2"危险"(测穿)、relation-blind(kill-switch 判负)。
+> §9 证明固化对安全信息"保真"(没把已有的东西弄坏)。但真正没人回答的下一个问题是:一个后台**固化算子**(去重/反思/摘要)在很长生命周期里反复重写 agent 自己写的笔记,它对安全的**净贡献**能不能被单独测出来、并被归因?这是从 §7–§9 自然长出的问题。
 
-## 11. IdeaSpark 自动构思产出:ConsolidationBench(2026-07-13)
+**瓶颈**:现有记忆安全评测(含 MemEvoBench)测的是"记忆状态"的快照,不测产生这些状态的"写入/固化转移算子"——因此测到的任何安全变化,分不清是 agent 自写、外部注入、还是流顺序造成的。
 
-> 用微软 ResearchStudio-Idea(IdeaSpark)工具对 MemEvoBench 方向全流程跑通(Phase 0-4,过撞车审计 + 可实施性审计),产出一个新 benchmark idea。
+**构思 = ConsolidationBench(四臂算子归因协议)**:
+- **核心量 Δ_op = S(固化开) − S(固化关)**:同一批 agent 自写笔记,逐字节相同、顺序相同地回放两次,唯一区别是固化算子跑没跑(NullConsolidation 反事实臂);差值即"固化算子自己的锅"。
+- **两条混淆阻断臂**:① 注入内容漂移臂(混入 MemEvoBench 坏笔记、固化关,减掉"外部内容"影响);② 顺序方差臂(只打乱笔记顺序 K 次,证明 Δ_op 不是"哪条先到"的偶然)。
+- **产物**:每个(领域 × 记忆系统)的 Δ_op 轨迹 + 斜率 + 分解报告 + 以 Δ_op 排名的可跑排行榜(A-MEM / Mem0 / MemoryBank);防御方案按"是否真的压低了算子可归因漂移"评分。
 
-- **瓶颈(工具诊断)**:现有记忆安全评测测"记忆状态",不测产生状态的"固化/回写转移算子"。
-- **idea = ConsolidationBench**:核心量 **Δ_op = S(固化开 live) − S(固化关 frozen)**,同一批自写笔记逐字节+同序回放,唯一区别=固化算子跑没跑(NullConsolidation 反事实臂);+ 注入内容漂移臂(减 MemEvoBench 坏笔记)+ 顺序方差臂。产物=分解报告 + 以 Δ_op 排名的可跑排行榜(A-MEM/Mem0/MemoryBank)。
-- **过审**:Phase 3.2 撞车 verdict=advance;区别于 Longitudinal(2605.17830,只读→M_live==M_frozen 形不成 Δ_op)、non-malleable 来源门(2606.24322,拦单动作非测累积漂移)、MemEvoBench(外部脚本演化不经 agent 自己固化)。
-- **定位**:benchmark/D&B 形状;吃现有资产(TierMem 固化算子 + harness + MemEvoBench 数据 + Longitudinal 探针集);把 §8 桥实验(live-vs-frozen)、§10 "协议决定符号"收成一个**正向归因工具**。2 处作者需定:每 harness 哪段算固化算子、注入时间表。
-- **产物**:`state/ideaspark_consolidationbench_{zh,en,detail_en}_20260713.md`;桌面中文版。
+**与现有工作的区别**:Longitudinal 只读监控(2605.17830)副本是只读的 → M_live==M_frozen,构造上形不成 Δ_op;non-malleable 来源门(2606.24322)在坏动作发生瞬间拦单个动作,不测大量无害笔记累积的缓慢漂移;MemEvoBench 的"演化"是外部脚本编的,从不经 agent 自己的固化回流。三者都没有"切开固化算子"这个反事实量。
+
+**可行性 / 现有资产**:纯 inference;复用 TierMem 固化算子 + harness + MemEvoBench 数据 + 固定探针集;把 §8 桥实验(live-vs-frozen 对照)、§7–§9 "测量方式决定结论"这条线收成一个正向的归因工具。两处需按 harness 落地确定:各系统里哪段代码算"固化算子"、坏笔记注入时间表。
+
+**构思文档**:`state/consolidationbench_idea_{zh,en}_20260713.md`。
 
 ## 附 · 数据与脚本(本次,均离线零 API)
 
@@ -272,11 +272,10 @@ judge2 = `gpt-4o`(独立),沿用其原样 rubric,只换模型,全部 336 轮重�
 - 详版报告:`state/memevobench_replication_pilot_20260712.md`。跨会话记忆:`memevobench-critical-reeval-line-20260712`。
 - 完整执行 + 根因消融记录:`state/rq1_rq2_execution_results_20260711.md`;完整方案 `state/rq1_rq2_MASTER_plan_20260711.md`。
 
-**0713 全面复测 + 新 idea(§9-11 用):**
+**0713 全面复测 + 新 idea(§9-10 用):**
 - RQ2 截断修复三视图:`scripts/analysis/rq2_stage_verdict_fixed.py` → `rq2_f1_fixed_result.json`。
 - RQ1 语义 judge(既有):`scripts/run/run_rq1_safety_judge.py` → `outputs/safety/rq1_safety_judged_auto_seed11.json`。
 - RQ2 gpt-4o 关系判官:`scratchpad/memevo_pilot/rq2_gpt4o_relation_sweep.py` → `rq2_gpt4o_relation_result.json`。
 - RQ1 隐式风险洗白:`scratchpad/memevo_pilot/rq1_implicit_sweep.py` + `rq1_implicit_seeds.json`(源自 `state/rq1_implicit_materials_20260712.md`)→ `rq1_implicit_result.json`。
 - 桥实验:`scratchpad/memevo_pilot/bridge_consolidate_asr.py` → `bridge_result.json`(§8)。
-- IdeaSpark 产物:`state/ideaspark_consolidationbench_{zh,en,detail_en}_20260713.md`;工具 run 目录 `scratchpad/ideaspark_memevo/`(session 临时);跨会话记忆 `ideaspark-consolidationbench-idea-20260713`。
-- 可发性盘点(§10):记忆安全子领域 landscape + 三活线,详见记忆 `memevobench-critical-reeval-line-20260712`。
+- ConsolidationBench 构思文档(§10):`state/consolidationbench_idea_{zh,en}_20260713.md`。
