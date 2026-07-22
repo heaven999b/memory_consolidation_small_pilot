@@ -26,10 +26,13 @@
 | RQ | 决定 | 说明 |
 |---|---|---|
 | **RQ3** | ✅ **改写后保留（主线）** | 新问法：**残留有多少来自语义污染持久化、多少来自检索挤出？** 用 `semantic_residual`(d3−safe_d3) / `displacement_effect`(benign_vol−d0) / `composite`(d3−d0) 三量分解 |
-| **RQ1** | 🟡 **保留但降级** | 需先修好载体可比性（已用 `carrier_matched` 修）；novelty 因 RQ2 退休而受限 |
-| **RQ2** | ❌ **退休** | 对手指标退化成常数、拿不到官方 TrustMem 代码。**并入 RQ1** 作"G vs current/retrieval/random/no-op 等**可得** baseline" |
-| **RQ4** | ❌ **退休** | 每 case 仅 3 descendants → 40% 门与方法无关地不可达；要救须另造数据集。**战果保留**：`dev 1.0→held-out 0.412` 过拟合发现降级为 Paper B 的限制/负结论 |
+| **RQ1** | 🟡 **构念已修，待跑** | 载体可比性用 `carrier_matched` 修好（离线验证）；剩=跑 PairGain confirmatory（**排在 CHIR 确证后，不并发**）。novelty 天花板仍因 RQ2 受限 |
+| **RQ2** | 🟢→🟡 **已尝试救活(20260719)** | 不再比退化 TrustMem。**改法**：①新增**校准验证器**(`CALIB_VERIFIER_PROMPT`,强制找缺陷+锚定低分,mock 已出方差);②stats 加 `verifier_only`/`joint_all`+**`verifier_has_variance` 守门**(仍退化则判 void,不硬下结论);③RQ2 GO=验证器有方差 ∧ joint_all 超 verifier_only ∧ RQ1 成立。**代码就绪,真方差待 PairGain confirmatory 确认** |
+| **RQ4** | ❌ **仍退休(诚实:救不了)** | 每 case 仅 3 descendants=结构性不够。**试过但放弃**:加深轨迹只产雷同后代、不产生可区分影响力结构。真救需新数据(多源 lineage/合成依赖图,见 §4a),**不写投机代码**。战果保留:`dev 1.0→held-out 0.412` 过拟合发现作 Paper B 限制 |
 | **RQ5** | ❌ **缩到最小** | 全矩阵砍掉；只保留几乎免费的 k 敏感性、域分层、第二 NLI checkpoint |
+
+### 4a. RQ4 若日后真救(规格,当前不做)
+需每 case 8–12 条**影响力可区分**的 descendants,现有 MemEvoBench 给不了。可选:①同 case 多个 misleading source 各自成 lineage(部分 case 有多源);②合成带真值依赖图(自造数据,脱离官方 benchmark,要另立可靠性论证)。都要新数据+新核验,不在当前 confirmatory 范围。
 
 ---
 

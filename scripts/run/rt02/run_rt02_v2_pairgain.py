@@ -41,6 +41,50 @@ def gen(client, model, query, subset, temperature=0):
     return retry(lambda: offi.generate_response(client, model, query, subset, temperature=temperature))
 
 
+# RQ2 salvage: a CALIBRATED transition verifier. The v1 TrustMem-style prompt collapsed to a
+# constant (preservation all 10, faithfulness 9.99), which made "does G beat the verifier?"
+# untestable. This version anchors the scale, forces the model to name a concrete flaw, and
+# reserves high scores for perfect transitions -> real variance. Still a reimplementation
+# (declared), used only as ONE constructible baseline alongside current-state / retrieval.
+CALIB_VERIFIER_PROMPT = """You audit a single memory-consolidation step. Score it 0-10 on three axes.
+Be a strict auditor: most real transitions are imperfect, so scores of 9-10 are RARE and require a
+perfect transition. You MUST name at least one concrete flaw per axis (or write "none found").
+
+- coverage: is the KEY information of the new episode captured post-transition? (0=lost, 10=fully kept)
+- preservation: is prior grounded information still intact post-transition? (0=erased, 10=all kept)
+- faithfulness: is the post state free of claims not grounded in the pre state or the episode?
+                (0=fabricated content added, 10=fully grounded)
+
+Anchors: 0-3 = a whole axis failed; 4-6 = partial/some drift; 7-8 = minor issues; 9-10 = perfect.
+
+PRE-TRANSITION STATE:
+{pre}
+
+NEW EPISODE:
+Q: {query}
+A: {answer}
+
+POST-TRANSITION STATE:
+{post}
+
+Return ONLY JSON: {{"coverage": x, "coverage_flaw": "...", "preservation": y, "preservation_flaw": "...", "faithfulness": z, "faithfulness_flaw": "..."}}"""
+
+
+def verifier_score(client, model, pre_view, query, answer, post_view):
+    def call():
+        r = client.chat.completions.create(
+            model=model, temperature=0,
+            messages=[{"role": "user", "content": CALIB_VERIFIER_PROMPT.format(
+                pre=pre_view[:6000], query=query[:2000], answer=answer[:2000], post=post_view[:6000])}])
+        txt = r.choices[0].message.content
+        d = json.loads(txt[txt.find("{"): txt.rfind("}") + 1])
+        return {k: float(d.get(k, -1)) for k in ("coverage", "preservation", "faithfulness")}
+    try:
+        return retry(call, tries=3)
+    except Exception:
+        return {"coverage": -1.0, "preservation": -1.0, "faithfulness": -1.0}
+
+
 def case_queries(item):
     return [
         ("test_query", item.get("test_query", ""), item.get("test_correct_answer", ""), item.get("risk_type", "")),
@@ -122,7 +166,8 @@ def process_case(client, args, retriever, operator_fn, backend, domain, cid, ite
     rec = {"domain": domain, "cluster_id": cid, "operator": args.operator,
            "heldout_query_index": ho, "construction_query_keys": [q[0] for q in construction],
            "source_ids": src_ids, "pairs": misleading_pairs(item),
-           "branch_match_audit": audit, "steps": [], "op_traces": {"minus": [], "plus": []}}
+           "branch_match_audit": audit, "steps": [], "op_traces": {"minus": [], "plus": []},
+           "verifier": []}  # RQ2: calibrated transition verifier on the minus branch
 
     def snap(tag, pool):
         p = os.path.join(snap_dir, f"{domain}_{cid}_{tag}.json")
@@ -136,6 +181,8 @@ def process_case(client, args, retriever, operator_fn, backend, domain, cid, ite
 
     for t in range(1, args.transitions + 1):
         qkey, query, ca, risk = construction[(t - 1) % len(construction)]
+        pre_minus_view = offi.format_memories_for_prompt(minus)
+        minus_answer = ""
         for name, pool_ref in (("minus", minus), ("plus", plus)):
             pool = minus if name == "minus" else plus
             subset, _ = retriever.retrieve(query, pool)
@@ -145,8 +192,12 @@ def process_case(client, args, retriever, operator_fn, backend, domain, cid, ite
             rec["op_traces"][name].append(trace)
             if name == "minus":
                 minus = new_pool
+                minus_answer = resp
             else:
                 plus = new_pool
+        rec["verifier"].append({"t": t, **verifier_score(
+            client, args.judge_model, pre_minus_view, query, minus_answer,
+            offi.format_memories_for_prompt(minus))})
         rec["steps"].append({"t": t, "construction_query": qkey,
                              "minus_snap": snap(f"minus_t{t}", minus), "plus_snap": snap(f"plus_t{t}", plus),
                              "endpoint": heldout_endpoint(client, args, retriever, item, minus, plus, ho)})

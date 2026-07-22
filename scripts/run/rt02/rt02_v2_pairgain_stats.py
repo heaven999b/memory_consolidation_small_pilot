@@ -26,10 +26,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from rt02_pairgain_stats import cv_scores, partial_spearman, bootstrap_partial  # noqa: E402
 
 PRIMARY_EPS = "0.05"
-FEATURE_SETS = {  # no trustmem in v2 pairgain runner; add back if RQ2 comparator is collected
+FEATURE_SETS = {  # RQ2 salvage: G vs constructible/ calibrated baselines (not degenerate TrustMem)
     "current_only": ["A_t", "D_t", "D_t1"],
+    "verifier_only": ["v_cov", "v_pre", "v_fai"],   # calibrated transition verifier (RQ2 baseline)
     "g_only": ["G_t"],
-    "joint": ["A_t", "D_t", "D_t1", "G_t"],
+    "joint": ["A_t", "D_t", "D_t1", "G_t"],          # G over current-state (RQ1)
+    "joint_all": ["A_t", "D_t", "D_t1", "v_cov", "v_pre", "v_fai", "G_t"],  # G over current + verifier (RQ2)
 }
 
 
@@ -56,15 +58,30 @@ def build_rows(records, nli_rows, eps=PRIMARY_EPS, mode="source_only", horizon=1
         A = [s["endpoint"]["A_j1"] for s in rec["steps"]]
         D = n["D"]
         G = n["G"].get(eps, [])
+        # verifier[k].t == transition k (step k-1 -> k); row t uses the transition into step t+1
+        vmap = {v.get("t"): v for v in rec.get("verifier", [])}
         for t in range(len(A)):
             if t + horizon >= len(A) or t >= len(G) or t + 1 >= len(D):
                 continue
             need = [A[t], A[t + horizon], D[t], D[t + 1], G[t]]
             if any(v is None for v in need):
                 continue
+            vf = vmap.get(t + 1, {})
             rows.append({"case": key, "t": t, "A_t": A[t], "D_t": D[t], "D_t1": D[t + 1],
-                         "G_t": G[t], "Y1": A[t + horizon]})
+                         "G_t": G[t], "Y1": A[t + horizon],
+                         "v_cov": vf.get("coverage", -1), "v_pre": vf.get("preservation", -1),
+                         "v_fai": vf.get("faithfulness", -1)})
     return rows
+
+
+def verifier_has_variance(rows):
+    """RQ2 guard: the calibrated verifier must have real variance, else the comparison is void."""
+    import numpy as np
+    for f in ("v_cov", "v_pre", "v_fai"):
+        vals = [r[f] for r in rows if r[f] is not None and r[f] >= 0]
+        if len(set(vals)) > 1 and np.std(vals) > 0.3:
+            return True
+    return False
 
 
 def permutation_test(rows, n_perm=1000, seed=20260719):
@@ -123,11 +140,25 @@ def main():
                                and models["joint"]["cv_r2"] is not None
                                and models["joint"]["cv_r2"] > models["current_only"]["cv_r2"])
         go = bool(boot and boot.get("ci_lo", -1) > 0 and sign_consistent and joint_beats_current)
+        # RQ2 (salvaged): does G add value OVER a NON-DEGENERATE calibrated verifier?
+        v_var = verifier_has_variance(rows)
+        joint_all_beats_verifier = (models["joint_all"] and models["verifier_only"]
+                                    and models["joint_all"]["cv_r2"] is not None
+                                    and models["verifier_only"]["cv_r2"] is not None
+                                    and models["joint_all"]["cv_r2"] > models["verifier_only"]["cv_r2"]
+                                    and models["joint_all"]["cv_r2"] > models["joint"]["cv_r2"] - 1e-9)
+        rq2_go = bool(v_var and joint_all_beats_verifier and go)
         out.update({"n_rows": len(rows), "n_cases": len({r["case"] for r in rows}),
                     "models_Y1": models, "partial_spearman_boot": boot, "permutation": perm,
                     "verdict": {"rq1_go": go,
-                                "rule": "GO iff partial Spearman(G,future-A|current) CI>0 AND eps-sign "
-                                        "consistent AND joint>current-only held-out. Small n = descriptive."}})
+                                "rq2_go": rq2_go,
+                                "verifier_has_variance": v_var,
+                                "rq1_rule": "GO iff partial Spearman(G,future-A|current) CI>0 AND eps-sign "
+                                            "consistent AND joint>current-only held-out.",
+                                "rq2_rule": "GO iff verifier has real variance (else void) AND joint_all "
+                                            "(G+current+verifier) beats verifier-only AND RQ1 holds. Small n = descriptive.",
+                                "note": "verifier is a CALIBRATED reimplementation baseline, not official TrustMem; "
+                                        "if verifier_has_variance is False the RQ2 comparison is void (degenerate comparator)."}})
     else:
         out["verdict"] = {"rq1_go": None, "note": f"too few rows: {len(rows)}"}
 
