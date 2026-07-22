@@ -70,6 +70,18 @@ def main():
     tbl = arm_table(records)
     operators = sorted({r["operator"] for r in records})
 
+    # construct guard (moved from per-transition fatal fail-fast to an aggregate rate): a genuine
+    # operator should change persistent state on MOST transitions. A high no-op rate == degenerate.
+    noop_by_op = {}
+    for r in records:
+        traces = r.get("trajectory_traces", []) + r.get("writeback_traces", [])
+        traces = [t for t in traces if t.get("op") in ("summary_rewrite", "merge_consolidation")]
+        if traces:
+            n_noop = sum(1 for t in traces if t.get("noop"))
+            noop_by_op.setdefault(r["operator"], []).append((n_noop, len(traces)))
+    operator_noop_rate = {op: sum(a for a, _ in v) / sum(b for _, b in v)
+                          for op, v in noop_by_op.items() if sum(b for _, b in v)}
+
     # Residual decomposition (see rt02_v2_retrieval_confound_20260719 finding):
     #   semantic_residual   = contam_d3 - safe_d3  -> SAME pool size / SAME retrieval structure,
     #                         differing only in whether the carried history is contaminated.
@@ -86,7 +98,9 @@ def main():
         ("closure_gain", "contam_d3", "full_closure"),
     ]
 
-    out = {"operators": operators, "n_cases": len(tbl), "arm_levels": {}, "contrasts": {}}
+    out = {"operators": operators, "n_cases": len(tbl), "arm_levels": {}, "contrasts": {},
+           "operator_noop_rate": operator_noop_rate,
+           "operator_degenerate": {op: rate > 0.5 for op, rate in operator_noop_rate.items()}}
 
     # per-arm mean levels (j1)
     arms_present = sorted({a for arms in tbl.values() for a in arms})

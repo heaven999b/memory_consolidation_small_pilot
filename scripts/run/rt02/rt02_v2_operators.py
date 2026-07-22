@@ -195,15 +195,18 @@ def summary_rewrite(pool, incoming, backend):
         new_pool.append(summary)
         created = True
         mutated = []
+        noop = False
     else:
         prev_hash = record_content_hash(summary)
         set_content(summary, backend.update_summary(get_content(summary), incoming))
-        if record_content_hash(summary) == prev_hash:
-            raise OperatorNoOpError("summary_rewrite produced an unchanged summary (t>=1)")
-        mutated = [summary["id"]]
+        # A SINGLE unchanged summary is tolerated (real LLMs sometimes decide the episode adds
+        # nothing). It is FLAGGED, not fatal — the construct guard is the aggregate no-op RATE
+        # (operator_noop_rate below); only a systematically degenerate operator should fail.
+        noop = record_content_hash(summary) == prev_hash
+        mutated = [] if noop else [summary["id"]]
     return new_pool, {"op": "summary_rewrite", "summary_id": summary["id"],
                       "mutated_ids": mutated, "deleted_ids": [], "created_summary": created,
-                      "appended_id": None}
+                      "noop": noop, "appended_id": None}
 
 
 def merge_consolidation(pool, incoming, backend):
@@ -220,12 +223,12 @@ def merge_consolidation(pool, incoming, backend):
     prev_hash = record_content_hash(target)
     set_content(target, backend.merge(get_content(target), incoming))
     target["status"] = "rt02_merged"
-    if record_content_hash(target) == prev_hash:
-        raise OperatorNoOpError("merge_consolidation did not change the target record")
-    _assert_operator_on_not_raw_append(pool, new_pool)
+    noop = record_content_hash(target) == prev_hash  # tolerated + flagged, see summary_rewrite
+    if not noop:
+        _assert_operator_on_not_raw_append(pool, new_pool)
     return new_pool, {"op": "merge_consolidation", "target_id": target["id"],
-                      "mutated_ids": [target["id"]], "deleted_ids": [], "created_summary": False,
-                      "appended_id": None}
+                      "mutated_ids": [] if noop else [target["id"]], "deleted_ids": [],
+                      "created_summary": False, "noop": noop, "appended_id": None}
 
 
 OPERATORS = {"append_only": append_only, "summary_rewrite": summary_rewrite,
@@ -324,15 +327,14 @@ def _self_test():
     s2, t2 = summary_rewrite(s1, inc2, be)
     h_after = record_content_hash(next(m for m in s2 if m.get("rt02_role") == SUMMARY_ROLE))
     check("summary_rewrite mutates summary on t>=1 (no raw append)", h_after != h_before and len(s2) == len(s1))
-    # summary_rewrite fail-fast on no-op backend
+    # summary_rewrite on a no-op backend: FLAGGED (noop=True), NOT fatal (a single unchanged
+    # summary is tolerated; the construct guard is the aggregate no-op RATE, not one transition)
     class NoOp(MockBackend):
         def update_summary(self, old, incoming):
             return old
-    try:
-        summary_rewrite(s1, inc2, NoOp())
-        check("summary_rewrite fail-fast catches no-op update", False)
-    except OperatorNoOpError:
-        check("summary_rewrite fail-fast catches no-op update", True)
+    _, t_noop = summary_rewrite(s1, inc2, NoOp())
+    check("summary_rewrite flags a single no-op (not fatal)", t_noop.get("noop") is True and t_noop["mutated_ids"] == [])
+    check("summary_rewrite flags NON-no-op as noop=False", t2.get("noop") is False)
 
     # merge_consolidation: mutates a target, not a raw append
     m1, tm = merge_consolidation(base, inc1, be)
