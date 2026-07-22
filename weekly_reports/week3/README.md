@@ -1,6 +1,7 @@
 # Week 3 汇报
 
-主报告:[week3_report_20260719_zh.md](week3_report_20260719_zh.md)
+**Main report (English):** [week3_report_20260719_en.md](week3_report_20260719_en.md)
+中文版:[week3_report_20260719_zh.md](week3_report_20260719_zh.md)
 
 ## 一句话
 RT-02 的一次自我拆解、重建与确证启动:把上周的 GO/STOP 结论逐条审出"数字对、构念错"(6 个共性根因),重写一版修好构念的 v2 实验,过程中又现场抓修两个我自己犯的错(主测量结构性失效、检索挤出混杂),按公开 benchmark 逐条 git 实证可靠性,最后启动 30 例独立确证(运行中)。
