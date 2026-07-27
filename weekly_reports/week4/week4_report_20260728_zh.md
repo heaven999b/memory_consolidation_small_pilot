@@ -8,6 +8,7 @@
 
 - [逐论文 baseline 对照矩阵](./baseline_replication_matrix_20260728.md)
 - [Research proposal 路线图](./research_proposal_roadmap_20260728.md)
+- [下一阶段投入决策](./investment_decision_20260728.md)
 
 ## 0. 一句话结论
 
@@ -17,7 +18,7 @@
 2. **最值得优化的是何时调用昂贵 memory operation**：Lethe 的锁定 selector 在 305 条外部样本上，以 3.93pp 的质量差换取 53.48% calls 和 59.29% tokens 节省，且 0 over-delete；但跨语言出现 26.7pp 崩点，说明路由必须带 OOD 风险控制。
 3. **结构化策略的收益依赖 metadata/annotation 可信度**：Pi-CWL 在干净标注下比 recency 高 2.17pp，但噪声 0.75 时反而低 2.84pp；一个冻结 fallback 在新 seed held-out 上提高 recall 0.68pp，却增加 2.03pp closure violation。
 
-因此，当前第一研究主线是：**事件触发的 delta memory maintenance + 完整生命周期 utility**，而不是继续调摘要长度。
+因此，本周已经形成了可靠的问题证据；但最新 related-work audit 显示，generic event-triggered/delta controller 已明显拥挤。当前优先级修正为：**OOD 风险校准的 persistent-memory forgetting、跨会话 linkability 下的 minimum-sufficient metadata、annotation-fidelity robustness**；生命周期方向转为统一计量与 baseline benchmark，而不是直接再造一个 controller。
 
 ## 1. 本周完成了什么
 
@@ -127,36 +128,41 @@ deterministic 63.4% 精确复现；使用替代 LLM hook 后，always 的外部�
 
 我们没有发现作者公开 aggregate 的算术问题。问题在测量边界：released 数据不含 estimator、distiller、embedding sidecars，所以“主模型成本下降 61.5%”成立，“整个系统总成本下降 61.5%”没有证据。
 
-## 5. 本周形成的研究主线
+## 5. 证据质量、撞题情况与修正后的研究主线
 
-### 第一优先：生命周期 utility + event-triggered delta maintenance
+### 5.1 哪些结果质量足以继续投资
 
-研究问题：在 update density、reuse count、冲突风险和完整生命周期成本共同约束下，什么时候应该 NOOP、append delta、local merge 或 full rebuild？
+| 结果 | 内部效度 | 外部效度 | 当前研究价值 | 主要限制 |
+| --- | --- | --- | --- | --- |
+| Lethe selective forgetting | 高：锁定 selector、external305、零重叠、配对资源账 | 中高 | 已形成可发表级 Pareto seed | hook 为替代模型；缺新生成多语言确认集 |
+| Supersede 108 conditions | 高：paired CI、两种成本口径、utility 无 crossover | 中 | 强负结果与 write-amplification 证据 | 12 cases/cell；模型替代 |
+| Pi-CWL 2,400 cases | 高：官方函数、fresh seed、零 hash 重叠 | 中低 | annotation-noise sign reversal 很清楚 | synthetic mechanism，不是完整 agent 任务 |
+| Engram lifecycle audit | 中高：released500 + live30 + 全链路 ledger | 中 | 很好的测量/critical re-evaluation 证据 | live 模型与 embedding 非论文原栈 |
+| MemPrivacy controls | 中 | 中低 | linkability 机制 seed | 尚未实现新 metadata 方法 |
+| MemTrace causal replay | 中低 | 低 | 可作为所有方向的评测规范 | 例数少；compression/variance 混杂 |
+| Agent-Native / LongMemEval | 低到中 | 低 | 诊断和止损价值 | 与论文主协议差异太大 |
 
-价值不在“不要每轮更新”这句常识，而在：
+### 5.2 哪些 broad ideas 已经被占位
 
-- 明确测量 write amplification；
-- 用完整 ledger 找到策略相图；
-- 比较 delta/local merge/full rebuild；
-- 给出什么时候哪个策略被 Pareto 支配。
+| Broad idea | 已有近邻 | 结论 |
+| --- | --- | --- |
+| 学习 `ADD/UPDATE/DELETE/NOOP` | [Memory-R1](https://arxiv.org/abs/2508.19828) | 不能再把 memory operation policy 本身当创新 |
+| incremental/delta experience memory | [DeltaMem](https://arxiv.org/abs/2606.03083) | “写 delta 而非全量重写”本身已经不新 |
+| buffer + periodic consolidation | [Infini Memory](https://arxiv.org/abs/2606.10677) | 定期/分层维护已有直接方案 |
+| 统一控制 retrieve/consolidate/forget | [MemCon](https://arxiv.org/abs/2607.13591) | generic adaptive controller 已高度拥挤 |
+| selective retrieval / abstention | [Learning When to Remember](https://arxiv.org/abs/2604.27283) 等 | 普通 router/fallback 不足以独立投稿 |
+| selective forgetting / agent unlearning | [FSFM](https://arxiv.org/abs/2604.20300)、[Secure Forgetting](https://arxiv.org/abs/2604.00430)、[Agentic Unlearning](https://arxiv.org/abs/2602.17692) | 必须收窄到 persistent-memory mutation 的非对称风险与 OOD |
+| typed privacy placeholder | [MemPrivacy](https://arxiv.org/abs/2605.09530) | 不能只重复 type-aware masking；必须研究 cross-session linkability |
+| dependency-structured memory | Pi-CWL、[ContextWeaver](https://arxiv.org/abs/2604.23069) | 不能只证明结构优于 recency；要研究 annotation 不可信时的反转 |
 
-### 第二优先：OOD-aware 风险校准 selective forgetting
+### 5.3 修正后的优先级
 
-研究问题：在 under-forgetting 和 over-deletion 代价不对称的条件下，如何在语言/脚本迁移时维持风险上限，同时减少 LLM hook 调用？
-
-硬缺口：需要新 seed、零重叠的多语言外部集。旧 38 条补丁回放只能是 exploratory。
-
-### 第三优先：minimum-sufficient memory metadata
-
-研究问题：完成特定任务最少需要暴露哪些类型、身份和跨会话链接结构？能否用 coarse type + session-rotating alias + task-gated reveal 降低 linkability，同时保留效用？
-
-### 条件继续：annotation-fidelity-aware structured eviction
-
-Pi-CWL 的噪声反转是扎实 mechanism evidence，但必须先在真实 agent traces 上测 dependency annotation 的 FPR/FNR，再决定是否发展成方法论文。
-
-### 共同评测层：variance-aware causal replay
-
-任何 memory intervention 都应加入 identical-prompt placebo、matched-length deletion、irrelevant replacement 和重复运行，避免把 token compression 或生成方差误判为记忆内容的因果收益。
+1. **OOD-aware risk-calibrated persistent-memory forgetting**：利用 Lethe external305 的强 Pareto，补多语言/多脚本 OOD、worst-group risk 和安全 fallback。
+2. **Minimum-sufficient metadata under cross-session linkability**：超越 MemPrivacy 的稳定 typed placeholder，研究 session-rotating alias 与 task-gated reveal。
+3. **Annotation-fidelity-aware structured eviction**：把 Pi-CWL 的 synthetic sign reversal 搬到真实 agent traces，测真实标注错误率与 confidence-aware fallback。
+4. **Full-lifecycle memory maintenance benchmark**：复现 DeltaMem、MemCon、Memory-R1、Infini Memory，统一测 write amplification 与 workload phase diagram；暂不再造 generic controller。
+5. **Variance-aware causal replay**：作为上述所有方法的共同评测层。
+6. **Representation fallback**：普通版本撞题最严重；除非能做 evidence-sufficiency certificate，否则降级。
 
 ## 6. 哪些说法只是常识，不能当论文创新
 
@@ -170,23 +176,38 @@ Pi-CWL 的噪声反转是扎实 mechanism evidence，但必须先在真实 agent
 
 论文贡献必须进一步给出：可观测机制、方法、风险/资源约束、held-out 验证、失败边界和 go/no-go。
 
-## 7. 下一阶段最低实验闭环
+## 7. 下一阶段投入闭环
 
-主 proposal 暂定：**When Should Agent Memory Update? Event-Triggered Delta Maintenance under Full-Lifecycle Utility**。
+### A. OOD forgetting：优先烧 token
 
-最低实验矩阵：
+- 先生成新 seed、零重叠的五语言集合；
+- 比较 never、always、当前 frozen selector、canonicalization、multilingual/OOD gate；
+- 报 underforget、overdelete、worst-language、risk@coverage、calls/tokens；
+- GO：相对 always 节省≥30% calls，总体差≤5pp，最坏语言差≤10pp，overdelete 不升高。
 
-1. 两个数据集：长对话状态更新 + agent/tool trajectory；
-2. 四臂：always full rewrite、fixed-periodic、event-triggered delta、no maintenance；
-3. 2/6/12 sessions，低/高 update density，每段 history 至少 3 个独立 query；
-4. 完整记录 write/extract/consolidate/retrieve/answer/judge/sidecar；
-5. 指标：任务成功、stale/conflict、write amplification、tokens、latency、cache；
-6. 两个 reader/writer 模型栈；
-7. 配对 CI 与预注册 go/no-go。
+### B. Metadata linkability：第二优先烧 token
 
-GO 条件：相对 every-session rewrite，维护 calls 至少下降 50%，任务质量损失不超过 3pp，并在至少一个现实 reuse/update 区域进入 Pareto 前沿。
+- raw identity、stable typed、session-rotating typed alias、opaque + task-gated reveal 四臂；
+- 同时测 exact recovery、attribute inference、cross-session link、三类 utility 和 tokens；
+- GO：linkability 至少降低20pp，utility 损失≤3pp，并能在需要身份连续性的任务上恢复效用。
 
-NO-GO 条件：收益完全等价于简单 fixed-periodic/token threshold，或换数据/模型后消失。
+### C. Annotation fidelity：先做数据，不先烧 token
+
+- 收集真实 agent traces 并进行双人盲标；
+- 先测 dependency/type annotation 的 precision/recall 与 validator FPR/FNR；
+- 真实 FPR≤10% 才启动 CWL/recency/fallback 的大矩阵。
+
+### D. Lifecycle：先复现强近邻，不直接造方法
+
+- 先接入 DeltaMem、MemCon、Memory-R1、Infini Memory 的 released code；
+- 统一记录 write/extract/consolidate/retrieve/answer/sidecar；
+- 操纵 update density、query reuse、history length、cache regime；
+- 只有发现现有方法在稳定 workload 区域被支配，才提出新 scheduler。
+
+### E. MemTrace：低成本立即补严谨性
+
+- 4 cases × 5 repeats × baseline/placebo/correct replacement/matched deletion/irrelevant replacement；
+- 先估计生成噪声和 compression contribution，再决定是否扩20例。
 
 ## 8. 证据边界
 
@@ -197,4 +218,4 @@ NO-GO 条件：收益完全等价于简单 fixed-periodic/token threshold，或�
 - raw prompts/responses 和本地代理凭据未进入公开仓库；
 - 正式论文前仍需完成 related-work collision audit、外部数据与跨模型确认。
 
-**本周最终判断**：作为 weekly report 已充分；作为主 proposal 的 preliminary evidence 已充分；作为最终论文仍缺事件触发方法实现、强基线、外部数据与跨模型验证。
+**本周最终判断**：作为 weekly report 已充分；Lethe、Supersede、Pi-CWL、Engram 足以支撑 proposal 的 preliminary evidence。最合理的下一步不是继续扩大所有 baseline，而是把 token 集中到 OOD forgetting 与 metadata linkability；annotation fidelity 先做真实数据；lifecycle 先完成强近邻复现和统一测量，再决定是否提出方法。

@@ -12,27 +12,25 @@
 
 | Rank | Direction | 当前证据 | 新颖性（收窄后） | 完成度 | 决定 |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | Event-triggered delta maintenance under full-lifecycle utility | Engram + Supersede + TokenPilot + Agent-Native | 中高 | 高 | 主 proposal |
-| 2 | OOD-aware risk-calibrated selective forgetting | Lethe locked external305 + cross-lingual failure | 中高 | 中高 | 继续，先补外部多语言集 |
-| 3 | Minimum-sufficient memory metadata | MemPrivacy controls + framing/structure evidence | 高 | 中 | 继续，实现方法 |
-| 4 | Evidence-sufficiency certificate + selective fallback | Engram representation failures | 中 | 中 | 条件继续或并入第1项 |
-| 5 | Annotation-fidelity-aware structured eviction | Pi-CWL noise reversal + fresh-seed fallback | 中 | 中 | 先做真实 trace audit |
-| 6 | Variance-aware causal replay | MemTrace placebo/length confound | 中 | 中 | 作为共同评测层 |
+| 1 | OOD-aware risk-calibrated persistent-memory forgetting | Lethe locked external305 + cross-lingual failure | 中高 | 中高 | 主 proposal；先补外部多语言集 |
+| 2 | Minimum-sufficient metadata under cross-session linkability | MemPrivacy controls + framing/structure evidence | 中高 | 中 | 实现 rotating alias / gated reveal |
+| 3 | Annotation-fidelity-aware structured eviction | Pi-CWL noise reversal + fresh-seed fallback | 中高 | 中 | 先做真实 trace audit |
+| 4 | Full-lifecycle memory maintenance benchmark | Engram + Supersede + TokenPilot + Agent-Native | 中 | 高 | 先复现强近邻，不直接造 controller |
+| 5 | Variance-aware causal replay | MemTrace placebo/length confound | 中 | 中 | 作为共同评测层 |
+| 6 | Evidence-sufficiency certificate + selective fallback | Engram representation failures | 低到中 | 中 | 普通版本撞题；仅保留 certificate 版本 |
 
-## 3. 主 proposal
+## 3. 生命周期方向：改为 benchmark，不再直接作为主方法 proposal
 
-### Tentative title
+### Benchmark framing
 
-**When Should Agent Memory Update? Event-Triggered Delta Maintenance under Full-Lifecycle Utility**
+**When Does Agent Memory Pay Off? A Full-Lifecycle Audit across Update Density and Query Reuse**
 
 ### Research question
 
-在更新密度、未来复用概率、冲突风险和完整生命周期成本共同约束下，agent memory 什么时候应该：
+在更新密度、未来复用概率、冲突风险和完整生命周期成本共同约束下，现有 memory methods 什么时候真正产生正 utility，什么时候因 write amplification 被 full context 或朴素策略支配？
 
-- `NOOP`；
-- `APPEND_DELTA`；
-- `LOCAL_MERGE`；
-- `FULL_REBUILD`？
+- 对比对象必须包括 Memory-R1、DeltaMem、Infini Memory、MemCon，以及 always-full/fixed-periodic/no-maintenance；
+- 先做统一测量；只有发现稳定空白区域后，才决定是否提出新 scheduler。
 
 ### 为什么不是常识
 
@@ -44,9 +42,9 @@
 - 在 update density × reuse count × cache regime 的哪个区域，不同策略进入 Pareto frontier；
 - 计入所有辅助调用后，结论是否仍成立。
 
-### Method sketch
+### Measurement sketch
 
-事件触发器只使用在线信息：状态差异、冲突数、实体/任务边界、预测复用、memory fragmentation 和校验风险。禁止使用最终答案或 test label。
+统一 ledger 记录 write/extract/consolidate/retrieve/answer/judge/sidecar，并操纵 update density、reuse count、history length 与 cache regime，画出 method ranking 的 phase diagram。
 
 ### Required baselines
 
@@ -54,8 +52,10 @@
 2. always full rewrite；
 3. fixed-periodic rewrite；
 4. fixed token-budget summary；
-5. simple threshold rule；
-6. learned operation policy。
+5. Memory-R1；
+6. DeltaMem；
+7. Infini Memory；
+8. MemCon。
 
 ### Required datasets
 
@@ -75,11 +75,11 @@
 
 ### Go / no-go
 
-GO：相对 every-session rewrite，维护 calls 至少下降 50%，质量损失不超过 3pp；并且在两个数据集、两个模型栈的至少一个现实区域进入 Pareto frontier。
+GO：发现至少一个跨数据/模型稳定的 workload 区域，使现有方法排名发生可解释反转，或现有所有方法都被一个简单策略支配；这时才有新 scheduler 的空间。
 
-NO-GO：效果可被简单 periodic/token threshold 完全解释；或换数据/模型后消失。
+NO-GO：统一计量后现有 MemCon/DeltaMem 已覆盖全部 Pareto 前沿，且没有新的测量反转；此时只保留 benchmark/audit 贡献。
 
-## 4. 第二 proposal：OOD-aware selective forgetting
+## 4. 第一 proposal：OOD-aware selective forgetting
 
 ### Observation
 
@@ -101,7 +101,7 @@ Lethe selective-50 在 external305 上仅比 always 低 3.93pp，却节省 53.48
 
 如果新语言上为满足风险上限必须接近 100% always-hook，则 selective 方法没有部署价值。
 
-## 5. 第三 proposal：minimum-sufficient metadata
+## 5. 第二 proposal：minimum-sufficient metadata
 
 ### Observation
 
@@ -149,17 +149,20 @@ MemPrivacy controls 显示具体值恢复很少，但 coarse type 与跨会话�
 - proactive selective memory intervention：[Remember When It Matters](https://arxiv.org/abs/2607.08716)
 - selective add/delete management：[How Memory Management Impacts LLM Agents](https://arxiv.org/abs/2505.16067)
 - learned ADD/UPDATE/DELETE/NOOP：[Memory-R1](https://arxiv.org/abs/2508.19828)
+- incremental residual memory：[DeltaMem](https://arxiv.org/abs/2606.03083)
+- buffer + periodic consolidation：[Infini Memory](https://arxiv.org/abs/2606.10677)
+- learned retrieve/consolidate/forget controller：[MemCon](https://arxiv.org/abs/2607.13591)
 - memory vs long-context cost break-even：[Beyond the Context Window](https://arxiv.org/abs/2603.04814)
 - agent unlearning / selective forgetting：[Agentic Unlearning](https://arxiv.org/abs/2602.17692)
+- dependency-structured memory：[ContextWeaver](https://arxiv.org/abs/2604.23069)
 
 本项目需要坚持的差异点：
 
-- 写入侧 maintenance frequency 与 write amplification；
-- delta/local merge/full rebuild，而非普通 retrieval router；
-- 全生命周期 TCO，而非只统计最终 prompt；
-- 非对称遗忘风险与 OOD safety fallback；
-- identity linkability 下的 minimum-sufficient metadata；
-- annotation fidelity 的相变和风险控制。
+- 生命周期方向做跨方法统一 TCO 与 workload phase diagram，而不是声称 delta/controller 本身新；
+- persistent-memory mutation 的非对称遗忘风险、worst-group 与 OOD safety fallback；
+- identity linkability 下的 rotating alias / task-gated reveal；
+- annotation fidelity 的真实错误率、相变和风险控制；
+- 所有方法使用 locked policy、fresh seed、zero-overlap 与 variance-aware causal controls。
 
 ## 8. 完整 research baseline 的最低交付清单
 
@@ -178,7 +181,8 @@ MemPrivacy controls 显示具体值恢复很少，但 coarse type 与跨会话�
 
 ## 9. Final recommendation
 
-- 主攻：event-triggered delta maintenance；
-- 并行准备但暂不放大：OOD-aware selective forgetting 的新外部数据；
-- 概念储备：minimum-sufficient metadata；
-- 其余方向并入评测/机制章节，不要把六条线硬塞进一篇论文。
+- 主攻：OOD-aware selective forgetting 的新外部多语言集与风险校准 gate；
+- 第二线：minimum-sufficient metadata 的 rotating alias / gated reveal；
+- 第三线：annotation fidelity 的真实 trace audit；
+- 生命周期方向先做 strong-baseline reproduction + unified ledger，不直接再造 generic controller；
+- 其余方向并入评测/机制章节，不把六条线硬塞进一篇论文。

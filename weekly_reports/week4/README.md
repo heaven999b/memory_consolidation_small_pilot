@@ -10,6 +10,7 @@ This folder is a self-contained report for an independent literature-reproductio
 | [baseline_replication_matrix_20260728.md](./baseline_replication_matrix_20260728.md) | Paper-by-paper numeric comparison, protocol fidelity, actual models, and evidence class |
 | [baseline_replication_matrix_20260728.csv](./baseline_replication_matrix_20260728.csv) | Machine-readable compact version of the baseline comparison table |
 | [research_proposal_roadmap_20260728.md](./research_proposal_roadmap_20260728.md) | Which observations can become proposals, what is still missing, and novelty/common-sense boundaries |
+| [investment_decision_20260728.md](./investment_decision_20260728.md) | Token/method/data investment priorities, stage gates, stop list, and concrete next experiments |
 
 ## Evidence vocabulary
 
