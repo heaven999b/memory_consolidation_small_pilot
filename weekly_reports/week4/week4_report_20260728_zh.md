@@ -6,6 +6,7 @@
 
 配套文件：
 
+- [第一轮五线确认实验结果](./round1_followup_results_20260728.md)
 - [逐论文 baseline 对照矩阵](./baseline_replication_matrix_20260728.md)
 - [Research proposal 路线图](./research_proposal_roadmap_20260728.md)
 - [下一阶段投入决策](./investment_decision_20260728.md)
@@ -18,7 +19,15 @@
 2. **最值得优化的是何时调用昂贵 memory operation**：Lethe 的锁定 selector 在 305 条外部样本上，以 3.93pp 的质量差换取 53.48% calls 和 59.29% tokens 节省，且 0 over-delete；但跨语言出现 26.7pp 崩点，说明路由必须带 OOD 风险控制。
 3. **结构化策略的收益依赖 metadata/annotation 可信度**：Pi-CWL 在干净标注下比 recency 高 2.17pp，但噪声 0.75 时反而低 2.84pp；一个冻结 fallback 在新 seed held-out 上提高 recall 0.68pp，却增加 2.03pp closure violation。
 
-因此，本周已经形成了可靠的问题证据；但最新 related-work audit 显示，generic event-triggered/delta controller 已明显拥挤。当前优先级修正为：**OOD 风险校准的 persistent-memory forgetting、跨会话 linkability 下的 minimum-sufficient metadata、annotation-fidelity robustness**；生命周期方向转为统一计量与 baseline benchmark，而不是直接再造一个 controller。
+因此，本周已经形成了可靠的问题证据；但后续五线确认实验进一步改变了排序：**minimum-sufficient identity continuity、candidate-first safe forgetting、replay-certified retrieval repair** 成为前三。原 OOD router 因只省 11.46% calls 而 NO-GO，Annotation observable 因缺乏 corruption discrimination 而 NO-GO；生命周期 confirmation 只得到由 2/12 histories 驱动的稀疏增益。完整证据见[第一轮五线确认实验结果](./round1_followup_results_20260728.md)。
+
+### 0.1 第一轮确认实验后的增量结论
+
+- 五条正式接续共完成 1,178 次真实本地代理调用、3,126,042 tokens；公开数据来源、prompt hash、actual model、sample-level scorer 和 cluster-aware CI 均有审计产物。
+- MemPrivacy 的 stable typed→rotating typed 令 link balanced accuracy 从 100% 降至 50%，user-cluster 95% CI 为 `[38.89,57.58]pp`；但 attribute inference 未同步降低，且 full-48 gated loss 5.21pp、recovery 66.7% 未过方法门，证明 value、attribute、link、utility 不能合并成一个分数。
+- MemTrace 正确替换相对 baseline 的 F1 增益为 `+.1864 [.0463,.3880]`，且显著胜 length-matched deletion 与 irrelevant replacement；但所有 strict EM 都为 0，只能称为机制信号。
+- Lethe risk policy 与 always 同为 90% accuracy，却只省 11.46% calls；6/15 always failures 在 candidate-empty 阶段就阻断 hook，下一步应前移到 candidate recovery，而不是再调 router。
+- Lifecycle BM25 只多答对 2 题却多用 1.027M tokens；Annotation 的旧 observable 对四类 corruption 的 route-change 最高仅 0.90%。两线均不应继续无条件扩样。
 
 ## 1. 本周完成了什么
 
@@ -40,7 +49,7 @@
 | Supersede | 25 paired baseline + 108 condition matrix | full vs bounded accuracy/cost/latency |
 | Lethe | deterministic 385；selective 80；锁定 selector 外部 305 | underforget/overdelete/calls/tokens |
 | Pi-CWL | 1,200 mechanism + fresh-seed 1,200 held-out | recall/closure/annotation-noise |
-| MemPrivacy | 48×8 + 48×6 controls | privacy/linkability/utility identification |
+| MemPrivacy | 48-source 四臂 minimum-metadata confirmation；685 calls | value/attribute/link/utility 分离与 user-cluster inference |
 | MemTrace | 5-case mechanical audit + 4 cases×4 arms | causal replay feasibility and variance |
 | MemSyco | 20×5 valid observations | packet/framing utility boundary |
 
@@ -157,11 +166,11 @@ deterministic 63.4% 精确复现；使用替代 LLM hook 后，always 的外部�
 
 ### 5.3 修正后的优先级
 
-1. **OOD-aware risk-calibrated persistent-memory forgetting**：利用 Lethe external305 的强 Pareto，补多语言/多脚本 OOD、worst-group risk 和安全 fallback。
-2. **Minimum-sufficient metadata under cross-session linkability**：超越 MemPrivacy 的稳定 typed placeholder，研究 session-rotating alias 与 task-gated reveal。
-3. **Annotation-fidelity-aware structured eviction**：把 Pi-CWL 的 synthetic sign reversal 搬到真实 agent traces，测真实标注错误率与 confidence-aware fallback。
-4. **Full-lifecycle memory maintenance benchmark**：复现 DeltaMem、MemCon、Memory-R1、Infini Memory，统一测 write amplification 与 workload phase diagram；暂不再造 generic controller。
-5. **Variance-aware causal replay**：作为上述所有方法的共同评测层。
+1. **Minimum-sufficient identity continuity**：48-source 结果已显示 stable alias 的 link 风险与 attribute/value 风险分离，但当前方法门 NO-GO；下一步实现非 oracle reveal policy，并做 user-disjoint / 第二公开 benchmark 确认。
+2. **Candidate-first safe forgetting**：原 OOD router 正式 NO-GO；利用 6 个 candidate-empty 失败，研究 multilingual dense recovery、abstention 与 mutation-level routing。
+3. **Replay-certified retrieval repair**：MemTrace 五臂多 seed 机制门通过；扩大到 20–30 个预冻结 cases，并把 strict task success 作为主终点。
+4. **Marginal-value memory invocation benchmark**：Lifecycle 的增益只来自 2/12 histories，先确认 history-level 稀疏性并比较强 selective baselines，不直接造 generic router。
+5. **Annotation-fidelity observable redesign**：旧 validator 正式 NO-GO；先找到同结构内有变异且与 downstream failure 校准的 observable，暂不烧模型 token。
 6. **Representation fallback**：普通版本撞题最严重；除非能做 evidence-sufficiency certificate，否则降级。
 
 ## 6. 哪些说法只是常识，不能当论文创新
@@ -218,4 +227,4 @@ deterministic 63.4% 精确复现；使用替代 LLM hook 后，always 的外部�
 - raw prompts/responses 和本地代理凭据未进入公开仓库；
 - 正式论文前仍需完成 related-work collision audit、外部数据与跨模型确认。
 
-**本周最终判断**：作为 weekly report 已充分；Lethe、Supersede、Pi-CWL、Engram 足以支撑 proposal 的 preliminary evidence。最合理的下一步不是继续扩大所有 baseline，而是把 token 集中到 OOD forgetting 与 metadata linkability；annotation fidelity 先做真实数据；lifecycle 先完成强近邻复现和统一测量，再决定是否提出方法。
+**本周最终判断**：作为 weekly report 已充分，而且五线确认实验已经把“候选想法”推进到有 GO/NO-GO 的研究决策。最合理的下一步不是平均扩所有 baseline：优先把 token 投向 minimum-sufficient identity continuity 与 MemTrace 外部扩展；Lethe 只做 candidate-first redesign；Lifecycle 先复现增益稀疏性；Annotation 在 observable 资格门通过前停止模型调用。

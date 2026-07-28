@@ -2,6 +2,8 @@
 
 **日期：2026-07-28**
 
+> 2026-07-28 五线确认实验已完成。下表与最终建议已按新证据更新；详细统计见[第一轮五线确认实验结果](./round1_followup_results_20260728.md)。
+
 ## 1. 从“本周结果”到“完整论文”还差什么
 
 当前已经具备：真实 baseline 结果、公开产物复算、失败案例、成本账本、部分 held-out 验证和明确 NO-GO。
@@ -12,11 +14,11 @@
 
 | Rank | Direction | 当前证据 | 新颖性（收窄后） | 完成度 | 决定 |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | OOD-aware risk-calibrated persistent-memory forgetting | Lethe locked external305 + cross-lingual failure | 中高 | 中高 | 主 proposal；先补外部多语言集 |
-| 2 | Minimum-sufficient metadata under cross-session linkability | MemPrivacy controls + framing/structure evidence | 中高 | 中 | 实现 rotating alias / gated reveal |
-| 3 | Annotation-fidelity-aware structured eviction | Pi-CWL noise reversal + fresh-seed fallback | 中高 | 中 | 先做真实 trace audit |
-| 4 | Full-lifecycle memory maintenance benchmark | Engram + Supersede + TokenPilot + Agent-Native | 中 | 高 | 先复现强近邻，不直接造 controller |
-| 5 | Variance-aware causal replay | MemTrace placebo/length confound | 中 | 中 | 作为共同评测层 |
+| 1 | Minimum-sufficient identity continuity | MemPrivacy 48-source；stable→rotating link -50pp 且 user-cluster 稳健 | 中高 | 中高 | 主 proposal；实现非 oracle reveal + 外部确认 |
+| 2 | Candidate-first safe forgetting | Lethe risk router NO-GO；6个 candidate-empty 失败定位 control-plane bug | 高（收窄后） | 中 | 重构 candidate recovery/abstention，不再调原 router |
+| 3 | Replay-certified retrieval repair | MemTrace 五臂100-call GO；correct 明显胜删除/无关替换 | 中高 | 中 | 扩20–30 cases并改用 strict success 主终点 |
+| 4 | Marginal-value memory invocation benchmark | 12 histories 仅2个正向；每额外正确约513k tokens | 中 | 中 | 第二数据确认稀疏收益；暂不造 generic router |
+| 5 | Annotation-fidelity observable redesign | 5,670 audit；route discrimination最高0.90% | 中 | 低 | 原 validator NO-GO，先重做 observable |
 | 6 | Evidence-sufficiency certificate + selective fallback | Engram representation failures | 低到中 | 中 | 普通版本撞题；仅保留 certificate 版本 |
 
 ## 3. 生命周期方向：改为 benchmark，不再直接作为主方法 proposal
@@ -181,8 +183,8 @@ MemPrivacy controls 显示具体值恢复很少，但 coarse type 与跨会话�
 
 ## 9. Final recommendation
 
-- 主攻：OOD-aware selective forgetting 的新外部多语言集与风险校准 gate；
-- 第二线：minimum-sufficient metadata 的 rotating alias / gated reveal；
-- 第三线：annotation fidelity 的真实 trace audit；
-- 生命周期方向先做 strong-baseline reproduction + unified ledger，不直接再造 generic controller；
-- 其余方向并入评测/机制章节，不把六条线硬塞进一篇论文。
+- 主攻：minimum-sufficient identity continuity；把 rotating alias 提升为非 oracle、可校准的 task-gated reveal，并做第二公开 benchmark / user-disjoint 确认；
+- 第二线：candidate-first safe forgetting；修复 candidate-empty blind spot，再做 mutation-level routing，而不是继续调原 OOD selector；
+- 第三线：replay-certified retrieval repair；扩大公开有效 cases，并以 strict task success 验证单-op repair；
+- 生命周期方向只确认 marginal-value sparsity 和完整 TCO，不直接再造 generic controller；
+- Annotation 原 observable 已 NO-GO，先重建设计；其余方向并入评测/机制章节，不把多条线硬塞进一篇论文。

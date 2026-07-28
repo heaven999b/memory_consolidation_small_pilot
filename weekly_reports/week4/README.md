@@ -7,6 +7,7 @@ This folder is a self-contained report for an independent literature-reproductio
 | File | Purpose |
 | --- | --- |
 | [week4_report_20260728_zh.md](./week4_report_20260728_zh.md) | Main Chinese weekly report: what was reproduced, what matched, what failed, and the main research directions |
+| [round1_followup_results_20260728.md](./round1_followup_results_20260728.md) | Five-line confirmatory follow-up: public data, professional protocols, audited results, GO/NO-GO decisions, and revised shortlist |
 | [baseline_replication_matrix_20260728.md](./baseline_replication_matrix_20260728.md) | Paper-by-paper numeric comparison, protocol fidelity, actual models, and evidence class |
 | [baseline_replication_matrix_20260728.csv](./baseline_replication_matrix_20260728.csv) | Machine-readable compact version of the baseline comparison table |
 | [research_proposal_roadmap_20260728.md](./research_proposal_roadmap_20260728.md) | Which observations can become proposals, what is still missing, and novelty/common-sense boundaries |
