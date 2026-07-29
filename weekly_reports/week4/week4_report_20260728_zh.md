@@ -1,8 +1,8 @@
 # 第四周研究汇报：从复现论文，到找到真正需要新增的实验
 
-**汇报日期：2026-07-28；修订日期：2026-07-29**
 
-## 一句话结论
+
+
 
 本周不是完成了一篇新论文，也不是只阅读和摘抄论文。本周完成的是：**复算公开结果、真实运行官方基线、用额外对照实验检查论文结论的边界，并从中筛出两个值得继续做成新方法的问题和一个具体评测问题。**
 
@@ -10,11 +10,11 @@
 
 ## 1. 本周到底做了什么？
 
-本周工作分为三层。
+
 
 ### 1.1 第一层：检查论文和公开代码能否被正确复算
 
-这部分是复现工作，不是原创贡献。
+
 
 | 项目 | 本周完成的工作 | 结果 | 能否称为新发现 |
 | --- | --- | --- | --- |
@@ -29,7 +29,6 @@ MemSyco 已核验官方 OFJ 数据、官方 `NoMemory` 与 `RawDialogue` 成对�
 
 ### 1.2 第二层：不是照跑论文，而是增加新的干预、对照和失败审计
 
-这部分才是本周真正的增量活动。
 
 | 增量活动 | 原论文主要研究什么 | 我们额外增加了什么 | 当前证据等级 |
 | --- | --- | --- | --- |
@@ -41,8 +40,6 @@ MemSyco 已核验官方 OFJ 数据、官方 `NoMemory` 与 `RawDialogue` 成对�
 | MemoryAgentBench 边际价值 | 记忆系统的检索、学习、长程理解和遗忘能力 | no-memory/BM25配对；按history统计收益集中度；计算每多答对一题的token成本 | 小样本诊断，不构成创新 |
 
 ### 1.3 第三层：根据负结果停止不值得继续烧资源的方向
-
-本周没有为了制造好看数字而把所有实验扩大：
 
 - Lethe 原选择性 router 在新 held-out 数据上只节省11.46% calls，未达到30%门槛，停止继续调同一个阈值；
 - MemPrivacy 当前 oracle-gated 方法效用损失5.21个百分点、恢复率66.7%，未达到≤3%和≥80%的门槛，当前方法 NO-GO；
@@ -113,7 +110,6 @@ TRAJECT-Bench 宣称提供trajectory-aware metrics。我们没有直接相信指
 
 ## 3. 哪些结果不能再冒充我们的创新？
 
-完成文献对照后，必须明确降级以下内容。
 
 ### 3.1 Lethe 的control-plane placement不是我们提出的
 
@@ -187,8 +183,7 @@ GO条件：链接风险下降在自适应攻击者下仍成立；效用损失≤
 首轮设计：
 
 - 冻结20–30个官方 MemTraceBench retrieval-error cases；
-- 使用自动 detector/editor，不由人工直接提供正确答案；
-- baseline/placebo/repair/等长删除/无关替换五臂；
+- 使用自动 detector/editor，不由人；
 - 至少3个outcome-blind seeds和common random numbers；
 - strict task success为主指标，F1、repair precision、replay cost为辅指标。
 
@@ -214,19 +209,8 @@ GO条件：strict accuracy的置信区间下界大于0，并且repair显著胜�
 - 对外报告保留sample ID、实际模型、calls/tokens、持久输出和可复算scorer；
 - 模型、数据、方法、切片或scorer不同的结果，不与论文表格直接比较。
 
-## 7. 汇报时应该怎样表述？
 
-可以这样说：
 
-> 本周首先复算了Lethe、Engram和TokenPilot的公开结果，并用官方GateMem流程完成了仅替换模型的30-checkpoint基线。复现之后没有停留在重复论文数字，而是增加三类诊断：第一，攻击MemPrivacy的稳定typed placeholder，发现真实值恢复为0时跨会话链接仍可达到100%；第二，对MemTrace错误案例进行五臂、多seed真实回放，初步排除上下文长度和随机性解释；第三，对TRAJECT-Bench进行28,350个结构扰动，发现旧observable几乎感知不到结构内部错误。文献核对后，Lethe control-plane、Supersede maintenance gap、GateMem接口层遗忘和普通memory routing均已被已有工作覆盖，因此不再作为原创主线。下一步集中推进task-scoped unlinkability和stateful counterfactual replay两个可形成新方法的缺口。
-
-不能说：
-
-- “本周完整复现了六篇论文”；
-- “第一次发现摘要会丢信息”；
-- “第一次发现遗忘系统的control-plane placement重要”；
-- “第一次发现最终答案不泄露不等于物理删除”；
-- “已经做出了一篇完整的新方法论文”。
 
 ## 8. 技术附件
 
