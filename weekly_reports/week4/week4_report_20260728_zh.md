@@ -1,230 +1,271 @@
-# 第四周汇报 · 记忆系统的质量—成本—风险 trade-off 复现与研究问题收敛
+# 第四周研究汇报：AI 的“记忆”到底有没有用，又要付出什么代价？
 
 **日期：2026-07-28**
 
-> 本周是一个独立的“近期记忆论文复现与选题”工作包：先扫描近期 memory×trade-off/utility 论文，再复算公开结果、跑小样本真实 baseline、检查完整资源账本，最后从异常和设计取舍中筛选可发表的小问题。本文不使用前三周研究假设来解释这些论文。
+## 先说结论
 
-配套文件：
+这一周我们研究的不是“让模型记住更多”这么简单，而是下面三个问题：
 
-- [第一轮五线确认实验结果](./round1_followup_results_20260728.md)
-- [逐论文 baseline 对照矩阵](./baseline_replication_matrix_20260728.md)
-- [Research proposal 路线图](./research_proposal_roadmap_20260728.md)
-- [下一阶段投入决策](./investment_decision_20260728.md)
+1. 给 AI 加上记忆以后，回答真的会更好吗？
+2. 为了这点提升，需要多花多少计算量、时间和 tokens？
+3. 记忆里会不会泄露隐私、保留错误信息，或者忘错东西？
 
-## 0. 一句话结论
+我们得到的总体答案是：
 
-本周最重要的结果不是“又跑了若干模型”，而是确认了三个跨论文现象：
+> **记忆有时能帮上忙，但收益往往只出现在少数问题上；如果不把读取、整理、更新和删除记忆的成本全部算进去，一个看起来“更聪明”的系统可能反而更贵、更慢，也不一定更安全。**
 
-1. **少上下文不等于低总成本**：Engram 查询上下文缩短 8.37×，但单查询计入抽取后总 token 是 full context 的 1.35×；Supersede 的 bounded rewrite 在 108 条件中质量更低、成本和延迟反而更高；TokenPilot 的公开账本只覆盖主模型，无法识别完整 TCO。
-2. **最值得优化的是何时调用昂贵 memory operation**：Lethe 的锁定 selector 在 305 条外部样本上，以 3.93pp 的质量差换取 53.48% calls 和 59.29% tokens 节省，且 0 over-delete；但跨语言出现 26.7pp 崩点，说明路由必须带 OOD 风险控制。
-3. **结构化策略的收益依赖 metadata/annotation 可信度**：Pi-CWL 在干净标注下比 recency 高 2.17pp，但噪声 0.75 时反而低 2.84pp；一个冻结 fallback 在新 seed held-out 上提高 recall 0.68pp，却增加 2.03pp closure violation。
+本周最值得继续研究的不是再造一个通用“记忆控制器”，而是三个更具体的问题：
 
-因此，本周已经形成了可靠的问题证据；但后续五线确认实验进一步改变了排序：**minimum-sufficient identity continuity、candidate-first safe forgetting、replay-certified retrieval repair** 成为前三。原 OOD router 因只省 11.46% calls 而 NO-GO，Annotation observable 因缺乏 corruption discrimination 而 NO-GO；生命周期 confirmation 只得到由 2/12 histories 驱动的稀疏增益。完整证据见[第一轮五线确认实验结果](./round1_followup_results_20260728.md)。
+- 怎样只暴露完成任务所必需的身份信息，避免不同会话被轻易关联；
+- 怎样在执行“忘记”之前先确认系统确实找到了需要删除的内容；
+- 怎样判断一次记忆错误能否通过替换正确证据真正修复。
 
-### 0.1 第一轮确认实验后的增量结论
+## 1. 什么是 AI 记忆系统？
 
-- 五条正式接续共完成 1,178 次真实本地代理调用、3,126,042 tokens；公开数据来源、prompt hash、actual model、sample-level scorer 和 cluster-aware CI 均有审计产物。
-- MemPrivacy 的 stable typed→rotating typed 令 link balanced accuracy 从 100% 降至 50%，user-cluster 95% CI 为 `[38.89,57.58]pp`；但 attribute inference 未同步降低，且 full-48 gated loss 5.21pp、recovery 66.7% 未过方法门，证明 value、attribute、link、utility 不能合并成一个分数。
-- MemTrace 正确替换相对 baseline 的 F1 增益为 `+.1864 [.0463,.3880]`，且显著胜 length-matched deletion 与 irrelevant replacement；但所有 strict EM 都为 0，只能称为机制信号。
-- Lethe risk policy 与 always 同为 90% accuracy，却只省 11.46% calls；6/15 always failures 在 candidate-empty 阶段就阻断 hook，下一步应前移到 candidate recovery，而不是再调 router。
-- Lifecycle BM25 只多答对 2 题却多用 1.027M tokens；Annotation 的旧 observable 对四类 corruption 的 route-change 最高仅 0.90%。两线均不应继续无条件扩样。
+普通聊天模型通常只看到当前对话。记忆系统会把过去的信息保存下来，在以后回答时再取出来。
 
-## 1. 本周完成了什么
+可以把它想象成一个助手的笔记本：
 
-### 1.1 扫描与设计解剖
+- 用户说“我对花生过敏”，系统把它写进笔记；
+- 下次用户问餐厅推荐，系统把这条笔记找出来；
+- 用户后来澄清“只是轻微不耐受”，系统需要更新旧笔记；
+- 用户要求删除健康信息，系统还必须真的删干净。
 
-- 对 8 篇主论文完成实验设计拆解、代码冒烟和候选问题生成；
-- 扩展到 LongMemEval-V2、Agent-Native、TokenPilot、Engram、Supersede、Lethe、Pi-CWL 等 released baselines；
-- 所有结论按 exact / released recomputation / substitute / mechanism test / NO-GO 分级；
-- 没有把下载、dry-run、任务 active 或写完代码计作实验样本。
+这里的难点并不是“有没有笔记本”，而是：
 
-### 1.2 本周可审计实验规模
+- 什么值得写？
+- 什么时候应该读？
+- 旧内容和新内容冲突时怎么办？
+- 哪些信息应该隐藏或删除？
+- 为了管理笔记本花掉的成本，是否超过它带来的收益？
 
-| 项目 | 有效规模 | 主要输出 |
-| --- | ---: | --- |
-| LongMemEval-V2 | 30 queries；42 calls；1,048,102 tokens | substitute retrieval/packing diagnostic |
-| Agent-Native | 10 paired cases；20 calls；300,328 tokens | BM25 memory vs no-memory |
-| TokenPilot | live paired 0/5 NO-GO；released aggregate 复算 | quality、input、main-model cost |
-| Engram | released 500题输出复算；真实替代栈 30 paired；reader robustness 10 | lean/full accuracy、preprocess/query ledger |
-| Supersede | 25 paired baseline + 108 condition matrix | full vs bounded accuracy/cost/latency |
-| Lethe | deterministic 385；selective 80；锁定 selector 外部 305 | underforget/overdelete/calls/tokens |
-| Pi-CWL | 1,200 mechanism + fresh-seed 1,200 held-out | recall/closure/annotation-noise |
-| MemPrivacy | 48-source 四臂 minimum-metadata confirmation；685 calls | value/attribute/link/utility 分离与 user-cluster inference |
-| MemTrace | 5-case mechanical audit + 4 cases×4 arms | causal replay feasibility and variance |
-| MemSyco | 20×5 valid observations | packet/framing utility boundary |
+这就是本项目所说的 **trade-off**：获得一项好处时，需要牺牲什么。
 
-全部调用仅使用当时已授权的本地代理；官方按量付费 API 调用为 0；所有 `gpt-5.6-*` 调用为 0。
+## 2. 五个常用词是什么意思？
 
-## 2. 哪些实验真正研究了 trade-off 或 utility
+| 术语 | 通俗解释 |
+| --- | --- |
+| Baseline | 用来比较的基础方案。例如“不读取记忆”就是最简单的 baseline |
+| Token | 模型处理文字的基本计量单位。tokens 越多，通常意味着计算和费用越高 |
+| Scorer | 按固定规则给答案打分的程序，避免只靠人主观判断 |
+| Held-out data | 调方法时没看过的测试数据，用来检查方法是不是只记住了开发样本 |
+| GO / NO-GO | 达到预先规定的标准就继续；没有达到就停止或重新设计 |
 
-### 2.1 直接、定量的 trade-off
+## 3. 这一周具体做了什么？
 
-| 项目 | 质量/风险端 | 资源端 | 本周得到的 trade-off 结论 |
-| --- | --- | --- | --- |
-| Agent-Native | BM25 memory EM 100%、F1 1.0；no-memory EM 90%、F1 .9556 | memory 多 284,288 input tokens | +10pp EM 需要每例约 +28.4k input tokens；不能默认总是加载 memory |
-| TokenPilot | released quality 79.2%→81.3%（+2.1pp） | input -67.38%，主模型成本 -61.50% | 主模型账上 Pareto 改善成立，但 estimator/distiller/embedding 未入账，完整 TCO 未识别 |
-| Engram | released lean 83.6% vs full 73.2%；替代栈 lean 86.67% vs full 100% | query context 省 8.37×；加预处理后一问一历史 lean 贵 1.35× | query-time 优势不等于生命周期优势；解析 break-even 为 1.406 queries/history |
-| Supersede | 25题 full 76% vs bounded 40%；108 条件中 bounded 六格准确率都更低 | bounded 成本高 116.4%；平均延迟 89–142s vs full 3.3–3.7s | bounded rewrite 被 full Pareto 支配；对任意 λ≥0，`Uλ=accuracy−λ·cost` 无 crossover |
-| Lethe | external305：selective-50 87.21% vs always 91.15%；0 over-delete | 节省 53.48% calls、59.29% tokens | 得到真实 held-out quality–resource Pareto；跨语言组损失扩大到 26.7pp |
-| Pi-CWL | fallback recall .9809 vs CWL .9741 | 等 memory budget；closure violation 0→.0203 | recall 增益换取结构风险；不是单指标全面获胜 |
-| Beyond-ML | held-out selector score 5.0 vs fixed-50k 5.4583 | token 节省 31.29% | generic router 没过 utility 门：省 token 但效用下降，按预注册规则止损 |
-| MemPrivacy | typed metadata 提高 attribute/link inference；部分任务 utility 保留、部分明显下降 | metadata/token 表示不同 | 不存在全局 masking 排名；必须做 task-conditional privacy–utility–token Pareto |
+我们先扫描近期 AI 记忆研究，然后做了三层检查：
 
-### 2.2 与 utility 有关，但当前仍有因果混杂
+1. **公开结果复算**：下载作者公开的结果，检查论文数字能否重新算出来；
+2. **小规模真实运行**：在公开 benchmark 上实际调用模型，检查方法是否能跑通；
+3. **针对性实验**：根据复现中暴露的问题，设计更严格的对照实验。
 
-- **MemTrace**：strict arm 平均 ΔF1 `+.1017`，输入 token 同时从约 10,148 降到 655。收益可能来自纠错，也可能来自 93.5% 上下文剪枝或生成噪声，必须加入 length-matched deletion、irrelevant replacement 和重复 placebo。
-- **MemSyco**：raw utility `.90`，neutral scaffold/sham 类条件为 `1.0`，但 raw failures 只有 2/20，未达到预注册 boundary 门；只能作为 framing 机制线索。
-- **GateMem**：主要测 recovery/confirmation leakage 的分阶段风险，目前没有形成可信资源—效用曲线。
-- **LongMemEval-V2**：当前主要是 substitute retrieval/packing 失败诊断，不能拿 10% accuracy 构造论文级 trade-off。
+所有评估数据都来自公开 benchmark 或公开研究仓库，不使用自行编造的测试故事。正式五线实验共完成：
 
-### 2.3 本项目采用的 utility 观念
+- 1,178 次真实本地代理调用；
+- 3,126,042 tokens；
+- 官方按量付费 API 调用为 0；
+- `gpt-5.6` 调用为 0。
 
-本项目不把“accuracy/token”简单比值当作唯一 utility，而把以下维度并列报告：
+需要特别说明：有些论文原模型无法获得，所以部分真实运行使用 `gpt-5.4` 替代。这样的结果只能说明“这个机制在当前模型上是否出现”，不能冒充论文原始数字的精确复现。
 
-- task quality / exact match / judge score；
-- under-forgetting、over-deletion、privacy/linkability 等风险；
-- write、extract、consolidate、retrieve、answer、judge、sidecar 的 calls/tokens；
-- latency、cache regime、失败重试；
-- query reuse 和 update density；
-- risk–coverage 与 Pareto frontier。
+## 4. 哪些论文结果被我们重新确认了？
 
-Supersede 已直接检验 `Uλ=accuracy−λ·cost`；Lethe 和 Pi-CWL 采用约束式 utility 更合理，即先约束风险上限，再最小化调用成本。
+### 4.1 可以明确说“公开结果一致”
 
-## 3. 复现了哪些 baseline，和论文是否一致
+| 项目 | 作者公开结果 | 我们重新计算的结果 | 结论 |
+| --- | ---: | ---: | --- |
+| Lethe 的确定性遗忘测试 | 244/385，约63.4% | 244/385，63.38% | 完全一致 |
+| Engram 的公开输出 | 精简记忆83.6%，完整上下文73.2% | 83.6%和73.2% | 完全一致，但只是复算作者输出 |
+| TokenPilot 的公开账本 | 质量79.2%→81.3%，主模型成本约7.24→2.79美元 | 质量与成本数字一致 | 主模型账一致，但辅助模块成本未公开 |
 
-详细证据见[逐论文对照矩阵](./baseline_replication_matrix_20260728.md)。简要结论如下。
+### 4.2 只能说“方向相同”
 
-### 3.1 可以明确说“复现一致”的两项
+Supersede 论文报告：完整上下文比固定长度摘要更准确。我们的替代模型实验也得到相同方向，但差距大小不同。由于模型和样本不同，不能称为数字复现。
 
-1. **Lethe deterministic baseline**：作者公开 headline 为 `244/385=63.4%`；本地使用 released deterministic pipeline 与 scorer 重算得到 `244/385=63.38%`。分子分母完全一致，属于精确复现。
-2. **Engram released outputs**：作者公开 `engram_lean 83.6%`、`full-context 73.2%`；对公开的 500 题输出独立聚合得到相同结果。它验证了 released artifact 与报告数字一致，但不是重新调用论文原始 Doubao/DeepSeek 栈。
+### 4.3 不能和论文数字直接比较
 
-### 3.2 公开聚合复算一致，但没有完成 live end-to-end 的一项
+LongMemEval、Agent-Native、MemPrivacy、MemTrace、MemSyco、GateMem 等实验中，我们替换了模型、检索器、数据切片或部分流程。这些实验仍然能发现问题，但只能称为诊断或机制验证。
 
-**TokenPilot**：官方 released continuous aggregate 为 Vanilla 79.2%、TokenPilot/LightMem2 81.3%，主模型成本约 `$7.24→$2.79`。使用作者 cost parser 重算为 `$7.242375→$2.788575`，与公开值一致；但 macOS/Linux harness 和本地 gateway 使 live paired 0/5，因此不能声称端到端复现，更不能把主模型账称为完整 TCO。
+## 5. 五个确认实验发现了什么？
 
-### 3.3 方向一致、数字不应要求相同的一项
+### 5.1 隐私实验：隐藏真实姓名，不代表无法关联同一个人
 
-**Supersede**：论文在 LongMemEval knowledge-update oracle split（n=78）报告 full-context 92%、300字符 bounded memory 77%，差 15pp。我们的替代模型小切片（n=25）为 76% vs 40%，差 36pp。方向一致，且 108 条件扩展继续显示 bounded 被支配；但由于模型、样本和规模不同，不能叫数字复现。
+假设系统把“张三”替换成 `PERSON_1`。真实姓名看不到了，但如果每次对话都使用同一个 `PERSON_1`，攻击者仍然能判断两段记录属于同一个人。
 
-### 3.4 与论文不能直接比较的非精确验证
+我们在公开 MemPrivacy 数据上比较了四种方案：
 
-- **Engram live 30**：论文/released 方向为 lean 高 10.4pp；替代栈为 lean 低 13.33pp。这个方向反转很重要，但 n=30、模型和 embedding 均不同，不能写成推翻论文，只能写“headline 对模型/表示栈不稳健的 provisional evidence”。
-- **LongMemEval-V2**：3/30=10%，但同时替换了 embedding、retrieval、截图输入和 reader，并存在 context cap；不能归因于论文 baseline。
-- **Agent-Native**：论文是 22 个系统和多个自建/重构子集的横评；我们是 10 个 BM25-vs-no-memory diagnostic cases，且论文 Qwen3-8B answer backbone 不可用，没有一一对应 headline。
-- **MemPrivacy、MemTrace、MemSyco、GateMem、Beyond-ML**：均得到可复算的小样本机制结果，但存在 substitute model、self-judge、shadow adapter 或数据切片变化；不报“论文数值复现”。
-- **Pi-CWL**：精确调用官方 `filterContext` 完成 1,200+1,200 等预算机制实验，但这是官方函数的 mechanism test，不是论文 agent benchmark headline。
+1. 保留原始信息；
+2. 使用跨会话不变的类型标签；
+3. 每次会话更换标签；
+4. 使用不透明标签，只在任务需要时恢复部分信息。
 
-## 4. 论文结果与本周结果的核心差异
+主要结果：
 
-### 4.1 Engram：公开数字复算一致，但全链路结论不一致
+| 方案 | 跨会话关联攻击成功率 | 属性推断成功率 | 统一评分下的回答效用 |
+| --- | ---: | ---: | ---: |
+| 原始信息 | 93.75% | 79.17% | 56.25% |
+| 固定类型标签 | 100% | 81.25% | 48.96% |
+| 每会话更换标签 | 50% | 89.58% | 48.96% |
+| 不透明标签＋理想化按需恢复 | 54.17% | 62.50% | 51.04% |
 
-- 论文/README 的 query-time 表：lean 83.6%、full 73.2%，约 8× 更短；
-- 我们确实复算出这两个准确率；
-- 但 released 账本未计构建 lean memory 的抽取 token；
-- 在真实 30 题替代栈中，预处理使用 3,844,788 tokens；一问一历史时 lean 总计 4,265,154，full 为 3,155,656；
-- 因此，“查询 prompt 更短”成立，“单查询端到端更省”不成立。
+前两列越低越安全，最后一列越高越有用。这里的“回答效用”是统一评分，不等同于完全正确率。
 
-### 4.2 Supersede：复现了方向，并发现固定 bounded rewrite 不存在 break-even
+最容易理解的发现是：
 
-论文的 full > bounded 方向得到支持；进一步的 108 条件结果显示，不只是 300 字符预算选错：150/300 在 short/medium/long 六格全部更差更贵。下一步应改变更新机制，而不是继续扫摘要长度。
+> 固定标签虽然隐藏了具体值，却变成了非常稳定的“身份钥匙”；每次更换标签能让当前攻击者失去这条稳定钥匙，但并没有阻止属性推断，也不代表更强的攻击者一定无法关联。
 
-### 4.3 Lethe：headline 精确复现，但 always-hook 不是唯一合理部署点
+此外，50%的结果来自当前攻击者几乎把所有样本都判断为“不是同一个人”。因此它只说明固定身份钥匙消失了，不能证明隐私问题已经解决。
 
-deterministic 63.4% 精确复现；使用替代 LLM hook 后，always 的外部集成功率为 91.15%。锁定 selector 能以少量质量损失节省过半调用，但跨语言失效说明 selector coverage 是新瓶颈。
+当前方案没有达到完整标准。理想化恢复机制相对原始信息仍损失5.21个百分点效用，只恢复了66.7%的损失，低于预先要求的80%。而且它使用了 benchmark 提供的正确证据，相当于知道答案的上限实验，不是可部署方法。
 
-### 4.4 TokenPilot：公开主模型成本成立，完整 TCO claim 不可识别
+因此结论是：**隐私问题真实存在，但当前方法 NO-GO，需要重新设计。**
 
-我们没有发现作者公开 aggregate 的算术问题。问题在测量边界：released 数据不含 estimator、distiller、embedding sidecars，所以“主模型成本下降 61.5%”成立，“整个系统总成本下降 61.5%”没有证据。
+### 5.2 遗忘实验：问题可能发生在模型开始工作之前
 
-## 5. 证据质量、撞题情况与修正后的研究主线
+一种常见方案是：简单情况不用大模型，危险情况才调用昂贵的遗忘模型。
 
-### 5.1 哪些结果质量足以继续投资
+我们的风险策略在150条未见测试数据上，正确率与“每次都调用模型”相同，都是90%。但它只节省了11.46%的调用，没有达到预先要求的30%。
 
-| 结果 | 内部效度 | 外部效度 | 当前研究价值 | 主要限制 |
-| --- | --- | --- | --- | --- |
-| Lethe selective forgetting | 高：锁定 selector、external305、零重叠、配对资源账 | 中高 | 已形成可发表级 Pareto seed | hook 为替代模型；缺新生成多语言确认集 |
-| Supersede 108 conditions | 高：paired CI、两种成本口径、utility 无 crossover | 中 | 强负结果与 write-amplification 证据 | 12 cases/cell；模型替代 |
-| Pi-CWL 2,400 cases | 高：官方函数、fresh seed、零 hash 重叠 | 中低 | annotation-noise sign reversal 很清楚 | synthetic mechanism，不是完整 agent 任务 |
-| Engram lifecycle audit | 中高：released500 + live30 + 全链路 ledger | 中 | 很好的测量/critical re-evaluation 证据 | live 模型与 embedding 非论文原栈 |
-| MemPrivacy controls | 中 | 中低 | linkability 机制 seed | 尚未实现新 metadata 方法 |
-| MemTrace causal replay | 中低 | 低 | 可作为所有方向的评测规范 | 例数少；compression/variance 混杂 |
-| Agent-Native / LongMemEval | 低到中 | 低 | 诊断和止损价值 | 与论文主协议差异太大 |
+更重要的异常是：15个失败全部来自中文或日文，其中6个案例在系统搜索待删除内容时就得到空结果。因为候选内容为空，后面的语言模型根本没有机会处理它。
 
-### 5.2 哪些 broad ideas 已经被占位
+这就像：
 
-| Broad idea | 已有近邻 | 结论 |
+> 保安的判断能力再强，如果前台根本没有把可疑包裹送到保安面前，保安也无法发现问题。
+
+所以继续调“要不要调用模型”的阈值意义不大。下一步应把安全检查前移：先提高候选搜索的多语言覆盖率；如果仍找不到内容，就暂停删除并报告不确定，而不是假装已经删除成功。
+
+### 5.3 读取记忆实验：只多答对两题，却多处理一百多万 tokens
+
+我们在公开 MemoryAgentBench 上选了12段历史，每段提出3个问题，对比：
+
+- 不读取记忆；
+- 使用 BM25（一种按关键词相似度找资料的方法）从记忆中检索相关内容。
+
+结果：
+
+- 不读取记忆的完全正确率：86.11%；
+- 读取记忆的完全正确率：91.67%；
+- 提高5.56个百分点；
+- 但12段历史中只有2段真正得到改善；
+- 总共只多答对2题，却多消耗1,026,651 tokens；
+- 平均每增加一个正确答案，要额外处理约513,326 tokens。
+
+这不能证明“记忆没用”，但说明记忆收益非常不均匀。真正有价值的问题是：能否事先判断哪些问题值得读取记忆，而不是每次都把大量历史塞给模型。
+
+因为提升没有达到预先规定的10个百分点，且受益历史少于4段，本实验结论是 **INCONCLUSIVE：证据不足，不扩大当前方案。**
+
+### 5.4 错误修复实验：正确证据确实有帮助，但还没让答案完全正确
+
+MemTrace 研究的是：当记忆系统回答错误时，能否定位是哪条记忆导致了错误。
+
+我们选了4个公开、可以机械重建的错误案例。每个案例重复5次，并比较五种输入：
+
+1. 保留错误记忆；
+2. 完全相同的重复输入，用来测模型自身波动；
+3. 换成正确证据；
+4. 删除相同长度的内容；
+5. 换成无关内容。
+
+换成正确证据后，答案的关键词重合分数平均提高0.186。这个提升明显高于模型自身波动，也明显好于“只删掉内容”和“换成无关内容”。4个案例的方向全部一致。
+
+但必须保留一个重要限制：所有方案的严格完全正确率仍然是0。也就是说，答案变得更接近正确答案，却没有真正达到完全正确。
+
+所以本实验是一个**小范围机制 GO**：正确证据有作用；但还不能说我们已经做出了可靠的自动修复系统。
+
+### 5.5 结构标注实验：先发现“温度计不准”，所以没有继续测药效
+
+有些记忆算法依赖结构标注，例如“这一步依赖前一步”“这个工具调用属于同一个任务”。如果标注错误，算法可能删掉仍然有用的信息。
+
+我们原本计划比较两种记忆保留策略，但先检查了用于选择策略的信号是否真的能看见标注错误。
+
+在5,670条公开轨迹上：
+
+- 删除或插入依赖边，只让约0.90%的路由决定改变；
+- 删除类型信息，只让约0.09%的决定改变；
+- 交换顺序完全不会改变决定；
+- 干净数据中有29.45%被错误地切换到保守方案。
+
+预先要求的错误区分率是至少10%，实际远远没有达到。因此我们没有启动后续200条模型实验。
+
+这项负结果很重要：**如果测量器看不见问题，继续跑更多模型只能产生看起来精确、实际上没有意义的数字。**
+
+## 6. 哪些实验真正研究了 trade-off？
+
+| Trade-off | 我们观察到的结果 | 通俗解释 |
 | --- | --- | --- |
-| 学习 `ADD/UPDATE/DELETE/NOOP` | [Memory-R1](https://arxiv.org/abs/2508.19828) | 不能再把 memory operation policy 本身当创新 |
-| incremental/delta experience memory | [DeltaMem](https://arxiv.org/abs/2606.03083) | “写 delta 而非全量重写”本身已经不新 |
-| buffer + periodic consolidation | [Infini Memory](https://arxiv.org/abs/2606.10677) | 定期/分层维护已有直接方案 |
-| 统一控制 retrieve/consolidate/forget | [MemCon](https://arxiv.org/abs/2607.13591) | generic adaptive controller 已高度拥挤 |
-| selective retrieval / abstention | [Learning When to Remember](https://arxiv.org/abs/2604.27283) 等 | 普通 router/fallback 不足以独立投稿 |
-| selective forgetting / agent unlearning | [FSFM](https://arxiv.org/abs/2604.20300)、[Secure Forgetting](https://arxiv.org/abs/2604.00430)、[Agentic Unlearning](https://arxiv.org/abs/2602.17692) | 必须收窄到 persistent-memory mutation 的非对称风险与 OOD |
-| typed privacy placeholder | [MemPrivacy](https://arxiv.org/abs/2605.09530) | 不能只重复 type-aware masking；必须研究 cross-session linkability |
-| dependency-structured memory | Pi-CWL、[ContextWeaver](https://arxiv.org/abs/2604.23069) | 不能只证明结构优于 recency；要研究 annotation 不可信时的反转 |
+| 隐私 ↔ 回答能力 | 更换会话标签令关联攻击下降约50个百分点，但理想化方案仍损失约5.21个百分点效用 | 隐藏身份联系会让部分跨会话任务更难 |
+| 回答质量 ↔ 计算量 | BM25记忆提高5.56个百分点完全正确率，却多用约103万tokens | 小幅提升可能非常昂贵 |
+| 遗忘安全 ↔ 模型调用 | 安全策略保持90%正确率，但只省11.46%调用 | 太保守就省不了多少钱；太激进又可能忘错 |
+| 信息修复 ↔ 上下文长度 | 正确证据让答案更接近正确，同时大幅缩短输入 | 收益不只是“信息越多越好”，而是证据是否正确 |
+| 结构利用 ↔ 标注可靠性 | 标注信号不可靠时，结构化方法可能选错策略 | 算法上限受输入标注质量限制 |
 
-### 5.3 修正后的优先级
+## 7. 现在最值得继续的研究方向
 
-1. **Minimum-sufficient identity continuity**：48-source 结果已显示 stable alias 的 link 风险与 attribute/value 风险分离，但当前方法门 NO-GO；下一步实现非 oracle reveal policy，并做 user-disjoint / 第二公开 benchmark 确认。
-2. **Candidate-first safe forgetting**：原 OOD router 正式 NO-GO；利用 6 个 candidate-empty 失败，研究 multilingual dense recovery、abstention 与 mutation-level routing。
-3. **Replay-certified retrieval repair**：MemTrace 五臂多 seed 机制门通过；扩大到 20–30 个预冻结 cases，并把 strict task success 作为主终点。
-4. **Marginal-value memory invocation benchmark**：Lifecycle 的增益只来自 2/12 histories，先确认 history-level 稀疏性并比较强 selective baselines，不直接造 generic router。
-5. **Annotation-fidelity observable redesign**：旧 validator 正式 NO-GO；先找到同结构内有变异且与 downstream failure 校准的 observable，暂不烧模型 token。
-6. **Representation fallback**：普通版本撞题最严重；除非能做 evidence-sufficiency certificate，否则降级。
+### 第一方向：只暴露任务真正需要的身份联系
 
-## 6. 哪些说法只是常识，不能当论文创新
+问题：系统需要在不同会话间记住同一个用户，但稳定身份标签又会造成跟踪风险。
 
-- “记忆系统也消耗 tokens”；
-- “不是每轮都应该检索或更新”；
-- “压缩可能丢信息”；
-- “元数据也可能泄露”；
-- “OOD 会导致 selector 掉点”；
-- “错误标注会影响结构化算法”；
-- “选择性遗忘比 always/never 更灵活”。
+计划中的方法：
 
-论文贡献必须进一步给出：可观测机制、方法、风险/资源约束、held-out 验证、失败边界和 go/no-go。
+- 默认使用每会话变化的身份标签；
+- 只有当前任务确实需要跨会话连续性时，才临时恢复联系；
+- 恢复后立即撤销，不把稳定身份永久写进普通记忆。
 
-## 7. 下一阶段投入闭环
+最小实验：在两个公开跨会话 benchmark 上，与原始身份、固定标签、随机标签和永久不透明标签比较。
 
-### A. OOD forgetting：优先烧 token
+继续标准：关联风险明显下降，同时回答能力损失不超过预定范围；如果只能靠知道正确答案的理想化开关实现，就停止。
 
-- 先生成新 seed、零重叠的五语言集合；
-- 比较 never、always、当前 frozen selector、canonicalization、multilingual/OOD gate；
-- 报 underforget、overdelete、worst-language、risk@coverage、calls/tokens；
-- GO：相对 always 节省≥30% calls，总体差≤5pp，最坏语言差≤10pp，overdelete 不升高。
+### 第二方向：先确认找到了对象，再执行遗忘
 
-### B. Metadata linkability：第二优先烧 token
+问题：当前遗忘控制器位于候选搜索之后。搜索不到内容时，再强的删除模型也无能为力。
 
-- raw identity、stable typed、session-rotating typed alias、opaque + task-gated reveal 四臂；
-- 同时测 exact recovery、attribute inference、cross-session link、三类 utility 和 tokens；
-- GO：linkability 至少降低20pp，utility 损失≤3pp，并能在需要身份连续性的任务上恢复效用。
+计划中的方法：
 
-### C. Annotation fidelity：先做数据，不先烧 token
+- 同时使用关键词和多语言语义搜索；
+- 为候选覆盖率单独估计风险；
+- 候选为空或不确定时拒绝执行不可逆删除；
+- 对多步修改逐步决定，而不是整段历史一次性处理。
 
-- 收集真实 agent traces 并进行双人盲标；
-- 先测 dependency/type annotation 的 precision/recall 与 validator FPR/FNR；
-- 真实 FPR≤10% 才启动 CWL/recency/fallback 的大矩阵。
+继续标准：在新的公开测试集上修复 candidate-empty 失败，保持最坏语言安全，同时至少节省30%的真实模型调用。
 
-### D. Lifecycle：先复现强近邻，不直接造方法
+### 第三方向：可验证的记忆错误修复
 
-- 先接入 DeltaMem、MemCon、Memory-R1、Infini Memory 的 released code；
-- 统一记录 write/extract/consolidate/retrieve/answer/sidecar；
-- 操纵 update density、query reuse、history length、cache regime；
-- 只有发现现有方法在稳定 workload 区域被支配，才提出新 scheduler。
+问题：给模型正确证据能让答案变好，但目前只有4个案例，而且没有产生严格正确答案。
 
-### E. MemTrace：低成本立即补严谨性
+计划中的方法：
 
-- 4 cases × 5 repeats × baseline/placebo/correct replacement/matched deletion/irrelevant replacement；
-- 先估计生成噪声和 compression contribution，再决定是否扩20例。
+- 先自动检测哪条记忆最可能导致错误；
+- 只允许一次明确、可回滚的修改；
+- 修改后重新回答；
+- 用重复运行、等长度删除和无关替换排除偶然性。
 
-## 8. 证据边界
+继续标准：至少20–30个预先冻结的公开案例中，严格正确率也出现稳定提升，而不只是关键词重合分数提高。
 
-- 精确复现仅用于 Lethe deterministic headline；
-- Engram 与 TokenPilot 的“一致”指 released artifact/aggregate 重算一致；
-- 其余真实调用多数为 substitute-stack validation，不能写成论文原模型精确复现；
-- 没有新数据生成器时，不用旧样本冒充确认性外部验证；
-- raw prompts/responses 和本地代理凭据未进入公开仓库；
-- 正式论文前仍需完成 related-work collision audit、外部数据与跨模型确认。
+### 暂时不作为主方法的方向
 
-**本周最终判断**：作为 weekly report 已充分，而且五线确认实验已经把“候选想法”推进到有 GO/NO-GO 的研究决策。最合理的下一步不是平均扩所有 baseline：优先把 token 投向 minimum-sufficient identity continuity 与 MemTrace 外部扩展；Lethe 只做 candidate-first redesign；Lifecycle 先复现增益稀疏性；Annotation 在 observable 资格门通过前停止模型调用。
+- “什么时候读取记忆”先作为评测问题，因为类似控制器已经很多；
+- 结构标注方向先修测量器，不调用更多模型；
+- 不继续扩大当前 BM25、Lethe router 或旧 annotation validator；
+- 不把几个已有模块简单拼起来当作新贡献。
+
+## 8. 这份周报是否足够？
+
+作为 weekly report，这一周的内容已经足够，因为它不只是列出读过哪些论文，还包含：
+
+- 三项公开论文结果的独立复算；
+- 多项真实 baseline 运行；
+- 五个带明确对照和停止标准的确认实验；
+- 两次因独立审计而纠正的实验设计问题；
+- 一个正向机制信号、三个明确止损结果和一个需要重设计的隐私方向；
+- 从实际异常出发形成的三个下一阶段研究问题。
+
+还不能声称的是：我们已经有一篇完整论文的方法和最终结论。下一阶段需要为前三个方向各完成一个真正可部署的方法、第二个公开数据来源以及跨模型确认。
+
+## 9. 想看技术细节，可以从这里继续
+
+- [第一轮五线确认实验完整数据](./round1_followup_results_20260728.md)
+- [逐论文 baseline 数字对照](./baseline_replication_matrix_20260728.md)
+- [Research proposal 路线图](./research_proposal_roadmap_20260728.md)
+- [下一阶段投入与停止标准](./investment_decision_20260728.md)
+
+如果只需要了解“这一周做了什么、发现了什么、接下来为什么这样做”，读到这里已经足够。
