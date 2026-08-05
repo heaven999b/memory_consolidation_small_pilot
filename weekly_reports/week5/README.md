@@ -6,6 +6,7 @@ This folder is a self-contained report for an **independent research line** — 
 
 | File | Purpose |
 | --- | --- |
+| [proposal_self_model_miscalibration_v3_20260805.md](./proposal_self_model_miscalibration_v3_20260805.md) | **Full latest proposal (v3)**: motivation → 5 RQs each with main + fallback baselines (data sourcing and no-AI-synthesis confirmation inline) → per-RQ novelty vs prior work |
 | [week5_report_20260805_zh.md](./week5_report_20260805_zh.md) | Plain-language Chinese report: what the research line asks, how the proposal was upgraded into a 5-RQ system, the stage-0 pilot result, the two problems it exposed, and the next-step fork |
 | [stage0_pilot_results_20260805.md](./stage0_pilot_results_20260805.md) | Full pilot method, per-topic numbers, read-base-rate signal, saturation check, verdict, and evidence-class labeling |
 
